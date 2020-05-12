@@ -20,6 +20,7 @@ public interface CompanyExecutiveDAO {
 	public List<CompanyExecutiveSelect> 	selectCompanyExecutiveByOwnerId(Long ownerId)																	throws SQLException, ClassNotFoundException;
 	public List<CompanyExecutiveSelect> 	selectCompanyExecutiveByCompanyBranchId(Long companyBranchId)													throws SQLException, ClassNotFoundException;
 	public List<CompanyExecutiveSelect>		selectCompanyExecutiveOfSubPosition(Long companyExecutiveId)													throws SQLException, ClassNotFoundException;
+	public Long								getOwnerIdByCompanyExecutiveId(Long companyExecutiveId)															throws SQLException, ClassNotFoundException;
 	public Boolean 							updateCompanyExecutiveExecutiveName(Connection c, Long companyExecutiveId, String executiveName)				throws SQLException, ClassNotFoundException;
 	public Boolean 							updateCompanyExecutiveLoginID(Connection c, Long companyExecutiveId, String loginID)							throws SQLException, ClassNotFoundException;
 	public Boolean 							updateCompanyExecutivePassword(Connection c, Long companyExecutiveId, String password)							throws SQLException, ClassNotFoundException; 

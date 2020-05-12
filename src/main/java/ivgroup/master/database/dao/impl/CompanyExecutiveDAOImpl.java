@@ -530,4 +530,23 @@ public class CompanyExecutiveDAOImpl implements CompanyExecutiveDAO{
 		return ownerId;
 	}
 
+
+	@Override
+	public Long getOwnerIdByCompanyExecutiveId(Long companyExecutiveId) throws SQLException, ClassNotFoundException
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"company\".\"fn_getOwnerIdByExecutiveId\"(?);");
+		stmt.setLong(1, companyExecutiveId);
+		ResultSet rs=stmt.executeQuery();
+		Long ownerId=null;
+		if(rs.next())
+		{
+			ownerId=rs.getLong("OwnerId");
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return ownerId;
+	}
+
 }
