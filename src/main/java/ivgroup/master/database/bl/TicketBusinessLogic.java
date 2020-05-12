@@ -7,12 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
+import ivgroup.master.database.dao.impl.CRMAccessListDAOImpl;
 import ivgroup.master.database.dao.impl.CompanyExecutiveDAOImpl;
 import ivgroup.master.database.dao.impl.TicketDAOImpl;
 import ivgroup.master.database.dto.ticket.TicketAccessListInsert;
@@ -33,6 +36,9 @@ public class TicketBusinessLogic
 	
 	@Autowired
 	CompanyExecutiveDAOImpl edi;
+	
+	@Autowired
+	CRMAccessListDAOImpl cadi;
 
 	public ResponseEntity<Long> addTicket(TicketInsert ti)
 	{
@@ -47,7 +53,25 @@ public class TicketBusinessLogic
 				return new ResponseEntity<Long>(ticketId,HttpStatus.BAD_REQUEST);
 			}
 			ticketId=tdi.addTicket(ti);
-			//TODO Add AccessRights to Owner And the CompanyExecutive which has created the Ticket
+			Long check=cadi.checkExecutiveOwnerFlag(ti.getCreatedBy());
+			if(check==0)
+			{
+				Long ownerId=edi.getOwnerIdByCompanyExecutiveId(ti.getCreatedBy());
+				Boolean rsTicketAccess=tdi.addTicketAccessList(new TicketAccessListInsert(			
+																							ticketId,
+																							ownerId,
+																							ti.getCreatedOn(),
+																							ti.getCreatedBy()));
+				if(!rsTicketAccess)
+				{
+					Boolean rsDelete=tdi.deleteMainTicket(ticketId);
+					if(!rsDelete)
+					{
+						return new ResponseEntity<Long>(ticketId,HttpStatus.BAD_REQUEST);
+					}
+					return new ResponseEntity<Long>(ticketId,HttpStatus.BAD_REQUEST);
+				}
+			}
 			if(ticketId==null)
 			{
 				Boolean rsDelete=tdi.deleteMainTicket(ticketId);
