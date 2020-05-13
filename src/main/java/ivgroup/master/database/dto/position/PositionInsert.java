@@ -3,6 +3,8 @@ package ivgroup.master.database.dto.position;
 import java.sql.Timestamp;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -16,23 +18,41 @@ public class PositionInsert
 	@NotNull(message = "CompanyId cannot be NULL")
 	Long companyId;
 	@NotNull(message = "Company cannot be NULL")
-	Integer company;
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
+	String company;
 	@NotNull(message = "CompanyBranch cannot be NULL")
-	Integer companyBranch;
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
+	String companyBranch;
 	@NotNull(message = "CompanyExecutive cannot be NULL")
-	Integer companyExecutive;
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
+	String companyExecutive;
 	@NotNull(message = "Client cannot be NULL")
-	Integer client;
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
+	String client;
 	@NotNull(message = "Product cannot be NULL")
-	Integer product;
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
+	String product;
 	@NotNull(message = "Location cannot be NULL")
-	Integer location;
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
+	String location;
 	@NotNull(message = "Enquiry cannot be NULL")
-	Integer enquiry;
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
+	String enquiry;
 	@NotNull(message = "Ticket cannot be NULL")
-	Integer ticket;
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
+	String ticket;
 	@NotNull(message = "Position cannot be NULL")
-	Integer position;
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
+	String position;
 	@NotNull(message = "CreatedBy cannot be NULL")
 	Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
@@ -44,26 +64,26 @@ public class PositionInsert
 		
 	}
 
+
+
 	public PositionInsert(@NotNull(message = "PositionName cannot be NULL") String positionName,
 			@NotNull(message = "PositionPriority cannot be NULL") Integer positionPriority,
 			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
+			@NotNull(message = "Company cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String company,
+			@NotNull(message = "CompanyBranch cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String companyBranch,
+			@NotNull(message = "CompanyExecutive cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String companyExecutive,
+			@NotNull(message = "Client cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String client,
+			@NotNull(message = "Product cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String product,
+			@NotNull(message = "Location cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String location,
+			@NotNull(message = "Enquiry cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String enquiry,
+			@NotNull(message = "Ticket cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String ticket,
+			@NotNull(message = "Position cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String position,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotNull(message = "Company cannot be NULL") Integer company,
-			@NotNull(message = "CompanyBranch cannot be NULL") Integer companyBranch,
-			@NotNull(message = "CompanyExecutive cannot be NULL") Integer companyExecutive,
-			@NotNull(message = "Client cannot be NULL") Integer client,
-			@NotNull(message = "Product cannot be NULL") Integer product,
-			@NotNull(message = "Location cannot be NULL") Integer location,
-			@NotNull(message = "Enquiry cannot be NULL") Integer enquiry,
-			@NotNull(message = "Ticket cannot be NULL") Integer ticket,
-			@NotNull(message = "Position cannot be NULL") Integer position) {
+			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
 		super();
 		this.positionName = positionName;
 		this.positionPriority = positionPriority;
 		this.companyId = companyId;
-		this.createdBy = createdBy;
-		this.createdOn = createdOn;
 		this.company = company;
 		this.companyBranch = companyBranch;
 		this.companyExecutive = companyExecutive;
@@ -73,7 +93,11 @@ public class PositionInsert
 		this.enquiry = enquiry;
 		this.ticket = ticket;
 		this.position = position;
+		this.createdBy = createdBy;
+		this.createdOn = createdOn;
 	}
+
+
 
 	public String getPositionName() {
 		return positionName;
@@ -99,6 +123,78 @@ public class PositionInsert
 		this.companyId = companyId;
 	}
 
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public String getCompanyBranch() {
+		return companyBranch;
+	}
+
+	public void setCompanyBranch(String companyBranch) {
+		this.companyBranch = companyBranch;
+	}
+
+	public String getCompanyExecutive() {
+		return companyExecutive;
+	}
+
+	public void setCompanyExecutive(String companyExecutive) {
+		this.companyExecutive = companyExecutive;
+	}
+
+	public String getClient() {
+		return client;
+	}
+
+	public void setClient(String client) {
+		this.client = client;
+	}
+
+	public String getProduct() {
+		return product;
+	}
+
+	public void setProduct(String product) {
+		this.product = product;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getEnquiry() {
+		return enquiry;
+	}
+
+	public void setEnquiry(String enquiry) {
+		this.enquiry = enquiry;
+	}
+
+	public String getTicket() {
+		return ticket;
+	}
+
+	public void setTicket(String ticket) {
+		this.ticket = ticket;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
 	public Long getCreatedBy() {
 		return createdBy;
 	}
@@ -115,76 +211,4 @@ public class PositionInsert
 		this.createdOn = createdOn;
 	}
 
-	public Integer getCompany() {
-		return company;
-	}
-
-	public void setCompany(Integer company) {
-		this.company = company;
-	}
-
-	public Integer getCompanyBranch() {
-		return companyBranch;
-	}
-
-	public void setCompanyBranch(Integer companyBranch) {
-		this.companyBranch = companyBranch;
-	}
-
-	public Integer getCompanyExecutive() {
-		return companyExecutive;
-	}
-
-	public void setCompanyExecutive(Integer companyExecutive) {
-		this.companyExecutive = companyExecutive;
-	}
-
-	public Integer getClient() {
-		return client;
-	}
-
-	public void setClient(Integer client) {
-		this.client = client;
-	}
-
-	public Integer getProduct() {
-		return product;
-	}
-
-	public void setProduct(Integer product) {
-		this.product = product;
-	}
-
-	public Integer getLocation() {
-		return location;
-	}
-
-	public void setLocation(Integer location) {
-		this.location = location;
-	}
-
-	public Integer getEnquiry() {
-		return enquiry;
-	}
-
-	public void setEnquiry(Integer enquiry) {
-		this.enquiry = enquiry;
-	}
-
-	public Integer getTicket() {
-		return ticket;
-	}
-
-	public void setTicket(Integer ticket) {
-		this.ticket = ticket;
-	}
-
-	public Integer getPosition() {
-		return position;
-	}
-
-	public void setPosition(Integer position) {
-		this.position = position;
-	}
-	
 }

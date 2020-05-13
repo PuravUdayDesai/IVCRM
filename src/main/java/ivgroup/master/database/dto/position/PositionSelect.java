@@ -32,31 +32,30 @@ public class PositionSelect
 	@NotNull(message = "IsActive cannot be NULL")
 	Boolean isActive;
 	@NotNull(message = "Company cannot be NULL")
-	Integer company;
+	String company;
 	@NotNull(message = "CompanyBranch cannot be NULL")
-	Integer companyBranch;
+	String companyBranch;
 	@NotNull(message = "CompanyExecutive cannot be NULL")
-	Integer companyExecutive;
+	String companyExecutive;
 	@NotNull(message = "Client cannot be NULL")
-	Integer client;
+	String client;
 	@NotNull(message = "Product cannot be NULL")
-	Integer product;
+	String product;
 	@NotNull(message = "Location cannot be NULL")
-	Integer location;
+	String location;
 	@NotNull(message = "Enquiry cannot be NULL")
-	Integer enquiry;
+	String enquiry;
 	@NotNull(message = "Ticket cannot be NULL")
-	Integer ticket;
+	String ticket;
 	@NotNull(message = "Position cannot be NULL")
-	Integer position;
+	String position;
 	
 	public PositionSelect()
 	{
 		
 	}
 
-	public PositionSelect(
-			@NotNull(message = "PositionId cannot be NULL") Long positionId,
+	public PositionSelect(@NotNull(message = "PositionId cannot be NULL") Long positionId,
 			@NotNull(message = "PositionName cannot be NULL") String positionName,
 			@NotNull(message = "PositionPriority cannot be NULL") Integer positionPriority,
 			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
@@ -66,15 +65,15 @@ public class PositionSelect
 			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
 			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
 			@NotNull(message = "IsActive cannot be NULL") Boolean isActive,
-			@NotNull(message = "Company cannot be NULL") Integer company,
-			@NotNull(message = "CompanyBranch cannot be NULL") Integer companyBranch,
-			@NotNull(message = "CompanyExecutive cannot be NULL") Integer companyExecutive,
-			@NotNull(message = "Client cannot be NULL") Integer client,
-			@NotNull(message = "Product cannot be NULL") Integer product,
-			@NotNull(message = "Location cannot be NULL") Integer location,
-			@NotNull(message = "Enquiry cannot be NULL") Integer enquiry,
-			@NotNull(message = "Ticket cannot be NULL") Integer ticket,
-			@NotNull(message = "Position cannot be NULL") Integer position) {
+			@NotNull(message = "Company cannot be NULL") String company,
+			@NotNull(message = "CompanyBranch cannot be NULL") String companyBranch,
+			@NotNull(message = "CompanyExecutive cannot be NULL") String companyExecutive,
+			@NotNull(message = "Client cannot be NULL") String client,
+			@NotNull(message = "Product cannot be NULL") String product,
+			@NotNull(message = "Location cannot be NULL") String location,
+			@NotNull(message = "Enquiry cannot be NULL") String enquiry,
+			@NotNull(message = "Ticket cannot be NULL") String ticket,
+			@NotNull(message = "Position cannot be NULL") String position) {
 		super();
 		this.positionId = positionId;
 		this.positionName = positionName;
@@ -177,76 +176,76 @@ public class PositionSelect
 		this.isActive = isActive;
 	}
 
-	public Integer getCompany() {
+	public String getCompany() {
 		return company;
 	}
 
-	public void setCompany(Integer company) {
+	public void setCompany(String company) {
 		this.company = company;
 	}
 
-	public Integer getCompanyBranch() {
+	public String getCompanyBranch() {
 		return companyBranch;
 	}
 
-	public void setCompanyBranch(Integer companyBranch) {
+	public void setCompanyBranch(String companyBranch) {
 		this.companyBranch = companyBranch;
 	}
 
-	public Integer getCompanyExecutive() {
+	public String getCompanyExecutive() {
 		return companyExecutive;
 	}
 
-	public void setCompanyExecutive(Integer companyExecutive) {
+	public void setCompanyExecutive(String companyExecutive) {
 		this.companyExecutive = companyExecutive;
 	}
 
-	public Integer getClient() {
+	public String getClient() {
 		return client;
 	}
 
-	public void setClient(Integer client) {
+	public void setClient(String client) {
 		this.client = client;
 	}
 
-	public Integer getProduct() {
+	public String getProduct() {
 		return product;
 	}
 
-	public void setProduct(Integer product) {
+	public void setProduct(String product) {
 		this.product = product;
 	}
 
-	public Integer getLocation() {
+	public String getLocation() {
 		return location;
 	}
 
-	public void setLocation(Integer location) {
+	public void setLocation(String location) {
 		this.location = location;
 	}
 
-	public Integer getEnquiry() {
+	public String getEnquiry() {
 		return enquiry;
 	}
 
-	public void setEnquiry(Integer enquiry) {
+	public void setEnquiry(String enquiry) {
 		this.enquiry = enquiry;
 	}
 
-	public Integer getTicket() {
+	public String getTicket() {
 		return ticket;
 	}
 
-	public void setTicket(Integer ticket) {
+	public void setTicket(String ticket) {
 		this.ticket = ticket;
 	}
 
-	public Integer getPosition() {
+	public String getPosition() {
 		return position;
 	}
 
-	public void setPosition(Integer position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
-	
+
 }

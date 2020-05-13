@@ -58,15 +58,15 @@ public class PositionDAOImpl implements PositionDAO
 					 rs.getLong("LastEditBy"),
 					 rs.getTimestamp("LastEditOn"),
 					 rs.getBoolean("isActive"),
-					 rs.getInt("Company"),
-					 rs.getInt("CompanyBranch"),
-					 rs.getInt("CompanyExecutive"),
-					 rs.getInt("Client"),
-					 rs.getInt("Product"),
-					 rs.getInt("Location"),
-					 rs.getInt("Enquiry"),
-					 rs.getInt("Ticket"),
-					 rs.getInt("Position")
+					 rs.getString("Company"),
+					 rs.getString("CompanyBranch"),
+					 rs.getString("CompanyExecutive"),
+					 rs.getString("Client"),
+					 rs.getString("Product"),
+					 rs.getString("Location"),
+					 rs.getString("Enquiry"),
+					 rs.getString("Ticket"),
+					 rs.getString("Position")
 					));
 		}
 		rs.close();
@@ -96,15 +96,15 @@ public class PositionDAOImpl implements PositionDAO
 					 rs.getLong("LastEditBy"),
 					 rs.getTimestamp("LastEditOn"),
 					 rs.getBoolean("isActive"),
-					 rs.getInt("Company"),
-					 rs.getInt("CompanyBranch"),
-					 rs.getInt("CompanyExecutive"),
-					 rs.getInt("Client"),
-					 rs.getInt("Product"),
-					 rs.getInt("Location"),
-					 rs.getInt("Enquiry"),
-					 rs.getInt("Ticket"),
-					 rs.getInt("Position")
+					 rs.getString("Company"),
+					 rs.getString("CompanyBranch"),
+					 rs.getString("CompanyExecutive"),
+					 rs.getString("Client"),
+					 rs.getString("Product"),
+					 rs.getString("Location"),
+					 rs.getString("Enquiry"),
+					 rs.getString("Ticket"),
+					 rs.getString("Position")
 					);
 		}
 		rs.close();
@@ -123,15 +123,15 @@ public class PositionDAOImpl implements PositionDAO
 		stmt.setLong(3, pi.getCompanyId());
 		stmt.setLong(4, pi.getCreatedBy());
 		stmt.setTimestamp(5, pi.getCreatedOn());
-		stmt.setInt(6, pi.getCompany());
-		stmt.setInt(7, pi.getCompanyBranch());
-		stmt.setInt(8, pi.getCompanyExecutive());
-		stmt.setInt(9, pi.getClient());
-		stmt.setInt(10, pi.getProduct());
-		stmt.setInt(11, pi.getLocation());
-		stmt.setInt(12, pi.getEnquiry());
-		stmt.setInt(13, pi.getTicket());
-		stmt.setInt(14, pi.getPosition());
+		stmt.setString(6, pi.getCompany().toUpperCase());
+		stmt.setString(7, pi.getCompanyBranch().toUpperCase());
+		stmt.setString(8, pi.getCompanyExecutive().toUpperCase());
+		stmt.setString(9, pi.getClient().toUpperCase());
+		stmt.setString(10, pi.getProduct().toUpperCase());
+		stmt.setString(11, pi.getLocation().toUpperCase());
+		stmt.setString(12, pi.getEnquiry().toUpperCase());
+		stmt.setString(13, pi.getTicket().toUpperCase());
+		stmt.setString(14, pi.getPosition().toUpperCase());
 		ResultSet rs=stmt.executeQuery();
 		c.commit();
 		Boolean rsMain=false;
@@ -150,15 +150,15 @@ public class PositionDAOImpl implements PositionDAO
 	{
 		Connection c=ConnectionProvider.getConnection();
 		CallableStatement stmt=c.prepareCall("SELECT * FROM \"position\".\"fn_insertCompanyExecutiveMasterList\"(?, ?, ?, ?, ?, ?, ?, ?, ?);");
-		stmt.setInt(1, pei.getCompany());
-		stmt.setInt(2, pei.getCompanyBranch());
-		stmt.setInt(3, pei.getCompanyExecutive());
-		stmt.setInt(4, pei.getClient());
-		stmt.setInt(5, pei.getProduct());
-		stmt.setInt(6, pei.getLocation());
-		stmt.setInt(7, pei.getEnquiry());
-		stmt.setInt(8, pei.getTicket());
-		stmt.setInt(9, pei.getPosition());
+		stmt.setString(1, pei.getCompany().toUpperCase());
+		stmt.setString(2, pei.getCompanyBranch().toUpperCase());
+		stmt.setString(3, pei.getCompanyExecutive().toUpperCase());
+		stmt.setString(4, pei.getClient().toUpperCase());
+		stmt.setString(5, pei.getProduct().toUpperCase());
+		stmt.setString(6, pei.getLocation().toUpperCase());
+		stmt.setString(7, pei.getEnquiry().toUpperCase());
+		stmt.setString(8, pei.getTicket().toUpperCase());
+		stmt.setString(9, pei.getPosition().toUpperCase());
 		ResultSet rs=stmt.executeQuery();
 		c.commit();
 		Long idForAccess=null;
