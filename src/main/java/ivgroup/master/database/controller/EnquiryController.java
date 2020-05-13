@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ivgroup.master.database.Constants;
@@ -48,18 +49,17 @@ public class EnquiryController
 	{
 		return ebl.addEnquiryProduct(epi);
 	}
-	//TODO Add Validation
+	
 	@DeleteMapping(path="/product/{productId}")
-	public ResponseEntity<Void> deleteEnquiryProduct(@PathVariable @NotNull Long productId)  
+	public ResponseEntity<Void> deleteEnquiryProduct(@PathVariable @NotNull Long productId,@RequestParam("companyExecutiveId") Long companyExecutiveId)  
 	{
-		return ebl.deleteEnquiryProduct(productId);
+		return ebl.deleteEnquiryProduct(productId,companyExecutiveId);
 	}
 	
-	//TODO Add Validation
 	@DeleteMapping(path="/{enquiryId}")
-	public ResponseEntity<Void> deleteEnquiry(@PathVariable @NotNull Long enquiryId)  
+	public ResponseEntity<Void> deleteEnquiry(@PathVariable @NotNull Long enquiryId,@RequestParam("companyExecutiveId") Long companyExecutiveId)  
 	{
-		return ebl.deleteEnquiry(enquiryId);
+		return ebl.deleteEnquiry(enquiryId,companyExecutiveId);
 	}
 
 	@PutMapping(path = "/{enquiryId}",	consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
@@ -72,9 +72,9 @@ public class EnquiryController
 	@PostMapping(path="/enquiryAccessList",
 			consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<Void> addEnquiryAccessList(@Valid @RequestBody EnquiryAccessListInsert eai)
+	public ResponseEntity<Void> addEnquiryAccessList(@Valid @RequestBody EnquiryAccessListInsert eai,@RequestParam("companyExecutiveId") Long companyExecutiveId)
 	{
-		return ebl.addEnquiryAccessList(eai);
+		return ebl.addEnquiryAccessList(eai,companyExecutiveId);
 	}
 	
 	@GetMapping(path="/enquiryAccessList/{enquiryId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
@@ -84,9 +84,9 @@ public class EnquiryController
 	}
 
 	@DeleteMapping(path="/enquiryAccessList/{companyExecutiveAccessId}")
-	public ResponseEntity<Void> deleteEnquiryAccessListExecutive(@PathVariable @NotNull Long companyExecutiveAccessId)
+	public ResponseEntity<Void> deleteEnquiryAccessListExecutive(@PathVariable @NotNull Long companyExecutiveAccessId,@RequestParam("enquiryId") Long enquiryId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
 	{
-		return ebl.deleteEnquiryAccessListExecutive(companyExecutiveAccessId);
+		return ebl.deleteEnquiryAccessListExecutive(companyExecutiveAccessId,enquiryId,companyExecutiveId);
 	}
 	
 }

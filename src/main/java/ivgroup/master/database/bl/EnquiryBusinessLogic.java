@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
+import ivgroup.master.database.dao.impl.CRMAccessListDAOImpl;
+import ivgroup.master.database.dao.impl.CompanyExecutiveDAOImpl;
 import ivgroup.master.database.dao.impl.EnquiryDAOImpl;
 import ivgroup.master.database.dao.impl.TicketDAOImpl;
 import ivgroup.master.database.dto.enquiry.EnquiryAccessListInsert;
@@ -36,6 +38,11 @@ public class EnquiryBusinessLogic
 	@Autowired
 	TicketBusinessLogic tbl;
 	
+	@Autowired
+	CRMAccessListDAOImpl cadi;
+	
+	@Autowired
+	CompanyExecutiveDAOImpl cedi;
 	
 	public ResponseEntity<Void> addEnquiry(EnquiryInsert ei)
 	{
@@ -50,6 +57,24 @@ public class EnquiryBusinessLogic
 		Long enquiryId=null;
 		try {
 			enquiryId=edi.addEnquiry(ei);
+			Long check=cadi.checkExecutiveOwnerFlag(ei.getCreatedBy());
+			if(check==0)
+			{
+				Long ownerId=cedi.getOwnerIdByCompanyExecutiveId(ei.getCreatedBy());
+				Boolean rsOwnerAccess=edi.addEnquiryAccessList(new EnquiryAccessListInsert(
+																							enquiryId,
+																							ownerId,
+																							ei.getCreatedOn()));
+				if(!rsOwnerAccess)
+				{
+					Boolean rsDelete=edi.deleteEnquiry(enquiryId);
+					if(!rsDelete)
+					{
+						return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+					}
+					return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+				}
+			}
 			ListIterator<Long> li=ei.getProductId().listIterator();
 			if(enquiryId==null)
 			{
@@ -131,14 +156,13 @@ public class EnquiryBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println("Here In Enquiry: "+e);
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 
 	public ResponseEntity<Long> addEnquiryProduct(EnquiryProductInsert epi)
-	{
+	{		
 		Boolean rsMain=false;
 		Long ticketId=null;
 		if(epi==null)
@@ -146,13 +170,21 @@ public class EnquiryBusinessLogic
 			return new ResponseEntity<Long>(ticketId,HttpStatus.BAD_REQUEST);
 		}
 		try {
+			
+			Long count=edi.checkCompanyExecutiveByEnquiryId(epi.getEnquiryId(), epi.getCreatedBy());
+			if(count==0)
+			{
+				return new ResponseEntity<Long>(ticketId,HttpStatus.BAD_REQUEST);
+			}
+			
 			rsMain=edi.addEnquiryProduct(epi.getEnquiryId(), epi.getProductId());
 			EnquiryDetailsForNewProductTicketInsert eData=edi.selectEnquiryForNewProductTicketInsert(epi.getEnquiryId());
 			if(eData==null)
 			{
 				return new ResponseEntity<Long>(ticketId,HttpStatus.BAD_REQUEST);
 			}
-			ticketId=tdi.addTicket(new TicketInsert(
+			
+			ResponseEntity<Long> rsTicket=tbl.addTicket(new TicketInsert(
 						epi.getEnquiryId(),
 						eData.getEnquiryRemarks(),
 						epi.getTicketRemarks(),
@@ -166,9 +198,11 @@ public class EnquiryBusinessLogic
 						epi.getCreatedOn(),
 						epi.getCreatedBy()
 						));
+			ticketId=rsTicket.getBody();
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Long>(ticketId,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
+			System.out.println("Enquiry Product: "+e);
 			return new ResponseEntity<Long>(ticketId,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain||ticketId==null)
@@ -178,7 +212,7 @@ public class EnquiryBusinessLogic
 		return new ResponseEntity<Long>(ticketId,HttpStatus.CREATED);
 	}
 	
-	public ResponseEntity<Void> deleteEnquiryProduct(Long productId)  
+	public ResponseEntity<Void> deleteEnquiryProduct(Long productId,Long companyExecutiveId)  
 	{
 		Boolean rs=false;
 		try {
@@ -188,6 +222,11 @@ public class EnquiryBusinessLogic
 			 {
 				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 			 }
+			 Long count=edi.checkCompanyExecutiveByEnquiryId(sed.getEnquiryId(),companyExecutiveId);
+				if(count==0)
+				{
+					return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+				}
 			 Long ticketId=tdi.selectTicketIdByEnquiryAndProductId(sed.getEnquiryId(), sed.getProductId());
 			 if(ticketId==null)
 			 {
@@ -211,10 +250,15 @@ public class EnquiryBusinessLogic
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
-	public ResponseEntity<Void> deleteEnquiry(Long enquiryId)  
+	public ResponseEntity<Void> deleteEnquiry(Long enquiryId,Long companyExecutiveId)  
 	{
 		Boolean rs=false;
 		try {
+			 Long count=edi.checkCompanyExecutiveByEnquiryId(enquiryId,companyExecutiveId);
+				if(count==0)
+				{
+					return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+				}
 			 rs=edi.deleteEnquiry(enquiryId);
 			 ListIterator<Long> li=tdi.selectTicketIdByEnquiryId(enquiryId).listIterator();
 			 while(li.hasNext())
@@ -497,6 +541,18 @@ public class EnquiryBusinessLogic
 
 	public ResponseEntity<Void> updateEnquiryFields(Long enquiryId,EnquiryUpdate eu)
 	{
+		 Long count;
+		try {
+			count = edi.checkCompanyExecutiveByEnquiryId(enquiryId,eu.getLastEditBy());
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+			if(count==0)
+			{
+				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+			}
 		Connection c=null;
 		try {
 			 c=ConnectionProvider.getConnection();
@@ -680,7 +736,7 @@ public class EnquiryBusinessLogic
 	return new ResponseEntity<Void>(HttpStatus.OK); 	
 	}
 	
-	public ResponseEntity<Void> addEnquiryAccessList(EnquiryAccessListInsert eai)
+	public ResponseEntity<Void> addEnquiryAccessList(EnquiryAccessListInsert eai,Long companyExecutiveId)
 	{
 		Boolean rsMain=false;
 		if(eai==null)
@@ -688,6 +744,11 @@ public class EnquiryBusinessLogic
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
 		try {
+			Long count=edi.checkCompanyExecutiveByEnquiryId(eai.getEnquiryId(),companyExecutiveId);
+			if(count==0)
+			{
+				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+			}
 			rsMain=edi.addEnquiryAccessList(eai);
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
@@ -722,7 +783,7 @@ public class EnquiryBusinessLogic
 		return new ResponseEntity<List<EnquiryAccessListSelect>>(lea,HttpStatus.OK);
 	}
 
-	public ResponseEntity<Void> deleteEnquiryAccessListExecutive(Long companyExecutiveAccessId)
+	public ResponseEntity<Void> deleteEnquiryAccessListExecutive(Long companyExecutiveAccessId,Long enquiryId,Long companyExecutiveId)
 	{
 		Boolean rsMain=false;
 		if(companyExecutiveAccessId==null)
@@ -730,6 +791,11 @@ public class EnquiryBusinessLogic
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
 		try {
+			Long count=edi.checkCompanyExecutiveByEnquiryId(enquiryId,companyExecutiveId);
+			if(count==0)
+			{
+				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+			}
 			rsMain=edi.deleteEnquiryAccessListExecutive(companyExecutiveAccessId);
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);

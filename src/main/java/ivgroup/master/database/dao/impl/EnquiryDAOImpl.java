@@ -492,5 +492,24 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		c.close();
 		return rsMain;
 	}
+
+	@Override
+	public Long checkCompanyExecutiveByEnquiryId(Long enquiryId, Long companyExecutiveId)throws SQLException, ClassNotFoundException
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM enquiry.\"fn_checkExecutiveEnquiryAccess\"(?,?);");
+		stmt.setLong(1, enquiryId);
+		stmt.setLong(2, companyExecutiveId);
+		ResultSet rs=stmt.executeQuery();
+		Long count=null;
+		if(rs.next())
+		{
+			count=rs.getLong("Check");
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return count;
+	}
 	
 }

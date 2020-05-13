@@ -19,6 +19,7 @@ public interface EnquiryDAO
 	public EnquiryDetailsForNewProductTicketInsert		selectEnquiryForNewProductTicketInsert(Long enquiryId)							throws SQLException,ClassNotFoundException;
 	public SelectEnquiryDetailsByProductListId			selectEnquiryAndProductIdByProductListId(Long productListId)					throws SQLException,ClassNotFoundException;
 	public List<EnquiryAccessListSelect>				selectEnquiryAccessListByEnquiryId(Long enquiryId)								throws SQLException,ClassNotFoundException;
+	public Long											checkCompanyExecutiveByEnquiryId(Long enquiyrId,Long companyExecutiveId)		throws SQLException,ClassNotFoundException;
 	public Boolean										updateEnquiryClient(Connection c,Long enquiryId,Long clientId)					throws SQLException,ClassNotFoundException;
 	public Boolean										updateEnquiryCountry(Connection c,Long enquiryId,Long countryId)				throws SQLException,ClassNotFoundException;
 	public Boolean 										updateEnquiryState(Connection c,Long enquiryId,Long stateId)					throws SQLException,ClassNotFoundException;
