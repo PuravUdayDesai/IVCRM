@@ -24,6 +24,7 @@ import ivgroup.master.database.bl.EnquiryBusinessLogic;
 import ivgroup.master.database.dto.enquiry.EnquiryAccessListInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryAccessListSelect;
 import ivgroup.master.database.dto.enquiry.EnquiryInsert;
+import ivgroup.master.database.dto.enquiry.EnquiryNonAddedProductSelect;
 import ivgroup.master.database.dto.enquiry.EnquiryProductInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryUpdate;	
 
@@ -87,6 +88,12 @@ public class EnquiryController
 	public ResponseEntity<Void> deleteEnquiryAccessListExecutive(@PathVariable @NotNull Long companyExecutiveAccessId,@RequestParam("enquiryId") Long enquiryId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
 	{
 		return ebl.deleteEnquiryAccessListExecutive(companyExecutiveAccessId,enquiryId,companyExecutiveId);
+	}
+	
+	@GetMapping(path="/enquiryNonAddedProducts/{enquiryId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<EnquiryNonAddedProductSelect>> selectEnquiryNonAddedProducts(@PathVariable @NotNull Long enquiryId)
+	{
+		return ebl.selectEnquiryNonAddedProducts(enquiryId);
 	}
 	
 }

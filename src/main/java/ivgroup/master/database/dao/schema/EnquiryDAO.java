@@ -9,6 +9,7 @@ import ivgroup.master.database.dto.enquiry.EnquiryAccessListInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryAccessListSelect;
 import ivgroup.master.database.dto.enquiry.EnquiryDetailsForNewProductTicketInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryInsert;
+import ivgroup.master.database.dto.enquiry.EnquiryNonAddedProductSelect;
 import ivgroup.master.database.dto.enquiry.SelectEnquiryDetailsByProductListId;
 
 public interface EnquiryDAO 
@@ -19,6 +20,7 @@ public interface EnquiryDAO
 	public EnquiryDetailsForNewProductTicketInsert		selectEnquiryForNewProductTicketInsert(Long enquiryId)							throws SQLException,ClassNotFoundException;
 	public SelectEnquiryDetailsByProductListId			selectEnquiryAndProductIdByProductListId(Long productListId)					throws SQLException,ClassNotFoundException;
 	public List<EnquiryAccessListSelect>				selectEnquiryAccessListByEnquiryId(Long enquiryId)								throws SQLException,ClassNotFoundException;
+	public List<EnquiryNonAddedProductSelect>			selectEnquiryNonAddedProducts(Long enquiryId)									throws SQLException,ClassNotFoundException;			
 	public Long											checkCompanyExecutiveByEnquiryId(Long enquiyrId,Long companyExecutiveId)		throws SQLException,ClassNotFoundException;
 	public Boolean										updateEnquiryClient(Connection c,Long enquiryId,Long clientId)					throws SQLException,ClassNotFoundException;
 	public Boolean										updateEnquiryCountry(Connection c,Long enquiryId,Long countryId)				throws SQLException,ClassNotFoundException;

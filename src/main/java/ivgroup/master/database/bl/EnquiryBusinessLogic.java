@@ -21,6 +21,7 @@ import ivgroup.master.database.dto.enquiry.EnquiryAccessListInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryAccessListSelect;
 import ivgroup.master.database.dto.enquiry.EnquiryDetailsForNewProductTicketInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryInsert;
+import ivgroup.master.database.dto.enquiry.EnquiryNonAddedProductSelect;
 import ivgroup.master.database.dto.enquiry.EnquiryProductInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryUpdate;
 import ivgroup.master.database.dto.enquiry.SelectEnquiryDetailsByProductListId;
@@ -173,6 +174,25 @@ public class EnquiryBusinessLogic
 			
 			Long count=edi.checkCompanyExecutiveByEnquiryId(epi.getEnquiryId(), epi.getCreatedBy());
 			if(count==0)
+			{
+				return new ResponseEntity<Long>(ticketId,HttpStatus.BAD_REQUEST);
+			}
+			
+			ListIterator<EnquiryNonAddedProductSelect> lep=null;
+			lep=edi.selectEnquiryNonAddedProducts(epi.getEnquiryId()).listIterator();
+			Boolean checkForProductDependency=false;
+			while(lep.hasNext())
+			{
+				if(epi.getProductId()==lep.next().getId())
+				{
+					checkForProductDependency=true;
+					break;
+				}
+				else {
+					checkForProductDependency=false;
+				}
+			}
+			if(!checkForProductDependency)
 			{
 				return new ResponseEntity<Long>(ticketId,HttpStatus.BAD_REQUEST);
 			}
@@ -808,4 +828,26 @@ public class EnquiryBusinessLogic
 		}
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
+	
+	public ResponseEntity<List<EnquiryNonAddedProductSelect>> selectEnquiryNonAddedProducts(Long enquiryId)
+	{
+		List<EnquiryNonAddedProductSelect> lps=new ArrayList<EnquiryNonAddedProductSelect>();
+		if(enquiryId==null)
+		{
+			return new ResponseEntity<List<EnquiryNonAddedProductSelect>>(lps,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			lps= edi.selectEnquiryNonAddedProducts(enquiryId);
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<List<EnquiryNonAddedProductSelect>>(lps,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<List<EnquiryNonAddedProductSelect>>(lps,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(lps.isEmpty())
+		{
+			return new ResponseEntity<List<EnquiryNonAddedProductSelect>>(lps,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<EnquiryNonAddedProductSelect>>(lps,HttpStatus.OK);
+	}
+	
 }

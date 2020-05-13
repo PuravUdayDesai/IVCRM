@@ -16,6 +16,7 @@ import ivgroup.master.database.dto.enquiry.EnquiryAccessListInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryAccessListSelect;
 import ivgroup.master.database.dto.enquiry.EnquiryDetailsForNewProductTicketInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryInsert;
+import ivgroup.master.database.dto.enquiry.EnquiryNonAddedProductSelect;
 import ivgroup.master.database.dto.enquiry.SelectEnquiryDetailsByProductListId;
 
 @Service
@@ -510,6 +511,38 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		stmt.close();
 		c.close();
 		return count;
+	}
+
+	@Override
+	public List<EnquiryNonAddedProductSelect> selectEnquiryNonAddedProducts(Long enquiryId)throws SQLException, ClassNotFoundException 
+	{
+		List<EnquiryNonAddedProductSelect> lps=new ArrayList<EnquiryNonAddedProductSelect>();
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM enquiry.\"fn_selectEnquiryNonAddedProducts\"(?);");
+		stmt.setLong(1, enquiryId);
+		ResultSet rs=stmt.executeQuery();
+		
+		while(rs.next())
+		{
+		lps.add(new EnquiryNonAddedProductSelect(
+				rs.getLong("id"),
+				rs.getString("productName"),
+				rs.getString("productDescription"),
+				rs.getLong("companyId"),
+				rs.getString("companyName"),
+				rs.getDouble("cost"),
+				rs.getLong("createdBy"),
+				rs.getTimestamp("createdOn"),
+				rs.getLong("lastEditBy"),
+				rs.getTimestamp("lastEditOn"),
+				rs.getBoolean("isActive")
+				));	
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+				
+		return lps;
 	}
 	
 }
