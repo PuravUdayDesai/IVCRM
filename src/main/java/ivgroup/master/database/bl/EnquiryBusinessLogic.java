@@ -23,6 +23,8 @@ import ivgroup.master.database.dto.enquiry.EnquiryDetailsForNewProductTicketInse
 import ivgroup.master.database.dto.enquiry.EnquiryInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryNonAddedProductSelect;
 import ivgroup.master.database.dto.enquiry.EnquiryProductInsert;
+import ivgroup.master.database.dto.enquiry.EnquiryProductSelect;
+import ivgroup.master.database.dto.enquiry.EnquirySelect;
 import ivgroup.master.database.dto.enquiry.EnquiryUpdate;
 import ivgroup.master.database.dto.enquiry.SelectEnquiryDetailsByProductListId;
 import ivgroup.master.database.dto.ticket.TicketInsert;
@@ -850,4 +852,279 @@ public class EnquiryBusinessLogic
 		return new ResponseEntity<List<EnquiryNonAddedProductSelect>>(lps,HttpStatus.OK);
 	}
 	
+	public ResponseEntity<List<EnquiryProductSelect>> selectEnquiryProduct(Long enquiryId)
+	{
+		List<EnquiryProductSelect> lep=new ArrayList<EnquiryProductSelect>();
+		try {
+			lep=edi.selectEnquiryProduct(enquiryId);
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<List<EnquiryProductSelect>>(lep,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<List<EnquiryProductSelect>>(lep,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(lep.isEmpty())
+		{
+			return new ResponseEntity<List<EnquiryProductSelect>>(lep,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<EnquiryProductSelect>>(lep,HttpStatus.OK);
+	}
+	
+	public ResponseEntity<List<EnquirySelect>> selectEnquiryByCountry(Long companyExecutiveId, Long countryId)
+	{
+		List<EnquirySelect> les=new ArrayList<EnquirySelect>();
+		List<EnquirySelect> lesModified=new ArrayList<EnquirySelect>();
+		if(companyExecutiveId==null||countryId==null)
+		{
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			les=edi.selectEnquiryByCountry(companyExecutiveId, countryId);
+			ListIterator<EnquirySelect> li=les.listIterator();
+			while(li.hasNext())
+			{
+				EnquirySelect es=li.next();
+				Long enquiryId=es.getEnquiryId();
+				List<EnquiryProductSelect> lep=edi.selectEnquiryProduct(enquiryId);
+				es.setEnquiryProductList(lep);
+				lesModified.add(es);
+			}
+			les.clear();
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(lesModified.isEmpty())
+		{
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<EnquirySelect>>(lesModified,HttpStatus.OK);
+	}
+
+	public ResponseEntity<List<EnquirySelect>> selectEnquiryByState(Long companyExecutiveId, Long stateId) 
+	{
+		List<EnquirySelect> les=new ArrayList<EnquirySelect>();
+		List<EnquirySelect> lesModified=new ArrayList<EnquirySelect>();
+		if(companyExecutiveId==null||stateId==null)
+		{
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			les=edi.selectEnquiryByState(companyExecutiveId, stateId);
+			ListIterator<EnquirySelect> li=les.listIterator();
+			while(li.hasNext())
+			{
+				EnquirySelect es=li.next();
+				Long enquiryId=es.getEnquiryId();
+				List<EnquiryProductSelect> lep=edi.selectEnquiryProduct(enquiryId);
+				es.setEnquiryProductList(lep);
+				lesModified.add(es);
+			}
+			les.clear();
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(lesModified.isEmpty())
+		{
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<EnquirySelect>>(lesModified,HttpStatus.OK);
+	}
+
+	public ResponseEntity<List<EnquirySelect>> selectEnquiryByCity(Long companyExecutiveId, Long cityId)
+	{
+		List<EnquirySelect> les=new ArrayList<EnquirySelect>();
+		List<EnquirySelect> lesModified=new ArrayList<EnquirySelect>();
+		if(companyExecutiveId==null||cityId==null)
+		{
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			les=edi.selectEnquiryByCity(companyExecutiveId, cityId);
+			ListIterator<EnquirySelect> li=les.listIterator();
+			while(li.hasNext())
+			{
+				EnquirySelect es=li.next();
+				Long enquiryId=es.getEnquiryId();
+				List<EnquiryProductSelect> lep=edi.selectEnquiryProduct(enquiryId);
+				es.setEnquiryProductList(lep);
+				lesModified.add(es);
+			}
+			les.clear();
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<List<EnquirySelect>>(lesModified,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(lesModified.isEmpty())
+		{
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<EnquirySelect>>(lesModified,HttpStatus.OK);
+	}
+
+	public ResponseEntity<List<EnquirySelect>> selectEnquiryByArea(Long companyExecutiveId, Long areaId)
+	{
+		List<EnquirySelect> les=new ArrayList<EnquirySelect>();
+		List<EnquirySelect> lesModified=new ArrayList<EnquirySelect>();
+		if(companyExecutiveId==null||areaId==null)
+		{
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			les=edi.selectEnquiryByArea(companyExecutiveId, areaId);
+			ListIterator<EnquirySelect> li=les.listIterator();
+			while(li.hasNext())
+			{
+				EnquirySelect es=li.next();
+				Long enquiryId=es.getEnquiryId();
+				System.out.println("Area: "+enquiryId);
+				List<EnquiryProductSelect> lep=edi.selectEnquiryProduct(enquiryId);
+				es.setEnquiryProductList(lep);
+				lesModified.add(es);
+			}
+			les.clear();
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(lesModified.isEmpty())
+		{
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<EnquirySelect>>(lesModified,HttpStatus.OK);
+	}
+	
+	public ResponseEntity<List<EnquirySelect>> selectEnquiryByCompanyExecutiveId(Long companyExecutiveId)
+	{
+		List<EnquirySelect> les=new ArrayList<EnquirySelect>();
+		List<EnquirySelect> lesModified=new ArrayList<EnquirySelect>();
+		if(companyExecutiveId==null)
+		{
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			les=edi.selectEnquiryByCompanyExecutiveId(companyExecutiveId);
+			ListIterator<EnquirySelect> li=les.listIterator();
+			while(li.hasNext())
+			{
+				EnquirySelect es=li.next();
+				Long enquiryId=es.getEnquiryId();
+				System.out.println("Executive: "+enquiryId);
+				List<EnquiryProductSelect> lep=edi.selectEnquiryProduct(enquiryId);
+				es.setEnquiryProductList(lep);
+				lesModified.add(es);
+			}
+			les.clear();
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			System.out.println(e);
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(lesModified.isEmpty())
+		{
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<EnquirySelect>>(lesModified,HttpStatus.OK);
+	}
+	
+	public ResponseEntity<List<EnquirySelect>> selectEnquiryByClient(Long companyExecutiveId, Long clientId)
+	{
+		List<EnquirySelect> les=new ArrayList<EnquirySelect>();
+		List<EnquirySelect> lesModified=new ArrayList<EnquirySelect>();
+		if(companyExecutiveId==null||clientId==null)
+		{
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			les=edi.selectEnquiryByClient(companyExecutiveId, clientId);
+			ListIterator<EnquirySelect> li=les.listIterator();
+			while(li.hasNext())
+			{
+				EnquirySelect es=li.next();
+				Long enquiryId=es.getEnquiryId();
+				List<EnquiryProductSelect> lep=edi.selectEnquiryProduct(enquiryId);
+				es.setEnquiryProductList(lep);
+				lesModified.add(es);
+			}
+			les.clear();
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(lesModified.isEmpty())
+		{
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<EnquirySelect>>(lesModified,HttpStatus.OK);
+	}
+	
+	public ResponseEntity<List<EnquirySelect>> selectEnquiryByProduct(Long companyExecutiveId, Long product)
+	{
+		List<EnquirySelect> les=new ArrayList<EnquirySelect>();
+		List<EnquirySelect> lesModified=new ArrayList<EnquirySelect>();
+		if(companyExecutiveId==null||product==null)
+		{
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			les=edi.selectEnquiryByProduct(companyExecutiveId, product);
+			ListIterator<EnquirySelect> li=les.listIterator();
+			while(li.hasNext())
+			{
+				EnquirySelect es=li.next();
+				Long enquiryId=es.getEnquiryId();
+				List<EnquiryProductSelect> lep=edi.selectEnquiryProduct(enquiryId);
+				es.setEnquiryProductList(lep);
+				lesModified.add(es);
+			}
+			les.clear();
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(lesModified.isEmpty())
+		{
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<EnquirySelect>>(lesModified,HttpStatus.OK);
+	}
+	
+	public ResponseEntity<List<EnquirySelect>> selectEnquiryByEnquiryType(Long companyExecutiveId, Long enquiryTypeId)
+	{
+		List<EnquirySelect> les=new ArrayList<EnquirySelect>();
+		List<EnquirySelect> lesModified=new ArrayList<EnquirySelect>();
+		if(companyExecutiveId==null||enquiryTypeId==null)
+		{
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			les=edi.selectEnquiryByEnquiryType(companyExecutiveId, enquiryTypeId);
+			ListIterator<EnquirySelect> li=les.listIterator();
+			while(li.hasNext())
+			{
+				EnquirySelect es=li.next();
+				Long enquiryId=es.getEnquiryId();
+				List<EnquiryProductSelect> lep=edi.selectEnquiryProduct(enquiryId);
+				es.setEnquiryProductList(lep);
+				lesModified.add(es);
+			}
+			les.clear();
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(lesModified.isEmpty())
+		{
+			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<EnquirySelect>>(lesModified,HttpStatus.OK);
+	}
 }

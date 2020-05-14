@@ -10,6 +10,8 @@ import ivgroup.master.database.dto.enquiry.EnquiryAccessListSelect;
 import ivgroup.master.database.dto.enquiry.EnquiryDetailsForNewProductTicketInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryNonAddedProductSelect;
+import ivgroup.master.database.dto.enquiry.EnquiryProductSelect;
+import ivgroup.master.database.dto.enquiry.EnquirySelect;
 import ivgroup.master.database.dto.enquiry.SelectEnquiryDetailsByProductListId;
 
 public interface EnquiryDAO 
@@ -21,6 +23,15 @@ public interface EnquiryDAO
 	public SelectEnquiryDetailsByProductListId			selectEnquiryAndProductIdByProductListId(Long productListId)					throws SQLException,ClassNotFoundException;
 	public List<EnquiryAccessListSelect>				selectEnquiryAccessListByEnquiryId(Long enquiryId)								throws SQLException,ClassNotFoundException;
 	public List<EnquiryNonAddedProductSelect>			selectEnquiryNonAddedProducts(Long enquiryId)									throws SQLException,ClassNotFoundException;			
+	public List<EnquiryProductSelect> 					selectEnquiryProduct(Long enquiryId)											throws SQLException,ClassNotFoundException;	
+	public List<EnquirySelect>							selectEnquiryByCountry(Long companyExecutiveId,Long countryId)					throws SQLException,ClassNotFoundException;	
+	public List<EnquirySelect>							selectEnquiryByState(Long companyExecutiveId,Long stateId)						throws SQLException,ClassNotFoundException;	
+	public List<EnquirySelect>							selectEnquiryByCity(Long companyExecutiveId,Long cityId)						throws SQLException,ClassNotFoundException;	
+	public List<EnquirySelect>							selectEnquiryByArea(Long companyExecutiveId,Long areaId)						throws SQLException,ClassNotFoundException;	
+	public List<EnquirySelect>							selectEnquiryByCompanyExecutiveId(Long companyExecutiveId)						throws SQLException,ClassNotFoundException;
+	public List<EnquirySelect>							selectEnquiryByClient(Long companyExecutiveId,Long clientId)					throws SQLException,ClassNotFoundException;
+	public List<EnquirySelect>							selectEnquiryByProduct(Long companyExecutiveId,Long product)					throws SQLException,ClassNotFoundException;
+	public List<EnquirySelect>							selectEnquiryByEnquiryType(Long companyExecutiveId,Long enquiryTypeId)			throws SQLException,ClassNotFoundException;
 	public Long											checkCompanyExecutiveByEnquiryId(Long enquiyrId,Long companyExecutiveId)		throws SQLException,ClassNotFoundException;
 	public Boolean										updateEnquiryClient(Connection c,Long enquiryId,Long clientId)					throws SQLException,ClassNotFoundException;
 	public Boolean										updateEnquiryCountry(Connection c,Long enquiryId,Long countryId)				throws SQLException,ClassNotFoundException;

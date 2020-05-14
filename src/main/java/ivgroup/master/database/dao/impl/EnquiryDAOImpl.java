@@ -17,6 +17,8 @@ import ivgroup.master.database.dto.enquiry.EnquiryAccessListSelect;
 import ivgroup.master.database.dto.enquiry.EnquiryDetailsForNewProductTicketInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryNonAddedProductSelect;
+import ivgroup.master.database.dto.enquiry.EnquiryProductSelect;
+import ivgroup.master.database.dto.enquiry.EnquirySelect;
 import ivgroup.master.database.dto.enquiry.SelectEnquiryDetailsByProductListId;
 
 @Service
@@ -543,6 +545,463 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		c.close();
 				
 		return lps;
+	}
+
+	@Override
+	public List<EnquiryProductSelect> selectEnquiryProduct(Long enquiryId) throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM enquiry.\"fn_selectEnquiryProductList\"(?);");
+		stmt.setLong(1, enquiryId);
+		List<EnquiryProductSelect> lep=new ArrayList<EnquiryProductSelect>();
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next())
+		{
+			lep.add(new EnquiryProductSelect(
+					rs.getLong("EnquiryId"),
+					rs.getLong("EnquiryProductListId"),
+					rs.getLong("ProductId"),
+					rs.getString("productName"),
+					rs.getDouble("ProductCharges")
+					));
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return lep;
+	}
+
+	@Override
+	public List<EnquirySelect> selectEnquiryByCountry(Long companyExecutiveId, Long countryId)throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"enquiry\".\"fn_selectEnquiryByCountry\"(?,?);");
+		stmt.setLong(1, countryId);
+		stmt.setLong(2, companyExecutiveId);
+		List<EnquirySelect> les=new ArrayList<EnquirySelect>();
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next())
+		{
+			System.out.println("Country: "+rs.getLong("EnquiryId"));
+		les.add(new EnquirySelect(
+				rs.getLong("EnquiryId"),
+				rs.getLong("CompanyId"),
+				rs.getString("CompanyName"),
+				rs.getString("EnquiryRemarks"),
+				rs.getLong("EnquiryType"),
+				rs.getString("EnquiryTypeName"),
+				rs.getLong("EnquiryLocationId"),
+				rs.getLong("CountryId"),
+				rs.getString("CountryName"),
+				rs.getLong("StateId"),
+				rs.getString("StateName"),
+				rs.getLong("CityId"),
+				rs.getString("CityName"),
+				rs.getLong("AreaId"),
+				rs.getString("AreaName"),
+				rs.getString("AddressLine1"),
+				rs.getString("AddressLine2"),
+				rs.getString("AddressLine3"),
+				rs.getString("Pincode"),
+				rs.getString("Latitude"),
+				rs.getString("Longitude"),
+				rs.getTimestamp("StartDateAndTime"),
+				rs.getTimestamp("DeadlineDateAndTime"),
+				rs.getLong("EnquiryClientId"),
+				rs.getLong("ClientId"),
+				rs.getString("ClientName"),
+				rs.getString("ContactPerson"),
+				rs.getString("EmailId"),
+				rs.getString("ContactNumber"),
+				new ArrayList<EnquiryProductSelect>(),
+				rs.getLong("CreatedBy"),
+				rs.getTimestamp("CreatedOn"),
+				rs.getLong("LastEditBy"),
+				rs.getTimestamp("LastEditOn")
+				));	
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return les;
+	}
+
+	@Override
+	public List<EnquirySelect> selectEnquiryByState(Long companyExecutiveId, Long stateId)throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"enquiry\".\"fn_selectEnquiryByState\"(?,?);");
+		stmt.setLong(1, stateId);
+		stmt.setLong(2, companyExecutiveId);
+		List<EnquirySelect> les=new ArrayList<EnquirySelect>();
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next())
+		{
+			
+		les.add(new EnquirySelect(
+				rs.getLong("EnquiryId"),
+				rs.getLong("CompanyId"),
+				rs.getString("CompanyName"),
+				rs.getString("EnquiryRemarks"),
+				rs.getLong("EnquiryType"),
+				rs.getString("EnquiryTypeName"),
+				rs.getLong("EnquiryLocationId"),
+				rs.getLong("CountryId"),
+				rs.getString("CountryName"),
+				rs.getLong("StateId"),
+				rs.getString("StateName"),
+				rs.getLong("CityId"),
+				rs.getString("CityName"),
+				rs.getLong("AreaId"),
+				rs.getString("AreaName"),
+				rs.getString("AddressLine1"),
+				rs.getString("AddressLine2"),
+				rs.getString("AddressLine3"),
+				rs.getString("Pincode"),
+				rs.getString("Latitude"),
+				rs.getString("Longitude"),
+				rs.getTimestamp("StartDateAndTime"),
+				rs.getTimestamp("DeadlineDateAndTime"),
+				rs.getLong("EnquiryClientId"),
+				rs.getLong("ClientId"),
+				rs.getString("ClientName"),
+				rs.getString("ContactPerson"),
+				rs.getString("EmailId"),
+				rs.getString("ContactNumber"),
+				new ArrayList<EnquiryProductSelect>(),
+				rs.getLong("CreatedBy"),
+				rs.getTimestamp("CreatedOn"),
+				rs.getLong("LastEditBy"),
+				rs.getTimestamp("LastEditOn")
+				));	
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return les;
+	}
+
+	@Override
+	public List<EnquirySelect> selectEnquiryByCity(Long companyExecutiveId, Long cityId)throws SQLException, ClassNotFoundException
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"enquiry\".\"fn_selectEnquiryByCity\"(?,?);");
+		stmt.setLong(1, cityId);
+		stmt.setLong(2, companyExecutiveId);
+		List<EnquirySelect> les=new ArrayList<EnquirySelect>();
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next())
+		{
+		les.add(new EnquirySelect(
+				rs.getLong("EnquiryId"),
+				rs.getLong("CompanyId"),
+				rs.getString("CompanyName"),
+				rs.getString("EnquiryRemarks"),
+				rs.getLong("EnquiryType"),
+				rs.getString("EnquiryTypeName"),
+				rs.getLong("EnquiryLocationId"),
+				rs.getLong("CountryId"),
+				rs.getString("CountryName"),
+				rs.getLong("StateId"),
+				rs.getString("StateName"),
+				rs.getLong("CityId"),
+				rs.getString("CityName"),
+				rs.getLong("AreaId"),
+				rs.getString("AreaName"),
+				rs.getString("AddressLine1"),
+				rs.getString("AddressLine2"),
+				rs.getString("AddressLine3"),
+				rs.getString("Pincode"),
+				rs.getString("Latitude"),
+				rs.getString("Longitude"),
+				rs.getTimestamp("StartDateAndTime"),
+				rs.getTimestamp("DeadlineDateAndTime"),
+				rs.getLong("EnquiryClientId"),
+				rs.getLong("ClientId"),
+				rs.getString("ClientName"),
+				rs.getString("ContactPerson"),
+				rs.getString("EmailId"),
+				rs.getString("ContactNumber"),
+				new ArrayList<EnquiryProductSelect>(),
+				rs.getLong("CreatedBy"),
+				rs.getTimestamp("CreatedOn"),
+				rs.getLong("LastEditBy"),
+				rs.getTimestamp("LastEditOn")
+				));	
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return les;
+	}
+
+	@Override
+	public List<EnquirySelect> selectEnquiryByArea(Long companyExecutiveId, Long areaId)throws SQLException, ClassNotFoundException
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"enquiry\".\"fn_selectEnquiryByArea\"(?,?);");
+		stmt.setLong(1, areaId);
+		stmt.setLong(2, companyExecutiveId);
+		List<EnquirySelect> les=new ArrayList<EnquirySelect>();
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next())
+		{
+		les.add(new EnquirySelect(
+				rs.getLong("EnquiryId"),
+				rs.getLong("CompanyId"),
+				rs.getString("CompanyName"),
+				rs.getString("EnquiryRemarks"),
+				rs.getLong("EnquiryType"),
+				rs.getString("EnquiryTypeName"),
+				rs.getLong("EnquiryLocationId"),
+				rs.getLong("CountryId"),
+				rs.getString("CountryName"),
+				rs.getLong("StateId"),
+				rs.getString("StateName"),
+				rs.getLong("CityId"),
+				rs.getString("CityName"),
+				rs.getLong("AreaId"),
+				rs.getString("AreaName"),
+				rs.getString("AddressLine1"),
+				rs.getString("AddressLine2"),
+				rs.getString("AddressLine3"),
+				rs.getString("Pincode"),
+				rs.getString("Latitude"),
+				rs.getString("Longitude"),
+				rs.getTimestamp("StartDateAndTime"),
+				rs.getTimestamp("DeadlineDateAndTime"),
+				rs.getLong("EnquiryClientId"),
+				rs.getLong("ClientId"),
+				rs.getString("ClientName"),
+				rs.getString("ContactPerson"),
+				rs.getString("EmailId"),
+				rs.getString("ContactNumber"),
+				new ArrayList<EnquiryProductSelect>(),
+				rs.getLong("CreatedBy"),
+				rs.getTimestamp("CreatedOn"),
+				rs.getLong("LastEditBy"),
+				rs.getTimestamp("LastEditOn")
+				));	
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return les;
+	}
+
+	@Override
+	public List<EnquirySelect> selectEnquiryByCompanyExecutiveId(Long companyExecutiveId)throws SQLException, ClassNotFoundException
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"enquiry\".\"fn_selectEnquiryByCompanyExecutiveId\"(?);");
+		stmt.setLong(1, companyExecutiveId);
+		List<EnquirySelect> les=new ArrayList<EnquirySelect>();
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next())
+		{
+		les.add(new EnquirySelect(
+				rs.getLong("EnquiryId"),
+				rs.getLong("CompanyId"),
+				rs.getString("CompanyName"),
+				rs.getString("EnquiryRemarks"),
+				rs.getLong("EnquiryType"),
+				rs.getString("EnquiryTypeName"),
+				rs.getLong("EnquiryLocationId"),
+				rs.getLong("CountryId"),
+				rs.getString("CountryName"),
+				rs.getLong("StateId"),
+				rs.getString("StateName"),
+				rs.getLong("CityId"),
+				rs.getString("CityName"),
+				rs.getLong("AreaId"),
+				rs.getString("AreaName"),
+				rs.getString("AddressLine1"),
+				rs.getString("AddressLine2"),
+				rs.getString("AddressLine3"),
+				rs.getString("Pincode"),
+				rs.getString("Latitude"),
+				rs.getString("Longitude"),
+				rs.getTimestamp("StartDateAndTime"),
+				rs.getTimestamp("DeadlineDateAndTime"),
+				rs.getLong("EnquiryClientId"),
+				rs.getLong("ClientId"),
+				rs.getString("ClientName"),
+				rs.getString("ContactPerson"),
+				rs.getString("EmailId"),
+				rs.getString("ContactNumber"),
+				new ArrayList<EnquiryProductSelect>(),
+				rs.getLong("CreatedBy"),
+				rs.getTimestamp("CreatedOn"),
+				rs.getLong("LastEditBy"),
+				rs.getTimestamp("LastEditOn")
+				));	
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return les;
+	}
+
+	@Override
+	public List<EnquirySelect> selectEnquiryByClient(Long companyExecutiveId, Long clientId)throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"enquiry\".\"fn_selectEnquiryByClientId\"(?,?);");
+		stmt.setLong(1, clientId);
+		stmt.setLong(2, companyExecutiveId);
+		List<EnquirySelect> les=new ArrayList<EnquirySelect>();
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next())
+		{
+		les.add(new EnquirySelect(
+				rs.getLong("EnquiryId"),
+				rs.getLong("CompanyId"),
+				rs.getString("CompanyName"),
+				rs.getString("EnquiryRemarks"),
+				rs.getLong("EnquiryType"),
+				rs.getString("EnquiryTypeName"),
+				rs.getLong("EnquiryLocationId"),
+				rs.getLong("CountryId"),
+				rs.getString("CountryName"),
+				rs.getLong("StateId"),
+				rs.getString("StateName"),
+				rs.getLong("CityId"),
+				rs.getString("CityName"),
+				rs.getLong("AreaId"),
+				rs.getString("AreaName"),
+				rs.getString("AddressLine1"),
+				rs.getString("AddressLine2"),
+				rs.getString("AddressLine3"),
+				rs.getString("Pincode"),
+				rs.getString("Latitude"),
+				rs.getString("Longitude"),
+				rs.getTimestamp("StartDateAndTime"),
+				rs.getTimestamp("DeadlineDateAndTime"),
+				rs.getLong("EnquiryClientId"),
+				rs.getLong("ClientId"),
+				rs.getString("ClientName"),
+				rs.getString("ContactPerson"),
+				rs.getString("EmailId"),
+				rs.getString("ContactNumber"),
+				new ArrayList<EnquiryProductSelect>(),
+				rs.getLong("CreatedBy"),
+				rs.getTimestamp("CreatedOn"),
+				rs.getLong("LastEditBy"),
+				rs.getTimestamp("LastEditOn")
+				));	
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return les;
+	}
+
+	@Override
+	public List<EnquirySelect> selectEnquiryByProduct(Long companyExecutiveId, Long product)throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"enquiry\".\"fn_selectEnquiryByProductId\"(?,?);");
+		stmt.setLong(1, product);
+		stmt.setLong(2, companyExecutiveId);
+		List<EnquirySelect> les=new ArrayList<EnquirySelect>();
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next())
+		{
+		les.add(new EnquirySelect(
+				rs.getLong("EnquiryId"),
+				rs.getLong("CompanyId"),
+				rs.getString("CompanyName"),
+				rs.getString("EnquiryRemarks"),
+				rs.getLong("EnquiryType"),
+				rs.getString("EnquiryTypeName"),
+				rs.getLong("EnquiryLocationId"),
+				rs.getLong("CountryId"),
+				rs.getString("CountryName"),
+				rs.getLong("StateId"),
+				rs.getString("StateName"),
+				rs.getLong("CityId"),
+				rs.getString("CityName"),
+				rs.getLong("AreaId"),
+				rs.getString("AreaName"),
+				rs.getString("AddressLine1"),
+				rs.getString("AddressLine2"),
+				rs.getString("AddressLine3"),
+				rs.getString("Pincode"),
+				rs.getString("Latitude"),
+				rs.getString("Longitude"),
+				rs.getTimestamp("StartDateAndTime"),
+				rs.getTimestamp("DeadlineDateAndTime"),
+				rs.getLong("EnquiryClientId"),
+				rs.getLong("ClientId"),
+				rs.getString("ClientName"),
+				rs.getString("ContactPerson"),
+				rs.getString("EmailId"),
+				rs.getString("ContactNumber"),
+				new ArrayList<EnquiryProductSelect>(),
+				rs.getLong("CreatedBy"),
+				rs.getTimestamp("CreatedOn"),
+				rs.getLong("LastEditBy"),
+				rs.getTimestamp("LastEditOn")
+				));	
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return les;
+	}
+
+	@Override
+	public List<EnquirySelect> selectEnquiryByEnquiryType(Long companyExecutiveId, Long enquiryTypeId)throws SQLException, ClassNotFoundException
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"enquiry\".\"fn_selectEnquiryByEnquiryTypeId\"(?,?);");
+		stmt.setLong(1, enquiryTypeId);
+		stmt.setLong(2, companyExecutiveId);
+		List<EnquirySelect> les=new ArrayList<EnquirySelect>();
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next())
+		{
+		les.add(new EnquirySelect(
+				rs.getLong("EnquiryId"),
+				rs.getLong("CompanyId"),
+				rs.getString("CompanyName"),
+				rs.getString("EnquiryRemarks"),
+				rs.getLong("EnquiryType"),
+				rs.getString("EnquiryTypeName"),
+				rs.getLong("EnquiryLocationId"),
+				rs.getLong("CountryId"),
+				rs.getString("CountryName"),
+				rs.getLong("StateId"),
+				rs.getString("StateName"),
+				rs.getLong("CityId"),
+				rs.getString("CityName"),
+				rs.getLong("AreaId"),
+				rs.getString("AreaName"),
+				rs.getString("AddressLine1"),
+				rs.getString("AddressLine2"),
+				rs.getString("AddressLine3"),
+				rs.getString("Pincode"),
+				rs.getString("Latitude"),
+				rs.getString("Longitude"),
+				rs.getTimestamp("StartDateAndTime"),
+				rs.getTimestamp("DeadlineDateAndTime"),
+				rs.getLong("EnquiryClientId"),
+				rs.getLong("ClientId"),
+				rs.getString("ClientName"),
+				rs.getString("ContactPerson"),
+				rs.getString("EmailId"),
+				rs.getString("ContactNumber"),
+				new ArrayList<EnquiryProductSelect>(),
+				rs.getLong("CreatedBy"),
+				rs.getTimestamp("CreatedOn"),
+				rs.getLong("LastEditBy"),
+				rs.getTimestamp("LastEditOn")
+				));	
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return les;
 	}
 	
 }

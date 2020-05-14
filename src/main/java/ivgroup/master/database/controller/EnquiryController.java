@@ -26,6 +26,8 @@ import ivgroup.master.database.dto.enquiry.EnquiryAccessListSelect;
 import ivgroup.master.database.dto.enquiry.EnquiryInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryNonAddedProductSelect;
 import ivgroup.master.database.dto.enquiry.EnquiryProductInsert;
+import ivgroup.master.database.dto.enquiry.EnquiryProductSelect;
+import ivgroup.master.database.dto.enquiry.EnquirySelect;
 import ivgroup.master.database.dto.enquiry.EnquiryUpdate;	
 
 @RestController
@@ -96,4 +98,57 @@ public class EnquiryController
 		return ebl.selectEnquiryNonAddedProducts(enquiryId);
 	}
 	
+	@GetMapping(path="/enquiryProduct/{enquiryId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<EnquiryProductSelect>> selectEnquiryProduct(@PathVariable @NotNull Long enquiryId)
+	{
+		return ebl.selectEnquiryProduct(enquiryId);
+	}
+	
+	@GetMapping(path="/country/{countryId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<EnquirySelect>> selectEnquiryByCountry(@PathVariable @NotNull  Long countryId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
+	{
+		return ebl.selectEnquiryByCountry(companyExecutiveId, countryId);
+	}
+
+	@GetMapping(path="/state/{stateId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<EnquirySelect>> selectEnquiryByState(@PathVariable @NotNull  Long stateId,@RequestParam("companyExecutiveId") Long companyExecutiveId) 
+	{
+		return ebl.selectEnquiryByState(companyExecutiveId, stateId);
+	}
+
+	@GetMapping(path="/city/{cityId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<EnquirySelect>> selectEnquiryByCity(@PathVariable @NotNull  Long cityId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
+	{
+		return ebl.selectEnquiryByCity(companyExecutiveId, cityId);
+	}
+
+	@GetMapping(path="/area/{areaId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<EnquirySelect>> selectEnquiryByArea(@PathVariable @NotNull Long areaId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
+	{
+		return ebl.selectEnquiryByArea(companyExecutiveId, areaId);
+	}
+	
+	@GetMapping(path="/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<EnquirySelect>> selectEnquiryByCompanyExecutiveId(@PathVariable @NotNull Long companyExecutiveId)
+	{
+		return ebl.selectEnquiryByCompanyExecutiveId(companyExecutiveId);
+	}
+	
+	@GetMapping(path="/client/{clientId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<EnquirySelect>> selectEnquiryByClient(@PathVariable @NotNull Long clientId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
+	{
+		return ebl.selectEnquiryByClient(companyExecutiveId, clientId);
+	}
+	
+	@GetMapping(path="/product/{productId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<EnquirySelect>> selectEnquiryByProduct(@PathVariable @NotNull Long productId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
+	{
+		return ebl.selectEnquiryByProduct(companyExecutiveId, productId);
+	}
+	
+	@GetMapping(path="/enquiryType/{enquiryTypeId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<EnquirySelect>> selectEnquiryByEnquiryType(@PathVariable @NotNull Long enquiryTypeId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
+	{
+		return ebl.selectEnquiryByEnquiryType(companyExecutiveId, enquiryTypeId);
+	}
 }
