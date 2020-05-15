@@ -29,6 +29,7 @@ import ivgroup.master.database.dto.ticket.TicketFilterSelect;
 import ivgroup.master.database.dto.ticket.TicketFollowupDateInsert;
 import ivgroup.master.database.dto.ticket.TicketInsert;
 import ivgroup.master.database.dto.ticket.TicketStatusInsert;
+import ivgroup.master.database.dto.ticket.TicketStatusLogSelect;
 import ivgroup.master.database.dto.ticket.TicketUpdate;
 
 @RestController
@@ -135,6 +136,12 @@ public class TicketController
 	public ResponseEntity<List<TicketAccessListSelect>> selectTicketAccessListByTicketId(@PathVariable @NotNull Long ticketId)
 	{
 		return tbl.selectTicketAccessListByTicketId(ticketId);
+	}
+	
+	@GetMapping(path="/ticketStatus/{ticketId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<TicketStatusLogSelect>> selectTicketStatusLogbyTicketId(@PathVariable @NotNull Long ticketId)
+	{
+		return tbl.selectTicketStatusLogbyTicketId(ticketId);
 	}
 
 }

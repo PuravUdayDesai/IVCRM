@@ -24,6 +24,7 @@ import ivgroup.master.database.dto.ticket.TicketFollowupDateInsert;
 import ivgroup.master.database.dto.ticket.TicketFollowupDateSelect;
 import ivgroup.master.database.dto.ticket.TicketInsert;
 import ivgroup.master.database.dto.ticket.TicketStatusInsert;
+import ivgroup.master.database.dto.ticket.TicketStatusLogSelect;
 import ivgroup.master.database.dto.ticket.TicketUpdate;
 
 @Service
@@ -883,6 +884,27 @@ public class TicketBusinessLogic
 			return new ResponseEntity<List<TicketAccessListSelect>>(lta,HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<List<TicketAccessListSelect>>(lta,HttpStatus.OK);
+	}
+	
+	public ResponseEntity<List<TicketStatusLogSelect>> selectTicketStatusLogbyTicketId(Long ticketId)
+	{
+		List<TicketStatusLogSelect> lss=new ArrayList<TicketStatusLogSelect>();
+		if(ticketId==null)
+		{
+			return new ResponseEntity<List<TicketStatusLogSelect>>(lss,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			lss=tdi.selectTicketStatusLogbyTicketId(ticketId);
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<List<TicketStatusLogSelect>>(lss,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<List<TicketStatusLogSelect>>(lss,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(lss.isEmpty())
+		{
+			return new ResponseEntity<List<TicketStatusLogSelect>>(lss,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<TicketStatusLogSelect>>(lss,HttpStatus.OK);
 	}
 	
 }

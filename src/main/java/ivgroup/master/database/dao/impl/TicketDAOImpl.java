@@ -20,6 +20,7 @@ import ivgroup.master.database.dto.ticket.TicketFollowupDateInsert;
 import ivgroup.master.database.dto.ticket.TicketFollowupDateSelect;
 import ivgroup.master.database.dto.ticket.TicketInsert;
 import ivgroup.master.database.dto.ticket.TicketStatusInsert;
+import ivgroup.master.database.dto.ticket.TicketStatusLogSelect;
 
 @Service
 public class TicketDAOImpl implements TicketDAO
@@ -564,5 +565,30 @@ public class TicketDAOImpl implements TicketDAO
 		stmt.close();
 		c.close();
 		return check;
+	}
+
+	@Override
+	public List<TicketStatusLogSelect> selectTicketStatusLogbyTicketId(Long ticketId)throws SQLException, ClassNotFoundException
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"ticket\".\"fn_selectTicketStatusLogOfTicket\"(?);");
+		stmt.setLong(1, ticketId);
+		ResultSet rs=stmt.executeQuery();
+		List<TicketStatusLogSelect> lss=new ArrayList<TicketStatusLogSelect>();
+		while(rs.next())
+		{
+			lss.add(new TicketStatusLogSelect(
+					rs.getLong("TicketStatusId"),
+					rs.getLong("TicketId"),
+					rs.getLong("StatusId"),
+					rs.getString("StatusName"),
+					rs.getInt("WorkProgress"),
+					rs.getTimestamp("LastEditOn"),
+					rs.getLong("LastEditBy")));
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return lss;
 	}
 }

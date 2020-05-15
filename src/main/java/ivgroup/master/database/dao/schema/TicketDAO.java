@@ -12,6 +12,7 @@ import ivgroup.master.database.dto.ticket.TicketFollowupDateInsert;
 import ivgroup.master.database.dto.ticket.TicketFollowupDateSelect;
 import ivgroup.master.database.dto.ticket.TicketInsert;
 import ivgroup.master.database.dto.ticket.TicketStatusInsert;
+import ivgroup.master.database.dto.ticket.TicketStatusLogSelect;
 
 public interface TicketDAO 
 {
@@ -21,6 +22,7 @@ public interface TicketDAO
 	public List<Long>						selectTicketIdByEnquiryId(Long enquiryId)														throws SQLException,ClassNotFoundException;
 	public List<TicketFollowupDateSelect> 	selectTicketFollowupDates(Long ticketId)														throws SQLException,ClassNotFoundException;
 	public List<TicketAccessListSelect>		selectTicketAccessListByTicketId(Long ticketId)													throws SQLException,ClassNotFoundException;
+	public List<TicketStatusLogSelect>		selectTicketStatusLogbyTicketId(Long ticketId)													throws SQLException,ClassNotFoundException;
 	public Long 							checkCompanyExecutiveTicketAccessDependency(Long ticketId,Long companyExecutiveId)				throws SQLException,ClassNotFoundException;
 	public Long 							addTicket(TicketInsert ti)																		throws SQLException,ClassNotFoundException;
 	public Boolean 							addTicketStatus(TicketStatusInsert ti)															throws SQLException,ClassNotFoundException;
