@@ -463,7 +463,7 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		{
 			lea.add(
 					new EnquiryAccessListSelect(
-							rs.getLong("EnquiryAccessId"),
+							rs.getLong("EnquiryAccessListId"),
 							rs.getLong("EnquiryId"),
 							rs.getLong("CompanyExecutiveId"),
 							rs.getString("CompanyExecutiveName"),
@@ -584,6 +584,7 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		{
 			System.out.println("Country: "+rs.getLong("EnquiryId"));
 		les.add(new EnquirySelect(
+				rs.getLong("EnquiryAccessListId"),
 				rs.getLong("EnquiryId"),
 				rs.getLong("CompanyId"),
 				rs.getString("CompanyName"),
@@ -639,6 +640,7 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		{
 			
 		les.add(new EnquirySelect(
+				rs.getLong("EnquiryAccessListId"),
 				rs.getLong("EnquiryId"),
 				rs.getLong("CompanyId"),
 				rs.getString("CompanyName"),
@@ -693,6 +695,7 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		while(rs.next())
 		{
 		les.add(new EnquirySelect(
+				rs.getLong("EnquiryAccessListId"),
 				rs.getLong("EnquiryId"),
 				rs.getLong("CompanyId"),
 				rs.getString("CompanyName"),
@@ -747,6 +750,7 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		while(rs.next())
 		{
 		les.add(new EnquirySelect(
+				rs.getLong("EnquiryAccessListId"),
 				rs.getLong("EnquiryId"),
 				rs.getLong("CompanyId"),
 				rs.getString("CompanyName"),
@@ -800,6 +804,7 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		while(rs.next())
 		{
 		les.add(new EnquirySelect(
+				rs.getLong("EnquiryAccessListId"),
 				rs.getLong("EnquiryId"),
 				rs.getLong("CompanyId"),
 				rs.getString("CompanyName"),
@@ -854,6 +859,7 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		while(rs.next())
 		{
 		les.add(new EnquirySelect(
+				rs.getLong("EnquiryAccessListId"),
 				rs.getLong("EnquiryId"),
 				rs.getLong("CompanyId"),
 				rs.getString("CompanyName"),
@@ -908,6 +914,7 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		while(rs.next())
 		{
 		les.add(new EnquirySelect(
+				rs.getLong("EnquiryAccessListId"),
 				rs.getLong("EnquiryId"),
 				rs.getLong("CompanyId"),
 				rs.getString("CompanyName"),
@@ -962,6 +969,7 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		while(rs.next())
 		{
 		les.add(new EnquirySelect(
+				rs.getLong("EnquiryAccessListId"),
 				rs.getLong("EnquiryId"),
 				rs.getLong("CompanyId"),
 				rs.getString("CompanyName"),
@@ -1002,6 +1010,25 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		stmt.close();
 		c.close();
 		return les;
+	}
+
+	@Override
+	public Long checkCompanyExecutiveEnquiryAccessDependency(Long enquiryId, Long companyExecutiveId)throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"enquiry\".\"fn_selectCompanyExecutiveEnquiryAccessDependency\"(?,?);");
+		stmt.setLong(1, enquiryId);
+		stmt.setLong(2, companyExecutiveId);
+		ResultSet rs=stmt.executeQuery();
+		Long check=null;
+		if(rs.next())
+		{
+			check=rs.getLong("Check");
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return check;
 	}
 	
 }

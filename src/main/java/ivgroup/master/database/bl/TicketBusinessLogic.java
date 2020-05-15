@@ -205,6 +205,11 @@ public class TicketBusinessLogic
 		}
 		Boolean rsMain=false;
 		try {
+			Long check=tdi.checkCompanyExecutiveTicketAccessDependency(ti.getTicketId(), ti.getCompanyExecutiveId());
+			if(check!=0)
+			{
+				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+			}
 			rsMain=tdi.addTicketAccessList(ti);
 			Connection c=ConnectionProvider.getConnection();
 			ResponseEntity<Void> rsMainRes=updateTicketLastEditOn(c,ti.getTicketId(),ti.getAccessApplicationTime());
@@ -219,6 +224,7 @@ public class TicketBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
+			System.out.println(e);
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)

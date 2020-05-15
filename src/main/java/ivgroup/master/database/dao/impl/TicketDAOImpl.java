@@ -546,4 +546,23 @@ public class TicketDAOImpl implements TicketDAO
 		c.close();
 		return lta;
 	}
+
+	@Override
+	public Long checkCompanyExecutiveTicketAccessDependency(Long ticketId, Long companyExecutiveId)throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"ticket\".\"fn_selectCompanyExecutiveTicketAccessDependency\"(?,?);");
+		stmt.setLong(1, ticketId);
+		stmt.setLong(2, companyExecutiveId);
+		ResultSet rs=stmt.executeQuery();
+		Long check=null;
+		if(rs.next())
+		{
+			check=rs.getLong("Check");
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return check;
+	}
 }

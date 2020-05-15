@@ -771,10 +771,16 @@ public class EnquiryBusinessLogic
 			{
 				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 			}
+			Long check=edi.checkCompanyExecutiveEnquiryAccessDependency(eai.getEnquiryId(), eai.getCompanyExecutiveId());
+			if(check!=0)
+			{
+				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+			}
 			rsMain=edi.addEnquiryAccessList(eai);
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
+			System.out.println(e);
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -796,6 +802,7 @@ public class EnquiryBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<List<EnquiryAccessListSelect>>(lea,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
+			System.out.println(e);
 			return new ResponseEntity<List<EnquiryAccessListSelect>>(lea,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lea.isEmpty())
@@ -828,7 +835,7 @@ public class EnquiryBusinessLogic
 		{
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<Void>(HttpStatus.CREATED);
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
 	public ResponseEntity<List<EnquiryNonAddedProductSelect>> selectEnquiryNonAddedProducts(Long enquiryId)

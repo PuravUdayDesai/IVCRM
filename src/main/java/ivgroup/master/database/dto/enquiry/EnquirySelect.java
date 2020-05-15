@@ -9,6 +9,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class EnquirySelect 
 {
+	@NotNull(message = "EnquiryAccessListId cannot be NULL")
+	Long enquiryAccessListId;
 	@NotNull(message = "EnquiryId cannot be NULL")
 	Long enquiryId;
 	@NotNull(message = "CompanyId cannot be NULL")
@@ -87,7 +89,8 @@ public class EnquirySelect
 		
 	}
 
-	public EnquirySelect(@NotNull(message = "EnquiryId cannot be NULL") Long enquiryId,
+	public EnquirySelect(@NotNull(message = "EnquiryAccessListId cannot be NULL") Long enquiryAccessListId,
+			@NotNull(message = "EnquiryId cannot be NULL") Long enquiryId,
 			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
 			@NotNull(message = "CompanyName cannot be NULL") String companyName,
 			@NotNull(message = "EnquiryRemarks cannot be NULL") String enquiryRemarks,
@@ -122,6 +125,7 @@ public class EnquirySelect
 			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
 			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn) {
 		super();
+		this.enquiryAccessListId = enquiryAccessListId;
 		this.enquiryId = enquiryId;
 		this.companyId = companyId;
 		this.companyName = companyName;
@@ -156,6 +160,14 @@ public class EnquirySelect
 		this.createdOn = createdOn;
 		this.lastEditBy = lastEditBy;
 		this.lastEditOn = lastEditOn;
+	}
+
+	public Long getEnquiryAccessListId() {
+		return enquiryAccessListId;
+	}
+
+	public void setEnquiryAccessListId(Long enquiryAccessListId) {
+		this.enquiryAccessListId = enquiryAccessListId;
 	}
 
 	public Long getEnquiryId() {

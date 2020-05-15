@@ -21,6 +21,7 @@ public interface TicketDAO
 	public List<Long>						selectTicketIdByEnquiryId(Long enquiryId)														throws SQLException,ClassNotFoundException;
 	public List<TicketFollowupDateSelect> 	selectTicketFollowupDates(Long ticketId)														throws SQLException,ClassNotFoundException;
 	public List<TicketAccessListSelect>		selectTicketAccessListByTicketId(Long ticketId)													throws SQLException,ClassNotFoundException;
+	public Long 							checkCompanyExecutiveTicketAccessDependency(Long ticketId,Long companyExecutiveId)				throws SQLException,ClassNotFoundException;
 	public Long 							addTicket(TicketInsert ti)																		throws SQLException,ClassNotFoundException;
 	public Boolean 							addTicketStatus(TicketStatusInsert ti)															throws SQLException,ClassNotFoundException;
 	public Boolean 							addFollowupDateInsert(TicketFollowupDateInsert ti)												throws SQLException,ClassNotFoundException;
