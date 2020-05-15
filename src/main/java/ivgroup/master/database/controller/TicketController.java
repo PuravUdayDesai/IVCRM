@@ -47,7 +47,7 @@ public class TicketController
 		return tbl.addTicket(ti);
 	}
 
-	//DONE
+	
 	@PostMapping(path="/ticketStatus" , consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> addTicketStatus(@Valid @RequestBody TicketStatusInsert ti)
@@ -55,7 +55,7 @@ public class TicketController
 		return tbl.addTicketStatus(ti);
 	}
 	
-	//DONE
+	
 	@PostMapping(path="/ticketFollowupDate" , consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> addFollowupDateInsert(@Valid @RequestBody TicketFollowupDateInsert ti) 
@@ -63,7 +63,7 @@ public class TicketController
 		return tbl.addFollowupDateInsert(ti);
 	}
 	
-	//DONE
+	
 	@PostMapping(path="/ticketAccessList" , consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> addTicketAccessList(@Valid @RequestBody TicketAccessListInsert ti) 
@@ -78,14 +78,14 @@ public class TicketController
 		return tbl.deleteMainTicket(ticketId,companyExecutiveId);
 	}
 
-	//DONE
+	
 	@DeleteMapping(path="/ticketAccessList/{ticketAccessListId}")
 	public ResponseEntity<Void> deleteTicketAccessList(@PathVariable @NotNull Long ticketAccessListId,@RequestParam("ticketId") Long ticketId,@RequestParam("companyExecutiveId") Long companyExecutiveId) 
 	{
 		return tbl.deleteTicketAccessList(ticketAccessListId,ticketId,companyExecutiveId);
 	}
 	
-	//DONE
+	
 	@DeleteMapping(path="/ticketFollowupDate/{ticketFollowupDateId}")
 	public ResponseEntity<Void> deleteTicketFollowupDate(@PathVariable @NotNull Long ticketFollowupDateId,@RequestParam("ticketId") Long ticketId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
 	{
@@ -108,7 +108,7 @@ public class TicketController
 		return tbl.updateTicketType(ticketId, ticketType,companyExecutiveId);
 	}
 	
-	//DONE
+	
 	@PutMapping(path = "/{ticketId}",	consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> updateTicketFields(@PathVariable @NotNull Long ticketId,@Valid @RequestBody TicketUpdate tu)
@@ -116,21 +116,21 @@ public class TicketController
 		return tbl.updateTicketFields(ticketId, tu);
 	}
 	
-	//DONE
+	
 	@GetMapping(path="/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<TicketDetailsSelect>> selectTicketDetailsByCompanyExecutiveId(@PathVariable @NotNull Long companyExecutiveId)
 	{
 		return tbl.selectTicketDetailsByCompanyExecutiveId(companyExecutiveId);
 	}
 	
-	//DONE
+	
 	@GetMapping(path="/master",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<TicketDetailsSelect>> selectTicketByFilter(@Valid @RequestBody TicketFilterSelect tfs)
 	{
 		return tbl.selectTicketByFilter(tfs);
 	}
 	
-	//DONE
+	
 	@GetMapping(path="/ticketAccessList/{ticketId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<TicketAccessListSelect>> selectTicketAccessListByTicketId(@PathVariable @NotNull Long ticketId)
 	{
