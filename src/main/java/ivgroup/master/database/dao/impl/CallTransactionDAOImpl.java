@@ -40,7 +40,7 @@ public class CallTransactionDAOImpl implements CallTransactionDAO{
             if(fileName.contains("..")) {
                 throw new FileStorageException("Sorry! Filename contains invalid path sequence " + fileName);
             }
-            String path="E:/callTransaction/"+cti.getCompanyExecutiveId()+"/"+cti.getClientId()+"/"+CallTransactionBusinessLogic.replaceColonToPeriod(cti.getCallTime());
+            String path="C:/callTransaction/"+cti.getCompanyExecutiveId()+"/"+cti.getClientId()+"/"+CallTransactionBusinessLogic.replaceColonToPeriod(cti.getCallTime());
             File f=new File(path);
             if(!f.exists())
             {

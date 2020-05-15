@@ -37,7 +37,7 @@ public class OwnerController {
 		return obl.selectOwnerById(ownerId);
 	}
 	
-	@GetMapping(path="/login",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@PostMapping(path="/login",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Long> loginOwner(@RequestBody @Valid OwnerLoginCredentials olc)
 	{
 		return obl.loginOwner(olc);

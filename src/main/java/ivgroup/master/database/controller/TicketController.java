@@ -117,7 +117,7 @@ public class TicketController
 		return tbl.selectTicketDetailsByCompanyExecutiveId(companyExecutiveId);
 	}
 	
-	@GetMapping(path="/master",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@PostMapping(path="/master",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<TicketDetailsSelect>> selectTicketByFilter(@Valid @RequestBody TicketFilterSelect tfs)
 	{
 		return tbl.selectTicketByFilter(tfs);
