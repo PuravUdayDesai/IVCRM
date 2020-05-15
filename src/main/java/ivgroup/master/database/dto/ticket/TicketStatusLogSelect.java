@@ -18,6 +18,8 @@ public class TicketStatusLogSelect
 	String statusName;
 	@NotNull(message = "workProgress cannot be NULL")
 	Integer workProgress;
+	@NotNull(message = "StatusColorCode cannot be NULL")
+	String statusColorCode;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp lastEditOn;
@@ -29,12 +31,12 @@ public class TicketStatusLogSelect
 		
 	}
 
-	public TicketStatusLogSelect(
-			@NotNull(message = "TicketStatusId cannot be NULL") Long ticketStatusId,
+	public TicketStatusLogSelect(@NotNull(message = "TicketStatusId cannot be NULL") Long ticketStatusId,
 			@NotNull(message = "TicketId cannot be NULL") Long ticketId,
 			@NotNull(message = "StatusId cannot be NULL") Long statusId,
 			@NotNull(message = "StatusName cannot be NULL") String statusName,
 			@NotNull(message = "workProgress cannot be NULL") Integer workProgress,
+			@NotNull(message = "StatusColorCode cannot be NULL") String statusColorCode,
 			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
 			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy) {
 		super();
@@ -43,6 +45,7 @@ public class TicketStatusLogSelect
 		this.statusId = statusId;
 		this.statusName = statusName;
 		this.workProgress = workProgress;
+		this.statusColorCode = statusColorCode;
 		this.lastEditOn = lastEditOn;
 		this.lastEditBy = lastEditBy;
 	}
@@ -87,6 +90,14 @@ public class TicketStatusLogSelect
 		this.workProgress = workProgress;
 	}
 
+	public String getStatusColorCode() {
+		return statusColorCode;
+	}
+
+	public void setStatusColorCode(String statusColorCode) {
+		this.statusColorCode = statusColorCode;
+	}
+
 	public Timestamp getLastEditOn() {
 		return lastEditOn;
 	}
@@ -102,5 +113,5 @@ public class TicketStatusLogSelect
 	public void setLastEditBy(Long lastEditBy) {
 		this.lastEditBy = lastEditBy;
 	}
-	
+
 }

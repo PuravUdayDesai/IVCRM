@@ -583,6 +583,7 @@ public class TicketDAOImpl implements TicketDAO
 					rs.getLong("StatusId"),
 					rs.getString("StatusName"),
 					rs.getInt("WorkProgress"),
+					rs.getString("StatusColorCode"),
 					rs.getTimestamp("LastEditOn"),
 					rs.getLong("LastEditBy")));
 		}
