@@ -43,10 +43,12 @@ public class CompanyBusinessLogic {
 		} 
 		catch (ClassNotFoundException e) 
 		{
+			e.printStackTrace();
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} 
 		catch (SQLException e)
 		{
+			e.printStackTrace();
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		Boolean rsMain=false;
@@ -59,10 +61,12 @@ public class CompanyBusinessLogic {
 			} 
 			catch (ClassNotFoundException e)
 			{
+				e.printStackTrace();
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 			} 
 			catch (SQLException e) 
 			{
+				e.printStackTrace();
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(companyAddressId!=0)
@@ -73,10 +77,12 @@ public class CompanyBusinessLogic {
 				}
 				catch (ClassNotFoundException e)
 				{
+					e.printStackTrace();
 					return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 				} 
 				catch (SQLException e) 
 				{
+					e.printStackTrace();
 					return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 				}
 			}
@@ -105,8 +111,10 @@ public class CompanyBusinessLogic {
 		try {
 			value=cdi.addCompany(ci);
 		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(value.isEmpty()) {
@@ -125,8 +133,10 @@ public class CompanyBusinessLogic {
 																branchId, 
 																executiveId);
 		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -146,8 +156,10 @@ public class CompanyBusinessLogic {
 		try {
 			value=cdi.addCompanyWithCompanyBranchType(ci);
 		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(value.isEmpty()) {
@@ -186,9 +198,10 @@ public class CompanyBusinessLogic {
 		try {
 			value=cdi.addCompanyWithCompanyBranchTypeAndPosition(ci);
 		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println("Here: "+e);
+			e.printStackTrace();
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(value.isEmpty()) {
@@ -207,8 +220,10 @@ public class CompanyBusinessLogic {
 																	branchId, 
 																	executiveId);
 		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -223,8 +238,10 @@ public class CompanyBusinessLogic {
 		try {
 			lcs=cdi.selectCompany();
 		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 			return new ResponseEntity<List<CompanySelect>>(lcs,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return new ResponseEntity<List<CompanySelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -243,8 +260,10 @@ public class CompanyBusinessLogic {
 		try {
 			cs=cdi.selectCompanyByCompanyId(companyId);
 		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 			return new ResponseEntity<CompanySelect>(cs,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return new ResponseEntity<CompanySelect>(cs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		

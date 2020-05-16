@@ -83,6 +83,7 @@ public class OwnerBusinessLogic{
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
+			System.out.println(e);
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -111,6 +112,7 @@ public class OwnerBusinessLogic{
 					"    </div>", 
 					"text/html");
 		} catch (MessagingException e) {
+			System.out.println(e);
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
