@@ -10,7 +10,7 @@ public class ConnectionProvider {
 	{
 		
 		Class.forName("org.postgresql.Driver");
-		c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/crm", "postgres", "postgres");
+		c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/crm", "postgres", "purav");
 		c.setAutoCommit(false);
 		return c;
 	}
