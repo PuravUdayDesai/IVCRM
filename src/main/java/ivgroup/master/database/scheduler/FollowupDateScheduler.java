@@ -30,7 +30,7 @@ public class FollowupDateScheduler
 			}
 			
 		};
-		t.start();
+		t.start(); 
 	}
 	
 }
