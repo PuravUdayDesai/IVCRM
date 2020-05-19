@@ -2,6 +2,7 @@ package ivgroup.master.database.dao.impl;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -591,5 +592,23 @@ public class TicketDAOImpl implements TicketDAO
 		stmt.close();
 		c.close();
 		return lss;
+	}
+
+	@Override
+	public List<Long> selectCurrentFollowupDateExecutiveList(Date currentDate)throws SQLException, ClassNotFoundException
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"ticket\".\"fn_selectCurrentFollowupDateExecutiveList\"(?);");
+		stmt.setDate(1, currentDate);
+		List<Long> ll=new ArrayList<Long>();
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next())
+		{
+			ll.add(rs.getLong("CompanyExecutiveId"));
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return ll;
 	}
 }

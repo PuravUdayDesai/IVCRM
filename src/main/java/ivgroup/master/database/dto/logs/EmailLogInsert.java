@@ -22,7 +22,8 @@ public class EmailLogInsert
 		
 	}
 
-	public EmailLogInsert(@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
+	public EmailLogInsert(
+			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
 			@NotNull(message = "Subject cannot be NULL") String subject,
 			@NotNull(message = "BodyContent cannot be NULL") String bodyContent,
 			@NotNull(message = "BodyContentType cannot be NULL") String bodyContentType,

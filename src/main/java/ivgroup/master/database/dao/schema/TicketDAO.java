@@ -1,6 +1,7 @@
 package ivgroup.master.database.dao.schema;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
@@ -23,6 +24,7 @@ public interface TicketDAO
 	public List<TicketFollowupDateSelect> 	selectTicketFollowupDates(Long ticketId)														throws SQLException,ClassNotFoundException;
 	public List<TicketAccessListSelect>		selectTicketAccessListByTicketId(Long ticketId)													throws SQLException,ClassNotFoundException;
 	public List<TicketStatusLogSelect>		selectTicketStatusLogbyTicketId(Long ticketId)													throws SQLException,ClassNotFoundException;
+	public List<Long>						selectCurrentFollowupDateExecutiveList(Date currentDate)										throws SQLException,ClassNotFoundException;
 	public Long 							checkCompanyExecutiveTicketAccessDependency(Long ticketId,Long companyExecutiveId)				throws SQLException,ClassNotFoundException;
 	public Long 							addTicket(TicketInsert ti)																		throws SQLException,ClassNotFoundException;
 	public Boolean 							addTicketStatus(TicketStatusInsert ti)															throws SQLException,ClassNotFoundException;

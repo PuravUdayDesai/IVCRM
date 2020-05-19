@@ -65,23 +65,23 @@ public class CompanyInsetWithCompanyBranchTypeAndExecutivePosition
 	@NotNull(message = "PositionPriority cannot be NULL")
 	Integer positionPriority;
 	@NotNull(message = "CompanyGrant cannot be NULL")
-	Integer companyGrant;
+	String companyGrant;
 	@NotNull(message = "CompanyBranchGrant cannot be NULL")
-	Integer companyBranchGrant;
+	String companyBranchGrant;
 	@NotNull(message = "CompanyExecutiveGrant cannot be NULL")
-	Integer companyExecutiveGrant;
+	String companyExecutiveGrant;
 	@NotNull(message = "ClientGrant cannot be NULL")
-	Integer clientGrant;
+	String clientGrant;
 	@NotNull(message = "ProductGrant cannot be NULL")
-	Integer productGrant;
+	String productGrant;
 	@NotNull(message = "LocationGrant cannot be NULL")
-	Integer locationGrant;
+	String locationGrant;
 	@NotNull(message = "EnquiryGrant cannot be NULL")
-	Integer enquiryGrant;
+	String enquiryGrant;
 	@NotNull(message = "TicketGrant cannot be NULL")
-	Integer ticketGrant;
+	String ticketGrant;
 	@NotNull(message = "PositionGrant cannot be NULL")
-	Integer positionGrant;
+	String positionGrant;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
@@ -126,15 +126,15 @@ public class CompanyInsetWithCompanyBranchTypeAndExecutivePosition
 			@NotNull(message = "ContactNumber cannot be NULL") String contactNumber,
 			@NotNull(message = "PositionName cannot be NULL") String positionName,
 			@NotNull(message = "PositionPriority cannot be NULL") Integer positionPriority,
-			@NotNull(message = "CompanyGrant cannot be NULL") Integer companyGrant,
-			@NotNull(message = "CompanyBranchGrant cannot be NULL") Integer companyBranchGrant,
-			@NotNull(message = "CompanyExecutiveGrant cannot be NULL") Integer companyExecutiveGrant,
-			@NotNull(message = "ClientGrant cannot be NULL") Integer clientGrant,
-			@NotNull(message = "ProductGrant cannot be NULL") Integer productGrant,
-			@NotNull(message = "LocationGrant cannot be NULL") Integer locationGrant,
-			@NotNull(message = "EnquiryGrant cannot be NULL") Integer enquiryGrant,
-			@NotNull(message = "TicketGrant cannot be NULL") Integer ticketGrant,
-			@NotNull(message = "PositionGrant cannot be NULL") Integer positionGrant,
+			@NotNull(message = "CompanyGrant cannot be NULL") String companyGrant,
+			@NotNull(message = "CompanyBranchGrant cannot be NULL") String companyBranchGrant,
+			@NotNull(message = "CompanyExecutiveGrant cannot be NULL") String companyExecutiveGrant,
+			@NotNull(message = "ClientGrant cannot be NULL") String clientGrant,
+			@NotNull(message = "ProductGrant cannot be NULL") String productGrant,
+			@NotNull(message = "LocationGrant cannot be NULL") String locationGrant,
+			@NotNull(message = "EnquiryGrant cannot be NULL") String enquiryGrant,
+			@NotNull(message = "TicketGrant cannot be NULL") String ticketGrant,
+			@NotNull(message = "PositionGrant cannot be NULL") String positionGrant,
 			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
 			@NotNull(message = "DeviceType cannot be NULL") Integer deviceType) {
@@ -462,92 +462,92 @@ public class CompanyInsetWithCompanyBranchTypeAndExecutivePosition
 	}
 
 
-	public Integer getCompanyGrant() {
+	public String getCompanyGrant() {
 		return companyGrant;
 	}
 
 
-	public void setCompanyGrant(Integer companyGrant) {
+	public void setCompanyGrant(String companyGrant) {
 		this.companyGrant = companyGrant;
 	}
 
 
-	public Integer getCompanyBranchGrant() {
+	public String getCompanyBranchGrant() {
 		return companyBranchGrant;
 	}
 
 
-	public void setCompanyBranchGrant(Integer companyBranchGrant) {
+	public void setCompanyBranchGrant(String companyBranchGrant) {
 		this.companyBranchGrant = companyBranchGrant;
 	}
 
 
-	public Integer getCompanyExecutiveGrant() {
+	public String getCompanyExecutiveGrant() {
 		return companyExecutiveGrant;
 	}
 
 
-	public void setCompanyExecutiveGrant(Integer companyExecutiveGrant) {
+	public void setCompanyExecutiveGrant(String companyExecutiveGrant) {
 		this.companyExecutiveGrant = companyExecutiveGrant;
 	}
 
 
-	public Integer getClientGrant() {
+	public String getClientGrant() {
 		return clientGrant;
 	}
 
 
-	public void setClientGrant(Integer clientGrant) {
+	public void setClientGrant(String clientGrant) {
 		this.clientGrant = clientGrant;
 	}
 
 
-	public Integer getProductGrant() {
+	public String getProductGrant() {
 		return productGrant;
 	}
 
 
-	public void setProductGrant(Integer productGrant) {
+	public void setProductGrant(String productGrant) {
 		this.productGrant = productGrant;
 	}
 
 
-	public Integer getLocationGrant() {
+	public String getLocationGrant() {
 		return locationGrant;
 	}
 
 
-	public void setLocationGrant(Integer locationGrant) {
+	public void setLocationGrant(String locationGrant) {
 		this.locationGrant = locationGrant;
 	}
 
 
-	public Integer getEnquiryGrant() {
+	public String getEnquiryGrant() {
 		return enquiryGrant;
 	}
 
 
-	public void setEnquiryGrant(Integer enquiryGrant) {
+	public void setEnquiryGrant(String enquiryGrant) {
 		this.enquiryGrant = enquiryGrant;
 	}
 
 
-	public Integer getTicketGrant() {
+	public String getTicketGrant() {
 		return ticketGrant;
 	}
 
 
-	public void setTicketGrant(Integer ticketGrant) {
+	public void setTicketGrant(String ticketGrant) {
 		this.ticketGrant = ticketGrant;
 	}
 
 
-	public Integer getPositionGrant() {
+	public String getPositionGrant() {
 		return positionGrant;
 	}
 
 
-	public void setPositionGrant(Integer positionGrant) {
+	public void setPositionGrant(String positionGrant) {
 		this.positionGrant = positionGrant;
 	}
 
@@ -580,5 +580,5 @@ public class CompanyInsetWithCompanyBranchTypeAndExecutivePosition
 	public void setDeviceType(Integer deviceType) {
 		this.deviceType = deviceType;
 	}
-	
+
 }
