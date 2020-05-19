@@ -30,7 +30,7 @@ public class CompanyDAOImpl implements CompanyDAO{
 		c.commit();
 		Long companyAddressId=(long)-1;
 		while(rs.next()) {
-			companyAddressId=rs.getLong("CompanyAddressId");
+			companyAddressId=rs.getLong("CompanyAddressId"); 
 		}
 		rs.close();
 		stmt.close();
