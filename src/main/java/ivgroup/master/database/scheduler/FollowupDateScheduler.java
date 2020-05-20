@@ -19,13 +19,7 @@ import ivgroup.master.database.dto.logs.EmailLogInsert;
 @EnableScheduling
 public class FollowupDateScheduler 
 {
-	@Autowired
-	TicketDAOImpl tdl;
 	
-	@Autowired
-	EmailLogDAOImpl eldi;
-	
-	Thread t=null;
 	
 	@Scheduled(cron = "0 0 0 * * ?")
 	public void schedulerForFollowupDate()
@@ -36,26 +30,7 @@ public class FollowupDateScheduler
 			
 			public void run()
 			{
-				List<Long> companyExecutiveList=new ArrayList<Long>();
-				try {
-					companyExecutiveList=tdl.selectCurrentFollowupDateExecutiveList(new Date(System.currentTimeMillis()));
-					ListIterator<Long> li=companyExecutiveList.listIterator();
-					while(li.hasNext())
-					{
-						Boolean rsMain=eldi.addEmailLog(new EmailLogInsert(
-								li.next(),
-								"IVCRM: Followup Date Reminder",
-								"Body",
-								"text/html",
-								"TO",
-								(long)1));
-					}
-					
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+				
 				
 			}
 			
