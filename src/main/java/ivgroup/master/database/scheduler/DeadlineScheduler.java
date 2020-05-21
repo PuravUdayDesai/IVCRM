@@ -4,10 +4,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
-
 @Configuration
 @EnableScheduling
-public class FollowupDateScheduler 
+public class DeadlineScheduler
 {
 	Thread t=null;
 	
@@ -19,7 +18,7 @@ public class FollowupDateScheduler
 			
 			public void run()
 			{
-			
+				
 				
 			}
 			
