@@ -19,13 +19,7 @@ import ivgroup.master.database.dto.logs.EmailLogInsert;
 @EnableScheduling
 public class FollowupDateScheduler 
 {
-	@Autowired
-	TicketDAOImpl tdl;
 	
-	@Autowired
-	EmailLogDAOImpl eldi;
-	
-	Thread t=null;
 	
 	@Scheduled(cron = "0 0 0 * * ?")
 	public void schedulerForFollowupDate()
