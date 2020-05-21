@@ -36,26 +36,7 @@ public class FollowupDateScheduler
 			
 			public void run()
 			{
-				List<Long> companyExecutiveList=new ArrayList<Long>();
-				try {
-					companyExecutiveList=tdl.selectCurrentFollowupDateExecutiveList(new Date(System.currentTimeMillis()));
-					ListIterator<Long> li=companyExecutiveList.listIterator();
-					while(li.hasNext())
-					{
-						Boolean rsMain=eldi.addEmailLog(new EmailLogInsert(
-								li.next(),
-								"IVCRM: Followup Date Reminder",
-								"Body",
-								"text/html",
-								"TO",
-								(long)1));
-					}
-					
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+				
 				
 			}
 			
