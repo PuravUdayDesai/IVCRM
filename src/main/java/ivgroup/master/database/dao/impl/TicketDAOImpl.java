@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
 import ivgroup.master.database.dao.schema.TicketDAO;
+import ivgroup.master.database.dto.scheduler.SchedulerNotificationInsert;
 import ivgroup.master.database.dto.ticket.TicketAccessListInsert;
 import ivgroup.master.database.dto.ticket.TicketAccessListSelect;
 import ivgroup.master.database.dto.ticket.TicketDetailsSelect;
@@ -595,20 +596,68 @@ public class TicketDAOImpl implements TicketDAO
 	}
 
 	@Override
-	public List<Long> selectCurrentFollowupDateExecutiveList(Date currentDate)throws SQLException, ClassNotFoundException
+	public List<SchedulerNotificationInsert> selectCurrentFollowupDateExecutiveList(Date currentDate)throws SQLException, ClassNotFoundException
 	{
 		Connection c=ConnectionProvider.getConnection();
 		CallableStatement stmt=c.prepareCall("SELECT * FROM \"ticket\".\"fn_selectCurrentFollowupDateExecutiveList\"(?);");
 		stmt.setDate(1, currentDate);
-		List<Long> ll=new ArrayList<Long>();
+		List<SchedulerNotificationInsert> ll=new ArrayList<SchedulerNotificationInsert>();
 		ResultSet rs=stmt.executeQuery();
 		while(rs.next())
 		{
-			ll.add(rs.getLong("CompanyExecutiveId"));
+			ll.add(new SchedulerNotificationInsert(
+					rs.getLong("CompanyExecutiveId"),
+					rs.getString("CompanyExecutiveName"),
+					rs.getString("ProductName"),
+					rs.getString("ClientName")
+					));
 		}
 		rs.close();
 		stmt.close();
 		c.close();
+		return ll;
+	}
+
+	@Override
+	public List<SchedulerNotificationInsert> selectCurrentDeadlineDateExecutiveList(Date currentDate)throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM ticket.\"fn_selectCurrentDeadlineDateExecutiveList\"(?);");
+		stmt.setDate(1, currentDate);
+		List<SchedulerNotificationInsert> ll=new ArrayList<SchedulerNotificationInsert>();
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next())
+		{
+			ll.add(new SchedulerNotificationInsert(
+					rs.getLong("CompanyExecutiveId"),
+					rs.getString("CompanyExecutiveName"),
+					rs.getString("ProductName"),
+					rs.getString("ClientName")
+					));
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return ll;
+	}
+
+	@Override
+	public List<SchedulerNotificationInsert> selectDeadlineDateCrossoverExecutiveList(Date currentDate)throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM ticket.\"fn_selectDeadlineCrossoverExecutiveList\"(?);");
+		stmt.setDate(1, currentDate);
+		List<SchedulerNotificationInsert> ll=new ArrayList<SchedulerNotificationInsert>();
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next())
+		{
+			ll.add(new SchedulerNotificationInsert(
+					rs.getLong("CompanyExecutiveId"),
+					rs.getString("CompanyExecutiveName"),
+					rs.getString("ProductName"),
+					rs.getString("ClientName")
+					));
+		}
 		return ll;
 	}
 }
