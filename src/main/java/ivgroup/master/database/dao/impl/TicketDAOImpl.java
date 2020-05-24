@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
 import ivgroup.master.database.dao.schema.TicketDAO;
+import ivgroup.master.database.dto.scheduler.ScheduerCompanyExecutivePLUpdateInsert;
 import ivgroup.master.database.dto.scheduler.SchedulerNotificationInsert;
 import ivgroup.master.database.dto.ticket.TicketAccessListInsert;
 import ivgroup.master.database.dto.ticket.TicketAccessListSelect;
@@ -658,6 +659,32 @@ public class TicketDAOImpl implements TicketDAO
 					rs.getString("ClientName")
 					));
 		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return ll;
+	}
+
+	@Override
+	public List<ScheduerCompanyExecutivePLUpdateInsert> selectCompanyExecutivePLUpdates(Date currentDate)throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM ticket.\"fn_selectCompanyExecutivePLUpdateList\"(?);");
+		stmt.setDate(1, currentDate);
+		List<ScheduerCompanyExecutivePLUpdateInsert> ll=new ArrayList<ScheduerCompanyExecutivePLUpdateInsert>();
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next())
+		{
+			ll.add(new ScheduerCompanyExecutivePLUpdateInsert(
+					rs.getLong("CompanyExecutiveId"),
+					rs.getInt("CurrentWorkProgress"),
+					rs.getInt("ThresholdWorkProgress"),
+					rs.getLong("TicketId")
+					));
+		}
+		rs.close();
+		stmt.close();
+		c.close();
 		return ll;
 	}
 }
