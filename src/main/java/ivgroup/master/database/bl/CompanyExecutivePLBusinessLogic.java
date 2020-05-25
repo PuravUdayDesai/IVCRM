@@ -31,7 +31,13 @@ public class CompanyExecutivePLBusinessLogic
 		}
 		Boolean rs=false;
 		try {
+			Integer plRate=cpldl.selectCompanyExecutiveLastPLEntry(cpli.getExecutiveId());
+			if(plRate!=null)
+			{
+				cpli.setPLrate(cpli.getPLrate()+(plRate));
+			}
 			rs=cpldl.addCompanyExecutivePL(cpli);
+			
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
@@ -56,7 +62,6 @@ public class CompanyExecutivePLBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<List<CompanyExecutivePLSelect>>(lcpl,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println(e);
 			return new ResponseEntity<List<CompanyExecutivePLSelect>>(lcpl,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcpl.isEmpty())

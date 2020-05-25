@@ -2,6 +2,7 @@ package ivgroup.master.database.scheduler;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -11,7 +12,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import ivgroup.master.database.bl.NotificationBusinessLogic;
 import ivgroup.master.database.dao.impl.TicketDAOImpl;
+import ivgroup.master.database.dto.notification.NotificationInsert;
 import ivgroup.master.database.dto.scheduler.SchedulerNotificationInsert;
 
 @Configuration
@@ -21,10 +24,13 @@ public class DeadlineCrossoverScheduler
 	@Autowired
 	TicketDAOImpl tdl;
 	
+	@Autowired
+	NotificationBusinessLogic nbl;
+	
 	Thread t=null;
 	
 	@Scheduled(cron = "0 0 0 * * ?")
-	public void schedulerForFollowupDate()
+	public void schedulerForDeadlineCrossoverDate()
 	{
 		t=new Thread()
 		{
@@ -38,7 +44,12 @@ public class DeadlineCrossoverScheduler
 					while(li.hasNext())
 					{
 						SchedulerNotificationInsert record=li.next();
-						//TODO add Notification API add call
+						nbl.addNotification(new NotificationInsert(
+								record.getCompanyExecutiveId(),
+								record.getCompanyExecutiveName(),
+								"Deadline Crossover Date Arrival",
+								"Hey "+record.getCompanyExecutiveName()+", your Deadline Date For Client "+record.getClientName()+" About Product "+record.getProductName()+" has been crossed, you're PLRate has been updated accordingly.",
+								new Timestamp(System.currentTimeMillis())));
 					}
 					
 				} catch (ClassNotFoundException e) {

@@ -13,6 +13,7 @@ import ivgroup.master.database.dto.companyExecutivePL.CompanyExecutivePLSelect;
 public interface CompanyExecutivePLDAO {
 
 	public Boolean 												addCompanyExecutivePL(CompanyExecutivePLInsert cpli)													throws SQLException,ClassNotFoundException;
+	public Integer												selectCompanyExecutiveLastPLEntry(Long companyExecutiveId)												throws SQLException,ClassNotFoundException;
 	public List<CompanyExecutivePLSelect> 						selectCompanyExecutivePLByExecutiveId(Long companyExecutiveId)											throws SQLException,ClassNotFoundException;
 	public List<CompanyExecutivePLSelect> 						selectCompanyExecutivePLByExecutiveIdAndDate(Long companyExecutiveId,Date date)							throws SQLException,ClassNotFoundException;
 	public List<CompanyExecutivePLSelect> 						selectCompanyExecutivePLByExecutiveIdBetweenDate(Long companyExecutiveId,Date dateStart,Date dateEnd)	throws SQLException,ClassNotFoundException;

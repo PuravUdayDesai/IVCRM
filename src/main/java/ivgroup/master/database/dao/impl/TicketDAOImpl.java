@@ -597,7 +597,7 @@ public class TicketDAOImpl implements TicketDAO
 	}
 
 	@Override
-	public List<SchedulerNotificationInsert> selectCurrentFollowupDateExecutiveList(Date currentDate)throws SQLException, ClassNotFoundException
+	synchronized public List<SchedulerNotificationInsert> selectCurrentFollowupDateExecutiveList(Date currentDate)throws SQLException, ClassNotFoundException
 	{
 		Connection c=ConnectionProvider.getConnection();
 		CallableStatement stmt=c.prepareCall("SELECT * FROM \"ticket\".\"fn_selectCurrentFollowupDateExecutiveList\"(?);");
@@ -620,7 +620,7 @@ public class TicketDAOImpl implements TicketDAO
 	}
 
 	@Override
-	public List<SchedulerNotificationInsert> selectCurrentDeadlineDateExecutiveList(Date currentDate)throws SQLException, ClassNotFoundException 
+	synchronized public List<SchedulerNotificationInsert> selectCurrentDeadlineDateExecutiveList(Date currentDate)throws SQLException, ClassNotFoundException 
 	{
 		Connection c=ConnectionProvider.getConnection();
 		CallableStatement stmt=c.prepareCall("SELECT * FROM ticket.\"fn_selectCurrentDeadlineDateExecutiveList\"(?);");
@@ -643,7 +643,7 @@ public class TicketDAOImpl implements TicketDAO
 	}
 
 	@Override
-	public List<SchedulerNotificationInsert> selectDeadlineDateCrossoverExecutiveList(Date currentDate)throws SQLException, ClassNotFoundException 
+	synchronized public List<SchedulerNotificationInsert> selectDeadlineDateCrossoverExecutiveList(Date currentDate)throws SQLException, ClassNotFoundException 
 	{
 		Connection c=ConnectionProvider.getConnection();
 		CallableStatement stmt=c.prepareCall("SELECT * FROM ticket.\"fn_selectDeadlineCrossoverExecutiveList\"(?);");
@@ -666,7 +666,7 @@ public class TicketDAOImpl implements TicketDAO
 	}
 
 	@Override
-	public List<ScheduerCompanyExecutivePLUpdateInsert> selectCompanyExecutivePLUpdates(Date currentDate)throws SQLException, ClassNotFoundException 
+	synchronized public List<ScheduerCompanyExecutivePLUpdateInsert> selectCompanyExecutivePLUpdates(Date currentDate)throws SQLException, ClassNotFoundException 
 	{
 		Connection c=ConnectionProvider.getConnection();
 		CallableStatement stmt=c.prepareCall("SELECT * FROM ticket.\"fn_selectCompanyExecutivePLUpdateList\"(?);");
@@ -677,6 +677,7 @@ public class TicketDAOImpl implements TicketDAO
 		{
 			ll.add(new ScheduerCompanyExecutivePLUpdateInsert(
 					rs.getLong("CompanyExecutiveId"),
+					rs.getString("CompanyExecutiveName"),
 					rs.getInt("CurrentWorkProgress"),
 					rs.getInt("ThresholdWorkProgress"),
 					rs.getLong("TicketId")
@@ -687,4 +688,5 @@ public class TicketDAOImpl implements TicketDAO
 		c.close();
 		return ll;
 	}
+
 }

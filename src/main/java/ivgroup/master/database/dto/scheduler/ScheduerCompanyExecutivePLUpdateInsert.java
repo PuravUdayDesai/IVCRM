@@ -6,6 +6,8 @@ public class ScheduerCompanyExecutivePLUpdateInsert
 {
 	@NotNull(message="CompanyExecutiveId cannot be NULL")
 	Long companyExecutiveId;
+	@NotNull(message="CompanyExecutiveName cannot be NULL")
+	String companyExecutiveName;
 	@NotNull(message="CurrentWorkProgress cannot be NULL")
 	Integer currentWorkProgress;
 	@NotNull(message="ThresholdWorkProgress cannot be NULL")
@@ -20,11 +22,13 @@ public class ScheduerCompanyExecutivePLUpdateInsert
 
 	public ScheduerCompanyExecutivePLUpdateInsert(
 			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
+			@NotNull(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
 			@NotNull(message = "CurrentWorkProgress cannot be NULL") Integer currentWorkProgress,
 			@NotNull(message = "ThresholdWorkProgress cannot be NULL") Integer thresholdWorkProgress,
 			@NotNull(message = "TicketId cannot be NULL") Long ticketId) {
 		super();
 		this.companyExecutiveId = companyExecutiveId;
+		this.companyExecutiveName = companyExecutiveName;
 		this.currentWorkProgress = currentWorkProgress;
 		this.thresholdWorkProgress = thresholdWorkProgress;
 		this.ticketId = ticketId;
@@ -36,6 +40,14 @@ public class ScheduerCompanyExecutivePLUpdateInsert
 
 	public void setCompanyExecutiveId(Long companyExecutiveId) {
 		this.companyExecutiveId = companyExecutiveId;
+	}
+
+	public String getCompanyExecutiveName() {
+		return companyExecutiveName;
+	}
+
+	public void setCompanyExecutiveName(String companyExecutiveName) {
+		this.companyExecutiveName = companyExecutiveName;
 	}
 
 	public Integer getCurrentWorkProgress() {
@@ -61,5 +73,5 @@ public class ScheduerCompanyExecutivePLUpdateInsert
 	public void setTicketId(Long ticketId) {
 		this.ticketId = ticketId;
 	}
-	
+
 }

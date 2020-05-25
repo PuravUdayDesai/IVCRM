@@ -3,6 +3,8 @@ package ivgroup.master.database.scheduler;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -12,9 +14,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import ivgroup.master.database.dao.impl.CompanyExecutivePLDAOImpl;
+import ivgroup.master.database.bl.CompanyExecutivePLBusinessLogic;
+import ivgroup.master.database.bl.NotificationBusinessLogic;
 import ivgroup.master.database.dao.impl.TicketDAOImpl;
 import ivgroup.master.database.dto.companyExecutivePL.CompanyExecutivePLInsert;
+import ivgroup.master.database.dto.notification.NotificationInsert;
 import ivgroup.master.database.dto.scheduler.ScheduerCompanyExecutivePLUpdateInsert;
 
 @Configuration
@@ -25,12 +29,15 @@ public class CompanyExecutivePLUpdateScheduler
 	TicketDAOImpl tdl;
 	
 	@Autowired
-	CompanyExecutivePLDAOImpl cpldl;
+	CompanyExecutivePLBusinessLogic cplbl;
+	
+	@Autowired
+	NotificationBusinessLogic nbl;
 	
 	Thread t=null;
 	
 	@Scheduled(cron = "0 0 0 * * ?")
-	public void schedulerForFollowupDate()
+	public void schedulerForCompanyExecutivePLRateUpdate()
 	{
 		t=new Thread()
 		{
@@ -38,9 +45,12 @@ public class CompanyExecutivePLUpdateScheduler
 			public void run()
 			{
 				
+				
 				List<ScheduerCompanyExecutivePLUpdateInsert> companyExecutiveList=new ArrayList<ScheduerCompanyExecutivePLUpdateInsert>();
 				try {
-					companyExecutiveList=tdl.selectCompanyExecutivePLUpdates(new Date(System.currentTimeMillis()));
+					Instant now = Instant.now();
+					Instant yesterday = now.minus(1, ChronoUnit.DAYS);
+					companyExecutiveList=tdl.selectCompanyExecutivePLUpdates(new Date(yesterday.toEpochMilli()));
 					ListIterator<ScheduerCompanyExecutivePLUpdateInsert> li=companyExecutiveList.listIterator();
 					while(li.hasNext())
 					{
@@ -91,11 +101,16 @@ public class CompanyExecutivePLUpdateScheduler
 						{
 							pLrate=10;
 						}
-						
-						cpldl.addCompanyExecutivePL(new CompanyExecutivePLInsert(
+						cplbl.addCompanyExecutivePL(new CompanyExecutivePLInsert(
 																				record.getCompanyExecutiveId(),
 																				 pLrate,
 																				 new Timestamp(System.currentTimeMillis())));
+						nbl.addNotification(new NotificationInsert(
+																	record.getCompanyExecutiveId(),
+																	record.getCompanyExecutiveName(),
+																	"PLRate Update",
+																	"Hey "+record.getCompanyExecutiveName()+", we have updated you're PLRate(PotentialLiability Rate) by: "+pLrate+" due to completion of "+workPercentage+"% out of 100%.",
+																	new Timestamp(System.currentTimeMillis())));
 					}
 					
 				} catch (ClassNotFoundException e) {

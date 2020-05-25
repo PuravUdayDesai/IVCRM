@@ -64,7 +64,8 @@ public class NotificationInsert {
 		NotificationTime = notificationTime;
 	}
 
-	public NotificationInsert(@NotNull(message = "CompanyExecutiveID cannot be null") Long companyExecutiveID,
+	public NotificationInsert(
+			@NotNull(message = "CompanyExecutiveID cannot be null") Long companyExecutiveID,
 			@NotNull(message = "CompanyExecutiveName cannot be null") String companyExecutiveName,
 			@NotNull(message = "NotificationSubject cannot be null") String notificationSubject,
 			@NotNull(message = "NotificationDescription cannot be null") String notificationDescription,

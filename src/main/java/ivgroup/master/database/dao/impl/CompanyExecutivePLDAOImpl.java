@@ -180,4 +180,22 @@ public class CompanyExecutivePLDAOImpl implements CompanyExecutivePLDAO
 		return lcpl;
 	}
 
+	@Override
+	public Integer selectCompanyExecutiveLastPLEntry(Long companyExecutiveId)throws SQLException, ClassNotFoundException
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM company.\"fn_selectCompanyExecutivePLLastPLEntry\"(?);");
+		stmt.setLong(1, companyExecutiveId);
+		ResultSet rs=stmt.executeQuery();
+		Integer plRate=null;
+		if(rs.next())
+		{
+			plRate=rs.getInt("PLRate");
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return plRate;
+	}
+
 }
