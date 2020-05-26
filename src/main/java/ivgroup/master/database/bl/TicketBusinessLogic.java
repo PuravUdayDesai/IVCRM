@@ -16,6 +16,7 @@ import ivgroup.master.database.connection.ConnectionProvider;
 import ivgroup.master.database.dao.impl.CRMAccessListDAOImpl;
 import ivgroup.master.database.dao.impl.CompanyExecutiveDAOImpl;
 import ivgroup.master.database.dao.impl.TicketDAOImpl;
+import ivgroup.master.database.dto.ticket.NonAccessibleExecutiveListSelect;
 import ivgroup.master.database.dto.ticket.TicketAccessListInsert;
 import ivgroup.master.database.dto.ticket.TicketAccessListSelect;
 import ivgroup.master.database.dto.ticket.TicketDetailsSelect;
@@ -907,4 +908,24 @@ public class TicketBusinessLogic
 		return new ResponseEntity<List<TicketStatusLogSelect>>(lss,HttpStatus.OK);
 	}
 	
+	public ResponseEntity<List<NonAccessibleExecutiveListSelect>> selectNonAccessibleExecutivesOfTicket(Long ticketId)
+	{
+		List<NonAccessibleExecutiveListSelect> ll=new ArrayList<NonAccessibleExecutiveListSelect>();
+		if(ticketId==null)
+		{
+			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			ll=tdi.selectNonAccessibleExecutivesOfTicket(ticketId);
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(ll.isEmpty())
+		{
+			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.OK);
+	}
 }

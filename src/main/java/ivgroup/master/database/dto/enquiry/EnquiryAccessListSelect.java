@@ -16,6 +16,8 @@ public class EnquiryAccessListSelect
 	Long companyExecutiveId;
 	@NotNull(message = "CompanyExecutiveName cannot be NULL")
 	String companyExecutiveName;
+	@NotNull(message = "OwnerFlag cannot be NULL")
+	Boolean ownerFlag;
 	@NotNull(message = "AccessApplicationTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp accessApplicationTime;
@@ -25,17 +27,18 @@ public class EnquiryAccessListSelect
 		
 	}
 
-	public EnquiryAccessListSelect(
-			@NotNull(message = "EnquiryAccessId cannot be NULL") Long enquiryAccessId,
+	public EnquiryAccessListSelect(@NotNull(message = "EnquiryAccessId cannot be NULL") Long enquiryAccessId,
 			@NotNull(message = "EnquiryId cannot be NULL") Long enquiryId,
 			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
 			@NotNull(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
+			@NotNull(message = "OwnerFlag cannot be NULL") Boolean ownerFlag,
 			@NotNull(message = "AccessApplicationTime cannot be NULL") Timestamp accessApplicationTime) {
 		super();
 		this.enquiryAccessId = enquiryAccessId;
 		this.enquiryId = enquiryId;
 		this.companyExecutiveId = companyExecutiveId;
 		this.companyExecutiveName = companyExecutiveName;
+		this.ownerFlag = ownerFlag;
 		this.accessApplicationTime = accessApplicationTime;
 	}
 
@@ -71,6 +74,14 @@ public class EnquiryAccessListSelect
 		this.companyExecutiveName = companyExecutiveName;
 	}
 
+	public Boolean getOwnerFlag() {
+		return ownerFlag;
+	}
+
+	public void setOwnerFlag(Boolean ownerFlag) {
+		this.ownerFlag = ownerFlag;
+	}
+
 	public Timestamp getAccessApplicationTime() {
 		return accessApplicationTime;
 	}
@@ -78,5 +89,4 @@ public class EnquiryAccessListSelect
 	public void setAccessApplicationTime(Timestamp accessApplicationTime) {
 		this.accessApplicationTime = accessApplicationTime;
 	}
-	
 }

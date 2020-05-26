@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ivgroup.master.database.Constants;
 import ivgroup.master.database.bl.TicketBusinessLogic;
+import ivgroup.master.database.dto.ticket.NonAccessibleExecutiveListSelect;
 import ivgroup.master.database.dto.ticket.TicketAccessListInsert;
 import ivgroup.master.database.dto.ticket.TicketAccessListSelect;
 import ivgroup.master.database.dto.ticket.TicketDetailsSelect;
@@ -135,4 +136,10 @@ public class TicketController
 		return tbl.selectTicketStatusLogbyTicketId(ticketId);
 	}
 
+	@GetMapping(path="/ticketNonAccessibleExecutives/{ticketId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<NonAccessibleExecutiveListSelect>> selectNonAccessibleExecutivesOfTicket(@PathVariable @NotNull Long ticketId)
+	{
+		return tbl.selectNonAccessibleExecutivesOfTicket(ticketId);
+	}
+	
 }

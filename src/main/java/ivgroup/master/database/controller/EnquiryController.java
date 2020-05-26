@@ -28,7 +28,8 @@ import ivgroup.master.database.dto.enquiry.EnquiryNonAddedProductSelect;
 import ivgroup.master.database.dto.enquiry.EnquiryProductInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryProductSelect;
 import ivgroup.master.database.dto.enquiry.EnquirySelect;
-import ivgroup.master.database.dto.enquiry.EnquiryUpdate;	
+import ivgroup.master.database.dto.enquiry.EnquiryUpdate;
+import ivgroup.master.database.dto.enquiry.NonAccessibleExecutiveListSelect;	
 
 @RestController
 @RequestMapping("/enquiry")
@@ -152,5 +153,12 @@ public class EnquiryController
 	public ResponseEntity<List<EnquirySelect>> selectEnquiryByEnquiryType(@PathVariable @NotNull Long enquiryTypeId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
 	{
 		return ebl.selectEnquiryByEnquiryType(companyExecutiveId, enquiryTypeId);
+	}
+	
+	
+	@GetMapping(path="/enquiryNonAccessibleExecutives/{enquiryId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<NonAccessibleExecutiveListSelect>> selectNonAccessibleExecutivesOfEnquiry(@PathVariable @NotNull Long enquiryId)
+	{
+		return ebl.selectNonAccessibleExecutivesOfEnquiry(enquiryId);
 	}
 }

@@ -26,6 +26,7 @@ import ivgroup.master.database.dto.enquiry.EnquiryProductInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryProductSelect;
 import ivgroup.master.database.dto.enquiry.EnquirySelect;
 import ivgroup.master.database.dto.enquiry.EnquiryUpdate;
+import ivgroup.master.database.dto.enquiry.NonAccessibleExecutiveListSelect;
 import ivgroup.master.database.dto.enquiry.SelectEnquiryDetailsByProductListId;
 import ivgroup.master.database.dto.ticket.TicketInsert;
 
@@ -1133,5 +1134,26 @@ public class EnquiryBusinessLogic
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<List<EnquirySelect>>(lesModified,HttpStatus.OK);
+	}
+	
+	public ResponseEntity<List<NonAccessibleExecutiveListSelect>> selectNonAccessibleExecutivesOfEnquiry(Long enquiryId)
+	{
+		List<NonAccessibleExecutiveListSelect> ll=new ArrayList<NonAccessibleExecutiveListSelect>();
+		if(enquiryId==null)
+		{
+			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			ll=edi.selectNonAccessibleExecutivesOfEnquiry(enquiryId);
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(ll.isEmpty())
+		{
+			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.OK);
 	}
 }

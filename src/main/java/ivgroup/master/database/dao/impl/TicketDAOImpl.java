@@ -16,6 +16,7 @@ import ivgroup.master.database.connection.ConnectionProvider;
 import ivgroup.master.database.dao.schema.TicketDAO;
 import ivgroup.master.database.dto.scheduler.ScheduerCompanyExecutivePLUpdateInsert;
 import ivgroup.master.database.dto.scheduler.SchedulerNotificationInsert;
+import ivgroup.master.database.dto.ticket.NonAccessibleExecutiveListSelect;
 import ivgroup.master.database.dto.ticket.TicketAccessListInsert;
 import ivgroup.master.database.dto.ticket.TicketAccessListSelect;
 import ivgroup.master.database.dto.ticket.TicketDetailsSelect;
@@ -542,6 +543,7 @@ public class TicketDAOImpl implements TicketDAO
 					rs.getLong("TicketId"),
 					rs.getLong("CompanyExecutiveId"),
 					rs.getString("CompanyExecutiveName"),
+					rs.getBoolean("OwnerFlag"),
 					rs.getTimestamp("AccessApplicationTime"))
 					);
 		}
@@ -681,6 +683,29 @@ public class TicketDAOImpl implements TicketDAO
 					rs.getInt("CurrentWorkProgress"),
 					rs.getInt("ThresholdWorkProgress"),
 					rs.getLong("TicketId")
+					));
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return ll;
+	}
+
+	@Override
+	public List<NonAccessibleExecutiveListSelect> selectNonAccessibleExecutivesOfTicket(Long ticketId)throws SQLException, ClassNotFoundException
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM ticket.\"fn_selectNonExistingCompanyExecutivesInTicket\"(?);");
+		stmt.setLong(1, ticketId);
+		ResultSet rs=stmt.executeQuery();
+		List<NonAccessibleExecutiveListSelect> ll=new ArrayList<NonAccessibleExecutiveListSelect>();
+		while(rs.next())
+		{
+			ll.add(new NonAccessibleExecutiveListSelect(
+					rs.getString("CompanyExecutiveId"),
+					rs.getString("CompanyExecutiveName"),
+					rs.getString("ContactNumber"),
+					rs.getLong("CompanyID")
 					));
 		}
 		rs.close();

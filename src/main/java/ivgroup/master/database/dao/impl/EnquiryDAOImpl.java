@@ -19,6 +19,7 @@ import ivgroup.master.database.dto.enquiry.EnquiryInsert;
 import ivgroup.master.database.dto.enquiry.EnquiryNonAddedProductSelect;
 import ivgroup.master.database.dto.enquiry.EnquiryProductSelect;
 import ivgroup.master.database.dto.enquiry.EnquirySelect;
+import ivgroup.master.database.dto.enquiry.NonAccessibleExecutiveListSelect;
 import ivgroup.master.database.dto.enquiry.SelectEnquiryDetailsByProductListId;
 
 @Service
@@ -467,9 +468,9 @@ public class EnquiryDAOImpl implements EnquiryDAO
 							rs.getLong("EnquiryId"),
 							rs.getLong("CompanyExecutiveId"),
 							rs.getString("CompanyExecutiveName"),
+							rs.getBoolean("OwnerFlag"),
 							rs.getTimestamp("AccessApplicationTime")
-											   )
-					);
+											   ));
 		}
 		rs.close();
 		stmt.close();
@@ -1029,6 +1030,29 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		stmt.close();
 		c.close();
 		return check;
+	}
+
+	@Override
+	public List<NonAccessibleExecutiveListSelect> selectNonAccessibleExecutivesOfEnquiry(Long enquiryId)throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM enquiry.\"fn_selectNonExistingCompanyExecutivesInEnquiry\"(?);");
+		stmt.setLong(1, enquiryId);
+		ResultSet rs=stmt.executeQuery();
+		List<NonAccessibleExecutiveListSelect> ll=new ArrayList<NonAccessibleExecutiveListSelect>();
+		while(rs.next())
+		{
+			ll.add(new NonAccessibleExecutiveListSelect(
+					rs.getString("CompanyExecutiveId"),
+					rs.getString("CompanyExecutiveName"),
+					rs.getString("ContactNumber"),
+					rs.getLong("CompanyID")
+					));
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return ll;
 	}
 	
 }

@@ -8,6 +8,7 @@ import java.util.List;
 
 import ivgroup.master.database.dto.scheduler.ScheduerCompanyExecutivePLUpdateInsert;
 import ivgroup.master.database.dto.scheduler.SchedulerNotificationInsert;
+import ivgroup.master.database.dto.ticket.NonAccessibleExecutiveListSelect;
 import ivgroup.master.database.dto.ticket.TicketAccessListInsert;
 import ivgroup.master.database.dto.ticket.TicketAccessListSelect;
 import ivgroup.master.database.dto.ticket.TicketDetailsSelect;
@@ -30,6 +31,7 @@ public interface TicketDAO
 	public List<SchedulerNotificationInsert>				selectCurrentDeadlineDateExecutiveList(Date currentDate)										throws SQLException,ClassNotFoundException;
 	public List<SchedulerNotificationInsert> 				selectDeadlineDateCrossoverExecutiveList(Date currentDate)										throws SQLException,ClassNotFoundException;
 	public List<ScheduerCompanyExecutivePLUpdateInsert> 	selectCompanyExecutivePLUpdates(Date currentDate)												throws SQLException,ClassNotFoundException;
+	public List<NonAccessibleExecutiveListSelect>			selectNonAccessibleExecutivesOfTicket(Long ticketId)											throws SQLException,ClassNotFoundException;
 	public Long 											checkCompanyExecutiveTicketAccessDependency(Long ticketId,Long companyExecutiveId)				throws SQLException,ClassNotFoundException;
 	public Long 											addTicket(TicketInsert ti)																		throws SQLException,ClassNotFoundException;
 	public Boolean 											addTicketStatus(TicketStatusInsert ti)															throws SQLException,ClassNotFoundException;

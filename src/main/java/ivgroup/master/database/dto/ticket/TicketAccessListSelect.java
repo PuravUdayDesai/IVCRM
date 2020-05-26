@@ -16,6 +16,8 @@ public class TicketAccessListSelect
 	Long companyExecutiveId;
 	@NotNull(message = "CompanyExecutiveName cannot be NULL")
 	String companyExecutiveName;
+	@NotNull(message = "OwnerFlag cannot be NULL")
+	Boolean ownerFlag;
 	@NotNull(message = "AccessApplicationTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp accessApplicationTime;
@@ -25,17 +27,18 @@ public class TicketAccessListSelect
 		
 	}
 
-	public TicketAccessListSelect(
-			@NotNull(message = "TicketAccessListId cannot be NULL") Long ticketAccessListId,
+	public TicketAccessListSelect(@NotNull(message = "TicketAccessListId cannot be NULL") Long ticketAccessListId,
 			@NotNull(message = "TicketId cannot be NULL") Long ticketId,
 			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
 			@NotNull(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
+			@NotNull(message = "OwnerFlag cannot be NULL") Boolean ownerFlag,
 			@NotNull(message = "AccessApplicationTime cannot be NULL") Timestamp accessApplicationTime) {
 		super();
 		this.ticketAccessListId = ticketAccessListId;
 		this.ticketId = ticketId;
 		this.companyExecutiveId = companyExecutiveId;
 		this.companyExecutiveName = companyExecutiveName;
+		this.ownerFlag = ownerFlag;
 		this.accessApplicationTime = accessApplicationTime;
 	}
 
@@ -71,6 +74,14 @@ public class TicketAccessListSelect
 		this.companyExecutiveName = companyExecutiveName;
 	}
 
+	public Boolean getOwnerFlag() {
+		return ownerFlag;
+	}
+
+	public void setOwnerFlag(Boolean ownerFlag) {
+		this.ownerFlag = ownerFlag;
+	}
+
 	public Timestamp getAccessApplicationTime() {
 		return accessApplicationTime;
 	}
@@ -78,5 +89,5 @@ public class TicketAccessListSelect
 	public void setAccessApplicationTime(Timestamp accessApplicationTime) {
 		this.accessApplicationTime = accessApplicationTime;
 	}
-	
+
 }
