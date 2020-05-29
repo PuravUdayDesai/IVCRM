@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,9 @@ public class TicketBusinessLogic
 	
 	@Autowired
 	CRMAccessListDAOImpl cadi;
+	
+	@Autowired
+	NotificationBusinessLogic nbl;
 
 	public ResponseEntity<Long> addTicket(TicketInsert ti)
 	{
@@ -669,6 +673,27 @@ public class TicketBusinessLogic
 		}
 		return new ResponseEntity<List<TicketDetailsSelect>>(ltsModified,HttpStatus.OK);
 	
+	}
+	
+	public ResponseEntity<List<TicketFollowupDateSelect>> selectTicketFollowupDates(Long ticketId)
+	{
+		List<TicketFollowupDateSelect> ltd=new ArrayList<TicketFollowupDateSelect>();
+		if(ticketId==null)
+		{
+			return new ResponseEntity<List<TicketFollowupDateSelect>>(ltd,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			ltd=tdi.selectTicketFollowupDates(ticketId);
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<List<TicketFollowupDateSelect>>(ltd,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<List<TicketFollowupDateSelect>>(ltd,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(ltd.isEmpty())
+		{
+			return new ResponseEntity<List<TicketFollowupDateSelect>>(ltd,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<TicketFollowupDateSelect>>(ltd,HttpStatus.OK);
 	}
 	
 	public ResponseEntity<List<TicketDetailsSelect>> selectTicketByFilter(TicketFilterSelect tfs)
