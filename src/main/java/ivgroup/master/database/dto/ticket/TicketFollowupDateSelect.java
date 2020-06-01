@@ -2,17 +2,17 @@ package ivgroup.master.database.dto.ticket;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class TicketFollowupDateSelect 
 {
-	@NotNull(message = "TicketFollowupDateId cannot be NULL")
+	@NotEmpty(message = "TicketFollowupDateId cannot be NULL")
 	Long ticketFollowupDateId;
-	@NotNull(message = "TicketId cannot be NULL")
+	@NotEmpty(message = "TicketId cannot be NULL")
 	Long ticketId;
-	@NotNull(message = "FollowupDate cannot be NULL")
+	@NotEmpty(message = "FollowupDate cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp followupDate;
 	
@@ -22,9 +22,9 @@ public class TicketFollowupDateSelect
 	}
 
 	public TicketFollowupDateSelect(
-			@NotNull(message = "TicketFollowupDateId cannot be NULL") Long ticketFollowupDateId,
-			@NotNull(message = "TicketId cannot be NULL") Long ticketId,
-			@NotNull(message = "FollowupDate cannot be NULL") Timestamp followupDate) {
+			@NotEmpty(message = "TicketFollowupDateId cannot be NULL") Long ticketFollowupDateId,
+			@NotEmpty(message = "TicketId cannot be NULL") Long ticketId,
+			@NotEmpty(message = "FollowupDate cannot be NULL") Timestamp followupDate) {
 		super();
 		this.ticketFollowupDateId = ticketFollowupDateId;
 		this.ticketId = ticketId;

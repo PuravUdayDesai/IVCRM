@@ -3,62 +3,62 @@ package ivgroup.master.database.dto.ticket;
 import java.sql.Timestamp;
 import java.util.List;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class TicketDetailsSelect 
 {
-	@NotNull(message = "TicketId cannot be NULL")
+	@NotEmpty(message = "TicketId cannot be NULL")
 	Long ticketId;
-	@NotNull(message = "EnquiryId cannot be NULL")
+	@NotEmpty(message = "EnquiryId cannot be NULL")
 	Long enquiryId;
-	@NotNull(message = "TicketAccessId cannot be NULL")
+	@NotEmpty(message = "TicketAccessId cannot be NULL")
 	Long ticketAccessId;
-	@NotNull(message = "CompanyExecutiveId cannot be NULL")
+	@NotEmpty(message = "CompanyExecutiveId cannot be NULL")
 	Long companyExecutiveId;
-	@NotNull(message = "CompanyExecutiveName cannot be NULL")
+	@NotEmpty(message = "CompanyExecutiveName cannot be NULL")
 	String companyExecutiveName;
-	@NotNull(message = "EnquiryRemarks cannot be NULL")
+	@NotEmpty(message = "EnquiryRemarks cannot be NULL")
 	String enquiryRemarks;
-	@NotNull(message = "TicketRemarks cannot be NULL")
+	@NotEmpty(message = "TicketRemarks cannot be NULL")
 	String ticketRemarks;
-	@NotNull(message = "StartDateAndTime cannot be NULL")
+	@NotEmpty(message = "StartDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp startDateAndTime;
-	@NotNull(message = "DeadlineDateAndTime cannot be NULL")
+	@NotEmpty(message = "DeadlineDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp deadlineDateAndTime;
-	@NotNull(message = "ProductId cannot be NULL")
+	@NotEmpty(message = "ProductId cannot be NULL")
 	Long productId;
-	@NotNull(message = "ProductName cannot be NULL")
+	@NotEmpty(message = "ProductName cannot be NULL")
 	String productName;
-	@NotNull(message = "TicketType cannot be NULL")
+	@NotEmpty(message = "TicketType cannot be NULL")
 	Long ticketType;
-	@NotNull(message = "TicketTypeName cannot be NULL")
+	@NotEmpty(message = "TicketTypeName cannot be NULL")
 	String ticketTypeName;
-	@NotNull(message = "TicketPriority cannot be NULL")
+	@NotEmpty(message = "TicketPriority cannot be NULL")
 	Integer ticketPriority;
-	@NotNull(message = "TicketPriorityName cannot be NULL")
+	@NotEmpty(message = "TicketPriorityName cannot be NULL")
 	String ticketPriorityName;
-	@NotNull(message = "CompanyId cannot be NULL")
+	@NotEmpty(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotNull(message = "CompanyName cannot be NULL")
+	@NotEmpty(message = "CompanyName cannot be NULL")
 	String companyName;
-	@NotNull(message = "StatusId cannot be NULL")
+	@NotEmpty(message = "StatusId cannot be NULL")
 	Long statusId;
-	@NotNull(message = "StatusName cannot be NULL")
+	@NotEmpty(message = "StatusName cannot be NULL")
 	String statusName;
-	@NotNull(message = "FollowupDate cannot be NULL")
+	@NotEmpty(message = "FollowupDate cannot be NULL")
 	List<TicketFollowupDateSelect> followupDate;
-	@NotNull(message = "CreatedBy cannot be NULL")
+	@NotEmpty(message = "CreatedBy cannot be NULL")
 	Long createdBy;
-	@NotNull(message = "CreatedOn cannot be NULL")
+	@NotEmpty(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
-	@NotNull(message = "LastEditBy cannot be NULL")
+	@NotEmpty(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
-	@NotNull(message = "LastEditOn cannot be NULL")
+	@NotEmpty(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp lastEditOn;
 	
@@ -68,30 +68,30 @@ public class TicketDetailsSelect
 	}
 
 	public TicketDetailsSelect(
-			@NotNull(message = "TicketId cannot be NULL") Long ticketId,
-			@NotNull(message = "EnquiryId cannot be NULL") Long enquiryId,
-			@NotNull(message = "TicketAccessId cannot be NULL") Long ticketAccessId,
-			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
-			@NotNull(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
-			@NotNull(message = "EnquiryRemarks cannot be NULL") String enquiryRemarks,
-			@NotNull(message = "TicketRemarks cannot be NULL") String ticketRemarks,
-			@NotNull(message = "StartDateAndTime cannot be NULL") Timestamp startDateAndTime,
-			@NotNull(message = "DeadlineDateAndTime cannot be NULL") Timestamp deadlineDateAndTime,
-			@NotNull(message = "ProductId cannot be NULL") Long productId,
-			@NotNull(message = "ProductName cannot be NULL") String productName,
-			@NotNull(message = "TicketType cannot be NULL") Long ticketType,
-			@NotNull(message = "TicketTypeName cannot be NULL") String ticketTypeName,
-			@NotNull(message = "TicketPriority cannot be NULL") Integer ticketPriority,
-			@NotNull(message = "TicketPriorityName cannot be NULL") String ticketPriorityName,
-			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
-			@NotNull(message = "CompanyName cannot be NULL") String companyName,
-			@NotNull(message = "StatusId cannot be NULL") Long statusId,
-			@NotNull(message = "StatusName cannot be NULL") String statusName,
-			@NotNull(message = "FollowupDate cannot be NULL") List<TicketFollowupDateSelect> followupDate,
-			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
-			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn) {
+			@NotEmpty(message = "TicketId cannot be NULL") Long ticketId,
+			@NotEmpty(message = "EnquiryId cannot be NULL") Long enquiryId,
+			@NotEmpty(message = "TicketAccessId cannot be NULL") Long ticketAccessId,
+			@NotEmpty(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
+			@NotEmpty(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
+			@NotEmpty(message = "EnquiryRemarks cannot be NULL") String enquiryRemarks,
+			@NotEmpty(message = "TicketRemarks cannot be NULL") String ticketRemarks,
+			@NotEmpty(message = "StartDateAndTime cannot be NULL") Timestamp startDateAndTime,
+			@NotEmpty(message = "DeadlineDateAndTime cannot be NULL") Timestamp deadlineDateAndTime,
+			@NotEmpty(message = "ProductId cannot be NULL") Long productId,
+			@NotEmpty(message = "ProductName cannot be NULL") String productName,
+			@NotEmpty(message = "TicketType cannot be NULL") Long ticketType,
+			@NotEmpty(message = "TicketTypeName cannot be NULL") String ticketTypeName,
+			@NotEmpty(message = "TicketPriority cannot be NULL") Integer ticketPriority,
+			@NotEmpty(message = "TicketPriorityName cannot be NULL") String ticketPriorityName,
+			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
+			@NotEmpty(message = "CompanyName cannot be NULL") String companyName,
+			@NotEmpty(message = "StatusId cannot be NULL") Long statusId,
+			@NotEmpty(message = "StatusName cannot be NULL") String statusName,
+			@NotEmpty(message = "FollowupDate cannot be NULL") List<TicketFollowupDateSelect> followupDate,
+			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotEmpty(message = "LastEditBy cannot be NULL") Long lastEditBy,
+			@NotEmpty(message = "LastEditOn cannot be NULL") Timestamp lastEditOn) {
 		super();
 		this.ticketId = ticketId;
 		this.enquiryId = enquiryId;

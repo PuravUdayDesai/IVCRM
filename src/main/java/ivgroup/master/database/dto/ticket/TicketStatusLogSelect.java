@@ -2,28 +2,28 @@ package ivgroup.master.database.dto.ticket;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class TicketStatusLogSelect 
 {
-	@NotNull(message = "TicketStatusId cannot be NULL")
+	@NotEmpty(message = "TicketStatusId cannot be NULL")
 	Long ticketStatusId;
-	@NotNull(message = "TicketId cannot be NULL")
+	@NotEmpty(message = "TicketId cannot be NULL")
 	Long ticketId;
-	@NotNull(message = "StatusId cannot be NULL")
+	@NotEmpty(message = "StatusId cannot be NULL")
 	Long statusId;
-	@NotNull(message = "StatusName cannot be NULL")
+	@NotEmpty(message = "StatusName cannot be NULL")
 	String statusName;
-	@NotNull(message = "workProgress cannot be NULL")
+	@NotEmpty(message = "workProgress cannot be NULL")
 	Integer workProgress;
-	@NotNull(message = "StatusColorCode cannot be NULL")
+	@NotEmpty(message = "StatusColorCode cannot be NULL")
 	String statusColorCode;
-	@NotNull(message = "LastEditOn cannot be NULL")
+	@NotEmpty(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp lastEditOn;
-	@NotNull(message = "LastEditBy cannot be NULL")
+	@NotEmpty(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
 	
 	public TicketStatusLogSelect()
@@ -31,14 +31,14 @@ public class TicketStatusLogSelect
 		
 	}
 
-	public TicketStatusLogSelect(@NotNull(message = "TicketStatusId cannot be NULL") Long ticketStatusId,
-			@NotNull(message = "TicketId cannot be NULL") Long ticketId,
-			@NotNull(message = "StatusId cannot be NULL") Long statusId,
-			@NotNull(message = "StatusName cannot be NULL") String statusName,
-			@NotNull(message = "workProgress cannot be NULL") Integer workProgress,
-			@NotNull(message = "StatusColorCode cannot be NULL") String statusColorCode,
-			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
-			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy) {
+	public TicketStatusLogSelect(@NotEmpty(message = "TicketStatusId cannot be NULL") Long ticketStatusId,
+			@NotEmpty(message = "TicketId cannot be NULL") Long ticketId,
+			@NotEmpty(message = "StatusId cannot be NULL") Long statusId,
+			@NotEmpty(message = "StatusName cannot be NULL") String statusName,
+			@NotEmpty(message = "workProgress cannot be NULL") Integer workProgress,
+			@NotEmpty(message = "StatusColorCode cannot be NULL") String statusColorCode,
+			@NotEmpty(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
+			@NotEmpty(message = "LastEditBy cannot be NULL") Long lastEditBy) {
 		super();
 		this.ticketStatusId = ticketStatusId;
 		this.ticketId = ticketId;

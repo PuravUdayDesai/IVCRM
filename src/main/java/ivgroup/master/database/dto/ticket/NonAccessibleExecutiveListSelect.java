@@ -1,16 +1,16 @@
 package ivgroup.master.database.dto.ticket;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class NonAccessibleExecutiveListSelect 
 {
-	@NotNull(message = "CompanyExecutiveId cannot be NULL")
+	@NotEmpty(message = "CompanyExecutiveId cannot be NULL")
 	String companyExecutiveId;
-	@NotNull(message = "CompanyExecutiveName cannot be NULL")
+	@NotEmpty(message = "CompanyExecutiveName cannot be NULL")
 	String companyExecutiveName;
-	@NotNull(message = "ContactNumber cannot be NULL")
+	@NotEmpty(message = "ContactNumber cannot be NULL")
 	String contactNumber;
-	@NotNull(message = "CompanyID cannot be NULL")
+	@NotEmpty(message = "CompanyID cannot be NULL")
 	Long companyID;
 	
 	public NonAccessibleExecutiveListSelect()
@@ -19,10 +19,10 @@ public class NonAccessibleExecutiveListSelect
 	}
 
 	public NonAccessibleExecutiveListSelect(
-			@NotNull(message = "CompanyExecutiveId cannot be NULL") String companyExecutiveId,
-			@NotNull(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
-			@NotNull(message = "ContactNumber cannot be NULL") String contactNumber,
-			@NotNull(message = "CompanyID cannot be NULL") Long companyID) {
+			@NotEmpty(message = "CompanyExecutiveId cannot be NULL") String companyExecutiveId,
+			@NotEmpty(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
+			@NotEmpty(message = "ContactNumber cannot be NULL") String contactNumber,
+			@NotEmpty(message = "CompanyID cannot be NULL") Long companyID) {
 		super();
 		this.companyExecutiveId = companyExecutiveId;
 		this.companyExecutiveName = companyExecutiveName;

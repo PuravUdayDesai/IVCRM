@@ -2,38 +2,38 @@ package ivgroup.master.database.dto.ticket;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class TicketInsert 
 {
-	@NotNull(message = "EnquiryId cannot be NULL")
+	@NotEmpty(message = "EnquiryId cannot be NULL")
 	Long enquiryId;
-	@NotNull(message = "EnquiryRemarks cannot be NULL")
+	@NotEmpty(message = "EnquiryRemarks cannot be NULL")
 	String enquiryRemarks;
-	@NotNull(message = "TicketRemarks cannot be NULL")
+	@NotEmpty(message = "TicketRemarks cannot be NULL")
 	String ticketRemarks;
-	@NotNull(message = "StatusId cannot be NULL")
+	@NotEmpty(message = "StatusId cannot be NULL")
 	Long statusId;
-	@NotNull(message = "StartDateAndTime cannot be NULL")
+	@NotEmpty(message = "StartDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp startDateAndTime;
-	@NotNull(message = "DeadlineDateAndTime cannot be NULL")
+	@NotEmpty(message = "DeadlineDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp deadlineDateAndTime;
-	@NotNull(message = "ProductId cannot be NULL")
+	@NotEmpty(message = "ProductId cannot be NULL")
 	Long productId;
-	@NotNull(message = "TicketType cannot be NULL")
+	@NotEmpty(message = "TicketType cannot be NULL")
 	Long ticketType;
-	@NotNull(message = "TicketPriority cannot be NULL")
+	@NotEmpty(message = "TicketPriority cannot be NULL")
 	Integer ticketPriority;
-	@NotNull(message = "CompanyId cannot be NULL")
+	@NotEmpty(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotNull(message = "CreatedOn cannot be NULL")
+	@NotEmpty(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
-	@NotNull(message = "CreatedBy cannot be NULL")
+	@NotEmpty(message = "CreatedBy cannot be NULL")
 	Long createdBy;
 	
 	public TicketInsert()
@@ -42,18 +42,18 @@ public class TicketInsert
 	}
 
 	public TicketInsert(
-			@NotNull(message = "EnquiryId cannot be NULL") Long enquiryId,
-			@NotNull(message = "EnquiryRemarks cannot be NULL") String enquiryRemarks,
-			@NotNull(message = "TicketRemarks cannot be NULL") String ticketRemarks,
-			@NotNull(message = "StatusId cannot be NULL") Long statusId,
-			@NotNull(message = "StartDateAndTime cannot be NULL") Timestamp startDateAndTime,
-			@NotNull(message = "DeadlineDateAndTime cannot be NULL") Timestamp deadlineDateAndTime,
-			@NotNull(message = "ProductId cannot be NULL") Long productId,
-			@NotNull(message = "TicketType cannot be NULL") Long ticketType,
-			@NotNull(message = "TicketPriority cannot be NULL") Integer ticketPriority,
-			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy) {
+			@NotEmpty(message = "EnquiryId cannot be NULL") Long enquiryId,
+			@NotEmpty(message = "EnquiryRemarks cannot be NULL") String enquiryRemarks,
+			@NotEmpty(message = "TicketRemarks cannot be NULL") String ticketRemarks,
+			@NotEmpty(message = "StatusId cannot be NULL") Long statusId,
+			@NotEmpty(message = "StartDateAndTime cannot be NULL") Timestamp startDateAndTime,
+			@NotEmpty(message = "DeadlineDateAndTime cannot be NULL") Timestamp deadlineDateAndTime,
+			@NotEmpty(message = "ProductId cannot be NULL") Long productId,
+			@NotEmpty(message = "TicketType cannot be NULL") Long ticketType,
+			@NotEmpty(message = "TicketPriority cannot be NULL") Integer ticketPriority,
+			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
+			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy) {
 		super();
 		this.enquiryId = enquiryId;
 		this.enquiryRemarks = enquiryRemarks;
