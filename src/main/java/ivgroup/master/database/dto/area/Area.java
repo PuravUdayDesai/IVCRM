@@ -2,59 +2,59 @@ package ivgroup.master.database.dto.area;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class Area {
 
-	@NotNull(message = "BusinessAreaID cannot be NULL")
+	@NotEmpty(message = "BusinessAreaID cannot be NULL")
 	private long BusinessAreaID;
 
-	@NotNull(message = "BusinessAreaName cannot be NULL")
+	@NotEmpty(message = "BusinessAreaName cannot be NULL")
 	private String BusinessAreaName;
 
-	@NotNull(message = "BusinessAreaCode cannot be NULL")
+	@NotEmpty(message = "BusinessAreaCode cannot be NULL")
 	private String BusinessAreaCode;
 	
-	@NotNull(message = "BusinessAreaDescription cannot be NULL")
+	@NotEmpty(message = "BusinessAreaDescription cannot be NULL")
 	private String BusinessAreaDescription;
 
-	@NotNull(message = "CountryID cannot be NULL")
+	@NotEmpty(message = "CountryID cannot be NULL")
 	private Long CountryID;
 	
-	@NotNull(message = "CountryName cannot be NULL")
+	@NotEmpty(message = "CountryName cannot be NULL")
 	private String CountryName;
 	
-	@NotNull(message = "StateID cannot be NULL")
+	@NotEmpty(message = "StateID cannot be NULL")
 	private Long StateID;
 	
-	@NotNull(message = "StateName cannot be NULL")
+	@NotEmpty(message = "StateName cannot be NULL")
 	private String StateName;
 	
-	@NotNull(message = "CityID cannot be NULL")
+	@NotEmpty(message = "CityID cannot be NULL")
 	private Long CityID;
 	
-	@NotNull(message = "CityName cannot be NULL")
+	@NotEmpty(message = "CityName cannot be NULL")
 	private String CityName;
 
-	@NotNull(message = "IsActive cannot be NULL")
+	@NotEmpty(message = "IsActive cannot be NULL")
 	private Boolean IsActive;
 
-	@NotNull(message = "CreatedOn cannot be NULL")	
+	@NotEmpty(message = "CreatedOn cannot be NULL")	
 	private Timestamp CreatedOn;
 
-	@NotNull(message = "CreatedBy cannot be NULL")
+	@NotEmpty(message = "CreatedBy cannot be NULL")
 	private Long CreatedBy;
 
-	@NotNull(message = "DeviceType cannot be NULL")
+	@NotEmpty(message = "DeviceType cannot be NULL")
 	private Integer DeviceType;
 
-	@NotNull(message = "LastEditOn cannot be NULL")	
+	@NotEmpty(message = "LastEditOn cannot be NULL")	
 	Timestamp LastEditOn;
 	
-	@NotNull(message = "LastEditBy cannot be NULL")
+	@NotEmpty(message = "LastEditBy cannot be NULL")
 	Long LastEditBy;
 	
-	@NotNull(message = "LastEditDeviceType cannot be NULL")
+	@NotEmpty(message = "LastEditDeviceType cannot be NULL")
 	Integer LastEditDeviceType;
 	
 	public long getBusinessAreaID() {
@@ -261,23 +261,23 @@ public class Area {
 
 	
 
-	public Area(@NotNull(message = "BusinessAreaID cannot be NULL") long businessAreaID,
-			@NotNull(message = "BusinessAreaName cannot be NULL") String businessAreaName,
-			@NotNull(message = "BusinessAreaCode cannot be NULL") String businessAreaCode,
-			@NotNull(message = "BusinessAreaDescription cannot be NULL") String businessAreaDescription,
-			@NotNull(message = "CountryID cannot be NULL") Long countryID,
-			@NotNull(message = "CountryName cannot be NULL") String countryName,
-			@NotNull(message = "StateID cannot be NULL") Long stateID,
-			@NotNull(message = "StateName cannot be NULL") String stateName,
-			@NotNull(message = "CityID cannot be NULL") Long cityID,
-			@NotNull(message = "CityName cannot be NULL") String cityName,
-			@NotNull(message = "IsActive cannot be NULL") Boolean isActive,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "DeviceType cannot be NULL") Integer deviceType,
-			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
-			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
-			@NotNull(message = "LastEditDeviceType cannot be NULL") Integer lastEditDeviceType) {
+	public Area(@NotEmpty(message = "BusinessAreaID cannot be NULL") long businessAreaID,
+			@NotEmpty(message = "BusinessAreaName cannot be NULL") String businessAreaName,
+			@NotEmpty(message = "BusinessAreaCode cannot be NULL") String businessAreaCode,
+			@NotEmpty(message = "BusinessAreaDescription cannot be NULL") String businessAreaDescription,
+			@NotEmpty(message = "CountryID cannot be NULL") Long countryID,
+			@NotEmpty(message = "CountryName cannot be NULL") String countryName,
+			@NotEmpty(message = "StateID cannot be NULL") Long stateID,
+			@NotEmpty(message = "StateName cannot be NULL") String stateName,
+			@NotEmpty(message = "CityID cannot be NULL") Long cityID,
+			@NotEmpty(message = "CityName cannot be NULL") String cityName,
+			@NotEmpty(message = "IsActive cannot be NULL") Boolean isActive,
+			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotEmpty(message = "DeviceType cannot be NULL") Integer deviceType,
+			@NotEmpty(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
+			@NotEmpty(message = "LastEditBy cannot be NULL") Long lastEditBy,
+			@NotEmpty(message = "LastEditDeviceType cannot be NULL") Integer lastEditDeviceType) {
 		super();
 		BusinessAreaID = businessAreaID;
 		BusinessAreaName = businessAreaName;

@@ -2,29 +2,29 @@ package ivgroup.master.database.dto.notification;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class NotificationSelect {
 
-	@NotNull(message="CompanyExecutiveID cannot be null")
+	@NotEmpty(message="CompanyExecutiveID cannot be null")
 	Long CompanyExecutiveID;
 	
-	@NotNull(message="CompanyExecutiveName cannot be null")
+	@NotEmpty(message="CompanyExecutiveName cannot be null")
 	String CompanyExecutiveName;
 	
-	@NotNull(message="NotificationID cannot be null")
+	@NotEmpty(message="NotificationID cannot be null")
 	Long NotificationID;
 	
-	@NotNull(message="NotificationSubject cannot be null")
+	@NotEmpty(message="NotificationSubject cannot be null")
 	String NotificationSubject;
 	
-	@NotNull(message="NotificationDescription cannot be null")
+	@NotEmpty(message="NotificationDescription cannot be null")
 	String NotificationDescription;
 	
-	@NotNull(message = "NotificationTime cannot be null")
+	@NotEmpty(message = "NotificationTime cannot be null")
 	Timestamp NotificationTime;
 	
-	@NotNull(message="ReadIndex cannot be null")
+	@NotEmpty(message="ReadIndex cannot be null")
 	Boolean ReadIndex;
 
 	public Long getCompanyExecutiveID() {
@@ -83,13 +83,13 @@ public class NotificationSelect {
 		ReadIndex = readIndex;
 	}
 
-	public NotificationSelect(@NotNull(message = "CompanyExecutiveID cannot be null") Long companyExecutiveID,
-			@NotNull(message = "CompanyExecutiveName cannot be null") String companyExecutiveName,
-			@NotNull(message = "NotificationID cannot be null") Long notificationID,
-			@NotNull(message = "NotificationSubject cannot be null") String notificationSubject,
-			@NotNull(message = "NotificationDescription cannot be null") String notificationDescription,
-			@NotNull(message = "NotificationTime cannot be null") Timestamp notificationTime,
-			@NotNull(message = "ReadIndex cannot be null") Boolean readIndex) {
+	public NotificationSelect(@NotEmpty(message = "CompanyExecutiveID cannot be null") Long companyExecutiveID,
+			@NotEmpty(message = "CompanyExecutiveName cannot be null") String companyExecutiveName,
+			@NotEmpty(message = "NotificationID cannot be null") Long notificationID,
+			@NotEmpty(message = "NotificationSubject cannot be null") String notificationSubject,
+			@NotEmpty(message = "NotificationDescription cannot be null") String notificationDescription,
+			@NotEmpty(message = "NotificationTime cannot be null") Timestamp notificationTime,
+			@NotEmpty(message = "ReadIndex cannot be null") Boolean readIndex) {
 		super();
 		CompanyExecutiveID = companyExecutiveID;
 		CompanyExecutiveName = companyExecutiveName;

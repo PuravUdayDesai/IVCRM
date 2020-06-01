@@ -2,7 +2,7 @@ package ivgroup.master.database.dto.owner;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -14,7 +14,7 @@ public class OwnerUpdate {
 	Boolean isActive;
 	String ownerUserName;
 	String ownerPassword;
-	@NotNull(message = "LastEditOn cannot be NULL")
+	@NotEmpty(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp lastEditOn;
 	
@@ -23,7 +23,7 @@ public class OwnerUpdate {
 	}
 
 	public OwnerUpdate(String ownerName, String ownerContact, String ownerEmail, Boolean isActive, String ownerUserName,
-			String ownerPassword, @NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn) {
+			String ownerPassword, @NotEmpty(message = "LastEditOn cannot be NULL") Timestamp lastEditOn) {
 		super();
 		this.ownerName = ownerName;
 		this.ownerContact = ownerContact;

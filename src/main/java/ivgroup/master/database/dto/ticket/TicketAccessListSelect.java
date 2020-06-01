@@ -3,7 +3,6 @@ package ivgroup.master.database.dto.ticket;
 import java.sql.Timestamp;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

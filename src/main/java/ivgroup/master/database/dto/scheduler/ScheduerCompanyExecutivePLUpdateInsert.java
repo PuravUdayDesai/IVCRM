@@ -1,18 +1,18 @@
 package ivgroup.master.database.dto.scheduler;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class ScheduerCompanyExecutivePLUpdateInsert 
 {
-	@NotNull(message="CompanyExecutiveId cannot be NULL")
+	@NotEmpty(message="CompanyExecutiveId cannot be NULL")
 	Long companyExecutiveId;
-	@NotNull(message="CompanyExecutiveName cannot be NULL")
+	@NotEmpty(message="CompanyExecutiveName cannot be NULL")
 	String companyExecutiveName;
-	@NotNull(message="CurrentWorkProgress cannot be NULL")
+	@NotEmpty(message="CurrentWorkProgress cannot be NULL")
 	Integer currentWorkProgress;
-	@NotNull(message="ThresholdWorkProgress cannot be NULL")
+	@NotEmpty(message="ThresholdWorkProgress cannot be NULL")
 	Integer thresholdWorkProgress;
-	@NotNull(message="TicketId cannot be NULL")
+	@NotEmpty(message="TicketId cannot be NULL")
 	Long ticketId;
 	
 	public ScheduerCompanyExecutivePLUpdateInsert()
@@ -21,11 +21,11 @@ public class ScheduerCompanyExecutivePLUpdateInsert
 	}
 
 	public ScheduerCompanyExecutivePLUpdateInsert(
-			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
-			@NotNull(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
-			@NotNull(message = "CurrentWorkProgress cannot be NULL") Integer currentWorkProgress,
-			@NotNull(message = "ThresholdWorkProgress cannot be NULL") Integer thresholdWorkProgress,
-			@NotNull(message = "TicketId cannot be NULL") Long ticketId) {
+			@NotEmpty(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
+			@NotEmpty(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
+			@NotEmpty(message = "CurrentWorkProgress cannot be NULL") Integer currentWorkProgress,
+			@NotEmpty(message = "ThresholdWorkProgress cannot be NULL") Integer thresholdWorkProgress,
+			@NotEmpty(message = "TicketId cannot be NULL") Long ticketId) {
 		super();
 		this.companyExecutiveId = companyExecutiveId;
 		this.companyExecutiveName = companyExecutiveName;

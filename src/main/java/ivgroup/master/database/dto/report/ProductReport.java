@@ -1,22 +1,22 @@
 package ivgroup.master.database.dto.report;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class ProductReport {
 
-	@NotNull
+	@NotEmpty
 	String ProductName;
 
-	@NotNull
+	@NotEmpty
 	Long NumOfTickets;
 
-	@NotNull
+	@NotEmpty
 	Long NumOfClients;
 
-	@NotNull
+	@NotEmpty
 	Long CompletedTickets;
 
-	@NotNull
+	@NotEmpty
 	Double TotalRevenue;
 
 	public String getProductName() {
@@ -59,8 +59,8 @@ public class ProductReport {
 		TotalRevenue = totalRevenue;
 	}
 
-	public ProductReport(@NotNull String productName, @NotNull Long numOfTickets, @NotNull Long numOfClients,
-			@NotNull Long completedTickets, @NotNull Double totalRevenue) {
+	public ProductReport(@NotEmpty String productName, @NotEmpty Long numOfTickets, @NotEmpty Long numOfClients,
+			@NotEmpty Long completedTickets, @NotEmpty Double totalRevenue) {
 		super();
 		ProductName = productName;
 		NumOfTickets = numOfTickets;

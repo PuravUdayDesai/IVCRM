@@ -1,18 +1,18 @@
 package ivgroup.master.database.dto.enquiry;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class EnquiryProductSelect 
 {
-	@NotNull(message = "EnquiryId cannot be NULL")
+	@NotEmpty(message = "EnquiryId cannot be NULL")
 	Long enquiryId;
-	@NotNull(message = "EnquiryProductId cannot be NULL")
+	@NotEmpty(message = "EnquiryProductId cannot be NULL")
 	Long enquiryProductId;
-	@NotNull(message = "ProductId cannot be NULL")
+	@NotEmpty(message = "ProductId cannot be NULL")
 	Long productId;
-	@NotNull(message = "ProductName cannot be NULL")
+	@NotEmpty(message = "ProductName cannot be NULL")
 	String productName;
-	@NotNull(message = "ProductCharges cannot be NULL")
+	@NotEmpty(message = "ProductCharges cannot be NULL")
 	Double productCharges;
 	
 	public EnquiryProductSelect()
@@ -20,11 +20,11 @@ public class EnquiryProductSelect
 		
 	}
 
-	public EnquiryProductSelect(@NotNull(message = "EnquiryId cannot be NULL") Long enquiryId,
-			@NotNull(message = "EnquiryProductId cannot be NULL") Long enquiryProductId,
-			@NotNull(message = "ProductId cannot be NULL") Long productId,
-			@NotNull(message = "ProductName cannot be NULL") String productName,
-			@NotNull(message = "ProductCharges cannot be NULL") Double productCharges) {
+	public EnquiryProductSelect(@NotEmpty(message = "EnquiryId cannot be NULL") Long enquiryId,
+			@NotEmpty(message = "EnquiryProductId cannot be NULL") Long enquiryProductId,
+			@NotEmpty(message = "ProductId cannot be NULL") Long productId,
+			@NotEmpty(message = "ProductName cannot be NULL") String productName,
+			@NotEmpty(message = "ProductCharges cannot be NULL") Double productCharges) {
 		super();
 		this.enquiryId = enquiryId;
 		this.enquiryProductId = enquiryProductId;

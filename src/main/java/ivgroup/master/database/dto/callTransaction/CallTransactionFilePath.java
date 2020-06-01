@@ -2,16 +2,16 @@ package ivgroup.master.database.dto.callTransaction;
 
 import java.nio.file.Path;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class CallTransactionFilePath {
-@NotNull(message="QualifiedFilePath Cannot Be NULL")
+@NotEmpty(message="QualifiedFilePath Cannot Be NULL")
 Path qualifiedFilePath;
 
 public CallTransactionFilePath() {
 	
 }
-public CallTransactionFilePath(@NotNull(message = "QualifiedFilePath Cannot Be NULL") Path qualifiedFilePath) {
+public CallTransactionFilePath(@NotEmpty(message = "QualifiedFilePath Cannot Be NULL") Path qualifiedFilePath) {
 	super();
 	this.qualifiedFilePath = qualifiedFilePath;
 }

@@ -2,7 +2,7 @@ package ivgroup.master.database.dto.enquiry;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -21,9 +21,9 @@ public class EnquiryUpdate
 	String longitude;
 	String enquiryRemarks;
 	Long enquiryType;
-	@NotNull(message = "LastEditBy cannot be NULL")
+	@NotEmpty(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
-	@NotNull(message = "LastEditOn cannot be NULL")
+	@NotEmpty(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp lastEditOn;
 	
@@ -46,8 +46,8 @@ public class EnquiryUpdate
 			String longitude,
 			String enquiryRemarks,
 			Long enquiryType,
-			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
-			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn) {
+			@NotEmpty(message = "LastEditBy cannot be NULL") Long lastEditBy,
+			@NotEmpty(message = "LastEditOn cannot be NULL") Timestamp lastEditOn) {
 		super();
 		this.clientId = clientId;
 		this.countryId = countryId;

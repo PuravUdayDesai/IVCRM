@@ -2,23 +2,23 @@ package ivgroup.master.database.dto.enquiry;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class EnquiryAccessListSelect
 {
-	@NotNull(message = "EnquiryAccessId cannot be NULL")
+	@NotEmpty(message = "EnquiryAccessId cannot be NULL")
 	Long enquiryAccessId;
-	@NotNull(message = "EnquiryId cannot be NULL")
+	@NotEmpty(message = "EnquiryId cannot be NULL")
 	Long enquiryId;
-	@NotNull(message = "CompanyExecutiveId cannot be NULL")
+	@NotEmpty(message = "CompanyExecutiveId cannot be NULL")
 	Long companyExecutiveId;
-	@NotNull(message = "CompanyExecutiveName cannot be NULL")
+	@NotEmpty(message = "CompanyExecutiveName cannot be NULL")
 	String companyExecutiveName;
-	@NotNull(message = "OwnerFlag cannot be NULL")
+	@NotEmpty(message = "OwnerFlag cannot be NULL")
 	Boolean ownerFlag;
-	@NotNull(message = "AccessApplicationTime cannot be NULL")
+	@NotEmpty(message = "AccessApplicationTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp accessApplicationTime;
 	
@@ -27,12 +27,12 @@ public class EnquiryAccessListSelect
 		
 	}
 
-	public EnquiryAccessListSelect(@NotNull(message = "EnquiryAccessId cannot be NULL") Long enquiryAccessId,
-			@NotNull(message = "EnquiryId cannot be NULL") Long enquiryId,
-			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
-			@NotNull(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
-			@NotNull(message = "OwnerFlag cannot be NULL") Boolean ownerFlag,
-			@NotNull(message = "AccessApplicationTime cannot be NULL") Timestamp accessApplicationTime) {
+	public EnquiryAccessListSelect(@NotEmpty(message = "EnquiryAccessId cannot be NULL") Long enquiryAccessId,
+			@NotEmpty(message = "EnquiryId cannot be NULL") Long enquiryId,
+			@NotEmpty(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
+			@NotEmpty(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
+			@NotEmpty(message = "OwnerFlag cannot be NULL") Boolean ownerFlag,
+			@NotEmpty(message = "AccessApplicationTime cannot be NULL") Timestamp accessApplicationTime) {
 		super();
 		this.enquiryAccessId = enquiryAccessId;
 		this.enquiryId = enquiryId;

@@ -2,31 +2,31 @@ package ivgroup.master.database.dto.companyBranchType;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CompanyBranchTypeSelect 
 {
-	@NotNull(message = "CompanyBranchTypeId cannot be NULL")
+	@NotEmpty(message = "CompanyBranchTypeId cannot be NULL")
 	Long companyBranchTypeId;
-	@NotNull(message = "CompanyBranchTypeName cannot be NULL")
+	@NotEmpty(message = "CompanyBranchTypeName cannot be NULL")
 	String companyBranchTypeName;
-	@NotNull(message = "CompanyId cannot be NULL")
+	@NotEmpty(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotNull(message = "CompanyName cannot be NULL")
+	@NotEmpty(message = "CompanyName cannot be NULL")
 	String companyName;
-	@NotNull(message = "CompanyBranchPosition cannot be NULL")
+	@NotEmpty(message = "CompanyBranchPosition cannot be NULL")
 	Integer companyBranchPosition;
-	@NotNull(message = "CreatedBy cannot be NULL")
+	@NotEmpty(message = "CreatedBy cannot be NULL")
 	Long createdBy;
-	@NotNull(message = "CreatedOn cannot be NULL")
+	@NotEmpty(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
-	@NotNull(message = "LastEditOn cannot be NULL")
+	@NotEmpty(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp lastEditOn;
-	@NotNull(message = "LastEditBy cannot be NULL")
+	@NotEmpty(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
 	
 	public CompanyBranchTypeSelect()
@@ -35,15 +35,15 @@ public class CompanyBranchTypeSelect
 	}
 
 	public CompanyBranchTypeSelect(
-			@NotNull(message = "CompanyBranchTypeId cannot be NULL") Long companyBranchTypeId,
-			@NotNull(message = "CompanyBranchTypeName cannot be NULL") String companyBranchTypeName,
-			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
-			@NotNull(message = "CompanyName cannot be NULL") String companyName,
-			@NotNull(message = "CompanyBranchPosition cannot be NULL") Integer companyBranchPosition,
-			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
-			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy) {
+			@NotEmpty(message = "CompanyBranchTypeId cannot be NULL") Long companyBranchTypeId,
+			@NotEmpty(message = "CompanyBranchTypeName cannot be NULL") String companyBranchTypeName,
+			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
+			@NotEmpty(message = "CompanyName cannot be NULL") String companyName,
+			@NotEmpty(message = "CompanyBranchPosition cannot be NULL") Integer companyBranchPosition,
+			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotEmpty(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
+			@NotEmpty(message = "LastEditBy cannot be NULL") Long lastEditBy) {
 		super();
 		this.companyBranchTypeId = companyBranchTypeId;
 		this.companyBranchTypeName = companyBranchTypeName;

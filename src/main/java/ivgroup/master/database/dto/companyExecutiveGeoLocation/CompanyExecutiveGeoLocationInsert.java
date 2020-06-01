@@ -2,38 +2,38 @@ package ivgroup.master.database.dto.companyExecutiveGeoLocation;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CompanyExecutiveGeoLocationInsert
 {
-	@NotNull(message = "CompanyExecutiveId cannot be NULL")
+	@NotEmpty(message = "CompanyExecutiveId cannot be NULL")
 	Long companyExecutiveId;
-	@NotNull(message = "CompanyId cannot be NULL")
+	@NotEmpty(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotNull(message = "EntryDateAndTime cannot be NULL")
+	@NotEmpty(message = "EntryDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp entryDateAndTime;
-	@NotNull(message = "Latitude cannot be NULL")
+	@NotEmpty(message = "Latitude cannot be NULL")
 	String latitude;
-	@NotNull(message = "Longitude cannot be NULL")
+	@NotEmpty(message = "Longitude cannot be NULL")
 	String longitude;
-	@NotNull(message = "CountryName cannot be NULL")
+	@NotEmpty(message = "CountryName cannot be NULL")
 	String countryName;
-	@NotNull(message = "StateName cannot be NULL")
+	@NotEmpty(message = "StateName cannot be NULL")
 	String stateName;
-	@NotNull(message = "CityName cannot be NULL")
+	@NotEmpty(message = "CityName cannot be NULL")
 	String cityName;
-	@NotNull(message = "AreaName cannot be NULL")
+	@NotEmpty(message = "AreaName cannot be NULL")
 	String areaName;
-	@NotNull(message = "AddressLine1 cannot be NULL")
+	@NotEmpty(message = "AddressLine1 cannot be NULL")
 	String addressLine1;
-	@NotNull(message = "AddressLine2 cannot be NULL")
+	@NotEmpty(message = "AddressLine2 cannot be NULL")
 	String addressLine2;
-	@NotNull(message = "AddressLine3 cannot be NULL")
+	@NotEmpty(message = "AddressLine3 cannot be NULL")
 	String addressLine3;
-	@NotNull(message = "Pincode cannot be NULL")
+	@NotEmpty(message = "Pincode cannot be NULL")
 	String pincode;
 	
 	public CompanyExecutiveGeoLocationInsert()
@@ -42,19 +42,19 @@ public class CompanyExecutiveGeoLocationInsert
 	}
 
 	public CompanyExecutiveGeoLocationInsert(
-			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
-			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
-			@NotNull(message = "EntryDateAndTime cannot be NULL") Timestamp entryDateAndTime,
-			@NotNull(message = "Latitude cannot be NULL") String latitude,
-			@NotNull(message = "Longitude cannot be NULL") String longitude,
-			@NotNull(message = "CountryName cannot be NULL") String countryName,
-			@NotNull(message = "StateName cannot be NULL") String stateName,
-			@NotNull(message = "CityName cannot be NULL") String cityName,
-			@NotNull(message = "AreaName cannot be NULL") String areaName,
-			@NotNull(message = "AddressLine1 cannot be NULL") String addressLine1,
-			@NotNull(message = "AddressLine2 cannot be NULL") String addressLine2,
-			@NotNull(message = "AddressLine3 cannot be NULL") String addressLine3,
-			@NotNull(message = "Pincode cannot be NULL") String pincode) {
+			@NotEmpty(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
+			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
+			@NotEmpty(message = "EntryDateAndTime cannot be NULL") Timestamp entryDateAndTime,
+			@NotEmpty(message = "Latitude cannot be NULL") String latitude,
+			@NotEmpty(message = "Longitude cannot be NULL") String longitude,
+			@NotEmpty(message = "CountryName cannot be NULL") String countryName,
+			@NotEmpty(message = "StateName cannot be NULL") String stateName,
+			@NotEmpty(message = "CityName cannot be NULL") String cityName,
+			@NotEmpty(message = "AreaName cannot be NULL") String areaName,
+			@NotEmpty(message = "AddressLine1 cannot be NULL") String addressLine1,
+			@NotEmpty(message = "AddressLine2 cannot be NULL") String addressLine2,
+			@NotEmpty(message = "AddressLine3 cannot be NULL") String addressLine3,
+			@NotEmpty(message = "Pincode cannot be NULL") String pincode) {
 		super();
 		this.companyExecutiveId = companyExecutiveId;
 		this.companyId = companyId;

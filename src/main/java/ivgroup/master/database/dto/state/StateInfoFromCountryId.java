@@ -1,19 +1,19 @@
 package ivgroup.master.database.dto.state;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class StateInfoFromCountryId {
 	
-	@NotNull(message = "StateID cannot be NULL")
+	@NotEmpty(message = "StateID cannot be NULL")
 	private long StateID;
 
-	@NotNull(message = "StateName cannot be NULL")
+	@NotEmpty(message = "StateName cannot be NULL")
 	private String StateName;
 
-	@NotNull(message = "StateCode cannot be NULL")
+	@NotEmpty(message = "StateCode cannot be NULL")
 	private String StateCode;
 	
-	@NotNull(message = "StateDescription cannot be NULL")
+	@NotEmpty(message = "StateDescription cannot be NULL")
 	private String StateDescription;
 
 	public long getStateID() {
@@ -48,10 +48,10 @@ public class StateInfoFromCountryId {
 		StateDescription = stateDescription;
 	}
 
-	public StateInfoFromCountryId(@NotNull(message = "StateID cannot be NULL") long stateID,
-			@NotNull(message = "StateName cannot be NULL") String stateName,
-			@NotNull(message = "StateCode cannot be NULL") String stateCode,
-			@NotNull(message = "StateDescription cannot be NULL") String stateDescription) {
+	public StateInfoFromCountryId(@NotEmpty(message = "StateID cannot be NULL") long stateID,
+			@NotEmpty(message = "StateName cannot be NULL") String stateName,
+			@NotEmpty(message = "StateCode cannot be NULL") String stateCode,
+			@NotEmpty(message = "StateDescription cannot be NULL") String stateDescription) {
 		super();
 		StateID = stateID;
 		StateName = stateName;

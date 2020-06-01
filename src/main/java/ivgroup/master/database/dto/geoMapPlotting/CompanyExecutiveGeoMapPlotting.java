@@ -1,22 +1,22 @@
 package ivgroup.master.database.dto.geoMapPlotting;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class CompanyExecutiveGeoMapPlotting 
 {
-	@NotNull(message = "CompanyExecutiveId cannot be NULL")
+	@NotEmpty(message = "CompanyExecutiveId cannot be NULL")
 	Long companyExecutiveId;
-	@NotNull(message = "Latitude cannot be NULL")
+	@NotEmpty(message = "Latitude cannot be NULL")
 	String latitude;
-	@NotNull(message = "Longitude cannot be NULL")
+	@NotEmpty(message = "Longitude cannot be NULL")
 	String longitude;
-	@NotNull(message = "CompanyExecutiveName cannot be NULL")
+	@NotEmpty(message = "CompanyExecutiveName cannot be NULL")
 	String companyExecutiveName;
-	@NotNull(message = "CompanyName cannot be NULL")
+	@NotEmpty(message = "CompanyName cannot be NULL")
 	String companyName;
-	@NotNull(message = "CompanyBranchName cannot be NULL")
+	@NotEmpty(message = "CompanyBranchName cannot be NULL")
 	String companyBranchName;
-	@NotNull(message = "MarkForDelete cannot be NULL")
+	@NotEmpty(message = "MarkForDelete cannot be NULL")
 	Boolean markForDelete;
 	
 	public CompanyExecutiveGeoMapPlotting()
@@ -27,13 +27,13 @@ public class CompanyExecutiveGeoMapPlotting
 	
 	
 	public CompanyExecutiveGeoMapPlotting(
-			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
-			@NotNull(message = "Latitude cannot be NULL") String latitude,
-			@NotNull(message = "Longitude cannot be NULL") String longitude,
-			@NotNull(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
-			@NotNull(message = "CompanyName cannot be NULL") String companyName,
-			@NotNull(message = "CompanyBranchName cannot be NULL") String companyBranchName,
-			@NotNull(message = "MarkForDelete cannot be NULL") Boolean markForDelete) {
+			@NotEmpty(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
+			@NotEmpty(message = "Latitude cannot be NULL") String latitude,
+			@NotEmpty(message = "Longitude cannot be NULL") String longitude,
+			@NotEmpty(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
+			@NotEmpty(message = "CompanyName cannot be NULL") String companyName,
+			@NotEmpty(message = "CompanyBranchName cannot be NULL") String companyBranchName,
+			@NotEmpty(message = "MarkForDelete cannot be NULL") Boolean markForDelete) {
 		super();
 		this.companyExecutiveId = companyExecutiveId;
 		this.latitude = latitude;

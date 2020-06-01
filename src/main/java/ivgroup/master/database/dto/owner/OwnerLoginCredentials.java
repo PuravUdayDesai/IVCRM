@@ -1,23 +1,23 @@
 package ivgroup.master.database.dto.owner;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class OwnerLoginCredentials {
 
-	@NotNull(message = "UserName cannot be NULL")
+	@NotEmpty(message = "UserName cannot be NULL")
 	String userName;
-	@NotNull(message = "Password cannot be NULL")
+	@NotEmpty(message = "Password cannot be NULL")
 	String password;
-	@NotNull(message = "SecretKey cannot be NULL")
+	@NotEmpty(message = "SecretKey cannot be NULL")
 	String secretKey;
 	
 	public OwnerLoginCredentials() {
 		
 	}
 
-	public OwnerLoginCredentials(@NotNull(message = "UserName cannot be NULL") String userName,
-			@NotNull(message = "Password cannot be NULL") String password,
-			@NotNull(message = "SecretKey cannot be NULL") String secretKey) {
+	public OwnerLoginCredentials(@NotEmpty(message = "UserName cannot be NULL") String userName,
+			@NotEmpty(message = "Password cannot be NULL") String password,
+			@NotEmpty(message = "SecretKey cannot be NULL") String secretKey) {
 		super();
 		this.userName = userName;
 		this.password = password;

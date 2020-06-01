@@ -2,23 +2,23 @@ package ivgroup.master.database.dto.enquiry;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class EnquiryDetailsForNewProductTicketInsert
 {
-	@NotNull(message = "EnquiryRemarks cannot be NULL")	
+	@NotEmpty(message = "EnquiryRemarks cannot be NULL")	
 	String enquiryRemarks;
-	@NotNull(message = "EnquiryType cannot be NULL")
+	@NotEmpty(message = "EnquiryType cannot be NULL")
 	Long enquiryType;
-	@NotNull(message = "StartDateAndTime cannot be NULL")
+	@NotEmpty(message = "StartDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp startDateAndTime;
-	@NotNull(message = "DeadlineDateAndTime cannot be NULL")
+	@NotEmpty(message = "DeadlineDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp deadlineDateAndTime;
-	@NotNull(message = "CompanyId cannot be NULL")
+	@NotEmpty(message = "CompanyId cannot be NULL")
 	Long companyId;
 	
 	public EnquiryDetailsForNewProductTicketInsert()
@@ -27,11 +27,11 @@ public class EnquiryDetailsForNewProductTicketInsert
 	}
 
 	public EnquiryDetailsForNewProductTicketInsert(
-			@NotNull(message = "EnquiryRemarks cannot be NULL") String enquiryRemarks,
-			@NotNull(message = "EnquiryType cannot be NULL") Long enquiryType,
-			@NotNull(message = "StartDateAndTime cannot be NULL") Timestamp startDateAndTime,
-			@NotNull(message = "DeadlineDateAndTime cannot be NULL") Timestamp deadlineDateAndTime,
-			@NotNull(message = "CompanyId cannot be NULL") Long companyId) {
+			@NotEmpty(message = "EnquiryRemarks cannot be NULL") String enquiryRemarks,
+			@NotEmpty(message = "EnquiryType cannot be NULL") Long enquiryType,
+			@NotEmpty(message = "StartDateAndTime cannot be NULL") Timestamp startDateAndTime,
+			@NotEmpty(message = "DeadlineDateAndTime cannot be NULL") Timestamp deadlineDateAndTime,
+			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId) {
 		super();
 		this.enquiryRemarks = enquiryRemarks;
 		this.enquiryType = enquiryType;

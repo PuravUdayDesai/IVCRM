@@ -2,68 +2,68 @@ package ivgroup.master.database.dto.company;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CompanyInsert 
 {
-	@NotNull(message = "AddressLine1 cannot be NULL")
+	@NotEmpty(message = "AddressLine1 cannot be NULL")
 	String addressLine1;
-	@NotNull(message = "AddressLine2 cannot be NULL")
+	@NotEmpty(message = "AddressLine2 cannot be NULL")
 	String addressLine2;
-	@NotNull(message = "AddressLine3 cannot be NULL")
+	@NotEmpty(message = "AddressLine3 cannot be NULL")
 	String addressLine3;
-	@NotNull(message = "Pincode cannot be NULL")
+	@NotEmpty(message = "Pincode cannot be NULL")
 	Long pincode;
-	@NotNull(message = "CityID cannot be NULL")
+	@NotEmpty(message = "CityID cannot be NULL")
 	Long cityID;
-	@NotNull(message = "StateID cannot be NULL")
+	@NotEmpty(message = "StateID cannot be NULL")
 	Long stateID;
-	@NotNull(message = "CountryID cannot be NULL")
+	@NotEmpty(message = "CountryID cannot be NULL")
 	Long countryID;
-	@NotNull(message = "Latitude cannot be NULL")
+	@NotEmpty(message = "Latitude cannot be NULL")
 	String latitude;
-	@NotNull(message = "Longitude cannot be NULL")
+	@NotEmpty(message = "Longitude cannot be NULL")
 	String longitude;
-	@NotNull(message = "CompanyCode cannot be NULL")
+	@NotEmpty(message = "CompanyCode cannot be NULL")
 	String companyCode; 
-	@NotNull(message = "CompanyName cannot be NULL")
+	@NotEmpty(message = "CompanyName cannot be NULL")
 	String companyName; 
-	@NotNull(message = "OwnerContactId cannot be NULL")
+	@NotEmpty(message = "OwnerContactId cannot be NULL")
 	Long ownerContactId; 
-	@NotNull(message = "CompanyRegionName cannot be NULL")
+	@NotEmpty(message = "CompanyRegionName cannot be NULL")
 	String companyRegionName;
-	@NotNull(message = "CompanyRegionCode cannot be NULL")
+	@NotEmpty(message = "CompanyRegionCode cannot be NULL")
 	String companyRegionCode; 
-	@NotNull(message = "CompanyRegionDescription cannot be NULL")
+	@NotEmpty(message = "CompanyRegionDescription cannot be NULL")
 	String companyRegionDescription;
-	@NotNull(message = "CompanyAreaName cannot be NULL")
+	@NotEmpty(message = "CompanyAreaName cannot be NULL")
 	String companyAreaName;
-	@NotNull(message = "CompanyAreaCode cannot be NULL")
+	@NotEmpty(message = "CompanyAreaCode cannot be NULL")
 	String companyAreaCode; 
-	@NotNull(message = "CompanyAreaDescription cannot be NULL")
+	@NotEmpty(message = "CompanyAreaDescription cannot be NULL")
 	String companyAreaDescription;
-	@NotNull(message = "CompanyBranchName cannot be NULL")
+	@NotEmpty(message = "CompanyBranchName cannot be NULL")
 	String companyBranchName;
-	@NotNull(message = "CompanyBranchCode cannot be NULL")
+	@NotEmpty(message = "CompanyBranchCode cannot be NULL")
 	String companyBranchCode;
-	@NotNull(message = "CompanyBranchType cannot be NULL")
+	@NotEmpty(message = "CompanyBranchType cannot be NULL")
 	Integer companyBranchType;
-	@NotNull(message = "ExecutiveName cannot be NULL")
+	@NotEmpty(message = "ExecutiveName cannot be NULL")
 	String executiveName; 
-	@NotNull(message = "LoginID cannot be NULL")
+	@NotEmpty(message = "LoginID cannot be NULL")
 	String loginID; 
-	@NotNull(message = "Password cannot be NULL")
+	@NotEmpty(message = "Password cannot be NULL")
 	String password;
-	@NotNull(message = "ContactNumber cannot be NULL")
+	@NotEmpty(message = "ContactNumber cannot be NULL")
 	String contactNumber;
-	@NotNull(message = "CreatedOn cannot be NULL")
+	@NotEmpty(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
-	@NotNull(message = "CreatedBy cannot be NULL")
+	@NotEmpty(message = "CreatedBy cannot be NULL")
 	Long createdBy;
-	@NotNull(message = "DeviceType cannot be NULL")
+	@NotEmpty(message = "DeviceType cannot be NULL")
 	Integer deviceType;
 	
 	
@@ -71,34 +71,34 @@ public class CompanyInsert
 	
 	}
 	
-	public CompanyInsert(@NotNull(message = "AddressLine1 cannot be NULL") String addressLine1,
-			@NotNull(message = "AddressLine2 cannot be NULL") String addressLine2,
-			@NotNull(message = "AddressLine3 cannot be NULL") String addressLine3,
-			@NotNull(message = "Pincode cannot be NULL") Long pincode,
-			@NotNull(message = "CityID cannot be NULL") Long cityID,
-			@NotNull(message = "StateID cannot be NULL") Long stateID,
-			@NotNull(message = "CountryID cannot be NULL") Long countryID,
-			@NotNull(message = "Latitude cannot be NULL") String latitude,
-			@NotNull(message = "Longitude cannot be NULL") String longitude,
-			@NotNull(message = "CompanyCode cannot be NULL") String companyCode,
-			@NotNull(message = "CompanyName cannot be NULL") String companyName,
-			@NotNull(message = "OwnerContactId cannot be NULL") Long ownerContactId,
-			@NotNull(message = "CompanyRegionName cannot be NULL") String companyRegionName,
-			@NotNull(message = "CompanyRegionCode cannot be NULL") String companyRegionCode,
-			@NotNull(message = "CompanyRegionDescription cannot be NULL") String companyRegionDescription,
-			@NotNull(message = "CompanyAreaName cannot be NULL") String companyAreaName,
-			@NotNull(message = "CompanyAreaCode cannot be NULL") String companyAreaCode,
-			@NotNull(message = "CompanyAreaDescription cannot be NULL") String companyAreaDescription,
-			@NotNull(message = "CompanyBranchName cannot be NULL") String companyBranchName,
-			@NotNull(message = "CompanyBranchCode cannot be NULL") String companyBranchCode,
-			@NotNull(message = "CompanyBranchType cannot be NULL") Integer companyBranchType,
-			@NotNull(message = "ExecutiveName cannot be NULL") String executiveName,
-			@NotNull(message = "LoginID cannot be NULL") String loginID,
-			@NotNull(message = "Password cannot be NULL") String password,
-			@NotNull(message = "ContactNumber cannot be NULL") String contactNumber,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "DeviceType cannot be NULL") Integer deviceType) {
+	public CompanyInsert(@NotEmpty(message = "AddressLine1 cannot be NULL") String addressLine1,
+			@NotEmpty(message = "AddressLine2 cannot be NULL") String addressLine2,
+			@NotEmpty(message = "AddressLine3 cannot be NULL") String addressLine3,
+			@NotEmpty(message = "Pincode cannot be NULL") Long pincode,
+			@NotEmpty(message = "CityID cannot be NULL") Long cityID,
+			@NotEmpty(message = "StateID cannot be NULL") Long stateID,
+			@NotEmpty(message = "CountryID cannot be NULL") Long countryID,
+			@NotEmpty(message = "Latitude cannot be NULL") String latitude,
+			@NotEmpty(message = "Longitude cannot be NULL") String longitude,
+			@NotEmpty(message = "CompanyCode cannot be NULL") String companyCode,
+			@NotEmpty(message = "CompanyName cannot be NULL") String companyName,
+			@NotEmpty(message = "OwnerContactId cannot be NULL") Long ownerContactId,
+			@NotEmpty(message = "CompanyRegionName cannot be NULL") String companyRegionName,
+			@NotEmpty(message = "CompanyRegionCode cannot be NULL") String companyRegionCode,
+			@NotEmpty(message = "CompanyRegionDescription cannot be NULL") String companyRegionDescription,
+			@NotEmpty(message = "CompanyAreaName cannot be NULL") String companyAreaName,
+			@NotEmpty(message = "CompanyAreaCode cannot be NULL") String companyAreaCode,
+			@NotEmpty(message = "CompanyAreaDescription cannot be NULL") String companyAreaDescription,
+			@NotEmpty(message = "CompanyBranchName cannot be NULL") String companyBranchName,
+			@NotEmpty(message = "CompanyBranchCode cannot be NULL") String companyBranchCode,
+			@NotEmpty(message = "CompanyBranchType cannot be NULL") Integer companyBranchType,
+			@NotEmpty(message = "ExecutiveName cannot be NULL") String executiveName,
+			@NotEmpty(message = "LoginID cannot be NULL") String loginID,
+			@NotEmpty(message = "Password cannot be NULL") String password,
+			@NotEmpty(message = "ContactNumber cannot be NULL") String contactNumber,
+			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotEmpty(message = "DeviceType cannot be NULL") Integer deviceType) {
 		super();
 		this.addressLine1 = addressLine1;
 		this.addressLine2 = addressLine2;

@@ -2,46 +2,46 @@ package ivgroup.master.database.dto.client;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ClientInsert
 {
-	@NotNull(message = "ContactName cannot be NULL")
+	@NotEmpty(message = "ContactName cannot be NULL")
 	String contactName;
-	@NotNull(message = "ContactPerson cannot be NULL")
+	@NotEmpty(message = "ContactPerson cannot be NULL")
 	String contactPerson;
-	@NotNull(message = "EmailId cannot be NULL")
+	@NotEmpty(message = "EmailId cannot be NULL")
 	String emailId;
-	@NotNull(message = "ContactNumber cannot be NULL")
+	@NotEmpty(message = "ContactNumber cannot be NULL")
 	String contactNumber;
-	@NotNull(message = "CompanyId cannot be NULL")
+	@NotEmpty(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotNull(message = "CountryId cannot be NULL")
+	@NotEmpty(message = "CountryId cannot be NULL")
 	Long countryId;
-	@NotNull(message = "StateId cannot be NULL")
+	@NotEmpty(message = "StateId cannot be NULL")
 	Long stateId;
-	@NotNull(message = "CityId cannot be NULL")
+	@NotEmpty(message = "CityId cannot be NULL")
 	Long cityId;
-	@NotNull(message = "AreaId cannot be NULL")
+	@NotEmpty(message = "AreaId cannot be NULL")
 	Long areaId;
-	@NotNull(message = "AddressLine1 cannot be NULL")
+	@NotEmpty(message = "AddressLine1 cannot be NULL")
 	String addressLine1;
-	@NotNull(message = "AddressLine2 cannot be NULL")
+	@NotEmpty(message = "AddressLine2 cannot be NULL")
 	String addressLine2;
-	@NotNull(message = "AddressLine3 cannot be NULL")
+	@NotEmpty(message = "AddressLine3 cannot be NULL")
 	String addressLine3;
-	@NotNull(message = "Pincode cannot be NULL")
+	@NotEmpty(message = "Pincode cannot be NULL")
 	String pincode;
-	@NotNull(message = "Latitude cannot be NULL")
+	@NotEmpty(message = "Latitude cannot be NULL")
 	String latitude;
-	@NotNull(message = "Longitude cannot be NULL")
+	@NotEmpty(message = "Longitude cannot be NULL")
 	String longitude;
-	@NotNull(message = "CreatedOn cannot be NULL")
+	@NotEmpty(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
-	@NotNull(message = "CreatedBy cannot be NULL")
+	@NotEmpty(message = "CreatedBy cannot be NULL")
 	Long createdBy;
 	
 	public ClientInsert()
@@ -50,23 +50,23 @@ public class ClientInsert
 	}
 
 	public ClientInsert(
-			@NotNull(message = "ContactName cannot be NULL") String contactName,
-			@NotNull(message = "ContactPerson cannot be NULL") String contactPerson,
-			@NotNull(message = "EmailId cannot be NULL") String emailId,
-			@NotNull(message = "ContactNumber cannot be NULL") String contactNumber,
-			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
-			@NotNull(message = "CountryId cannot be NULL") Long countryId,
-			@NotNull(message = "StateId cannot be NULL") Long stateId,
-			@NotNull(message = "CityId cannot be NULL") Long cityId,
-			@NotNull(message = "AreaId cannot be NULL") Long areaId,
-			@NotNull(message = "AddressLine1 cannot be NULL") String addressLine1,
-			@NotNull(message = "AddressLine2 cannot be NULL") String addressLine2,
-			@NotNull(message = "AddressLine3 cannot be NULL") String addressLine3,
-			@NotNull(message = "Pincode cannot be NULL") String pincode,
-			@NotNull(message = "Latitude cannot be NULL") String latitude,
-			@NotNull(message = "Longitude cannot be NULL") String longitude,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy)
+			@NotEmpty(message = "ContactName cannot be NULL") String contactName,
+			@NotEmpty(message = "ContactPerson cannot be NULL") String contactPerson,
+			@NotEmpty(message = "EmailId cannot be NULL") String emailId,
+			@NotEmpty(message = "ContactNumber cannot be NULL") String contactNumber,
+			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
+			@NotEmpty(message = "CountryId cannot be NULL") Long countryId,
+			@NotEmpty(message = "StateId cannot be NULL") Long stateId,
+			@NotEmpty(message = "CityId cannot be NULL") Long cityId,
+			@NotEmpty(message = "AreaId cannot be NULL") Long areaId,
+			@NotEmpty(message = "AddressLine1 cannot be NULL") String addressLine1,
+			@NotEmpty(message = "AddressLine2 cannot be NULL") String addressLine2,
+			@NotEmpty(message = "AddressLine3 cannot be NULL") String addressLine3,
+			@NotEmpty(message = "Pincode cannot be NULL") String pincode,
+			@NotEmpty(message = "Latitude cannot be NULL") String latitude,
+			@NotEmpty(message = "Longitude cannot be NULL") String longitude,
+			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy)
 	{
 		super();
 		this.contactName = contactName;

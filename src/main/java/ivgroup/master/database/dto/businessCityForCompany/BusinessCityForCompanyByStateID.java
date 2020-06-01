@@ -1,13 +1,13 @@
 package ivgroup.master.database.dto.businessCityForCompany;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class BusinessCityForCompanyByStateID {
 	
-	@NotNull
+	@NotEmpty
 	Long BusinessCityForCompanyID;
 	
-	@NotNull
+	@NotEmpty
 	String BusinessCityForCompanyName;
 
 	public Long getBusinessCityForCompanyID() {
@@ -26,8 +26,8 @@ public class BusinessCityForCompanyByStateID {
 		BusinessCityForCompanyName = businessCityForCompanyName;
 	}
 
-	public BusinessCityForCompanyByStateID(@NotNull Long businessCityForCompanyID,
-			@NotNull String businessCityForCompanyName) {
+	public BusinessCityForCompanyByStateID(@NotEmpty Long businessCityForCompanyID,
+			@NotEmpty String businessCityForCompanyName) {
 		super();
 		BusinessCityForCompanyID = businessCityForCompanyID;
 		BusinessCityForCompanyName = businessCityForCompanyName;

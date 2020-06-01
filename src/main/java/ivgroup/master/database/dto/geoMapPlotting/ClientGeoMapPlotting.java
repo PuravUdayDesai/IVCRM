@@ -1,24 +1,24 @@
 package ivgroup.master.database.dto.geoMapPlotting;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class ClientGeoMapPlotting 
 {
-	@NotNull(message = "ClientId cannot be NULL")
+	@NotEmpty(message = "ClientId cannot be NULL")
 	Long clientId;
-	@NotNull(message = "Latitude cannot be NULL")
+	@NotEmpty(message = "Latitude cannot be NULL")
 	String latitude;
-	@NotNull(message = "Longitude cannot be NULL")
+	@NotEmpty(message = "Longitude cannot be NULL")
 	String longitude;
-	@NotNull(message = "ContactName cannot be NULL")
+	@NotEmpty(message = "ContactName cannot be NULL")
 	String contactName;
-	@NotNull(message = "ContactPerson cannot be NULL")
+	@NotEmpty(message = "ContactPerson cannot be NULL")
 	String contactPerson;
-	@NotNull(message = "EmailId cannot be NULL")
+	@NotEmpty(message = "EmailId cannot be NULL")
 	String emailId;
-	@NotNull(message = "ContactNumber cannot be NULL")
+	@NotEmpty(message = "ContactNumber cannot be NULL")
 	String contactNumber;
-	@NotNull(message = "MarkForDelete cannot be NULL")
+	@NotEmpty(message = "MarkForDelete cannot be NULL")
 	Boolean markForDelete;
 	
 	public ClientGeoMapPlotting()
@@ -27,14 +27,14 @@ public class ClientGeoMapPlotting
 	}
 
 	public ClientGeoMapPlotting(
-			@NotNull(message = "ClientId cannot be NULL") Long clientId,
-			@NotNull(message = "Latitude cannot be NULL") String latitude,
-			@NotNull(message = "Longitude cannot be NULL") String longitude,
-			@NotNull(message = "ContactName cannot be NULL") String contactName,
-			@NotNull(message = "ContactPerson cannot be NULL") String contactPerson,
-			@NotNull(message = "EmailId cannot be NULL") String emailId,
-			@NotNull(message = "ContactNumber cannot be NULL") String contactNumber,
-			@NotNull(message = "MarkForDelete cannot be NULL") Boolean markForDelete) {
+			@NotEmpty(message = "ClientId cannot be NULL") Long clientId,
+			@NotEmpty(message = "Latitude cannot be NULL") String latitude,
+			@NotEmpty(message = "Longitude cannot be NULL") String longitude,
+			@NotEmpty(message = "ContactName cannot be NULL") String contactName,
+			@NotEmpty(message = "ContactPerson cannot be NULL") String contactPerson,
+			@NotEmpty(message = "EmailId cannot be NULL") String emailId,
+			@NotEmpty(message = "ContactNumber cannot be NULL") String contactNumber,
+			@NotEmpty(message = "MarkForDelete cannot be NULL") Boolean markForDelete) {
 		super();
 		this.clientId = clientId;
 		this.latitude = latitude;

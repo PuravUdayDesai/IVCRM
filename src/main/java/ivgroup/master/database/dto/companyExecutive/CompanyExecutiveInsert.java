@@ -2,32 +2,32 @@ package ivgroup.master.database.dto.companyExecutive;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CompanyExecutiveInsert {
 
-	@NotNull(message = "ExecutiveName cannot be NULL")
+	@NotEmpty(message = "ExecutiveName cannot be NULL")
 	String executiveName;
-	@NotNull(message = "LoginId cannot be NULL")
+	@NotEmpty(message = "LoginId cannot be NULL")
 	String loginId;
-	@NotNull(message = "Password cannot be NULL")
+	@NotEmpty(message = "Password cannot be NULL")
 	String password;
-	@NotNull(message = "CompanyBranchId cannot be NULL")
+	@NotEmpty(message = "CompanyBranchId cannot be NULL")
 	Long companyBranchId;
-	@NotNull(message = "BaseCityId cannot be NULL")
+	@NotEmpty(message = "BaseCityId cannot be NULL")
 	Long baseCityId;
-	@NotNull(message = "CompanyId cannot be NULL")
+	@NotEmpty(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotNull(message = "ContactNumber cannot be NULL")
+	@NotEmpty(message = "ContactNumber cannot be NULL")
 	String contactNumber;
-	@NotNull(message = "CreatedOn cannot be NULL")
+	@NotEmpty(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
-	@NotNull(message = "CreatedBy cannot be NULL")
+	@NotEmpty(message = "CreatedBy cannot be NULL")
 	Long createdBy;
-	@NotNull(message = "CreatedDeviceType cannot be NULL")
+	@NotEmpty(message = "CreatedDeviceType cannot be NULL")
 	Integer createdDeviceType;
 	
 	public CompanyExecutiveInsert() {
@@ -35,16 +35,16 @@ public class CompanyExecutiveInsert {
 	}
 
 	public CompanyExecutiveInsert(
-			@NotNull(message = "ExecutiveName cannot be NULL") String executiveName,
-			@NotNull(message = "LoginId cannot be NULL") String loginId,
-			@NotNull(message = "Password cannot be NULL") String password,
-			@NotNull(message = "CompanyBranchId cannot be NULL") Long companyBranchId,
-			@NotNull(message = "BaseCityId cannot be NULL") Long baseCityId,
-			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
-			@NotNull(message = "ContactNumber cannot be NULL") String contactNumber,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "CreatedDeviceType cannot be NULL") Integer createdDeviceType) {
+			@NotEmpty(message = "ExecutiveName cannot be NULL") String executiveName,
+			@NotEmpty(message = "LoginId cannot be NULL") String loginId,
+			@NotEmpty(message = "Password cannot be NULL") String password,
+			@NotEmpty(message = "CompanyBranchId cannot be NULL") Long companyBranchId,
+			@NotEmpty(message = "BaseCityId cannot be NULL") Long baseCityId,
+			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
+			@NotEmpty(message = "ContactNumber cannot be NULL") String contactNumber,
+			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotEmpty(message = "CreatedDeviceType cannot be NULL") Integer createdDeviceType) {
 		super();
 		this.executiveName = executiveName;
 		this.loginId = loginId;

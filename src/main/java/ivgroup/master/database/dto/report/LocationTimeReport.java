@@ -1,28 +1,28 @@
 package ivgroup.master.database.dto.report;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class LocationTimeReport {
 
-	@NotNull
+	@NotEmpty
 	String LocationName;
 
-	@NotNull
+	@NotEmpty
 	Long NumOfTickets;
 
-	@NotNull
+	@NotEmpty
 	Long Today;
 
-	@NotNull
+	@NotEmpty
 	Long Tommorow;
 
-	@NotNull
+	@NotEmpty
 	Long NextWeek;
 
-	@NotNull
+	@NotEmpty
 	Long NextMonth;
 
-	@NotNull
+	@NotEmpty
 	Long NextQuarter;
 
 	public String getLocationName() {
@@ -81,8 +81,8 @@ public class LocationTimeReport {
 		NextQuarter = nextQuarter;
 	}
 
-	public LocationTimeReport(@NotNull String locationName, @NotNull Long numOfTickets, @NotNull Long today,
-			@NotNull Long tommorow, @NotNull Long nextWeek, @NotNull Long nextMonth, @NotNull Long nextQuarter) {
+	public LocationTimeReport(@NotEmpty String locationName, @NotEmpty Long numOfTickets, @NotEmpty Long today,
+			@NotEmpty Long tommorow, @NotEmpty Long nextWeek, @NotEmpty Long nextMonth, @NotEmpty Long nextQuarter) {
 		super();
 		LocationName = locationName;
 		NumOfTickets = numOfTickets;

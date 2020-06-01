@@ -1,16 +1,16 @@
 package ivgroup.master.database.dto.scheduler;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class SchedulerNotificationInsert
 {
-	@NotNull(message = "CompanyExecutiveId cannot be NULL")
+	@NotEmpty(message = "CompanyExecutiveId cannot be NULL")
 	Long companyExecutiveId;
-	@NotNull(message = "CompanyExecutiveName cannot be NULL")
+	@NotEmpty(message = "CompanyExecutiveName cannot be NULL")
 	String companyExecutiveName;
-	@NotNull(message = "ProductName cannot be NULL")
+	@NotEmpty(message = "ProductName cannot be NULL")
 	String productName;
-	@NotNull(message = "ClientName cannot be NULL")
+	@NotEmpty(message = "ClientName cannot be NULL")
 	String clientName;
 	
 	public SchedulerNotificationInsert()
@@ -18,10 +18,10 @@ public class SchedulerNotificationInsert
 		
 	}
 
-	public SchedulerNotificationInsert(@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
-			@NotNull(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
-			@NotNull(message = "ProductName cannot be NULL") String productName,
-			@NotNull(message = "ClientName cannot be NULL") String clientName) {
+	public SchedulerNotificationInsert(@NotEmpty(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
+			@NotEmpty(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
+			@NotEmpty(message = "ProductName cannot be NULL") String productName,
+			@NotEmpty(message = "ClientName cannot be NULL") String clientName) {
 		super();
 		this.companyExecutiveId = companyExecutiveId;
 		this.companyExecutiveName = companyExecutiveName;

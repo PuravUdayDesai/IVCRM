@@ -2,35 +2,35 @@ package ivgroup.master.database.dto.enquiry;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class EnquiryNonAddedProductSelect 
 {
-	@NotNull(message = "Id cannot be NULL")
+	@NotEmpty(message = "Id cannot be NULL")
 	Long id;
-	@NotNull(message = "ProductName cannot be NULL")	
+	@NotEmpty(message = "ProductName cannot be NULL")	
 	String productName;
-	@NotNull(message = "ProductDescription cannot be NULL")
+	@NotEmpty(message = "ProductDescription cannot be NULL")
 	String productDescription;
-	@NotNull(message = "CompanyId cannot be NULL")
+	@NotEmpty(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotNull(message = "CompanyName cannot be NULL")
+	@NotEmpty(message = "CompanyName cannot be NULL")
 	String companyName;
-	@NotNull(message = "Cost cannot be NULL")
+	@NotEmpty(message = "Cost cannot be NULL")
 	Double cost;
-	@NotNull(message = "CreatedBy cannot be NULL")
+	@NotEmpty(message = "CreatedBy cannot be NULL")
 	Long createdBy;
-	@NotNull(message = "CreatedOn cannot be NULL")
+	@NotEmpty(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
-	@NotNull(message = "LastEditBy cannot be NULL")
+	@NotEmpty(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
-	@NotNull(message = "LastEditOn cannot be NULL")
+	@NotEmpty(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp lastEditOn;
-	@NotNull(message = "IsActive cannot be NULL")
+	@NotEmpty(message = "IsActive cannot be NULL")
 	Boolean isActive;
 	
 	public EnquiryNonAddedProductSelect()
@@ -38,17 +38,17 @@ public class EnquiryNonAddedProductSelect
 		
 	}
 
-	public EnquiryNonAddedProductSelect(@NotNull(message = "Id cannot be NULL") Long id,
-			@NotNull(message = "ProductName cannot be NULL") String productName,
-			@NotNull(message = "ProductDescription cannot be NULL") String productDescription,
-			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
-			@NotNull(message = "CompanyName cannot be NULL") String companyName,
-			@NotNull(message = "Cost cannot be NULL") Double cost,
-			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
-			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
-			@NotNull(message = "IsActive cannot be NULL") Boolean isActive) {
+	public EnquiryNonAddedProductSelect(@NotEmpty(message = "Id cannot be NULL") Long id,
+			@NotEmpty(message = "ProductName cannot be NULL") String productName,
+			@NotEmpty(message = "ProductDescription cannot be NULL") String productDescription,
+			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
+			@NotEmpty(message = "CompanyName cannot be NULL") String companyName,
+			@NotEmpty(message = "Cost cannot be NULL") Double cost,
+			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotEmpty(message = "LastEditBy cannot be NULL") Long lastEditBy,
+			@NotEmpty(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
+			@NotEmpty(message = "IsActive cannot be NULL") Boolean isActive) {
 		super();
 		this.id = id;
 		this.productName = productName;

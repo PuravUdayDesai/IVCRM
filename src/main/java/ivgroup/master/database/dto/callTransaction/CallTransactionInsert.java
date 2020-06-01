@@ -2,25 +2,25 @@ package ivgroup.master.database.dto.callTransaction;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CallTransactionInsert {
 
-	@NotNull(message="ClientId cannot be NULL")
+	@NotEmpty(message="ClientId cannot be NULL")
 	Long clientId;
-	@NotNull(message="CompanyExecutiveId cannot be NULL")
+	@NotEmpty(message="CompanyExecutiveId cannot be NULL")
 	Long companyExecutiveId;
-	@NotNull(message="ClientNameOnCompanyExecutiveList cannot be NULL")
+	@NotEmpty(message="ClientNameOnCompanyExecutiveList cannot be NULL")
 	String clientNameOnCompanyExecutiveList;
-	@NotNull(message="ClientContactNumber cannot be NULL")
+	@NotEmpty(message="ClientContactNumber cannot be NULL")
 	String clientContactNumber;
-	@NotNull(message="CallType cannot be NULL")
+	@NotEmpty(message="CallType cannot be NULL")
 	Integer callType;
-	@NotNull(message="TalkDuration cannot be NULL")
+	@NotEmpty(message="TalkDuration cannot be NULL")
 	Long talkDuration;
-	@NotNull(message="CallTime cannot be NULL")
+	@NotEmpty(message="CallTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp callTime;
 	
@@ -29,13 +29,13 @@ public class CallTransactionInsert {
 		
 	}
 
-	public CallTransactionInsert(@NotNull(message = "ClientId cannot be NULL") Long clientId,
-			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
-			@NotNull(message = "ClientNameOnCompanyExecutiveList cannot be NULL") String clientNameOnCompanyExecutiveList,
-			@NotNull(message = "ClientContactNumber cannot be NULL") String clientContactNumber,
-			@NotNull(message = "CallType cannot be NULL") Integer callType,
-			@NotNull(message = "TalkDuration cannot be NULL") Long talkDuration,
-			@NotNull(message = "CallTime cannot be NULL") Timestamp callTime) {
+	public CallTransactionInsert(@NotEmpty(message = "ClientId cannot be NULL") Long clientId,
+			@NotEmpty(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
+			@NotEmpty(message = "ClientNameOnCompanyExecutiveList cannot be NULL") String clientNameOnCompanyExecutiveList,
+			@NotEmpty(message = "ClientContactNumber cannot be NULL") String clientContactNumber,
+			@NotEmpty(message = "CallType cannot be NULL") Integer callType,
+			@NotEmpty(message = "TalkDuration cannot be NULL") Long talkDuration,
+			@NotEmpty(message = "CallTime cannot be NULL") Timestamp callTime) {
 		super();
 		this.clientId = clientId;
 		this.companyExecutiveId = companyExecutiveId;

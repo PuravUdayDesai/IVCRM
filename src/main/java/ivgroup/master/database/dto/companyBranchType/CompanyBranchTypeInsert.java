@@ -2,21 +2,21 @@ package ivgroup.master.database.dto.companyBranchType;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CompanyBranchTypeInsert 
 {
-	@NotNull(message = "CompanyBranchTypeName cannot be NULL")
+	@NotEmpty(message = "CompanyBranchTypeName cannot be NULL")
 	String companyBranchTypeName;
-	@NotNull(message = "CompanyId cannot be NULL")
+	@NotEmpty(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotNull(message = "CompanyBranchPosition cannot be NULL")
+	@NotEmpty(message = "CompanyBranchPosition cannot be NULL")
 	Integer companyBranchPosition;
-	@NotNull(message = "CreatedBy cannot be NULL")
+	@NotEmpty(message = "CreatedBy cannot be NULL")
 	Long createdBy;
-	@NotNull(message = "CreatedOn cannot be NULL")
+	@NotEmpty(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
 	
@@ -26,11 +26,11 @@ public class CompanyBranchTypeInsert
 	}
 
 	public CompanyBranchTypeInsert(
-			@NotNull(message = "CompanyBranchTypeName cannot be NULL") String companyBranchTypeName,
-			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
-			@NotNull(message = "CompanyBranchPosition cannot be NULL") Integer companyBranchPosition,
-			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
+			@NotEmpty(message = "CompanyBranchTypeName cannot be NULL") String companyBranchTypeName,
+			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
+			@NotEmpty(message = "CompanyBranchPosition cannot be NULL") Integer companyBranchPosition,
+			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
 		super();
 		this.companyBranchTypeName = companyBranchTypeName;
 		this.companyId = companyId;

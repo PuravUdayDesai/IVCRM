@@ -2,17 +2,16 @@ package ivgroup.master.database.dto.companyExecutivePL;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
-
+import javax.validation.constraints.NotEmpty;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CompanyExecutivePLInsert {
 
-	@NotNull(message="ExecutiveId cannot be NULL")
+	@NotEmpty(message="ExecutiveId cannot be NULL")
 	Long executiveId;
-	@NotNull(message="PL RATE cannot be NULL")
+	@NotEmpty(message="PL RATE cannot be NULL")
 	Integer PLrate;
-	@NotNull(message="TimeOfEntry cannot be NULL")
+	@NotEmpty(message="TimeOfEntry cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp timeOfEntry;
 	
@@ -22,9 +21,9 @@ public class CompanyExecutivePLInsert {
 	}
 
 	public CompanyExecutivePLInsert(
-			@NotNull(message = "ExecutiveId cannot be NULL") Long executiveId,
-			@NotNull(message = "PL RATE cannot be NULL") Integer pLrate,
-			@NotNull(message = "TimeOfEntry cannot be NULL") Timestamp timeOfEntry) {
+			@NotEmpty(message = "ExecutiveId cannot be NULL") Long executiveId,
+			@NotEmpty(message = "PL RATE cannot be NULL") Integer pLrate,
+			@NotEmpty(message = "TimeOfEntry cannot be NULL") Timestamp timeOfEntry) {
 		super();
 		this.executiveId = executiveId;
 		PLrate = pLrate;

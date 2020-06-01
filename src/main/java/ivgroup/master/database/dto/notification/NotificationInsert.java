@@ -2,25 +2,25 @@ package ivgroup.master.database.dto.notification;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class NotificationInsert {
 	
-	@NotNull(message="CompanyExecutiveID cannot be null")
+	@NotEmpty(message="CompanyExecutiveID cannot be null")
 	Long CompanyExecutiveID;
 	
-	@NotNull(message="CompanyExecutiveName cannot be null")
+	@NotEmpty(message="CompanyExecutiveName cannot be null")
 	String CompanyExecutiveName;
 	
-	@NotNull(message="NotificationSubject cannot be null")
+	@NotEmpty(message="NotificationSubject cannot be null")
 	String NotificationSubject;
 	
-	@NotNull(message="NotificationDescription cannot be null")
+	@NotEmpty(message="NotificationDescription cannot be null")
 	String NotificationDescription;
 	
-	@NotNull(message = "NotificationTime cannot be null")
+	@NotEmpty(message = "NotificationTime cannot be null")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp NotificationTime;
 
@@ -65,11 +65,11 @@ public class NotificationInsert {
 	}
 
 	public NotificationInsert(
-			@NotNull(message = "CompanyExecutiveID cannot be null") Long companyExecutiveID,
-			@NotNull(message = "CompanyExecutiveName cannot be null") String companyExecutiveName,
-			@NotNull(message = "NotificationSubject cannot be null") String notificationSubject,
-			@NotNull(message = "NotificationDescription cannot be null") String notificationDescription,
-			@NotNull(message = "NotificationTime cannot be null") Timestamp notificationTime) {
+			@NotEmpty(message = "CompanyExecutiveID cannot be null") Long companyExecutiveID,
+			@NotEmpty(message = "CompanyExecutiveName cannot be null") String companyExecutiveName,
+			@NotEmpty(message = "NotificationSubject cannot be null") String notificationSubject,
+			@NotEmpty(message = "NotificationDescription cannot be null") String notificationDescription,
+			@NotEmpty(message = "NotificationTime cannot be null") Timestamp notificationTime) {
 		super();
 		CompanyExecutiveID = companyExecutiveID;
 		CompanyExecutiveName = companyExecutiveName;

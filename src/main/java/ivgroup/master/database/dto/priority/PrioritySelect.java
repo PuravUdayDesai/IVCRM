@@ -1,14 +1,14 @@
 package ivgroup.master.database.dto.priority;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class PrioritySelect
 {
-	@NotNull(message = "PriorityId cannot be NULL")
+	@NotEmpty(message = "PriorityId cannot be NULL")
 	Long priorityId;
-	@NotNull(message = "PriorityName cannot be NULL")
+	@NotEmpty(message = "PriorityName cannot be NULL")
 	String priorityName;
-	@NotNull(message = "PriorityPosition cannot be NULL")
+	@NotEmpty(message = "PriorityPosition cannot be NULL")
 	Short priorityPosition;
 	
 	public PrioritySelect()
@@ -17,9 +17,9 @@ public class PrioritySelect
 	}
 
 	public PrioritySelect(
-			@NotNull(message = "PriorityId cannot be NULL") Long priorityId,
-			@NotNull(message = "PriorityName cannot be NULL") String priorityName,
-			@NotNull(message = "PriorityPosition cannot be NULL") Short priorityPosition) {
+			@NotEmpty(message = "PriorityId cannot be NULL") Long priorityId,
+			@NotEmpty(message = "PriorityName cannot be NULL") String priorityName,
+			@NotEmpty(message = "PriorityPosition cannot be NULL") Short priorityPosition) {
 		super();
 		this.priorityId = priorityId;
 		this.priorityName = priorityName;

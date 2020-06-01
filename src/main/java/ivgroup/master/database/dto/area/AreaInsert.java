@@ -2,38 +2,38 @@ package ivgroup.master.database.dto.area;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class AreaInsert {
 
-	@NotNull(message = "BusinessAreaName cannot be NULL")
+	@NotEmpty(message = "BusinessAreaName cannot be NULL")
 	private String BusinessAreaName;
 
-	@NotNull(message = "BusinessAreaCode cannot be NULL")
+	@NotEmpty(message = "BusinessAreaCode cannot be NULL")
 	private String BusinessAreaCode;
 	
-	@NotNull(message = "BusinessAreaDescription cannot be NULL")
+	@NotEmpty(message = "BusinessAreaDescription cannot be NULL")
 	private String BusinessAreaDescription;
 
-	@NotNull(message = "CountryID cannot be NULL")
+	@NotEmpty(message = "CountryID cannot be NULL")
 	private Long CountryID;
 	
-	@NotNull(message = "StateID cannot be NULL")
+	@NotEmpty(message = "StateID cannot be NULL")
 	private Long StateID;
 	
-	@NotNull(message = "CityID cannot be NULL")
+	@NotEmpty(message = "CityID cannot be NULL")
 	private Long CityID;
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@NotNull(message = "CreatedOn cannot be NULL")	
+	@NotEmpty(message = "CreatedOn cannot be NULL")	
 	private Timestamp CreatedOn;
 
-	@NotNull(message = "CreatedBy cannot be NULL")
+	@NotEmpty(message = "CreatedBy cannot be NULL")
 	private Long CreatedBy;
 
-	@NotNull(message = "DeviceType cannot be NULL")
+	@NotEmpty(message = "DeviceType cannot be NULL")
 	private Integer DeviceType;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
@@ -139,15 +139,15 @@ public class AreaInsert {
 		LastEditDeviceType = lastEditDeviceType;
 	}
 
-	public AreaInsert(@NotNull(message = "BusinessAreaName cannot be NULL") String businessAreaName,
-			@NotNull(message = "BusinessAreaCode cannot be NULL") String businessAreaCode,
-			@NotNull(message = "BusinessAreaDescription cannot be NULL") String businessAreaDescription,
-			@NotNull(message = "CountryID cannot be NULL") Long countryID,
-			@NotNull(message = "StateID cannot be NULL") Long stateID,
-			@NotNull(message = "CityID cannot be NULL") Long cityID,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "DeviceType cannot be NULL") Integer deviceType, Timestamp lastEditOn, Long lastEditBy,
+	public AreaInsert(@NotEmpty(message = "BusinessAreaName cannot be NULL") String businessAreaName,
+			@NotEmpty(message = "BusinessAreaCode cannot be NULL") String businessAreaCode,
+			@NotEmpty(message = "BusinessAreaDescription cannot be NULL") String businessAreaDescription,
+			@NotEmpty(message = "CountryID cannot be NULL") Long countryID,
+			@NotEmpty(message = "StateID cannot be NULL") Long stateID,
+			@NotEmpty(message = "CityID cannot be NULL") Long cityID,
+			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotEmpty(message = "DeviceType cannot be NULL") Integer deviceType, Timestamp lastEditOn, Long lastEditBy,
 			Integer lastEditDeviceType) {
 		super();
 		BusinessAreaName = businessAreaName;

@@ -2,32 +2,32 @@ package ivgroup.master.database.dto.state;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class StateInsert {
 	
-	@NotNull(message = "StateName cannot be NULL")
+	@NotEmpty(message = "StateName cannot be NULL")
 	private String StateName;
 
-	@NotNull(message = "StateCode cannot be NULL")
+	@NotEmpty(message = "StateCode cannot be NULL")
 	private String StateCode;
 
-	@NotNull(message = "CountryID cannot be NULL")
+	@NotEmpty(message = "CountryID cannot be NULL")
 	private Long CountryID;
 	
-	@NotNull(message = "StateDescription cannot be NULL")
+	@NotEmpty(message = "StateDescription cannot be NULL")
 	private String StateDescription;
 
-	@NotNull(message = "CreatedOn cannot be NULL")
+	@NotEmpty(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	private Timestamp CreatedOn;
 
-	@NotNull(message = "CreatedBy cannot be NULL")
+	@NotEmpty(message = "CreatedBy cannot be NULL")
 	private Long CreatedBy;
 
-	@NotNull(message = "DeviceType cannot be NULL")
+	@NotEmpty(message = "DeviceType cannot be NULL")
 	private Integer DeviceType;
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
@@ -117,13 +117,13 @@ public class StateInsert {
 		LastEditDeviceType = lastEditDeviceType;
 	}
 
-	public StateInsert(@NotNull(message = "StateName cannot be NULL") String stateName,
-			@NotNull(message = "StateCode cannot be NULL") String stateCode,
-			@NotNull(message = "CountryID cannot be NULL") Long countryID,
-			@NotNull(message = "StateDescription cannot be NULL") String stateDescription,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "DeviceType cannot be NULL") Integer deviceType) {
+	public StateInsert(@NotEmpty(message = "StateName cannot be NULL") String stateName,
+			@NotEmpty(message = "StateCode cannot be NULL") String stateCode,
+			@NotEmpty(message = "CountryID cannot be NULL") Long countryID,
+			@NotEmpty(message = "StateDescription cannot be NULL") String stateDescription,
+			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotEmpty(message = "DeviceType cannot be NULL") Integer deviceType) {
 		super();
 		StateName = stateName;
 		StateCode = stateCode;

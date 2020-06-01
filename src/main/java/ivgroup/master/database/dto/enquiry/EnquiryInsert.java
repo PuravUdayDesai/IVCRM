@@ -3,55 +3,55 @@ package ivgroup.master.database.dto.enquiry;
 import java.sql.Timestamp;
 import java.util.List;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class EnquiryInsert 
 {
-	@NotNull(message = "CompanyId cannot be NULL")
+	@NotEmpty(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotNull(message = "EnquiryRemarks cannot be NULL")
+	@NotEmpty(message = "EnquiryRemarks cannot be NULL")
 	String enquiryRemarks;
-	@NotNull(message = "EnquiryType cannot be NULL")
+	@NotEmpty(message = "EnquiryType cannot be NULL")
 	Long enquiryType;
-	@NotNull(message = "ClientId cannot be NULL")
+	@NotEmpty(message = "ClientId cannot be NULL")
 	Long clientId;
-	@NotNull(message = "CountryId cannot be NULL")
+	@NotEmpty(message = "CountryId cannot be NULL")
 	Long countryId;
-	@NotNull(message = "StateId cannot be NULL")
+	@NotEmpty(message = "StateId cannot be NULL")
 	Long stateId;
-	@NotNull(message = "CityId cannot be NULL")
+	@NotEmpty(message = "CityId cannot be NULL")
 	Long cityId;
-	@NotNull(message = "AreaId cannot be NULL")
+	@NotEmpty(message = "AreaId cannot be NULL")
 	Long areaId;
-	@NotNull(message = "AddressLine1 cannot be NULL")
+	@NotEmpty(message = "AddressLine1 cannot be NULL")
 	String addressLine1;
-	@NotNull(message = "AddressLine2 cannot be NULL")
+	@NotEmpty(message = "AddressLine2 cannot be NULL")
 	String addressLine2;
-	@NotNull(message = "AddressLine3 cannot be NULL")
+	@NotEmpty(message = "AddressLine3 cannot be NULL")
 	String addressLine3;
-	@NotNull(message = "Pincode cannot be NULL")
+	@NotEmpty(message = "Pincode cannot be NULL")
 	String pincode;
-	@NotNull(message = "Latitude cannot be NULL")
+	@NotEmpty(message = "Latitude cannot be NULL")
 	String latitude;
-	@NotNull(message = "Longitude cannot be NULL")
+	@NotEmpty(message = "Longitude cannot be NULL")
 	String longitude;
-	@NotNull(message = "StatusId cannot be NULL")
+	@NotEmpty(message = "StatusId cannot be NULL")
 	Long statusId;
-	@NotNull(message = "StartDateAndTime cannot be NULL")
+	@NotEmpty(message = "StartDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp startDateAndTime;
-	@NotNull(message = "DeadlineDateAndTime cannot be NULL")
+	@NotEmpty(message = "DeadlineDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp deadlineDateAndTime;
-	@NotNull(message = "Prioirty cannot be NULL")
+	@NotEmpty(message = "Prioirty cannot be NULL")
 	Integer prioirty;
-	@NotNull(message = "Product cannot be NULL")
+	@NotEmpty(message = "Product cannot be NULL")
 	List<Long> productId;
-	@NotNull(message = "CreatedBy cannot be NULL")
+	@NotEmpty(message = "CreatedBy cannot be NULL")
 	Long createdBy;
-	@NotNull(message = "CreatedOn cannot be NULL")
+	@NotEmpty(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
 	
@@ -60,27 +60,27 @@ public class EnquiryInsert
 		
 	}
 
-	public EnquiryInsert(@NotNull(message = "CompanyId cannot be NULL") Long companyId,
-			@NotNull(message = "EnquiryRemarks cannot be NULL") String enquiryRemarks,
-			@NotNull(message = "EnquiryType cannot be NULL") Long enquiryType,
-			@NotNull(message = "ClientId cannot be NULL") Long clientId,
-			@NotNull(message = "CountryId cannot be NULL") Long countryId,
-			@NotNull(message = "StateId cannot be NULL") Long stateId,
-			@NotNull(message = "CityId cannot be NULL") Long cityId,
-			@NotNull(message = "AreaId cannot be NULL") Long areaId,
-			@NotNull(message = "AddressLine1 cannot be NULL") String addressLine1,
-			@NotNull(message = "AddressLine2 cannot be NULL") String addressLine2,
-			@NotNull(message = "AddressLine3 cannot be NULL") String addressLine3,
-			@NotNull(message = "Pincode cannot be NULL") String pincode,
-			@NotNull(message = "Latitude cannot be NULL") String latitude,
-			@NotNull(message = "Longitude cannot be NULL") String longitude,
-			@NotNull(message = "StatusId cannot be NULL") Long statusId,
-			@NotNull(message = "StartDateAndTime cannot be NULL") Timestamp startDateAndTime,
-			@NotNull(message = "DeadlineDateAndTime cannot be NULL") Timestamp deadlineDateAndTime,
-			@NotNull(message = "Prioirty cannot be NULL") Integer prioirty,
-			@NotNull(message = "Product cannot be NULL") List<Long> productId,
-			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
+	public EnquiryInsert(@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
+			@NotEmpty(message = "EnquiryRemarks cannot be NULL") String enquiryRemarks,
+			@NotEmpty(message = "EnquiryType cannot be NULL") Long enquiryType,
+			@NotEmpty(message = "ClientId cannot be NULL") Long clientId,
+			@NotEmpty(message = "CountryId cannot be NULL") Long countryId,
+			@NotEmpty(message = "StateId cannot be NULL") Long stateId,
+			@NotEmpty(message = "CityId cannot be NULL") Long cityId,
+			@NotEmpty(message = "AreaId cannot be NULL") Long areaId,
+			@NotEmpty(message = "AddressLine1 cannot be NULL") String addressLine1,
+			@NotEmpty(message = "AddressLine2 cannot be NULL") String addressLine2,
+			@NotEmpty(message = "AddressLine3 cannot be NULL") String addressLine3,
+			@NotEmpty(message = "Pincode cannot be NULL") String pincode,
+			@NotEmpty(message = "Latitude cannot be NULL") String latitude,
+			@NotEmpty(message = "Longitude cannot be NULL") String longitude,
+			@NotEmpty(message = "StatusId cannot be NULL") Long statusId,
+			@NotEmpty(message = "StartDateAndTime cannot be NULL") Timestamp startDateAndTime,
+			@NotEmpty(message = "DeadlineDateAndTime cannot be NULL") Timestamp deadlineDateAndTime,
+			@NotEmpty(message = "Prioirty cannot be NULL") Integer prioirty,
+			@NotEmpty(message = "Product cannot be NULL") List<Long> productId,
+			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
 		super();
 		this.companyId = companyId;
 		this.enquiryRemarks = enquiryRemarks;

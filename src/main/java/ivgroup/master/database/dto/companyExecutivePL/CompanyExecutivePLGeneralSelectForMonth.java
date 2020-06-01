@@ -2,15 +2,15 @@ package ivgroup.master.database.dto.companyExecutivePL;
 
 import java.sql.Date;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CompanyExecutivePLGeneralSelectForMonth {
 
-	@NotNull(message="PL RATE cannot be NULL")
+	@NotEmpty(message="PL RATE cannot be NULL")
 	Double PLRate;
-	@NotNull(message="date cannot be NULL")
+	@NotEmpty(message="date cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "IST")
 	Date dateOfEntry;
 	
@@ -20,8 +20,8 @@ public class CompanyExecutivePLGeneralSelectForMonth {
 	}
 
 	public CompanyExecutivePLGeneralSelectForMonth(
-			@NotNull(message = "PL RATE cannot be NULL") Double pLRate,
-			@JsonFormat(pattern = "yyyy-MM-dd", timezone = "IST") @NotNull(message = "date cannot be NULL") Date dateOfEntry) {
+			@NotEmpty(message = "PL RATE cannot be NULL") Double pLRate,
+			@JsonFormat(pattern = "yyyy-MM-dd", timezone = "IST") @NotEmpty(message = "date cannot be NULL") Date dateOfEntry) {
 		super();
 		PLRate = pLRate;
 		this.dateOfEntry = dateOfEntry;

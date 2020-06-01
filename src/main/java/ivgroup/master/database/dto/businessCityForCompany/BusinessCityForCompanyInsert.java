@@ -2,38 +2,38 @@ package ivgroup.master.database.dto.businessCityForCompany;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class BusinessCityForCompanyInsert {
 
-	@NotNull(message = "CompanyID cannot be NULL")
+	@NotEmpty(message = "CompanyID cannot be NULL")
 	private Long CompanyID;
 	
-	@NotNull(message = "CountryID cannot be NULL")
+	@NotEmpty(message = "CountryID cannot be NULL")
 	private Long CountryID;
 	
-	@NotNull(message = "StateID cannot be NULL")
+	@NotEmpty(message = "StateID cannot be NULL")
 	private Long StateID;
 	
-	@NotNull(message = "CityName cannot be NULL")
+	@NotEmpty(message = "CityName cannot be NULL")
 	private String CityName;
 	
-	@NotNull(message = "CityCode cannot be NULL")
+	@NotEmpty(message = "CityCode cannot be NULL")
 	private String CityCode;
 	
-	@NotNull(message = "CityDescription cannot be NULL")
+	@NotEmpty(message = "CityDescription cannot be NULL")
 	private String CityDescription;
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@NotNull(message = "CreatedOn cannot be NULL")	
+	@NotEmpty(message = "CreatedOn cannot be NULL")	
 	private Timestamp CreatedOn;
 
-	@NotNull(message = "CreatedBy cannot be NULL")
+	@NotEmpty(message = "CreatedBy cannot be NULL")
 	private Long CreatedBy;
 
-	@NotNull(message = "DeviceType cannot be NULL")
+	@NotEmpty(message = "DeviceType cannot be NULL")
 	private Integer DeviceType;
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
@@ -139,15 +139,15 @@ public class BusinessCityForCompanyInsert {
 		LastEditDeviceType = lastEditDeviceType;
 	}
 	
-	public BusinessCityForCompanyInsert(@NotNull(message = "CompanyID cannot be NULL") Long companyID,
-			@NotNull(message = "CountryID cannot be NULL") Long countryID,
-			@NotNull(message = "StateID cannot be NULL") Long stateID,
-			@NotNull(message = "CityName cannot be NULL") String cityName,
-			@NotNull(message = "CityCode cannot be NULL") String cityCode,
-			@NotNull(message = "CityDescription cannot be NULL") String cityDescription,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "DeviceType cannot be NULL") Integer deviceType, Timestamp lastEditOn, Long lastEditBy,
+	public BusinessCityForCompanyInsert(@NotEmpty(message = "CompanyID cannot be NULL") Long companyID,
+			@NotEmpty(message = "CountryID cannot be NULL") Long countryID,
+			@NotEmpty(message = "StateID cannot be NULL") Long stateID,
+			@NotEmpty(message = "CityName cannot be NULL") String cityName,
+			@NotEmpty(message = "CityCode cannot be NULL") String cityCode,
+			@NotEmpty(message = "CityDescription cannot be NULL") String cityDescription,
+			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotEmpty(message = "DeviceType cannot be NULL") Integer deviceType, Timestamp lastEditOn, Long lastEditBy,
 			Integer lastEditDeviceType) {
 		super();
 		CompanyID = companyID;

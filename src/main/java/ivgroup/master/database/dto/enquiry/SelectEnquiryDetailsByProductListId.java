@@ -1,12 +1,12 @@
 package ivgroup.master.database.dto.enquiry;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class SelectEnquiryDetailsByProductListId
 {
-	@NotNull(message = "EnquiryId cannot be NULL")
+	@NotEmpty(message = "EnquiryId cannot be NULL")
 	Long enquiryId;
-	@NotNull(message = "ProductId cannot be NULL")
+	@NotEmpty(message = "ProductId cannot be NULL")
 	Long productId;
 	
 	public SelectEnquiryDetailsByProductListId()
@@ -14,8 +14,8 @@ public class SelectEnquiryDetailsByProductListId
 		
 	}
 
-	public SelectEnquiryDetailsByProductListId(@NotNull(message = "EnquiryId cannot be NULL") Long enquiryId,
-			@NotNull(message = "ProductId cannot be NULL") Long productId) {
+	public SelectEnquiryDetailsByProductListId(@NotEmpty(message = "EnquiryId cannot be NULL") Long enquiryId,
+			@NotEmpty(message = "ProductId cannot be NULL") Long productId) {
 		super();
 		this.enquiryId = enquiryId;
 		this.productId = productId;

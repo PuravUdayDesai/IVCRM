@@ -1,19 +1,19 @@
 package ivgroup.master.database.dto.city;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class CityInfoFromStateId {
 
-	@NotNull(message = "CityID cannot be NULL")
+	@NotEmpty(message = "CityID cannot be NULL")
 	private long CityID;
 
-	@NotNull(message = "CityName cannot be NULL")
+	@NotEmpty(message = "CityName cannot be NULL")
 	private String CityName;
 
-	@NotNull(message = "CityCode cannot be NULL")
+	@NotEmpty(message = "CityCode cannot be NULL")
 	private String CityCode;
 
-	@NotNull(message = "CityDescription cannot be NULL")
+	@NotEmpty(message = "CityDescription cannot be NULL")
 	private String CityDescription;
 
 	public long getCityID() {
@@ -48,10 +48,10 @@ public class CityInfoFromStateId {
 		CityDescription = cityDescription;
 	}
 
-	public CityInfoFromStateId(@NotNull(message = "CityID cannot be NULL") long cityID,
-			@NotNull(message = "CityName cannot be NULL") String cityName,
-			@NotNull(message = "CityCode cannot be NULL") String cityCode,
-			@NotNull(message = "CityDescription cannot be NULL") String cityDescription) {
+	public CityInfoFromStateId(@NotEmpty(message = "CityID cannot be NULL") long cityID,
+			@NotEmpty(message = "CityName cannot be NULL") String cityName,
+			@NotEmpty(message = "CityCode cannot be NULL") String cityCode,
+			@NotEmpty(message = "CityDescription cannot be NULL") String cityDescription) {
 		super();
 		CityID = cityID;
 		CityName = cityName;
