@@ -36,14 +36,14 @@ public class CompanyExecutiveGeoLocationController
 	CompanyExecutiveGeoLocationBusinessLogic cbl;
 	
 	@GetMapping(path="{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyExecutiveGeoLocationSelect>>
+	public ResponseEntity<List<@Valid CompanyExecutiveGeoLocationSelect>>
 	selectCompanyExecutiveGeoLocationByCompanyExecutiveId(@PathVariable @NotNull Long companyExecutiveId) 
 	{
 		return cbl.selectCompanyExecutiveGeoLocationByCompanyExecutiveId(companyExecutiveId);
 	}
 
 	@GetMapping(path="date/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyExecutiveGeoLocationSelect>>
+	public ResponseEntity<List<@Valid CompanyExecutiveGeoLocationSelect>>
 	selectCompanyExecutiveGeoLocationByCompanyExecutiveIdAndDate(
 																@PathVariable @NotNull Long companyExecutiveId, 
 																@RequestParam("date") @JsonFormat(pattern = "yyyy-MM-dd", timezone = "IST") Date dateOfSearch)  
@@ -54,7 +54,7 @@ public class CompanyExecutiveGeoLocationController
 	}
 
 	@GetMapping(path="dateRange/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyExecutiveGeoLocationSelect>>
+	public ResponseEntity<List<@Valid CompanyExecutiveGeoLocationSelect>>
 	selectCompanyExecutiveGeoLocationByCompanyExecutiveIdAndBetweenDate(
 																		@PathVariable @NotNull Long companyExecutiveId, 
 																		@RequestParam("startDate") @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST") Timestamp startDate, 
@@ -67,7 +67,7 @@ public class CompanyExecutiveGeoLocationController
 	}
 
 	@GetMapping(path="date/text/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyExecutiveGeoLocationTextSelect>>
+	public ResponseEntity<List<@Valid CompanyExecutiveGeoLocationTextSelect>>
 	selectCompanyExecutiveGeoLocationTextByCompanyExecutiveIdAndDate(
 																	@PathVariable @NotNull Long companyExecutiveId, 
 																	@RequestParam("date") @JsonFormat(pattern = "yyyy-MM-dd", timezone = "IST") Date dateOfSearch) 
@@ -78,7 +78,7 @@ public class CompanyExecutiveGeoLocationController
 	}
 
 	@GetMapping(path="dateRange/text/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyExecutiveGeoLocationTextSelect>>
+	public ResponseEntity<List<@Valid CompanyExecutiveGeoLocationTextSelect>>
 	selectCompanyExecutiveGeoLocationTextByCompanyExecutiveIdAndBetweenDate(
 																			@PathVariable @NotNull Long companyExecutiveId, 
 																			@RequestParam("startDate") @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST") Timestamp startDate, 

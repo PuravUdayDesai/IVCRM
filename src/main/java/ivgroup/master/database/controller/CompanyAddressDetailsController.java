@@ -29,7 +29,7 @@ public class CompanyAddressDetailsController {
 	CompanyAddressDetailsBusinessLogic cabl;
 	
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDetails()
+	public ResponseEntity<List<@Valid CompanyAddressDetailsSelect>> selectCompanyAddressDetails()
 	{
 		return cabl.selectCompanyAddressDetails();
 	}

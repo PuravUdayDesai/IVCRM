@@ -48,13 +48,13 @@ public class CallTransactionController {
 	 }
 	
 	@GetMapping(path="{companyExecutiveId}")
-	public ResponseEntity<List<CallTransactionSelect>> selectCallTransactionsByCompanyExecutiveId(@PathVariable @NotNull Long companyExecutiveId)
+	public ResponseEntity<List<@Valid CallTransactionSelect>> selectCallTransactionsByCompanyExecutiveId(@PathVariable @NotNull Long companyExecutiveId)
 	{
 		return ctbl.selectCallTransactionsByCompanyExecutiveId(companyExecutiveId);
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<CallTransactionSelect>> selectCallTransactionsByCompanyExecutiveIdAndCallDate(
+	public ResponseEntity<List<@Valid CallTransactionSelect>> selectCallTransactionsByCompanyExecutiveIdAndCallDate(
 			@RequestParam(name="companyExecutiveId") @NotNull Long companyExecutiveId,
 			@RequestParam(name="callDate")@JsonFormat(pattern = "yyyy-MM-dd", timezone = "IST") @NotNull Date callDate)
 	{

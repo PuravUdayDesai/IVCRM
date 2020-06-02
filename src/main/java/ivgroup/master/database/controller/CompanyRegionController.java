@@ -39,22 +39,22 @@ public class CompanyRegionController {
 	}
 	
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyRegionSelect>> selectCompanyRegion() {
+	public ResponseEntity<List<@Valid CompanyRegionSelect>> selectCompanyRegion() {
 		return crbl.selectCompanyRegion();
 	}
 	
 	@GetMapping(path= "/{companyRegionId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<CompanyRegionSelect> selectCompanyRegionByCompanyRegionID(@PathVariable @NotNull Long companyRegionId){
+	public ResponseEntity<@Valid CompanyRegionSelect> selectCompanyRegionByCompanyRegionID(@PathVariable @NotNull Long companyRegionId){
 		return crbl.selectCompanyRegionByCompanyRegionID(companyRegionId);
 	}
 	
 	@GetMapping(path= "/company/{companyId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyRegionSelect>> selectCompanyRegionByCompanyID(@PathVariable @NotNull Long companyId){
+	public ResponseEntity<List<@Valid CompanyRegionSelect>> selectCompanyRegionByCompanyID(@PathVariable @NotNull Long companyId){
 		return crbl.selectCompanyRegionByCompanyID(companyId);
 	}
 
 	@GetMapping(path= "/owner/{ownerId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyRegionSelect>> selectCompanyRegionByOwnerID(@PathVariable @NotNull Long ownerId){
+	public ResponseEntity<List<@Valid CompanyRegionSelect>> selectCompanyRegionByOwnerID(@PathVariable @NotNull Long ownerId){
 		return crbl.selectCompanyRegionByOwnerID(ownerId);
 	}
 	

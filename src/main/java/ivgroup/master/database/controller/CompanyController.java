@@ -56,37 +56,37 @@ public class CompanyController {
 	}
 	
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanySelect>> selectCompany()
+	public ResponseEntity<List<@Valid CompanySelect>> selectCompany()
 	{
 		return cbl.selectCompany();
 	}
 	
 	@GetMapping(path="/{companyId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<CompanySelect> selectCompanyByCompanyId(@PathVariable @NotNull Long companyId)
+	public ResponseEntity<@Valid CompanySelect> selectCompanyByCompanyId(@PathVariable @NotNull Long companyId)
 	{
 		return cbl.selectCompanyByCompanyId(companyId);
 	}
 	
 	@GetMapping(path="owner/{ownerId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanySelect>> selectCompanyByOwnerId(@PathVariable @NotNull Long ownerId)
+	public ResponseEntity<List<@Valid CompanySelect>> selectCompanyByOwnerId(@PathVariable @NotNull Long ownerId)
 	{
 		return cbl.selectCompanyByOwnerId(ownerId);
 	}
 	
 	@GetMapping(path="country/{countryId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanySelect>> selectCompanyByCountryId(@PathVariable @NotNull Long countryId)
+	public ResponseEntity<List<@Valid CompanySelect>> selectCompanyByCountryId(@PathVariable @NotNull Long countryId)
 	{
 		return cbl.selectCompanyByCountryId(countryId);
 	}
 	
 	@GetMapping(path="state/{countryId}/{stateId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanySelect>> selectCompanyByStateId(@PathVariable @NotNull Long countryId,@PathVariable @NotNull Long stateId)
+	public ResponseEntity<List<@Valid CompanySelect>> selectCompanyByStateId(@PathVariable @NotNull Long countryId,@PathVariable @NotNull Long stateId)
 	{
 		return cbl.selectCompanyByStateId(countryId, stateId);
 	}
 	
 	@GetMapping(path="city/{countryId}/{stateId}/{cityId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanySelect>> selectCompanyByCityId(@PathVariable @NotNull Long countryId,@PathVariable @NotNull Long stateId,@PathVariable @NotNull Long cityId)
+	public ResponseEntity<List<@Valid CompanySelect>> selectCompanyByCityId(@PathVariable @NotNull Long countryId,@PathVariable @NotNull Long stateId,@PathVariable @NotNull Long cityId)
 	{
 		return cbl.selectCompanyByCityId(countryId, stateId, cityId);
 	}

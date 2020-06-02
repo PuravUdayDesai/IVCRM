@@ -33,7 +33,7 @@ public class CompanyBranchTypeController
 	CompanyBranchTypeBusinessLogic cbbl;
 	
 	@GetMapping(path="/{companyId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyBranchTypeSelect>> selectCompanyBranchTypeByCompanyId(@PathVariable @NotNull Long companyId)
+	public ResponseEntity<List<@Valid CompanyBranchTypeSelect>> selectCompanyBranchTypeByCompanyId(@PathVariable @NotNull Long companyId)
 	{
 		return cbbl.selectCompanyBranchTypeByCompanyId(companyId);
 	}

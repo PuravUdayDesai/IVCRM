@@ -39,27 +39,27 @@ public class CompanyAreaController {
 
 	
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyAreaSelect>> selectCompanyArea() {
+	public ResponseEntity<List<@Valid CompanyAreaSelect>> selectCompanyArea() {
 		return crbl.selectCompanyArea();
 	}
 	
 	@GetMapping(path= "/{companyAreaId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<CompanyAreaSelect> selectCompanyAreaByCompanyAreaID(@PathVariable @NotNull Long companyAreaId){
+	public ResponseEntity<@Valid CompanyAreaSelect> selectCompanyAreaByCompanyAreaID(@PathVariable @NotNull Long companyAreaId){
 		return crbl.selectCompanyAreaByCompanyAreaID(companyAreaId);
 	}
 	
 	@GetMapping(path= "/company/{companyId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyAreaSelect>> selectCompanyAreaByCompanyID(@PathVariable @NotNull Long companyId){
+	public ResponseEntity<List<@Valid CompanyAreaSelect>> selectCompanyAreaByCompanyID(@PathVariable @NotNull Long companyId){
 		return crbl.selectCompanyAreaByCompanyID(companyId);
 	}
 	
 	@GetMapping(path= "/owner/{ownerId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyAreaSelect>> selectCompanyAreaByOwnerID(@PathVariable @NotNull Long ownerId){
+	public ResponseEntity<List<@Valid CompanyAreaSelect>> selectCompanyAreaByOwnerID(@PathVariable @NotNull Long ownerId){
 		return crbl.selectCompanyAreaByOwnerID(ownerId);
 	}
 	
 	@GetMapping(path= "/region/{companyRegionId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyAreaSelect>> selectCompanyAreaByCompanyRegionID(@PathVariable @NotNull Long companyRegionId){
+	public ResponseEntity<List<@Valid CompanyAreaSelect>> selectCompanyAreaByCompanyRegionID(@PathVariable @NotNull Long companyRegionId){
 		return crbl.selectCompanyAreaByRegionID(companyRegionId);
 	}
 	

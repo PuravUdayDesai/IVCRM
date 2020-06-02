@@ -28,7 +28,7 @@ public class CompanyBranchAddressDetailsController {
 	CompanyBranchAddressDetailsBusinessLogic cabl;
 
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBranchAddressDetails()
+	public ResponseEntity<List<@Valid CompanyBranchAddressDetailsSelect>> selectCompanyBranchAddressDetails()
 	{
 		return cabl.selectCompanyBranchAddressDetails();
 	}

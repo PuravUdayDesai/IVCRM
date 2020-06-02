@@ -33,25 +33,25 @@ public class StateController {
 	StateBusinessLogic state_business_logic;
 
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<State>> getAllStateInfo() {
+	public ResponseEntity<List<@Valid State>> getAllStateInfo() {
 		return state_business_logic.getAllState();
 	}
 
 	@GetMapping(path = "/{state_id}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<State> getOneStateInfo(@PathVariable long state_id) {
+	public ResponseEntity<@Valid State> getOneStateInfo(@PathVariable long state_id) {
 		return state_business_logic.getOneStateById(state_id);
 	}
 
 	@GetMapping(path = "search/{search_content}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<State>> searchInState(@PathVariable String search_content) {
+	public ResponseEntity<List<@Valid State>> searchInState(@PathVariable String search_content) {
 		return state_business_logic.searchInState(search_content);
 	}
 	
 	@GetMapping(path = "/country/{country_id}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<StateInfoFromCountryId>> selectStateUsingCountryId(@PathVariable Long country_id) {
+	public ResponseEntity<List<@Valid StateInfoFromCountryId>> selectStateUsingCountryId(@PathVariable Long country_id) {
 		return state_business_logic.selectStateUsingCountryId(country_id);
 	}
 

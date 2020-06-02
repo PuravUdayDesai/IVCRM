@@ -33,13 +33,13 @@ public class StatusController
 	StatusBusinessLogic sbl;
 	
 	@GetMapping(path="/{companyId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<StatusSelect>> selectStatusByCompanyId(@PathVariable @NotNull Long companyId) 
+	public ResponseEntity<List<@Valid StatusSelect>> selectStatusByCompanyId(@PathVariable @NotNull Long companyId) 
 	{
 		return sbl.selectStatusByCompanyId(companyId);
 	}
 	
 	@GetMapping(path="/owner/{ownerId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<StatusSelect>> selectStatusByOwnerId(@PathVariable @NotNull Long ownerId) 
+	public ResponseEntity<List<@Valid StatusSelect>> selectStatusByOwnerId(@PathVariable @NotNull Long ownerId) 
 	{
 		return sbl.selectStatusByOwnerId(ownerId);	
 	}

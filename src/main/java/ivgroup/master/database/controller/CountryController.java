@@ -32,19 +32,19 @@ public class CountryController {
 	CountryBusinessLogic country_business_logic;
 
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<Country>> getAllCountryInfo() {
+	public ResponseEntity<List<@Valid Country>> getAllCountryInfo() {
 		return country_business_logic.getAllCountry();
 	}
 
 	@GetMapping(path = "/{country_id}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<Country> getOneCountryInfo(@PathVariable long country_id) {
+	public ResponseEntity<@Valid Country> getOneCountryInfo(@PathVariable long country_id) {
 		return country_business_logic.getOneCountryById(country_id);
 	}
 
 	@GetMapping(path = "search/{search_content}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<Country>> searchInCountry(@PathVariable String search_content) {
+	public ResponseEntity<List<@Valid Country>> searchInCountry(@PathVariable String search_content) {
 		return country_business_logic.searchInCountry(search_content);
 	}
 

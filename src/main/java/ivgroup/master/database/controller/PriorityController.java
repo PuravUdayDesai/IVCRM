@@ -2,6 +2,8 @@ package ivgroup.master.database.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +25,7 @@ public class PriorityController
 	PriorityBusinessLogic pbl;
 	
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<PrioritySelect>> selectPriority()
+	public ResponseEntity<List<@Valid PrioritySelect>> selectPriority()
 	{
 		return pbl.selectPriority();
 	}

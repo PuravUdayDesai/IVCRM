@@ -41,32 +41,32 @@ public class CompanyExecutiveController {
 		return cebl.addCompanyExecutive(ci);
 	}
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyExecutiveSelect>> selectCompanyExecutive()
+	public ResponseEntity<List<@Valid CompanyExecutiveSelect>> selectCompanyExecutive()
 	{
 		return cebl.selectCompanyExecutive();
 	}
 	@GetMapping(path="/{companyExecutiveID}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<CompanyExecutiveSelect> selectCompanyByCompanyExecutiveId(@PathVariable @NotNull Long companyExecutiveID)
+	public ResponseEntity<@Valid CompanyExecutiveSelect> selectCompanyByCompanyExecutiveId(@PathVariable @NotNull Long companyExecutiveID)
 	{
 		return cebl.selectCompanyByCompanyExecutiveId(companyExecutiveID);
 	}	
 	@GetMapping(path="/company/{companyId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyExecutiveSelect>> selectCompanyExecutiveByCompanyId(@PathVariable @NotNull Long companyId)
+	public ResponseEntity<List<@Valid CompanyExecutiveSelect>> selectCompanyExecutiveByCompanyId(@PathVariable @NotNull Long companyId)
 	{
 		return cebl.selectCompanyExecutiveByCompanyId(companyId);
 	}
 	@GetMapping(path="/owner/{ownerId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyExecutiveSelect>> selectCompanyExecutiveByOwnerId(@PathVariable @NotNull Long ownerId)
+	public ResponseEntity<List<@Valid CompanyExecutiveSelect>> selectCompanyExecutiveByOwnerId(@PathVariable @NotNull Long ownerId)
 	{
 		return cebl.selectCompanyExecutiveByOwnerId(ownerId);
 	}
 	@GetMapping(path="/branch/{companyBranchId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyExecutiveSelect>> selectCompanyExecutiveByCompanyBranchId(@PathVariable @NotNull Long companyBranchId)
+	public ResponseEntity<List<@Valid CompanyExecutiveSelect>> selectCompanyExecutiveByCompanyBranchId(@PathVariable @NotNull Long companyBranchId)
 	{
 		return cebl.selectCompanyExecutiveByCompanyBranchId(companyBranchId);
 	}
 	@GetMapping(path="/subPosition/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyExecutiveSelect>> selectCompanyExecutiveOfSubPosition(@PathVariable @NotNull Long companyExecutiveId)
+	public ResponseEntity<List<@Valid CompanyExecutiveSelect>> selectCompanyExecutiveOfSubPosition(@PathVariable @NotNull Long companyExecutiveId)
 	{
 		return cebl.selectCompanyExecutiveOfSubPosition(companyExecutiveId);
 	}

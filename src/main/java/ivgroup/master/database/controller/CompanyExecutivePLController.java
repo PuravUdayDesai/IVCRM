@@ -41,33 +41,33 @@ public class CompanyExecutivePLController
 		return cebl.addCompanyExecutivePL(cpli);
 	}
 	@GetMapping(path="/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyExecutivePLSelect>> selectCompanyExecutivePLByExecutiveId(@PathVariable @NotNull Long companyExecutiveId) 
+	public ResponseEntity<List<@Valid CompanyExecutivePLSelect>> selectCompanyExecutivePLByExecutiveId(@PathVariable @NotNull Long companyExecutiveId) 
 	{
 		return cebl.selectCompanyExecutivePLByExecutiveId(companyExecutiveId);
 	}
 
 	@GetMapping(path="/date/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyExecutivePLSelect>> selectCompanyExecutivePLByExecutiveIdAndDate(@PathVariable @NotNull Long companyExecutiveId,@RequestParam("date") Date date)  
+	public ResponseEntity<List<@Valid CompanyExecutivePLSelect>> selectCompanyExecutivePLByExecutiveIdAndDate(@PathVariable @NotNull Long companyExecutiveId,@RequestParam("date") Date date)  
 	{
 		return cebl.selectCompanyExecutivePLByExecutiveIdAndDate(companyExecutiveId, date);
 	}
 	@GetMapping(path="/betweenDate/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyExecutivePLSelect>> selectCompanyExecutivePLByExecutiveIdBetweenDate(@PathVariable @NotNull Long companyExecutiveId,@RequestParam("dateStart")Date dateStart,@RequestParam("dateEnd") Date dateEnd)  
+	public ResponseEntity<List<@Valid CompanyExecutivePLSelect>> selectCompanyExecutivePLByExecutiveIdBetweenDate(@PathVariable @NotNull Long companyExecutiveId,@RequestParam("dateStart")Date dateStart,@RequestParam("dateEnd") Date dateEnd)  
 	{
 		return cebl.selectCompanyExecutivePLByExecutiveIdBetweenDate(companyExecutiveId, dateStart, dateEnd);
 	}
 	@GetMapping(path="/month/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyExecutivePLGeneralSelectForMonth>> selectCompanyExecutiveMonthreport(@PathVariable @NotNull Long companyExecutiveId,@RequestParam("month")Integer monthNumber,@RequestParam("year") Integer yearNumber)  
+	public ResponseEntity<List<@Valid CompanyExecutivePLGeneralSelectForMonth>> selectCompanyExecutiveMonthreport(@PathVariable @NotNull Long companyExecutiveId,@RequestParam("month")Integer monthNumber,@RequestParam("year") Integer yearNumber)  
 	{
 		return cebl.selectCompanyExecutiveMonthReport(companyExecutiveId, monthNumber, yearNumber);
 	}
 	@GetMapping(path="/year/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyExecutivePLGeneralSelectForYear>> selectCompanyExecutiveYearreport(@PathVariable @NotNull Long companyExecutiveId,@RequestParam("year")Integer yearNumber)  
+	public ResponseEntity<List<@Valid CompanyExecutivePLGeneralSelectForYear>> selectCompanyExecutiveYearreport(@PathVariable @NotNull Long companyExecutiveId,@RequestParam("year")Integer yearNumber)  
 	{
 		return cebl.selectCompanyExecutiveYearReport(companyExecutiveId, yearNumber);
 	}
 	@GetMapping(path="/years/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyExecutivePLGeneralSelectForAllYear>> selectCompanyExecutiveYearreport(@PathVariable @NotNull Long companyExecutiveId)  
+	public ResponseEntity<List<@Valid CompanyExecutivePLGeneralSelectForAllYear>> selectCompanyExecutiveYearreport(@PathVariable @NotNull Long companyExecutiveId)  
 	{
 		return cebl.selectCompanyExecutiveAllYearsReport(companyExecutiveId);
 	}

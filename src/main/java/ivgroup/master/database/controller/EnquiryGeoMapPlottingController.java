@@ -2,6 +2,7 @@ package ivgroup.master.database.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,43 +27,43 @@ public class EnquiryGeoMapPlottingController
 	EnquiryGeoMapPlottingBusinessLogic egbl;
 	
 	@GetMapping(path="/owner",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquiryGeoMapPlotting>> getEnquiryGeoMapPlottingByOwnerId(@RequestParam("ownerId") @NotNull Long ownerId)
+	public ResponseEntity<List<@Valid EnquiryGeoMapPlotting>> getEnquiryGeoMapPlottingByOwnerId(@RequestParam("ownerId") @NotNull Long ownerId)
 	{
 		return egbl.getEnquiryGeoMapPlottingByOwnerId(ownerId);
 	}
 
 	@GetMapping(path="/company",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquiryGeoMapPlotting>> getEnquryGeoMapPlottingByCompanyId(@RequestParam("companyId") @NotNull Long companyId)
+	public ResponseEntity<List<@Valid EnquiryGeoMapPlotting>> getEnquryGeoMapPlottingByCompanyId(@RequestParam("companyId") @NotNull Long companyId)
 	{
 		return egbl.getEnquryGeoMapPlottingByCompanyId(companyId);
 	}
 
 	@GetMapping(path="/country",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquiryGeoMapPlotting>> getEnquiryGeoMapPlottingByCountry(@RequestParam("ownerId") @NotNull Long ownerId,@RequestParam("countryId") @NotNull  Long countryId)
+	public ResponseEntity<List<@Valid EnquiryGeoMapPlotting>> getEnquiryGeoMapPlottingByCountry(@RequestParam("ownerId") @NotNull Long ownerId,@RequestParam("countryId") @NotNull  Long countryId)
 	{
 		return egbl.getEnquiryGeoMapPlottingByCountry(ownerId, countryId);
 	}
 	
 	@GetMapping(path="/state",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquiryGeoMapPlotting>> getEnquiryGeoMapPlottingByState(@RequestParam("ownerId") @NotNull Long ownerId,@RequestParam("countryId") @NotNull  Long countryId,@RequestParam("stateId") @NotNull  Long stateId)
+	public ResponseEntity<List<@Valid EnquiryGeoMapPlotting>> getEnquiryGeoMapPlottingByState(@RequestParam("ownerId") @NotNull Long ownerId,@RequestParam("countryId") @NotNull  Long countryId,@RequestParam("stateId") @NotNull  Long stateId)
 	{
 		return egbl.getEnquiryGeoMapPlottingByState(ownerId, countryId, stateId);
 	}
 
 	@GetMapping(path="/city",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquiryGeoMapPlotting>> getEnquiryGeoMapPlottingByCity(@RequestParam("ownerId") @NotNull Long ownerId,@RequestParam("countryId") @NotNull  Long countryId,@RequestParam("stateId") @NotNull  Long stateId,@RequestParam("cityId") @NotNull  Long cityId)
+	public ResponseEntity<List<@Valid EnquiryGeoMapPlotting>> getEnquiryGeoMapPlottingByCity(@RequestParam("ownerId") @NotNull Long ownerId,@RequestParam("countryId") @NotNull  Long countryId,@RequestParam("stateId") @NotNull  Long stateId,@RequestParam("cityId") @NotNull  Long cityId)
 	{
 		return egbl.getEnquiryGeoMapPlottingByCity(ownerId, countryId, stateId, cityId);
 	}
 
 	@GetMapping(path="/area",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquiryGeoMapPlotting>> getEnquiryGeoMapPlottingByArea(@RequestParam("ownerId") @NotNull Long ownerId,@RequestParam("countryId") @NotNull  Long countryId,@RequestParam("stateId") @NotNull  Long stateId,@RequestParam("cityId") @NotNull  Long cityId,@RequestParam("areaId") @NotNull  Long areaId)
+	public ResponseEntity<List<@Valid EnquiryGeoMapPlotting>> getEnquiryGeoMapPlottingByArea(@RequestParam("ownerId") @NotNull Long ownerId,@RequestParam("countryId") @NotNull  Long countryId,@RequestParam("stateId") @NotNull  Long stateId,@RequestParam("cityId") @NotNull  Long cityId,@RequestParam("areaId") @NotNull  Long areaId)
 	{
 		return egbl.getEnquiryGeoMapPlottingByArea(ownerId, countryId, stateId, cityId, areaId);
 	}
 	
 	@GetMapping(path="/companyExecutive",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquiryGeoMapPlotting>> getEnquiryGeoMapPlottingByCompanyExecutive(@RequestParam("companyExecutiveId") @NotNull Long companyExecutiveId)
+	public ResponseEntity<List<@Valid EnquiryGeoMapPlotting>> getEnquiryGeoMapPlottingByCompanyExecutive(@RequestParam("companyExecutiveId") @NotNull Long companyExecutiveId)
 	{
 		return egbl.getEnquiryGeoMapPlottingByCompanyExecutive(companyExecutiveId);
 	}

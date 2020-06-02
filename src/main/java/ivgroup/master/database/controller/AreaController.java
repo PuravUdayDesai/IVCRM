@@ -33,25 +33,25 @@ public class AreaController {
 	AreaBusinessLogic area_business_logic;
 
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<Area>> getAllAreaInfo() {
+	public ResponseEntity<List<@Valid Area>> getAllAreaInfo() {
 		return area_business_logic.getAllArea();
 	}
 
 	@GetMapping(path = "/{area_id}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<Area> getOneAreaInfo(@PathVariable long area_id) {
+	public ResponseEntity<@Valid Area> getOneAreaInfo(@PathVariable long area_id) {
 		return area_business_logic.getOneAreaById(area_id);
 	}
 
 	@GetMapping(path = "search/{search_content}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<Area>> searchInArea(@PathVariable String search_content) {
+	public ResponseEntity<List<@Valid Area>> searchInArea(@PathVariable String search_content) {
 		return area_business_logic.searchInArea(search_content);
 	}
 
 	@GetMapping(path = "/city/{city_id}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<AreaInfoFromCityId>> selectAreaUsingCityId(@PathVariable Long city_id) {
+	public ResponseEntity<List<@Valid AreaInfoFromCityId>> selectAreaUsingCityId(@PathVariable Long city_id) {
 		return area_business_logic.selectAreaUsingCityId(city_id);
 	}
 	

@@ -35,7 +35,7 @@ public class NotificationController {
 
 	@GetMapping(path = "/{companyExecutiveID}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<NotificationSelect>> selectNotifications(
+	public ResponseEntity<List<@Valid NotificationSelect>> selectNotifications(
 			@PathVariable @NotNull Long companyExecutiveID) {
 		return nbl.selectNotifications(companyExecutiveID);
 	}

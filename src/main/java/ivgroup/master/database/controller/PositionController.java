@@ -34,7 +34,7 @@ public class PositionController
 	PositionBusinessLogic pbl;
 	
 	@GetMapping(path="/{ownerId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<PositionSelect>> selectPosition(@PathVariable @NotNull Long ownerId)
+	public ResponseEntity<List<@Valid PositionSelect>> selectPosition(@PathVariable @NotNull Long ownerId)
 	{
 		return pbl.selectPosition(ownerId);
 	}

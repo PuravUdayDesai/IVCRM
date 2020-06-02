@@ -34,32 +34,32 @@ public class ClientController
 	ClientBusinessLogic cbl;
 	
 	@GetMapping(path="/company/{companyId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<ClientSelect>> selectClientByCompanyId(@PathVariable @NotNull Long companyId)
+	public ResponseEntity<List<@Valid ClientSelect>> selectClientByCompanyId(@PathVariable @NotNull Long companyId)
 	{
 		return cbl.selectClientByCompanyId(companyId);
 	}
 	@GetMapping(path="/country/{countryId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<ClientSelect>> selectClientByCountryId(@PathVariable @NotNull Long countryId)  
+	public ResponseEntity<List<@Valid ClientSelect>> selectClientByCountryId(@PathVariable @NotNull Long countryId)  
 	{
 		return cbl.selectClientByCountryId(countryId);
 	}
 	@GetMapping(path="/state/{stateId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<ClientSelect>> selectClientByStateId(@PathVariable @NotNull Long stateId)  
+	public ResponseEntity<List<@Valid ClientSelect>> selectClientByStateId(@PathVariable @NotNull Long stateId)  
 	{
 		return cbl.selectClientByStateId(stateId);
 	}
 	@GetMapping(path="/city/{cityId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<ClientSelect>> selectClientByCityId(@PathVariable @NotNull Long cityId)  
+	public ResponseEntity<List<@Valid ClientSelect>> selectClientByCityId(@PathVariable @NotNull Long cityId)  
 	{
 		return cbl.selectClientByCityId(cityId);
 	}
 	@GetMapping(path="/area/{areaId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<ClientSelect>> selectClientByAreaId(@PathVariable @NotNull Long areaId) 
+	public ResponseEntity<List<@Valid ClientSelect>> selectClientByAreaId(@PathVariable @NotNull Long areaId) 
 	{
 		return cbl.selectClientByAreaId(areaId);
 	}
 	@GetMapping(path="/owner/{ownerId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<ClientSelect>> selectClientByOwnerId(@PathVariable @NotNull Long ownerId) 
+	public ResponseEntity<List<@Valid ClientSelect>> selectClientByOwnerId(@PathVariable @NotNull Long ownerId) 
 	{
 		return cbl.selectClientByOwnerId(ownerId);
 	}

@@ -39,32 +39,32 @@ public class CompanyBranchController {
 	}
 	
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyBranchSelect>> selectCompanyBranch()
+	public ResponseEntity<List<@Valid CompanyBranchSelect>> selectCompanyBranch()
 	{
 		return cbbl.selectCompanyBranch();
 	}
 	@GetMapping(path="{companyBranchId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<CompanyBranchSelect> selectCompanyBranchByCompanyBranchID(@PathVariable @NotNull Long companyBranchId) 
+	public ResponseEntity<@Valid CompanyBranchSelect> selectCompanyBranchByCompanyBranchID(@PathVariable @NotNull Long companyBranchId) 
 	{
 		return cbbl.selectCompanyBranchByCompanyBranchID(companyBranchId);
 	}
 	@GetMapping(path="/company/{companyId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyBranchSelect>> selectCompanyBranchByCompanyID(@PathVariable @NotNull Long companyId)
+	public ResponseEntity<List<@Valid CompanyBranchSelect>> selectCompanyBranchByCompanyID(@PathVariable @NotNull Long companyId)
 	{
 		return cbbl.selectCompanyBranchByCompanyID(companyId);
 	}
 	@GetMapping(path="/owner/{ownerId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyBranchSelect>> selectCompanyBranchByOwnerID(@PathVariable @NotNull Long ownerId)
+	public ResponseEntity<List<@Valid CompanyBranchSelect>> selectCompanyBranchByOwnerID(@PathVariable @NotNull Long ownerId)
 	{
 		return cbbl.selectCompanyBranchByOwnerID(ownerId);
 	}
 	@GetMapping(path="region/{companyRegionID}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyBranchSelect>> selectCompanyBranchByCompanyRegionID(@PathVariable @NotNull Long companyRegionID)
+	public ResponseEntity<List<@Valid CompanyBranchSelect>> selectCompanyBranchByCompanyRegionID(@PathVariable @NotNull Long companyRegionID)
 	{
 		return cbbl.selectCompanyBranchByCompanyRegionID(companyRegionID);
 	}
 	@GetMapping(path="area/{companyAreaID}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyBranchSelect>> selectCompanyBranchByCompanyAreaID(@PathVariable @NotNull Long companyAreaID)
+	public ResponseEntity<List<@Valid CompanyBranchSelect>> selectCompanyBranchByCompanyAreaID(@PathVariable @NotNull Long companyAreaID)
 	{
 		return cbbl.selectCompanyBranchByCompanyAreaID(companyAreaID);
 	}

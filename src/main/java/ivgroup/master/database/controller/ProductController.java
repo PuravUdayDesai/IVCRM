@@ -33,24 +33,24 @@ public class ProductController {
 	ProductBusinessLogic pbl;
 	
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<ProductSelect>> selectProducts()  
+	public ResponseEntity<List<@Valid ProductSelect>> selectProducts()  
 	{
 		return pbl.selectProducts();
 	}
 	@GetMapping(path="/company/{companyId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<ProductSelect>> selectProductsByCompanyId(@PathVariable @NotNull Long companyId)  
+	public ResponseEntity<List<@Valid ProductSelect>> selectProductsByCompanyId(@PathVariable @NotNull Long companyId)  
 	{
 		return pbl.selectProductsByCompanyId(companyId);
 	}
 	
 	@GetMapping(path="/owner/{ownerId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<ProductSelect>> selectProductsByOwnerId(@PathVariable @NotNull Long ownerId)  
+	public ResponseEntity<List<@Valid ProductSelect>> selectProductsByOwnerId(@PathVariable @NotNull Long ownerId)  
 	{
 		return pbl.selectProductsByOwnerId(ownerId);
 	}
 	
 	@GetMapping(path="/{productId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<ProductSelect> selectProductsByProductId(@PathVariable @NotNull Long productId)  
+	public ResponseEntity<@Valid ProductSelect> selectProductsByProductId(@PathVariable @NotNull Long productId)  
 	{
 		return pbl.selectProductsByProductId(productId);
 	}

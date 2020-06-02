@@ -114,37 +114,37 @@ public class TicketController
 	}
 	
 	@GetMapping(path="/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<TicketDetailsSelect>> selectTicketDetailsByCompanyExecutiveId(@PathVariable @NotNull Long companyExecutiveId)
+	public ResponseEntity<List<@Valid TicketDetailsSelect>> selectTicketDetailsByCompanyExecutiveId(@PathVariable @NotNull Long companyExecutiveId)
 	{
 		return tbl.selectTicketDetailsByCompanyExecutiveId(companyExecutiveId);
 	}
 	
 	@GetMapping(path="/ticketFollowupDate/{ticketId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<TicketFollowupDateSelect>> selectTicketFollowupDates(@PathVariable @NotNull Long ticketId)
+	public ResponseEntity<List<@Valid TicketFollowupDateSelect>> selectTicketFollowupDates(@PathVariable @NotNull Long ticketId)
 	{
 		return tbl.selectTicketFollowupDates(ticketId);
 	}
 	
 	@PostMapping(path="/master",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<TicketDetailsSelect>> selectTicketByFilter(@Valid @RequestBody TicketFilterSelect tfs)
+	public ResponseEntity<List<@Valid TicketDetailsSelect>> selectTicketByFilter(@Valid @RequestBody TicketFilterSelect tfs)
 	{
 		return tbl.selectTicketByFilter(tfs);
 	}
 	
 	@GetMapping(path="/ticketAccessList/{ticketId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<TicketAccessListSelect>> selectTicketAccessListByTicketId(@PathVariable @NotNull Long ticketId)
+	public ResponseEntity<List<@Valid TicketAccessListSelect>> selectTicketAccessListByTicketId(@PathVariable @NotNull Long ticketId)
 	{
 		return tbl.selectTicketAccessListByTicketId(ticketId);
 	}
 	
 	@GetMapping(path="/ticketStatus/{ticketId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<TicketStatusLogSelect>> selectTicketStatusLogbyTicketId(@PathVariable @NotNull Long ticketId)
+	public ResponseEntity<List<@Valid TicketStatusLogSelect>> selectTicketStatusLogbyTicketId(@PathVariable @NotNull Long ticketId)
 	{
 		return tbl.selectTicketStatusLogbyTicketId(ticketId);
 	}
 
 	@GetMapping(path="/ticketNonAccessibleExecutives/{ticketId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<NonAccessibleExecutiveListSelect>> selectNonAccessibleExecutivesOfTicket(@PathVariable @NotNull Long ticketId)
+	public ResponseEntity<List<@Valid NonAccessibleExecutiveListSelect>> selectNonAccessibleExecutivesOfTicket(@PathVariable @NotNull Long ticketId)
 	{
 		return tbl.selectNonAccessibleExecutivesOfTicket(ticketId);
 	}

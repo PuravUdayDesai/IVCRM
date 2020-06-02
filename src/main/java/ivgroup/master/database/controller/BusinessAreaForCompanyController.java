@@ -42,7 +42,7 @@ public class BusinessAreaForCompanyController {
 
 	@GetMapping(path = "/{businessAreaForCompany_id}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<BusinessAreaForCompany>> getBusinessAreaForCompanyInfoUsingId(
+	public ResponseEntity<List<@Valid BusinessAreaForCompany>> getBusinessAreaForCompanyInfoUsingId(
 			@PathVariable long businessAreaForCompany_id) {
 		return businessAreaForCompany_business_logic.getOneBusinessAreaForCompanyById(businessAreaForCompany_id);
 	}
@@ -68,7 +68,7 @@ public class BusinessAreaForCompanyController {
 
 	@GetMapping(path = "/city/{city_id}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<BusinessAreaForCompanyByCityID>> selectBusinessAreaUsingCityId(@PathVariable Long city_id,
+	public ResponseEntity<List<@Valid BusinessAreaForCompanyByCityID>> selectBusinessAreaUsingCityId(@PathVariable Long city_id,
 			@RequestParam("ownerID") Long owner_id) {
 		return businessAreaForCompany_business_logic.selectBusinessAreaUsingCityId(city_id, owner_id);
 	}

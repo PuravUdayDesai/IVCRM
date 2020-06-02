@@ -2,6 +2,7 @@ package ivgroup.master.database.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,31 +27,31 @@ public class CompanyBranchGeoMapPlottingController
 	CompanyBranchGeoMapPlottingBusinessLogic cbbl;
 	
 	@GetMapping(path="/owner",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyBranchGeoMapPlotting>> getCompaynBranchByOwnerId(@RequestParam("ownerId") @NotNull Long ownerId)
+	public ResponseEntity<List<@Valid CompanyBranchGeoMapPlotting>> getCompaynBranchByOwnerId(@RequestParam("ownerId") @NotNull Long ownerId)
 	{
 		return cbbl.getCompaynBranchByOwnerId(ownerId);
 	}
 
 	@GetMapping(path="/company",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyBranchGeoMapPlotting>> getCompanyBranchByCompanyId(@RequestParam("companyId") @NotNull Long companyId)
+	public ResponseEntity<List<@Valid CompanyBranchGeoMapPlotting>> getCompanyBranchByCompanyId(@RequestParam("companyId") @NotNull Long companyId)
 	{
 		return cbbl.getCompanyBranchByCompanyId(companyId);
 	}
 
 	@GetMapping(path="/country",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyBranchGeoMapPlotting>> getCompanyBranchByCountryId(@RequestParam("ownerId") @NotNull Long ownerId,@RequestParam("countryId") @NotNull  Long countryId)
+	public ResponseEntity<List<@Valid CompanyBranchGeoMapPlotting>> getCompanyBranchByCountryId(@RequestParam("ownerId") @NotNull Long ownerId,@RequestParam("countryId") @NotNull  Long countryId)
 	{
 		return cbbl.getCompanyBranchByCountryId(ownerId, countryId);
 	}
 
 	@GetMapping(path="/state",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyBranchGeoMapPlotting>> getCompanyBranchByStateId(@RequestParam("ownerId") @NotNull Long ownerId,@RequestParam("countryId") @NotNull  Long countryId,@RequestParam("stateId") @NotNull  Long stateId)
+	public ResponseEntity<List<@Valid CompanyBranchGeoMapPlotting>> getCompanyBranchByStateId(@RequestParam("ownerId") @NotNull Long ownerId,@RequestParam("countryId") @NotNull  Long countryId,@RequestParam("stateId") @NotNull  Long stateId)
 	{
 		return cbbl.getCompanyBranchByStateId(ownerId, countryId, stateId);
 	}
 
 	@GetMapping(path="/city",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CompanyBranchGeoMapPlotting>> getCompanyBranchByCityId(@RequestParam("ownerId") @NotNull Long ownerId,@RequestParam("countryId") @NotNull  Long countryId,@RequestParam("stateId") @NotNull  Long stateId,@RequestParam("cityId") @NotNull  Long cityId)
+	public ResponseEntity<List<@Valid CompanyBranchGeoMapPlotting>> getCompanyBranchByCityId(@RequestParam("ownerId") @NotNull Long ownerId,@RequestParam("countryId") @NotNull  Long countryId,@RequestParam("stateId") @NotNull  Long stateId,@RequestParam("cityId") @NotNull  Long cityId)
 	{
 		return cbbl.getCompanyBranchByCityId(ownerId, countryId, stateId, cityId);
 	}

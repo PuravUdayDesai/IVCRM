@@ -33,25 +33,25 @@ public class CityController {
 	CityBusinessLogic city_business_logic;
 
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<City>> getAllCityInfo() {
+	public ResponseEntity<List<@Valid City>> getAllCityInfo() {
 		return city_business_logic.getAllCity();
 	}
 
 	@GetMapping(path = "/{city_id}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<City> getOneCityInfo(@PathVariable long city_id) {
+	public ResponseEntity<@Valid City> getOneCityInfo(@PathVariable long city_id) {
 		return city_business_logic.getOneCityById(city_id);
 	}
 
 	@GetMapping(path = "search/{search_content}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<City>> searchInCity(@PathVariable String search_content) {
+	public ResponseEntity<List<@Valid City>> searchInCity(@PathVariable String search_content) {
 		return city_business_logic.searchInCity(search_content);
 	}
 	
 	@GetMapping(path = "/state/{state_id}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<CityInfoFromStateId>> selectCityUsingStateId(@PathVariable Long state_id) {
+	public ResponseEntity<List<@Valid CityInfoFromStateId>> selectCityUsingStateId(@PathVariable Long state_id) {
 		return city_business_logic.selectCityUsingStateId(state_id);
 	}
 

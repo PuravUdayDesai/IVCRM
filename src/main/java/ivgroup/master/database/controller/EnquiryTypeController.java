@@ -33,13 +33,13 @@ public class EnquiryTypeController
 	EnquiryTypeBusinessLogic ebl;
 	
 	@GetMapping(path="/{companyId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquiryTypeSelect>> selectEnquiryTypeByCompanyId(@PathVariable @NotNull Long companyId)
+	public ResponseEntity<List<@Valid EnquiryTypeSelect>> selectEnquiryTypeByCompanyId(@PathVariable @NotNull Long companyId)
 	{
 		return ebl.selectEnquiryTypeByCompanyId(companyId);
 	}
 	
 	@GetMapping(path="/owner/{ownerId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquiryTypeSelect>> selectEnquiryTypeByOwnerId(@PathVariable @NotNull Long ownerId)
+	public ResponseEntity<List<@Valid EnquiryTypeSelect>> selectEnquiryTypeByOwnerId(@PathVariable @NotNull Long ownerId)
 	{
 		return ebl.selectEnquiryTypeByOwnerId(ownerId);
 	}

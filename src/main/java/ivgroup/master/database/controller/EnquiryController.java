@@ -83,7 +83,7 @@ public class EnquiryController
 	}
 	
 	@GetMapping(path="/enquiryAccessList/{enquiryId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquiryAccessListSelect>> selectEnquiryAccessListByEnquiryId(@PathVariable @NotNull Long enquiryId)
+	public ResponseEntity<List<@Valid EnquiryAccessListSelect>> selectEnquiryAccessListByEnquiryId(@PathVariable @NotNull Long enquiryId)
 	{
 		return ebl.selectEnquiryAccessListByEnquiryId(enquiryId);
 	}
@@ -95,69 +95,69 @@ public class EnquiryController
 	}
 	
 	@GetMapping(path="/enquiryNonAddedProducts/{enquiryId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquiryNonAddedProductSelect>> selectEnquiryNonAddedProducts(@PathVariable @NotNull Long enquiryId)
+	public ResponseEntity<List<@Valid EnquiryNonAddedProductSelect>> selectEnquiryNonAddedProducts(@PathVariable @NotNull Long enquiryId)
 	{
 		return ebl.selectEnquiryNonAddedProducts(enquiryId);
 	}
 	
 	//NOT REQUIRED
 	@GetMapping(path="/enquiryProduct/{enquiryId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquiryProductSelect>> selectEnquiryProduct(@PathVariable @NotNull Long enquiryId)
+	public ResponseEntity<List<@Valid EnquiryProductSelect>> selectEnquiryProduct(@PathVariable @NotNull Long enquiryId)
 	{
 		return ebl.selectEnquiryProduct(enquiryId);
 	}
 		
 	@GetMapping(path="/country/{countryId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquirySelect>> selectEnquiryByCountry(@PathVariable @NotNull  Long countryId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
+	public ResponseEntity<List<@Valid EnquirySelect>> selectEnquiryByCountry(@PathVariable @NotNull  Long countryId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
 	{
 		return ebl.selectEnquiryByCountry(companyExecutiveId, countryId);
 	}
 
 	@GetMapping(path="/state/{stateId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquirySelect>> selectEnquiryByState(@PathVariable @NotNull  Long stateId,@RequestParam("companyExecutiveId") Long companyExecutiveId) 
+	public ResponseEntity<List<@Valid EnquirySelect>> selectEnquiryByState(@PathVariable @NotNull  Long stateId,@RequestParam("companyExecutiveId") Long companyExecutiveId) 
 	{
 		return ebl.selectEnquiryByState(companyExecutiveId, stateId);
 	}
 	
 	@GetMapping(path="/city/{cityId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquirySelect>> selectEnquiryByCity(@PathVariable @NotNull  Long cityId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
+	public ResponseEntity<List<@Valid EnquirySelect>> selectEnquiryByCity(@PathVariable @NotNull  Long cityId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
 	{
 		return ebl.selectEnquiryByCity(companyExecutiveId, cityId);
 	}
 
 	@GetMapping(path="/area/{areaId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquirySelect>> selectEnquiryByArea(@PathVariable @NotNull Long areaId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
+	public ResponseEntity<List<@Valid EnquirySelect>> selectEnquiryByArea(@PathVariable @NotNull Long areaId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
 	{
 		return ebl.selectEnquiryByArea(companyExecutiveId, areaId);
 	}
 	
 	@GetMapping(path="/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquirySelect>> selectEnquiryByCompanyExecutiveId(@PathVariable @NotNull Long companyExecutiveId)
+	public ResponseEntity<List<@Valid EnquirySelect>> selectEnquiryByCompanyExecutiveId(@PathVariable @NotNull Long companyExecutiveId)
 	{
 		return ebl.selectEnquiryByCompanyExecutiveId(companyExecutiveId);
 	}
 	
 	@GetMapping(path="/client/{clientId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquirySelect>> selectEnquiryByClient(@PathVariable @NotNull Long clientId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
+	public ResponseEntity<List<@Valid EnquirySelect>> selectEnquiryByClient(@PathVariable @NotNull Long clientId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
 	{
 		return ebl.selectEnquiryByClient(companyExecutiveId, clientId);
 	}
 	
 	@GetMapping(path="/product/{productId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquirySelect>> selectEnquiryByProduct(@PathVariable @NotNull Long productId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
+	public ResponseEntity<List<@Valid EnquirySelect>> selectEnquiryByProduct(@PathVariable @NotNull Long productId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
 	{
 		return ebl.selectEnquiryByProduct(companyExecutiveId, productId);
 	}
 	
 	@GetMapping(path="/enquiryType/{enquiryTypeId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<EnquirySelect>> selectEnquiryByEnquiryType(@PathVariable @NotNull Long enquiryTypeId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
+	public ResponseEntity<List<@Valid EnquirySelect>> selectEnquiryByEnquiryType(@PathVariable @NotNull Long enquiryTypeId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
 	{
 		return ebl.selectEnquiryByEnquiryType(companyExecutiveId, enquiryTypeId);
 	}
 	
 	
 	@GetMapping(path="/enquiryNonAccessibleExecutives/{enquiryId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<NonAccessibleExecutiveListSelect>> selectNonAccessibleExecutivesOfEnquiry(@PathVariable @NotNull Long enquiryId)
+	public ResponseEntity<List<@Valid NonAccessibleExecutiveListSelect>> selectNonAccessibleExecutivesOfEnquiry(@PathVariable @NotNull Long enquiryId)
 	{
 		return ebl.selectNonAccessibleExecutivesOfEnquiry(enquiryId);
 	}

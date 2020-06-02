@@ -2,6 +2,8 @@ package ivgroup.master.database.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,29 +30,29 @@ public class ReportController {
 	ReportBusinessLogic rbl;
 
 	@GetMapping(path = "/product", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<ProductReport>> generateProductReport() {
+	public ResponseEntity<List<@Valid ProductReport>> generateProductReport() {
 		return rbl.generateProductReport();
 	}
 	
 	@GetMapping(path = "/executive", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<ExecutiveReport>> generateExecutiveReport(@RequestParam("companyID") Long comp_id) {
+	public ResponseEntity<List<@Valid ExecutiveReport>> generateExecutiveReport(@RequestParam("companyID") Long comp_id) {
 		return rbl.generateExecutiveReport(comp_id);
 	}
 
 	@GetMapping(path = "/time", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<LocationTimeReport>> generateLocationTimeReport(@RequestParam("location") String loc,
+	public ResponseEntity<List<@Valid LocationTimeReport>> generateLocationTimeReport(@RequestParam("location") String loc,
 			@RequestParam(value = "companyID", required = false) Long comp_id) {
 		return rbl.generateLocationTimeReport(loc, comp_id);
 	}
 
 	@GetMapping(path = "/priority", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<LocationPriorityReport>> generateLocationPriorityReport(
+	public ResponseEntity<List<@Valid LocationPriorityReport>> generateLocationPriorityReport(
 			@RequestParam("location") String loc, @RequestParam(value = "companyID", required = false) Long comp_id) {
 		return rbl.generateLocationPriorityReport(loc, comp_id);
 	}
 
 	@GetMapping(path = "/status", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<List<LocationNStatusReport>> generateLocationStatusReport(
+	public ResponseEntity<List<@Valid LocationNStatusReport>> generateLocationStatusReport(
 			@RequestParam("location") String loc, @RequestParam(value = "companyID", required = false) Long comp_id) {
 		return rbl.generateLocationStatusReport(loc, comp_id);
 	}

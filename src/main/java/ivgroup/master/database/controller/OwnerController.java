@@ -32,7 +32,7 @@ public class OwnerController {
 	OwnerBusinessLogic obl;
 	
 	@GetMapping(path="/{ownerId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<OwnerSelect> selectOwnerById(@PathVariable @NotNull Long ownerId)
+	public ResponseEntity<@Valid OwnerSelect> selectOwnerById(@PathVariable @NotNull Long ownerId)
 	{
 		return obl.selectOwnerById(ownerId);
 	}
