@@ -3,6 +3,7 @@ package ivgroup.master.database.dto.enquiry;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -68,6 +69,7 @@ public class EnquirySelect
 	@NotEmpty(message = "ContactPerson cannot be NULL")
 	String contactPerson;
 	@NotEmpty(message = "EmailId cannot be NULL")
+	@Email(message= "EmailId provider is INCORRECT")
 	String emailId;
 	@NotEmpty(message = "ContactNumber cannot be NULL")
 	String contactNumber;
@@ -117,7 +119,7 @@ public class EnquirySelect
 			@NotEmpty(message = "ClientId cannot be NULL") Long clientId,
 			@NotEmpty(message = "ClientName cannot be NULL") String clientName,
 			@NotEmpty(message = "ContactPerson cannot be NULL") String contactPerson,
-			@NotEmpty(message = "EmailId cannot be NULL") String emailId,
+			@NotEmpty(message = "EmailId cannot be NULL") @Email(message= "EmailId provider is INCORRECT") String emailId,
 			@NotEmpty(message = "ContactNumber cannot be NULL") String contactNumber,
 			@NotEmpty(message = "EnquiryProductList cannot be NULL") List<EnquiryProductSelect> enquiryProductList,
 			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,

@@ -2,6 +2,7 @@ package ivgroup.master.database.dto.client;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -13,6 +14,7 @@ public class ClientInsert
 	@NotEmpty(message = "ContactPerson cannot be NULL")
 	String contactPerson;
 	@NotEmpty(message = "EmailId cannot be NULL")
+	@Email(message= "EmailId provider is INCORRECT")
 	String emailId;
 	@NotEmpty(message = "ContactNumber cannot be NULL")
 	String contactNumber;
@@ -49,10 +51,11 @@ public class ClientInsert
 		
 	}
 
-	public ClientInsert(
-			@NotEmpty(message = "ContactName cannot be NULL") String contactName,
+	
+
+	public ClientInsert(@NotEmpty(message = "ContactName cannot be NULL") String contactName,
 			@NotEmpty(message = "ContactPerson cannot be NULL") String contactPerson,
-			@NotEmpty(message = "EmailId cannot be NULL") String emailId,
+			@NotEmpty(message = "EmailId cannot be NULL") @Email(message = "EmailId provider is INCORRECT") String emailId,
 			@NotEmpty(message = "ContactNumber cannot be NULL") String contactNumber,
 			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
 			@NotEmpty(message = "CountryId cannot be NULL") Long countryId,
@@ -66,8 +69,7 @@ public class ClientInsert
 			@NotEmpty(message = "Latitude cannot be NULL") String latitude,
 			@NotEmpty(message = "Longitude cannot be NULL") String longitude,
 			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy)
-	{
+			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy) {
 		super();
 		this.contactName = contactName;
 		this.contactPerson = contactPerson;
@@ -87,6 +89,8 @@ public class ClientInsert
 		this.createdOn = createdOn;
 		this.createdBy = createdBy;
 	}
+
+
 
 	public String getContactName() {
 		return contactName;

@@ -2,6 +2,7 @@ package ivgroup.master.database.dto.client;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -15,6 +16,7 @@ public class ClientSelect
 	@NotEmpty(message = "ContactPerson cannot be NULL")
 	String contactPerson;
 	@NotEmpty(message = "EmailId cannot be NULL")
+	@Email(message= "EmailId provider is INCORRECT")
 	String emailId;
 	@NotEmpty(message = "ContactNumber cannot be NULL")
 	String contactNumber;
@@ -84,7 +86,7 @@ public class ClientSelect
 			@NotEmpty(message = "ClientId cannot be NULL") Long clientId,
 			@NotEmpty(message = "ContactName cannot be NULL") String contactName,
 			@NotEmpty(message = "ContactPerson cannot be NULL") String contactPerson,
-			@NotEmpty(message = "EmailId cannot be NULL") String emailId,
+			@NotEmpty(message = "EmailId cannot be NULL") @Email(message= "EmailId provider is INCORRECT") String emailId,
 			@NotEmpty(message = "ContactNumber cannot be NULL") String contactNumber,
 			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
 			@NotEmpty(message = "CompanyName cannot be NULL") String companyName,

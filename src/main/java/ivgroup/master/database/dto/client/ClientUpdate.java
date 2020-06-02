@@ -2,6 +2,7 @@ package ivgroup.master.database.dto.client;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -11,6 +12,7 @@ public class ClientUpdate
 	
 	String contactName;
 	String contactPerson;
+	@Email(message= "EmailId provider is INCORRECT")
 	String emailId;
 	String contactNumber;
 	Long companyId;
@@ -39,7 +41,7 @@ public class ClientUpdate
 	public ClientUpdate(
 			String contactName,
 			String contactPerson,
-			String emailId,
+			@Email(message= "EmailId provider is INCORRECT")String emailId,
 			String contactNumber,
 			Long companyId,
 			Long countryId,

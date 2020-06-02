@@ -2,6 +2,7 @@ package ivgroup.master.database.dto.owner;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -13,6 +14,7 @@ public class OwnerInsert {
 	@NotEmpty(message = "OwnerContact cannot be NULL")
 	String ownerContact;
 	@NotEmpty(message = "OwnerEmail cannot be NULL")
+	@Email(message= "EmailId provider is INCORRECT")
 	String ownerEmail;
 	@NotEmpty(message = "OwnerUserName cannot be NULL")
 	String ownerUserName;
@@ -28,7 +30,7 @@ public class OwnerInsert {
 
 	public OwnerInsert(@NotEmpty(message = "OwnerName cannot be NULL") String ownerName,
 			@NotEmpty(message = "OwnerContact cannot be NULL") String ownerContact,
-			@NotEmpty(message = "OwnerEmail cannot be NULL") String ownerEmail,
+			@NotEmpty(message = "OwnerEmail cannot be NULL") @Email(message= "EmailId provider is INCORRECT") String ownerEmail,
 			@NotEmpty(message = "OwnerUserName cannot be NULL") String ownerUserName,
 			@NotEmpty(message = "OwnerPassword cannot be NULL") String ownerPassword,
 			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
