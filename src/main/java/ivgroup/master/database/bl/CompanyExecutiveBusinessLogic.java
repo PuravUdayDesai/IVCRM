@@ -539,6 +539,7 @@ if(cu.getLastEditDeviceType()!=null) {
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<CompanyExecutiveLogin>(cel,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
+			System.out.println(e);
 			return new ResponseEntity<CompanyExecutiveLogin>(cel,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(cel==null)

@@ -492,8 +492,8 @@ public class CompanyExecutiveDAOImpl implements CompanyExecutiveDAO{
 		{
 			cel=new CompanyExecutiveLogin(
 					rs.getLong("CompanyExecutiveId"),
-					rs.getLong("OwnerId"),
 					rs.getLong("CompanyId"),
+					rs.getLong("OwnerId"),
 					rs.getString("Company"),
 					rs.getString("CompanyBranch"),
 					rs.getString("CompanyExecutive"),
