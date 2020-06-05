@@ -3,7 +3,7 @@ package ivgroup.master.database.dto.companyExecutive;
 import javax.validation.constraints.NotNull;
 
 public class CompanyExecutiveLogin {
-	
+
 	@NotNull(message = "CompanyExecutiveId cannot be NULL")
 	Long companyExecutivId;
 	@NotNull(message = "CompanyId cannot be NULL")
@@ -11,40 +11,41 @@ public class CompanyExecutiveLogin {
 	@NotNull(message = "OwnerId cannot be NULL")
 	Long ownerId;
 	@NotNull(message = "CompanyAccess cannot be NULL")
-	Integer companyAccess;
+	String companyAccess;
 	@NotNull(message = "CompanyBranchAccess cannot be NULL")
-	Integer companyBranchAccess;
+	String companyBranchAccess;
 	@NotNull(message = "CompanyExecutiveAccess cannot be NULL")
-	Integer companyExecutiveAccess;
+	String companyExecutiveAccess;
 	@NotNull(message = "ClientAccess cannot be NULL")
-	Integer clientAccess;
+	String clientAccess;
 	@NotNull(message = "ProductAccess cannot be NULL")
-	Integer productAccess;
+	String productAccess;
 	@NotNull(message = "LocationAccess cannot be NULL")
-	Integer locationAccess;
+	String locationAccess;
 	@NotNull(message = "EnquiryAccess cannot be NULL")
-	Integer enquiryAccess;
+	String enquiryAccess;
 	@NotNull(message = "TicketAccess cannot be NULL")
-	Integer ticketAccess;
+	String ticketAccess;
 	@NotNull(message = "PositionAcces cannot be NULL")
-	Integer positionAcces;
+	String positionAcces;
 
-	public CompanyExecutiveLogin() {
-
+	public CompanyExecutiveLogin()
+	{
+		
 	}
 
 	public CompanyExecutiveLogin(@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutivId,
 			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
 			@NotNull(message = "OwnerId cannot be NULL") Long ownerId,
-			@NotNull(message = "CompanyAccess cannot be NULL") Integer companyAccess,
-			@NotNull(message = "CompanyBranchAccess cannot be NULL") Integer companyBranchAccess,
-			@NotNull(message = "CompanyExecutiveAccess cannot be NULL") Integer companyExecutiveAccess,
-			@NotNull(message = "ClientAccess cannot be NULL") Integer clientAccess,
-			@NotNull(message = "ProductAccess cannot be NULL") Integer productAccess,
-			@NotNull(message = "LocationAccess cannot be NULL") Integer locationAccess,
-			@NotNull(message = "EnquiryAccess cannot be NULL") Integer enquiryAccess,
-			@NotNull(message = "TicketAccess cannot be NULL") Integer ticketAccess,
-			@NotNull(message = "PositionAcces cannot be NULL") Integer positionAcces) {
+			@NotNull(message = "CompanyAccess cannot be NULL") String companyAccess,
+			@NotNull(message = "CompanyBranchAccess cannot be NULL") String companyBranchAccess,
+			@NotNull(message = "CompanyExecutiveAccess cannot be NULL") String companyExecutiveAccess,
+			@NotNull(message = "ClientAccess cannot be NULL") String clientAccess,
+			@NotNull(message = "ProductAccess cannot be NULL") String productAccess,
+			@NotNull(message = "LocationAccess cannot be NULL") String locationAccess,
+			@NotNull(message = "EnquiryAccess cannot be NULL") String enquiryAccess,
+			@NotNull(message = "TicketAccess cannot be NULL") String ticketAccess,
+			@NotNull(message = "PositionAcces cannot be NULL") String positionAcces) {
 		super();
 		this.companyExecutivId = companyExecutivId;
 		this.companyId = companyId;
@@ -84,76 +85,76 @@ public class CompanyExecutiveLogin {
 		this.ownerId = ownerId;
 	}
 
-	public Integer getCompanyAccess() {
+	public String getCompanyAccess() {
 		return companyAccess;
 	}
 
-	public void setCompanyAccess(Integer companyAccess) {
+	public void setCompanyAccess(String companyAccess) {
 		this.companyAccess = companyAccess;
 	}
 
-	public Integer getCompanyBranchAccess() {
+	public String getCompanyBranchAccess() {
 		return companyBranchAccess;
 	}
 
-	public void setCompanyBranchAccess(Integer companyBranchAccess) {
+	public void setCompanyBranchAccess(String companyBranchAccess) {
 		this.companyBranchAccess = companyBranchAccess;
 	}
 
-	public Integer getCompanyExecutiveAccess() {
+	public String getCompanyExecutiveAccess() {
 		return companyExecutiveAccess;
 	}
 
-	public void setCompanyExecutiveAccess(Integer companyExecutiveAccess) {
+	public void setCompanyExecutiveAccess(String companyExecutiveAccess) {
 		this.companyExecutiveAccess = companyExecutiveAccess;
 	}
 
-	public Integer getClientAccess() {
+	public String getClientAccess() {
 		return clientAccess;
 	}
 
-	public void setClientAccess(Integer clientAccess) {
+	public void setClientAccess(String clientAccess) {
 		this.clientAccess = clientAccess;
 	}
 
-	public Integer getProductAccess() {
+	public String getProductAccess() {
 		return productAccess;
 	}
 
-	public void setProductAccess(Integer productAccess) {
+	public void setProductAccess(String productAccess) {
 		this.productAccess = productAccess;
 	}
 
-	public Integer getLocationAccess() {
+	public String getLocationAccess() {
 		return locationAccess;
 	}
 
-	public void setLocationAccess(Integer locationAccess) {
+	public void setLocationAccess(String locationAccess) {
 		this.locationAccess = locationAccess;
 	}
 
-	public Integer getEnquiryAccess() {
+	public String getEnquiryAccess() {
 		return enquiryAccess;
 	}
 
-	public void setEnquiryAccess(Integer enquiryAccess) {
+	public void setEnquiryAccess(String enquiryAccess) {
 		this.enquiryAccess = enquiryAccess;
 	}
 
-	public Integer getTicketAccess() {
+	public String getTicketAccess() {
 		return ticketAccess;
 	}
 
-	public void setTicketAccess(Integer ticketAccess) {
+	public void setTicketAccess(String ticketAccess) {
 		this.ticketAccess = ticketAccess;
 	}
 
-	public Integer getPositionAcces() {
+	public String getPositionAcces() {
 		return positionAcces;
 	}
 
-	public void setPositionAcces(Integer positionAcces) {
+	public void setPositionAcces(String positionAcces) {
 		this.positionAcces = positionAcces;
 	}
-
+	
 }

@@ -494,15 +494,15 @@ public class CompanyExecutiveDAOImpl implements CompanyExecutiveDAO{
 					rs.getLong("CompanyExecutiveId"),
 					rs.getLong("OwnerId"),
 					rs.getLong("CompanyId"),
-					rs.getInt("Company"),
-					rs.getInt("CompanyBranch"),
-					rs.getInt("CompanyExecutive"),
-					rs.getInt("Client"),
-					rs.getInt("Product"),
-					rs.getInt("Location"),
-					rs.getInt("Enquiry"),
-					rs.getInt("Ticket"),
-					rs.getInt("Position")
+					rs.getString("Company"),
+					rs.getString("CompanyBranch"),
+					rs.getString("CompanyExecutive"),
+					rs.getString("Client"),
+					rs.getString("Product"),
+					rs.getString("Location"),
+					rs.getString("Enquiry"),
+					rs.getString("Ticket"),
+					rs.getString("Position")
 					);
 		}
 		rs.close();
