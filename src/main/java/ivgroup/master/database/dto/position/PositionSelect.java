@@ -2,52 +2,52 @@ package ivgroup.master.database.dto.position;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class PositionSelect 
 {
 
-	@NotEmpty(message = "PositionId cannot be NULL")
+	@NotNull(message = "PositionId cannot be NULL")
 	Long positionId;
-	@NotEmpty(message = "PositionName cannot be NULL")
+	@NotNull(message = "PositionName cannot be NULL")
 	String positionName;
-	@NotEmpty(message = "PositionPriority cannot be NULL")
+	@NotNull(message = "PositionPriority cannot be NULL")
 	Integer positionPriority;
-	@NotEmpty(message = "CompanyId cannot be NULL")
+	@NotNull(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotEmpty(message = "CompanyName cannot be NULL")
+	@NotNull(message = "CompanyName cannot be NULL")
 	String companyName;
-	@NotEmpty(message = "CreatedBy cannot be NULL")
+	@NotNull(message = "CreatedBy cannot be NULL")
 	Long createdBy;
-	@NotEmpty(message = "CreatedOn cannot be NULL")
+	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
-	@NotEmpty(message = "LastEditBy cannot be NULL")
+	@NotNull(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
-	@NotEmpty(message = "LastEditOn cannot be NULL")
+	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp lastEditOn;
-	@NotEmpty(message = "IsActive cannot be NULL")
+	@NotNull(message = "IsActive cannot be NULL")
 	Boolean isActive;
-	@NotEmpty(message = "Company cannot be NULL")
+	@NotNull(message = "Company cannot be NULL")
 	String company;
-	@NotEmpty(message = "CompanyBranch cannot be NULL")
+	@NotNull(message = "CompanyBranch cannot be NULL")
 	String companyBranch;
-	@NotEmpty(message = "CompanyExecutive cannot be NULL")
+	@NotNull(message = "CompanyExecutive cannot be NULL")
 	String companyExecutive;
-	@NotEmpty(message = "Client cannot be NULL")
+	@NotNull(message = "Client cannot be NULL")
 	String client;
-	@NotEmpty(message = "Product cannot be NULL")
+	@NotNull(message = "Product cannot be NULL")
 	String product;
-	@NotEmpty(message = "Location cannot be NULL")
+	@NotNull(message = "Location cannot be NULL")
 	String location;
-	@NotEmpty(message = "Enquiry cannot be NULL")
+	@NotNull(message = "Enquiry cannot be NULL")
 	String enquiry;
-	@NotEmpty(message = "Ticket cannot be NULL")
+	@NotNull(message = "Ticket cannot be NULL")
 	String ticket;
-	@NotEmpty(message = "Position cannot be NULL")
+	@NotNull(message = "Position cannot be NULL")
 	String position;
 	
 	public PositionSelect()
@@ -55,25 +55,25 @@ public class PositionSelect
 		
 	}
 
-	public PositionSelect(@NotEmpty(message = "PositionId cannot be NULL") Long positionId,
-			@NotEmpty(message = "PositionName cannot be NULL") String positionName,
-			@NotEmpty(message = "PositionPriority cannot be NULL") Integer positionPriority,
-			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
-			@NotEmpty(message = "CompanyName cannot be NULL") String companyName,
-			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotEmpty(message = "LastEditBy cannot be NULL") Long lastEditBy,
-			@NotEmpty(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
-			@NotEmpty(message = "IsActive cannot be NULL") Boolean isActive,
-			@NotEmpty(message = "Company cannot be NULL") String company,
-			@NotEmpty(message = "CompanyBranch cannot be NULL") String companyBranch,
-			@NotEmpty(message = "CompanyExecutive cannot be NULL") String companyExecutive,
-			@NotEmpty(message = "Client cannot be NULL") String client,
-			@NotEmpty(message = "Product cannot be NULL") String product,
-			@NotEmpty(message = "Location cannot be NULL") String location,
-			@NotEmpty(message = "Enquiry cannot be NULL") String enquiry,
-			@NotEmpty(message = "Ticket cannot be NULL") String ticket,
-			@NotEmpty(message = "Position cannot be NULL") String position) {
+	public PositionSelect(@NotNull(message = "PositionId cannot be NULL") Long positionId,
+			@NotNull(message = "PositionName cannot be NULL") String positionName,
+			@NotNull(message = "PositionPriority cannot be NULL") Integer positionPriority,
+			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
+			@NotNull(message = "CompanyName cannot be NULL") String companyName,
+			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
+			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
+			@NotNull(message = "IsActive cannot be NULL") Boolean isActive,
+			@NotNull(message = "Company cannot be NULL") String company,
+			@NotNull(message = "CompanyBranch cannot be NULL") String companyBranch,
+			@NotNull(message = "CompanyExecutive cannot be NULL") String companyExecutive,
+			@NotNull(message = "Client cannot be NULL") String client,
+			@NotNull(message = "Product cannot be NULL") String product,
+			@NotNull(message = "Location cannot be NULL") String location,
+			@NotNull(message = "Enquiry cannot be NULL") String enquiry,
+			@NotNull(message = "Ticket cannot be NULL") String ticket,
+			@NotNull(message = "Position cannot be NULL") String position) {
 		super();
 		this.positionId = positionId;
 		this.positionName = positionName;

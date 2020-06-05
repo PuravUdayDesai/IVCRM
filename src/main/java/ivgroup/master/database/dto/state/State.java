@@ -2,47 +2,47 @@ package ivgroup.master.database.dto.state;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class State {
 	
-	@NotEmpty(message = "StateID cannot be NULL")
+	@NotNull(message = "StateID cannot be NULL")
 	private long StateID;
 
-	@NotEmpty(message = "StateName cannot be NULL")
+	@NotNull(message = "StateName cannot be NULL")
 	private String StateName;
 
-	@NotEmpty(message = "StateCode cannot be NULL")
+	@NotNull(message = "StateCode cannot be NULL")
 	private String StateCode;
 
-	@NotEmpty(message = "CountryID cannot be NULL")
+	@NotNull(message = "CountryID cannot be NULL")
 	private Long CountryID;
 	
-	@NotEmpty(message = "CountryName cannot be NULL")
+	@NotNull(message = "CountryName cannot be NULL")
 	private String CountryName;
 	
-	@NotEmpty(message = "StateDescription cannot be NULL")
+	@NotNull(message = "StateDescription cannot be NULL")
 	private String StateDescription;
 
-	@NotEmpty(message = "IsActive cannot be NULL")
+	@NotNull(message = "IsActive cannot be NULL")
 	private Boolean IsActive;
 
-	@NotEmpty(message = "CreatedOn cannot be NULL")	
+	@NotNull(message = "CreatedOn cannot be NULL")	
 	private Timestamp CreatedOn;
 
-	@NotEmpty(message = "CreatedBy cannot be NULL")
+	@NotNull(message = "CreatedBy cannot be NULL")
 	private Long CreatedBy;
 
-	@NotEmpty(message = "DeviceType cannot be NULL")
+	@NotNull(message = "DeviceType cannot be NULL")
 	private Integer DeviceType;
 
-	@NotEmpty(message = "LastEditOn cannot be NULL")	
+	@NotNull(message = "LastEditOn cannot be NULL")	
 	Timestamp LastEditOn;
 	
-	@NotEmpty(message = "LastEditBy cannot be NULL")
+	@NotNull(message = "LastEditBy cannot be NULL")
 	Long LastEditBy;
 	
-	@NotEmpty(message = "LastEditDeviceType cannot be NULL")
+	@NotNull(message = "LastEditDeviceType cannot be NULL")
 	Integer LastEditDeviceType;
 
 	public long getStateID() {
@@ -149,19 +149,19 @@ public class State {
 		LastEditDeviceType = lastEditDeviceType;
 	}
 
-	public State(@NotEmpty(message = "StateID cannot be NULL") long stateID,
-			@NotEmpty(message = "StateName cannot be NULL") String stateName,
-			@NotEmpty(message = "StateCode cannot be NULL") String stateCode,
-			@NotEmpty(message = "CountryID cannot be NULL") Long countryID,
-			@NotEmpty(message = "CountryName cannot be NULL") String countryName,
-			@NotEmpty(message = "StateDescription cannot be NULL") String stateDescription,
-			@NotEmpty(message = "IsActive cannot be NULL") Boolean isActive,
-			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotEmpty(message = "DeviceType cannot be NULL") Integer deviceType,
-			@NotEmpty(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
-			@NotEmpty(message = "LastEditBy cannot be NULL") Long lastEditBy,
-			@NotEmpty(message = "LastEditDeviceType cannot be NULL") Integer lastEditDeviceType) {
+	public State(@NotNull(message = "StateID cannot be NULL") long stateID,
+			@NotNull(message = "StateName cannot be NULL") String stateName,
+			@NotNull(message = "StateCode cannot be NULL") String stateCode,
+			@NotNull(message = "CountryID cannot be NULL") Long countryID,
+			@NotNull(message = "CountryName cannot be NULL") String countryName,
+			@NotNull(message = "StateDescription cannot be NULL") String stateDescription,
+			@NotNull(message = "IsActive cannot be NULL") Boolean isActive,
+			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotNull(message = "DeviceType cannot be NULL") Integer deviceType,
+			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
+			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
+			@NotNull(message = "LastEditDeviceType cannot be NULL") Integer lastEditDeviceType) {
 		super();
 		StateID = stateID;
 		StateName = stateName;

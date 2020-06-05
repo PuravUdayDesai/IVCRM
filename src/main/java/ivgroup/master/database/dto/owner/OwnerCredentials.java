@@ -1,23 +1,23 @@
 package ivgroup.master.database.dto.owner;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class OwnerCredentials {
 
-	@NotEmpty(message = "OwnerContact cannot be NULL")
+	@NotNull(message = "OwnerContact cannot be NULL")
 	String ownerContact;
-	@NotEmpty(message = "OwnerEmail cannot be NULL")
+	@NotNull(message = "OwnerEmail cannot be NULL")
 	String ownerEmail;
-	@NotEmpty(message = "UserName cannot be NULL")
+	@NotNull(message = "UserName cannot be NULL")
 	String userName;
 	
 	public OwnerCredentials() {
 		
 	}
 
-	public OwnerCredentials(@NotEmpty(message = "OwnerContact cannot be NULL") String ownerContact,
-			@NotEmpty(message = "OwnerEmail cannot be NULL") String ownerEmail,
-			@NotEmpty(message = "UserName cannot be NULL") String userName) {
+	public OwnerCredentials(@NotNull(message = "OwnerContact cannot be NULL") String ownerContact,
+			@NotNull(message = "OwnerEmail cannot be NULL") String ownerEmail,
+			@NotNull(message = "UserName cannot be NULL") String userName) {
 		super();
 		this.ownerContact = ownerContact;
 		this.ownerEmail = ownerEmail;

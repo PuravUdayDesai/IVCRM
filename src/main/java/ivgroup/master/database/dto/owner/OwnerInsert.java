@@ -3,24 +3,24 @@ package ivgroup.master.database.dto.owner;
 import java.sql.Timestamp;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class OwnerInsert {
 
-	@NotEmpty(message = "OwnerName cannot be NULL")
+	@NotNull(message = "OwnerName cannot be NULL")
 	String ownerName;
-	@NotEmpty(message = "OwnerContact cannot be NULL")
+	@NotNull(message = "OwnerContact cannot be NULL")
 	String ownerContact;
-	@NotEmpty(message = "OwnerEmail cannot be NULL")
+	@NotNull(message = "OwnerEmail cannot be NULL")
 	@Email(message= "EmailId provider is INCORRECT")
 	String ownerEmail;
-	@NotEmpty(message = "OwnerUserName cannot be NULL")
+	@NotNull(message = "OwnerUserName cannot be NULL")
 	String ownerUserName;
-	@NotEmpty(message = "OwnerPassword cannot be NULL")
+	@NotNull(message = "OwnerPassword cannot be NULL")
 	String ownerPassword;
-	@NotEmpty(message = "CreatedOn cannot be NULL")
+	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
 	
@@ -28,12 +28,12 @@ public class OwnerInsert {
 		
 	}
 
-	public OwnerInsert(@NotEmpty(message = "OwnerName cannot be NULL") String ownerName,
-			@NotEmpty(message = "OwnerContact cannot be NULL") String ownerContact,
-			@NotEmpty(message = "OwnerEmail cannot be NULL") @Email(message= "EmailId provider is INCORRECT") String ownerEmail,
-			@NotEmpty(message = "OwnerUserName cannot be NULL") String ownerUserName,
-			@NotEmpty(message = "OwnerPassword cannot be NULL") String ownerPassword,
-			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
+	public OwnerInsert(@NotNull(message = "OwnerName cannot be NULL") String ownerName,
+			@NotNull(message = "OwnerContact cannot be NULL") String ownerContact,
+			@NotNull(message = "OwnerEmail cannot be NULL") @Email(message= "EmailId provider is INCORRECT") String ownerEmail,
+			@NotNull(message = "OwnerUserName cannot be NULL") String ownerUserName,
+			@NotNull(message = "OwnerPassword cannot be NULL") String ownerPassword,
+			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
 		super();
 		this.ownerName = ownerName;
 		this.ownerContact = ownerContact;

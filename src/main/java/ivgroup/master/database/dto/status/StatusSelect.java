@@ -2,32 +2,32 @@ package ivgroup.master.database.dto.status;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class StatusSelect 
 {
-	@NotEmpty(message = "StatusId cannot be NULL")
+	@NotNull(message = "StatusId cannot be NULL")
 	Long statusId;
-	@NotEmpty(message = "StatusName cannot be NULL")
+	@NotNull(message = "StatusName cannot be NULL")
 	String statusName;
-	@NotEmpty(message = "StatusColorCode cannot be NULL")
+	@NotNull(message = "StatusColorCode cannot be NULL")
 	String statusColorCode;
-	@NotEmpty(message = "WorkProgress cannot be NULL")
+	@NotNull(message = "WorkProgress cannot be NULL")
 	Integer workProgress;
-	@NotEmpty(message = "CompanyId cannot be NULL")
+	@NotNull(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotEmpty(message = "CompanyName cannot be NULL")
+	@NotNull(message = "CompanyName cannot be NULL")
 	String companyName;
-	@NotEmpty(message = "CreatedBy cannot be NULL")
+	@NotNull(message = "CreatedBy cannot be NULL")
 	Long createdBy;
-	@NotEmpty(message = "CreatedOn cannot be NULL")
+	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
-	@NotEmpty(message = "LastEditBy cannot be NULL")
+	@NotNull(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
-	@NotEmpty(message = "LastEditOn cannot be NULL")
+	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp lastEditOn;
 	
@@ -36,16 +36,16 @@ public class StatusSelect
 		
 	}
 
-	public StatusSelect(@NotEmpty(message = "StatusId cannot be NULL") Long statusId,
-			@NotEmpty(message = "StatusName cannot be NULL") String statusName,
-			@NotEmpty(message = "StatusColorCode cannot be NULL") String statusColorCode,
-			@NotEmpty(message = "WorkProgress cannot be NULL") Integer workProgress,
-			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
-			@NotEmpty(message = "CompanyName cannot be NULL") String companyName,
-			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotEmpty(message = "LastEditBy cannot be NULL") Long lastEditBy,
-			@NotEmpty(message = "LastEditOn cannot be NULL") Timestamp lastEditOn) {
+	public StatusSelect(@NotNull(message = "StatusId cannot be NULL") Long statusId,
+			@NotNull(message = "StatusName cannot be NULL") String statusName,
+			@NotNull(message = "StatusColorCode cannot be NULL") String statusColorCode,
+			@NotNull(message = "WorkProgress cannot be NULL") Integer workProgress,
+			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
+			@NotNull(message = "CompanyName cannot be NULL") String companyName,
+			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
+			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn) {
 		super();
 		this.statusId = statusId;
 		this.statusName = statusName;

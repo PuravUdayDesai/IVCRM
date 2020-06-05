@@ -2,23 +2,23 @@ package ivgroup.master.database.dto.product;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ProductInsert {
 
-	@NotEmpty(message = "ProductName cannot be NULL")	
+	@NotNull(message = "ProductName cannot be NULL")	
 	String productName;
-	@NotEmpty(message = "ProductDescription cannot be NULL")
+	@NotNull(message = "ProductDescription cannot be NULL")
 	String productDescription;
-	@NotEmpty(message = "CompanyId cannot be NULL")
+	@NotNull(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotEmpty(message = "Cost cannot be NULL")
+	@NotNull(message = "Cost cannot be NULL")
 	Double cost;
-	@NotEmpty(message = "CreatedBy cannot be NULL")
+	@NotNull(message = "CreatedBy cannot be NULL")
 	Long createdBy;
-	@NotEmpty(message = "CreatedOn cannot be NULL")
+	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
 	
@@ -26,12 +26,12 @@ public class ProductInsert {
 		
 	}
 
-	public ProductInsert(@NotEmpty(message = "ProductName cannot be NULL") String productName,
-			@NotEmpty(message = "ProductDescription cannot be NULL") String productDescription,
-			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
-			@NotEmpty(message = "Cost cannot be NULL") Double cost,
-			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
+	public ProductInsert(@NotNull(message = "ProductName cannot be NULL") String productName,
+			@NotNull(message = "ProductDescription cannot be NULL") String productDescription,
+			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
+			@NotNull(message = "Cost cannot be NULL") Double cost,
+			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
 		super();
 		this.productName = productName;
 		this.productDescription = productDescription;

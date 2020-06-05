@@ -3,30 +3,30 @@ package ivgroup.master.database.dto.owner;
 import java.sql.Timestamp;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class OwnerSelect {
-	@NotEmpty(message = "Id cannot be NULL")
+	@NotNull(message = "Id cannot be NULL")
 	Long id;
-	@NotEmpty(message = "OwnerName cannot be NULL")
+	@NotNull(message = "OwnerName cannot be NULL")
 	String ownerName;
-	@NotEmpty(message = "OwnerContact cannot be NULL")
+	@NotNull(message = "OwnerContact cannot be NULL")
 	String ownerContact;
-	@NotEmpty(message = "OwnerEmail cannot be NULL")
+	@NotNull(message = "OwnerEmail cannot be NULL")
 	@Email(message= "EmailId provider is INCORRECT")
 	String ownerEmail;
-	@NotEmpty(message = "UserName cannot be NULL")
+	@NotNull(message = "UserName cannot be NULL")
 	String userName;
-	@NotEmpty(message = "Password cannot be NULL")
+	@NotNull(message = "Password cannot be NULL")
 	String password;
-	@NotEmpty(message = "IsActive cannot be NULL")
+	@NotNull(message = "IsActive cannot be NULL")
 	Boolean isActive;
-	@NotEmpty(message = "CreatedOn cannot be NULL")
+	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
-	@NotEmpty(message = "CreatedOn cannot be NULL")
+	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp lastEditOn;
 	
@@ -34,15 +34,15 @@ public class OwnerSelect {
 		
 	}
 
-	public OwnerSelect(@NotEmpty(message = "Id cannot be NULL") Long id,
-			@NotEmpty(message = "OwnerName cannot be NULL") String ownerName,
-			@NotEmpty(message = "OwnerContact cannot be NULL") String ownerContact,
-			@NotEmpty(message = "OwnerEmail cannot be NULL") @Email(message= "EmailId provider is INCORRECT") String ownerEmail,
-			@NotEmpty(message = "UserName cannot be NULL") String userName,
-			@NotEmpty(message = "Password cannot be NULL") String password,
-			@NotEmpty(message = "IsActive cannot be NULL") Boolean isActive,
-			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp lastEditOn) {
+	public OwnerSelect(@NotNull(message = "Id cannot be NULL") Long id,
+			@NotNull(message = "OwnerName cannot be NULL") String ownerName,
+			@NotNull(message = "OwnerContact cannot be NULL") String ownerContact,
+			@NotNull(message = "OwnerEmail cannot be NULL") @Email(message= "EmailId provider is INCORRECT") String ownerEmail,
+			@NotNull(message = "UserName cannot be NULL") String userName,
+			@NotNull(message = "Password cannot be NULL") String password,
+			@NotNull(message = "IsActive cannot be NULL") Boolean isActive,
+			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotNull(message = "CreatedOn cannot be NULL") Timestamp lastEditOn) {
 		super();
 		this.id = id;
 		this.ownerName = ownerName;

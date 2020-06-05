@@ -2,7 +2,7 @@ package ivgroup.master.database.dto.companyBranchType;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -12,10 +12,10 @@ public class CompanyBranchTypeUpdate
 	String companyBranchTypeName;
 	Long companyId;
 	Integer companyBranchPosition;
-	@NotEmpty(message = "LastEditOn cannot be NULL")
+	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp lastEditOn;
-	@NotEmpty(message = "LastEditBy cannot be NULL")
+	@NotNull(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
 	
 	public CompanyBranchTypeUpdate()
@@ -24,8 +24,8 @@ public class CompanyBranchTypeUpdate
 	}
 
 	public CompanyBranchTypeUpdate(String companyBranchTypeName, Long companyId, Integer companyBranchPosition,
-			@NotEmpty(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
-			@NotEmpty(message = "LastEditBy cannot be NULL") Long lastEditBy) {
+			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
+			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy) {
 		super();
 		this.companyBranchTypeName = companyBranchTypeName;
 		this.companyId = companyId;

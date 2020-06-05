@@ -2,20 +2,20 @@ package ivgroup.master.database.dto.ticket;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class TicketAccessListInsert 
 {
-	@NotEmpty(message = "TicketId cannot be NULL")
+	@NotNull(message = "TicketId cannot be NULL")
 	Long ticketId;
-	@NotEmpty(message = "CompanyExecutiveId cannot be NULL")
+	@NotNull(message = "CompanyExecutiveId cannot be NULL")
 	Long companyExecutiveId;
-	@NotEmpty(message = "AccessApplicationTime cannot be NULL")
+	@NotNull(message = "AccessApplicationTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp accessApplicationTime;
-	@NotEmpty(message = "LastEditBy cannot be NULL")
+	@NotNull(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
 	
 	public TicketAccessListInsert()
@@ -25,10 +25,10 @@ public class TicketAccessListInsert
 	}
 
 	public TicketAccessListInsert(
-			@NotEmpty(message = "TicketId cannot be NULL") Long ticketId,
-			@NotEmpty(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
-			@NotEmpty(message = "AccessApplicationTime cannot be NULL") Timestamp accessApplicationTime,
-			@NotEmpty(message = "LastEditBy cannot be NULL") Long lastEditBy) {
+			@NotNull(message = "TicketId cannot be NULL") Long ticketId,
+			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
+			@NotNull(message = "AccessApplicationTime cannot be NULL") Timestamp accessApplicationTime,
+			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy) {
 		super();
 		this.ticketId = ticketId;
 		this.companyExecutiveId = companyExecutiveId;

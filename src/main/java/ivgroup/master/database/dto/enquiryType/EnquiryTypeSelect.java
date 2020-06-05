@@ -2,30 +2,30 @@ package ivgroup.master.database.dto.enquiryType;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class EnquiryTypeSelect
 {
-	@NotEmpty(message = "EnquiryTypeId cannot be NULL")
+	@NotNull(message = "EnquiryTypeId cannot be NULL")
 	Long enquiryTypeId;
-	@NotEmpty(message = "EnquiryTypeName cannot be NULL")
+	@NotNull(message = "EnquiryTypeName cannot be NULL")
 	String enquiryTypeName;
-	@NotEmpty(message = "EnquiryTypeColorCode cannot be NULL")
+	@NotNull(message = "EnquiryTypeColorCode cannot be NULL")
 	String enquiryTypeColorCode;
-	@NotEmpty(message = "CompanyId cannot be NULL")
+	@NotNull(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotEmpty(message = "CompanyName cannot be NULL")
+	@NotNull(message = "CompanyName cannot be NULL")
 	String companyName;
-	@NotEmpty(message = "CreatedBy cannot be NULL")
+	@NotNull(message = "CreatedBy cannot be NULL")
 	Long createdBy;
-	@NotEmpty(message = "CreatedOn cannot be NULL")
+	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
-	@NotEmpty(message = "LastEditBy cannot be NULL")
+	@NotNull(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
-	@NotEmpty(message = "LastEditOn cannot be NULL")
+	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp lastEditOn;
 	
@@ -34,15 +34,15 @@ public class EnquiryTypeSelect
 		
 	}
 
-	public EnquiryTypeSelect(@NotEmpty(message = "EnquiryTypeId cannot be NULL") Long enquiryTypeId,
-			@NotEmpty(message = "EnquiryTypeName cannot be NULL") String enquiryTypeName,
-			@NotEmpty(message = "EnquiryTypeColorCode cannot be NULL") String enquiryTypeColorCode,
-			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
-			@NotEmpty(message = "CompanyName cannot be NULL") String companyName,
-			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotEmpty(message = "LastEditBy cannot be NULL") Long lastEditBy,
-			@NotEmpty(message = "LastEditOn cannot be NULL") Timestamp lastEditOn) {
+	public EnquiryTypeSelect(@NotNull(message = "EnquiryTypeId cannot be NULL") Long enquiryTypeId,
+			@NotNull(message = "EnquiryTypeName cannot be NULL") String enquiryTypeName,
+			@NotNull(message = "EnquiryTypeColorCode cannot be NULL") String enquiryTypeColorCode,
+			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
+			@NotNull(message = "CompanyName cannot be NULL") String companyName,
+			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
+			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn) {
 		super();
 		this.enquiryTypeId = enquiryTypeId;
 		this.enquiryTypeName = enquiryTypeName;

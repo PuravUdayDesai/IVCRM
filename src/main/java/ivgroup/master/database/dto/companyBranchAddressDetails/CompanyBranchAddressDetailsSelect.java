@@ -1,34 +1,34 @@
 package ivgroup.master.database.dto.companyBranchAddressDetails;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class CompanyBranchAddressDetailsSelect {
 
-	@NotEmpty(message = "CompanyBranchAddressID cannot be NULL")
+	@NotNull(message = "CompanyBranchAddressID cannot be NULL")
 	Long companyBranchAddressID; 
-	@NotEmpty(message = "AddressLine1 cannot be NULL")
+	@NotNull(message = "AddressLine1 cannot be NULL")
 	String addressLine1; 
-	@NotEmpty(message = "AddressLine2 cannot be NULL")
+	@NotNull(message = "AddressLine2 cannot be NULL")
 	String addressLine2; 
-	@NotEmpty(message = "AddressLine3 cannot be NULL")
+	@NotNull(message = "AddressLine3 cannot be NULL")
 	String addressLine3; 
-	@NotEmpty(message = "Pincode cannot be NULL")
+	@NotNull(message = "Pincode cannot be NULL")
 	Long pincode; 
-	@NotEmpty(message = "CityID cannot be NULL")
+	@NotNull(message = "CityID cannot be NULL")
 	Long cityID; 
-	@NotEmpty(message = "CityName cannot be NULL")
+	@NotNull(message = "CityName cannot be NULL")
 	String cityName; 
-	@NotEmpty(message = "StateID cannot be NULL")
+	@NotNull(message = "StateID cannot be NULL")
 	Long stateID; 
-	@NotEmpty(message = "StateName cannot be NULL")
+	@NotNull(message = "StateName cannot be NULL")
 	String stateName;
-	@NotEmpty(message = "CountryID cannot be NULL")
+	@NotNull(message = "CountryID cannot be NULL")
 	Long countryID;
-	@NotEmpty(message = "CountryName cannot be NULL")
+	@NotNull(message = "CountryName cannot be NULL")
 	String countryName; 
-	@NotEmpty(message = "Latitude cannot be NULL")
+	@NotNull(message = "Latitude cannot be NULL")
 	String latitude; 
-	@NotEmpty(message = "Longitude cannot be NULL")
+	@NotNull(message = "Longitude cannot be NULL")
 	String longitude;
 	
 	public CompanyBranchAddressDetailsSelect() {
@@ -36,19 +36,19 @@ public class CompanyBranchAddressDetailsSelect {
 	}
 
 	public CompanyBranchAddressDetailsSelect(
-			@NotEmpty(message = "CompanyBranchAddressID cannot be NULL") Long companyBranchAddressID,
-			@NotEmpty(message = "AddressLine1 cannot be NULL") String addressLine1,
-			@NotEmpty(message = "AddressLine2 cannot be NULL") String addressLine2,
-			@NotEmpty(message = "AddressLine3 cannot be NULL") String addressLine3,
-			@NotEmpty(message = "Pincode cannot be NULL") Long pincode,
-			@NotEmpty(message = "CityID cannot be NULL") Long cityID,
-			@NotEmpty(message = "CityName cannot be NULL") String cityName,
-			@NotEmpty(message = "StateID cannot be NULL") Long stateID,
-			@NotEmpty(message = "StateName cannot be NULL") String stateName,
-			@NotEmpty(message = "CountryID cannot be NULL") Long countryID,
-			@NotEmpty(message = "CountryName cannot be NULL") String countryName,
-			@NotEmpty(message = "Latitude cannot be NULL") String latitude,
-			@NotEmpty(message = "Longitude cannot be NULL") String longitude) {
+			@NotNull(message = "CompanyBranchAddressID cannot be NULL") Long companyBranchAddressID,
+			@NotNull(message = "AddressLine1 cannot be NULL") String addressLine1,
+			@NotNull(message = "AddressLine2 cannot be NULL") String addressLine2,
+			@NotNull(message = "AddressLine3 cannot be NULL") String addressLine3,
+			@NotNull(message = "Pincode cannot be NULL") Long pincode,
+			@NotNull(message = "CityID cannot be NULL") Long cityID,
+			@NotNull(message = "CityName cannot be NULL") String cityName,
+			@NotNull(message = "StateID cannot be NULL") Long stateID,
+			@NotNull(message = "StateName cannot be NULL") String stateName,
+			@NotNull(message = "CountryID cannot be NULL") Long countryID,
+			@NotNull(message = "CountryName cannot be NULL") String countryName,
+			@NotNull(message = "Latitude cannot be NULL") String latitude,
+			@NotNull(message = "Longitude cannot be NULL") String longitude) {
 		super();
 		this.companyBranchAddressID = companyBranchAddressID;
 		this.addressLine1 = addressLine1;

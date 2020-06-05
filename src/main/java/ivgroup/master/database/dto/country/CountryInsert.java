@@ -2,29 +2,29 @@ package ivgroup.master.database.dto.country;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CountryInsert {
 
-	@NotEmpty(message = "CountryName cannot be NULL")
+	@NotNull(message = "CountryName cannot be NULL")
 	private String CountryName;
 
-	@NotEmpty(message = "CountryCode cannot be NULL")
+	@NotNull(message = "CountryCode cannot be NULL")
 	private String CountryCode;
 
-	@NotEmpty(message = "CountryDescription cannot be NULL")
+	@NotNull(message = "CountryDescription cannot be NULL")
 	private String CountryDescription;
 
-	@NotEmpty(message = "CreatedOn cannot be NULL")
+	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	private Timestamp CreatedOn;
 
-	@NotEmpty(message = "CreatedBy cannot be NULL")
+	@NotNull(message = "CreatedBy cannot be NULL")
 	private Long CreatedBy;
 
-	@NotEmpty(message = "DeviceType cannot be NULL")
+	@NotNull(message = "DeviceType cannot be NULL")
 	private Integer DeviceType;
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
@@ -108,12 +108,12 @@ public class CountryInsert {
 
 	public CountryInsert() {}
 	
-	public CountryInsert(@NotEmpty(message = "CountryName cannot be NULL") String countryName,
-			@NotEmpty(message = "CountryCode cannot be NULL") String countryCode,
-			@NotEmpty(message = "CountryDescription cannot be NULL") String countryDescription,
-			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotEmpty(message = "DeviceType cannot be NULL") Integer deviceType) {
+	public CountryInsert(@NotNull(message = "CountryName cannot be NULL") String countryName,
+			@NotNull(message = "CountryCode cannot be NULL") String countryCode,
+			@NotNull(message = "CountryDescription cannot be NULL") String countryDescription,
+			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotNull(message = "DeviceType cannot be NULL") Integer deviceType) {
 		super();
 		CountryName = countryName;
 		CountryCode = countryCode;

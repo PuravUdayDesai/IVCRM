@@ -2,19 +2,19 @@ package ivgroup.master.database.dto.companyExecutivePL;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CompanyExecutivePLSelect {
 
-	@NotEmpty(message="Id cannot be NULL")
+	@NotNull(message="Id cannot be NULL")
 	Long id;
-	@NotEmpty(message="ExecutiveId cannot be NULL")
+	@NotNull(message="ExecutiveId cannot be NULL")
 	Long executiveId;
-	@NotEmpty(message="PLRate cannot be NULL")
+	@NotNull(message="PLRate cannot be NULL")
 	Integer PLrate;
-	@NotEmpty(message="TimeOfEntry cannot be NULL")
+	@NotNull(message="TimeOfEntry cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp dateOfEntry;
 	
@@ -24,10 +24,10 @@ public class CompanyExecutivePLSelect {
 	}
 
 	public CompanyExecutivePLSelect(
-			@NotEmpty(message = "Id cannot be NULL") Long id,
-			@NotEmpty(message = "ExecutiveId cannot be NULL") Long executiveId,
-			@NotEmpty(message = "PLRate cannot be NULL") Integer pLrate,
-			@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST") @NotEmpty(message = "TimeOfEntry cannot be NULL") Timestamp dateOfEntry) {
+			@NotNull(message = "Id cannot be NULL") Long id,
+			@NotNull(message = "ExecutiveId cannot be NULL") Long executiveId,
+			@NotNull(message = "PLRate cannot be NULL") Integer pLrate,
+			@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST") @NotNull(message = "TimeOfEntry cannot be NULL") Timestamp dateOfEntry) {
 		super();
 		this.id = id;
 		this.executiveId = executiveId;

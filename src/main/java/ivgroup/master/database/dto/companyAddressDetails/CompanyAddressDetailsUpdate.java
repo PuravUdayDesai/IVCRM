@@ -2,7 +2,7 @@ package ivgroup.master.database.dto.companyAddressDetails;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class CompanyAddressDetailsUpdate {
 
@@ -15,11 +15,11 @@ public class CompanyAddressDetailsUpdate {
 	Long countryId;
 	String latitude;
 	String longitude;
-	@NotEmpty(message = "LastEditOn cannot be NULL")
+	@NotNull(message = "LastEditOn cannot be NULL")
 	Timestamp lastEditOn;
-	@NotEmpty(message = "LastEditBy cannot be NULL")
+	@NotNull(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
-	@NotEmpty(message = "LastEditDeviceType cannot be NULL")
+	@NotNull(message = "LastEditDeviceType cannot be NULL")
 	Integer lastEditDeviceType;
 	
 	public CompanyAddressDetailsUpdate() {
@@ -30,9 +30,9 @@ public class CompanyAddressDetailsUpdate {
 
 	public CompanyAddressDetailsUpdate(String addressLine1, String addressLine2, String addressLine3, Long pincode,
 			Long cityId, Long stateId, Long countryId, String latitude, String longitude,
-			@NotEmpty(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
-			@NotEmpty(message = "LastEditBy cannot be NULL") Long lastEditBy,
-			@NotEmpty(message = "LastEditDeviceType cannot be NULL") Integer lastEditDeviceType) {
+			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
+			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
+			@NotNull(message = "LastEditDeviceType cannot be NULL") Integer lastEditDeviceType) {
 		super();
 		this.addressLine1 = addressLine1;
 		this.addressLine2 = addressLine2;

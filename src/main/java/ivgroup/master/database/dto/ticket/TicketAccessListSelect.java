@@ -2,23 +2,23 @@ package ivgroup.master.database.dto.ticket;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class TicketAccessListSelect 
 {
-	@NotEmpty(message = "TicketAccessListId cannot be NULL")
+	@NotNull(message = "TicketAccessListId cannot be NULL")
 	Long ticketAccessListId;
-	@NotEmpty(message = "TicketId cannot be NULL")
+	@NotNull(message = "TicketId cannot be NULL")
 	Long ticketId;
-	@NotEmpty(message = "CompanyExecutiveId cannot be NULL")
+	@NotNull(message = "CompanyExecutiveId cannot be NULL")
 	Long companyExecutiveId;
-	@NotEmpty(message = "CompanyExecutiveName cannot be NULL")
+	@NotNull(message = "CompanyExecutiveName cannot be NULL")
 	String companyExecutiveName;
-	@NotEmpty(message = "OwnerFlag cannot be NULL")
+	@NotNull(message = "OwnerFlag cannot be NULL")
 	Boolean ownerFlag;
-	@NotEmpty(message = "AccessApplicationTime cannot be NULL")
+	@NotNull(message = "AccessApplicationTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp accessApplicationTime;
 	
@@ -27,12 +27,12 @@ public class TicketAccessListSelect
 		
 	}
 
-	public TicketAccessListSelect(@NotEmpty(message = "TicketAccessListId cannot be NULL") Long ticketAccessListId,
-			@NotEmpty(message = "TicketId cannot be NULL") Long ticketId,
-			@NotEmpty(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
-			@NotEmpty(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
-			@NotEmpty(message = "OwnerFlag cannot be NULL") Boolean ownerFlag,
-			@NotEmpty(message = "AccessApplicationTime cannot be NULL") Timestamp accessApplicationTime) {
+	public TicketAccessListSelect(@NotNull(message = "TicketAccessListId cannot be NULL") Long ticketAccessListId,
+			@NotNull(message = "TicketId cannot be NULL") Long ticketId,
+			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
+			@NotNull(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
+			@NotNull(message = "OwnerFlag cannot be NULL") Boolean ownerFlag,
+			@NotNull(message = "AccessApplicationTime cannot be NULL") Timestamp accessApplicationTime) {
 		super();
 		this.ticketAccessListId = ticketAccessListId;
 		this.ticketId = ticketId;

@@ -1,50 +1,50 @@
 package ivgroup.master.database.dto.companyExecutive;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class CompanyExecutiveLogin {
 	
-	@NotEmpty(message = "CompanyExecutiveId cannot be NULL")
+	@NotNull(message = "CompanyExecutiveId cannot be NULL")
 	Long companyExecutivId;
-	@NotEmpty(message = "CompanyId cannot be NULL")
+	@NotNull(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotEmpty(message = "OwnerId cannot be NULL")
+	@NotNull(message = "OwnerId cannot be NULL")
 	Long ownerId;
-	@NotEmpty(message = "CompanyAccess cannot be NULL")
+	@NotNull(message = "CompanyAccess cannot be NULL")
 	Integer companyAccess;
-	@NotEmpty(message = "CompanyBranchAccess cannot be NULL")
+	@NotNull(message = "CompanyBranchAccess cannot be NULL")
 	Integer companyBranchAccess;
-	@NotEmpty(message = "CompanyExecutiveAccess cannot be NULL")
+	@NotNull(message = "CompanyExecutiveAccess cannot be NULL")
 	Integer companyExecutiveAccess;
-	@NotEmpty(message = "ClientAccess cannot be NULL")
+	@NotNull(message = "ClientAccess cannot be NULL")
 	Integer clientAccess;
-	@NotEmpty(message = "ProductAccess cannot be NULL")
+	@NotNull(message = "ProductAccess cannot be NULL")
 	Integer productAccess;
-	@NotEmpty(message = "LocationAccess cannot be NULL")
+	@NotNull(message = "LocationAccess cannot be NULL")
 	Integer locationAccess;
-	@NotEmpty(message = "EnquiryAccess cannot be NULL")
+	@NotNull(message = "EnquiryAccess cannot be NULL")
 	Integer enquiryAccess;
-	@NotEmpty(message = "TicketAccess cannot be NULL")
+	@NotNull(message = "TicketAccess cannot be NULL")
 	Integer ticketAccess;
-	@NotEmpty(message = "PositionAcces cannot be NULL")
+	@NotNull(message = "PositionAcces cannot be NULL")
 	Integer positionAcces;
 
 	public CompanyExecutiveLogin() {
 
 	}
 
-	public CompanyExecutiveLogin(@NotEmpty(message = "CompanyExecutiveId cannot be NULL") Long companyExecutivId,
-			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
-			@NotEmpty(message = "OwnerId cannot be NULL") Long ownerId,
-			@NotEmpty(message = "CompanyAccess cannot be NULL") Integer companyAccess,
-			@NotEmpty(message = "CompanyBranchAccess cannot be NULL") Integer companyBranchAccess,
-			@NotEmpty(message = "CompanyExecutiveAccess cannot be NULL") Integer companyExecutiveAccess,
-			@NotEmpty(message = "ClientAccess cannot be NULL") Integer clientAccess,
-			@NotEmpty(message = "ProductAccess cannot be NULL") Integer productAccess,
-			@NotEmpty(message = "LocationAccess cannot be NULL") Integer locationAccess,
-			@NotEmpty(message = "EnquiryAccess cannot be NULL") Integer enquiryAccess,
-			@NotEmpty(message = "TicketAccess cannot be NULL") Integer ticketAccess,
-			@NotEmpty(message = "PositionAcces cannot be NULL") Integer positionAcces) {
+	public CompanyExecutiveLogin(@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutivId,
+			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
+			@NotNull(message = "OwnerId cannot be NULL") Long ownerId,
+			@NotNull(message = "CompanyAccess cannot be NULL") Integer companyAccess,
+			@NotNull(message = "CompanyBranchAccess cannot be NULL") Integer companyBranchAccess,
+			@NotNull(message = "CompanyExecutiveAccess cannot be NULL") Integer companyExecutiveAccess,
+			@NotNull(message = "ClientAccess cannot be NULL") Integer clientAccess,
+			@NotNull(message = "ProductAccess cannot be NULL") Integer productAccess,
+			@NotNull(message = "LocationAccess cannot be NULL") Integer locationAccess,
+			@NotNull(message = "EnquiryAccess cannot be NULL") Integer enquiryAccess,
+			@NotNull(message = "TicketAccess cannot be NULL") Integer ticketAccess,
+			@NotNull(message = "PositionAcces cannot be NULL") Integer positionAcces) {
 		super();
 		this.companyExecutivId = companyExecutivId;
 		this.companyId = companyId;

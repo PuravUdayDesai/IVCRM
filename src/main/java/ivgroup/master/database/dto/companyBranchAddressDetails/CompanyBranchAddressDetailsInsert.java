@@ -2,36 +2,36 @@ package ivgroup.master.database.dto.companyBranchAddressDetails;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CompanyBranchAddressDetailsInsert {
 
-	@NotEmpty(message = "AddressLine1 cannot be NULL")
+	@NotNull(message = "AddressLine1 cannot be NULL")
 	String addressLine1;
-	@NotEmpty(message = "AddressLine2 cannot be NULL")
+	@NotNull(message = "AddressLine2 cannot be NULL")
 	String addressLine2;
-	@NotEmpty(message = "AddressLine3 cannot be NULL")
+	@NotNull(message = "AddressLine3 cannot be NULL")
 	String addressLine3;
-	@NotEmpty(message = "Pincode cannot be NULL")
+	@NotNull(message = "Pincode cannot be NULL")
 	Long pincode;
-	@NotEmpty(message = "CityId cannot be NULL")
+	@NotNull(message = "CityId cannot be NULL")
 	Long cityId;
-	@NotEmpty(message = "StateId cannot be NULL")
+	@NotNull(message = "StateId cannot be NULL")
 	Long stateId;
-	@NotEmpty(message = "CountryId cannot be NULL")
+	@NotNull(message = "CountryId cannot be NULL")
 	Long countryId;
-	@NotEmpty(message = "Latitude cannot be NULL")
+	@NotNull(message = "Latitude cannot be NULL")
 	String latitude;
-	@NotEmpty(message = "Longitude cannot be NULL")
+	@NotNull(message = "Longitude cannot be NULL")
 	String longitude;
-	@NotEmpty(message = "CreatedOn cannot be NULL")
+	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
-	@NotEmpty(message = "CreatedBy cannot be NULL")
+	@NotNull(message = "CreatedBy cannot be NULL")
 	Long createdBy;
-	@NotEmpty(message = "CreatedDeviceType cannot be NULL")
+	@NotNull(message = "CreatedDeviceType cannot be NULL")
 	Integer createdDeviceType;
 
 	
@@ -40,18 +40,18 @@ public class CompanyBranchAddressDetailsInsert {
 	}
 
 	public CompanyBranchAddressDetailsInsert(
-			@NotEmpty(message = "AddressLine1 cannot be NULL") String addressLine1,
-			@NotEmpty(message = "AddressLine2 cannot be NULL") String addressLine2,
-			@NotEmpty(message = "AddressLine3 cannot be NULL") String addressLine3,
-			@NotEmpty(message = "Pincode cannot be NULL") Long pincode,
-			@NotEmpty(message = "CityId cannot be NULL") Long cityId,
-			@NotEmpty(message = "StateId cannot be NULL") Long stateId,
-			@NotEmpty(message = "CountryId cannot be NULL") Long countryId,
-			@NotEmpty(message = "Latitude cannot be NULL") String latitude,
-			@NotEmpty(message = "Longitude cannot be NULL") String longitude,
-			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn,
-			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotEmpty(message = "CreatedDeviceType cannot be NULL") Integer createdDeviceType) {
+			@NotNull(message = "AddressLine1 cannot be NULL") String addressLine1,
+			@NotNull(message = "AddressLine2 cannot be NULL") String addressLine2,
+			@NotNull(message = "AddressLine3 cannot be NULL") String addressLine3,
+			@NotNull(message = "Pincode cannot be NULL") Long pincode,
+			@NotNull(message = "CityId cannot be NULL") Long cityId,
+			@NotNull(message = "StateId cannot be NULL") Long stateId,
+			@NotNull(message = "CountryId cannot be NULL") Long countryId,
+			@NotNull(message = "Latitude cannot be NULL") String latitude,
+			@NotNull(message = "Longitude cannot be NULL") String longitude,
+			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotNull(message = "CreatedDeviceType cannot be NULL") Integer createdDeviceType) {
 		super();
 		this.addressLine1 = addressLine1;
 		this.addressLine2 = addressLine2;

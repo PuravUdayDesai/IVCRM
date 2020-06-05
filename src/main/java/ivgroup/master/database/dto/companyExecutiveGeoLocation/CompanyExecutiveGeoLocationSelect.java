@@ -2,27 +2,27 @@ package ivgroup.master.database.dto.companyExecutiveGeoLocation;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CompanyExecutiveGeoLocationSelect 
 {
-	@NotEmpty(message = "CompanyExecutiveGeoLocationId cannot be NULL")
+	@NotNull(message = "CompanyExecutiveGeoLocationId cannot be NULL")
 	Long companyExecutiveGeoLocationId;
-	@NotEmpty(message = "Latitude cannot be NULL")
+	@NotNull(message = "Latitude cannot be NULL")
 	String latitude;
-	@NotEmpty(message = "Longitude cannot be NULL")
+	@NotNull(message = "Longitude cannot be NULL")
 	String longitude;
-	@NotEmpty(message = "CompanyExecutiveId cannot be NULL")
+	@NotNull(message = "CompanyExecutiveId cannot be NULL")
 	Long companyExecutiveId;
-	@NotEmpty(message = "CompanyExecutiveName cannot be NULL")
+	@NotNull(message = "CompanyExecutiveName cannot be NULL")
 	String companyExecutiveName;
-	@NotEmpty(message = "CompanyId cannot be NULL")
+	@NotNull(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotEmpty(message = "CompanyName cannot be NULL")
+	@NotNull(message = "CompanyName cannot be NULL")
 	String companyName;
-	@NotEmpty(message = "EntryDateAndTime cannot be NULL")
+	@NotNull(message = "EntryDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp entryDateAndTime;
 	
@@ -32,14 +32,14 @@ public class CompanyExecutiveGeoLocationSelect
 	}
 
 	public CompanyExecutiveGeoLocationSelect(
-			@NotEmpty(message = "CompanyExecutiveGeoLocationId cannot be NULL") Long companyExecutiveGeoLocationId,
-			@NotEmpty(message = "Latitude cannot be NULL") String latitude,
-			@NotEmpty(message = "Longitude cannot be NULL") String longitude,
-			@NotEmpty(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
-			@NotEmpty(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
-			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
-			@NotEmpty(message = "CompanyName cannot be NULL") String companyName,
-			@NotEmpty(message = "EntryDateAndTime cannot be NULL") Timestamp entryDateAndTime) {
+			@NotNull(message = "CompanyExecutiveGeoLocationId cannot be NULL") Long companyExecutiveGeoLocationId,
+			@NotNull(message = "Latitude cannot be NULL") String latitude,
+			@NotNull(message = "Longitude cannot be NULL") String longitude,
+			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
+			@NotNull(message = "CompanyExecutiveName cannot be NULL") String companyExecutiveName,
+			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
+			@NotNull(message = "CompanyName cannot be NULL") String companyName,
+			@NotNull(message = "EntryDateAndTime cannot be NULL") Timestamp entryDateAndTime) {
 		super();
 		this.companyExecutiveGeoLocationId = companyExecutiveGeoLocationId;
 		this.latitude = latitude;

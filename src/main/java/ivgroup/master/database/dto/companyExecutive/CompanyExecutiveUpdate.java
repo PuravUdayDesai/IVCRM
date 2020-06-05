@@ -2,7 +2,7 @@ package ivgroup.master.database.dto.companyExecutive;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -16,12 +16,12 @@ public class CompanyExecutiveUpdate {
 	Long companyId;
 	String contactNumber;
 	Boolean isActive;
-	@NotEmpty(message = "LastEditOn cannot be NULL")
+	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp lastEditOn;
-	@NotEmpty(message = "LastEditBy cannot be NULL")
+	@NotNull(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
-	@NotEmpty(message = "LastEditDeviceType cannot be NULL")
+	@NotNull(message = "LastEditDeviceType cannot be NULL")
 	Integer lastEditDeviceType;
 	
 	public CompanyExecutiveUpdate() {
@@ -30,9 +30,9 @@ public class CompanyExecutiveUpdate {
 
 	public CompanyExecutiveUpdate(String executiveName, String loginId, String password, Long companyBranchId,
 			Long baseCityId, Long companyId, String contactNumber, Boolean isActive,
-			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp lastEditOn,
-			@NotEmpty(message = "CreatedBy cannot be NULL") Long lastEditBy,
-			@NotEmpty(message = "CreatedDeviceType cannot be NULL") Integer lastEditDeviceType) {
+			@NotNull(message = "CreatedOn cannot be NULL") Timestamp lastEditOn,
+			@NotNull(message = "CreatedBy cannot be NULL") Long lastEditBy,
+			@NotNull(message = "CreatedDeviceType cannot be NULL") Integer lastEditDeviceType) {
 		super();
 		this.executiveName = executiveName;
 		this.loginId = loginId;

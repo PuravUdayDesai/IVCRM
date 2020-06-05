@@ -2,25 +2,25 @@ package ivgroup.master.database.dto.enquiry;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class EnquiryProductInsert
 {
-	@NotEmpty(message = "EnquiryId cannot be NULL")
+	@NotNull(message = "EnquiryId cannot be NULL")
 	Long enquiryId;
-	@NotEmpty(message = "ProductId cannot be NULL")
+	@NotNull(message = "ProductId cannot be NULL")
 	Long productId;
-	@NotEmpty(message = "StatusId cannot be NULL")
+	@NotNull(message = "StatusId cannot be NULL")
 	Long statusId;
-	@NotEmpty(message = "TicketRemarks cannot be NULL")
+	@NotNull(message = "TicketRemarks cannot be NULL")
 	String ticketRemarks;
-	@NotEmpty(message = "PriorityId cannot be NULL")
+	@NotNull(message = "PriorityId cannot be NULL")
 	Integer priorityId;
-	@NotEmpty(message = "CreatedBy cannot be NULL")
+	@NotNull(message = "CreatedBy cannot be NULL")
 	Long createdBy;
-	@NotEmpty(message = "CreatedOn cannot be NULL")
+	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
 	
@@ -29,13 +29,13 @@ public class EnquiryProductInsert
 		
 	}
 
-	public EnquiryProductInsert(@NotEmpty(message = "EnquiryId cannot be NULL") Long enquiryId,
-			@NotEmpty(message = "ProductId cannot be NULL") Long productId,
-			@NotEmpty(message = "StatusId cannot be NULL") Long statusId,
-			@NotEmpty(message = "TicketRemarks cannot be NULL") String ticketRemarks,
-			@NotEmpty(message = "PriorityId cannot be NULL") Integer priorityId,
-			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
+	public EnquiryProductInsert(@NotNull(message = "EnquiryId cannot be NULL") Long enquiryId,
+			@NotNull(message = "ProductId cannot be NULL") Long productId,
+			@NotNull(message = "StatusId cannot be NULL") Long statusId,
+			@NotNull(message = "TicketRemarks cannot be NULL") String ticketRemarks,
+			@NotNull(message = "PriorityId cannot be NULL") Integer priorityId,
+			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
 		super();
 		this.enquiryId = enquiryId;
 		this.productId = productId;

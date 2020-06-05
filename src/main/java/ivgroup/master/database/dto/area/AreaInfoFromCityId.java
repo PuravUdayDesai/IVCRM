@@ -1,19 +1,19 @@
 package ivgroup.master.database.dto.area;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class AreaInfoFromCityId {
 
-	@NotEmpty(message = "BusinessAreaID cannot be NULL")
+	@NotNull(message = "BusinessAreaID cannot be NULL")
 	private long BusinessAreaID;
 
-	@NotEmpty(message = "BusinessAreaName cannot be NULL")
+	@NotNull(message = "BusinessAreaName cannot be NULL")
 	private String BusinessAreaName;
 
-	@NotEmpty(message = "BusinessAreaCode cannot be NULL")
+	@NotNull(message = "BusinessAreaCode cannot be NULL")
 	private String BusinessAreaCode;
 	
-	@NotEmpty(message = "BusinessAreaDescription cannot be NULL")
+	@NotNull(message = "BusinessAreaDescription cannot be NULL")
 	private String BusinessAreaDescription;
 
 	public long getBusinessAreaID() {
@@ -48,10 +48,10 @@ public class AreaInfoFromCityId {
 		BusinessAreaDescription = businessAreaDescription;
 	}
 
-	public AreaInfoFromCityId(@NotEmpty(message = "BusinessAreaID cannot be NULL") long businessAreaID,
-			@NotEmpty(message = "BusinessAreaName cannot be NULL") String businessAreaName,
-			@NotEmpty(message = "BusinessAreaCode cannot be NULL") String businessAreaCode,
-			@NotEmpty(message = "BusinessAreaDescription cannot be NULL") String businessAreaDescription) {
+	public AreaInfoFromCityId(@NotNull(message = "BusinessAreaID cannot be NULL") long businessAreaID,
+			@NotNull(message = "BusinessAreaName cannot be NULL") String businessAreaName,
+			@NotNull(message = "BusinessAreaCode cannot be NULL") String businessAreaCode,
+			@NotNull(message = "BusinessAreaDescription cannot be NULL") String businessAreaDescription) {
 		super();
 		BusinessAreaID = businessAreaID;
 		BusinessAreaName = businessAreaName;

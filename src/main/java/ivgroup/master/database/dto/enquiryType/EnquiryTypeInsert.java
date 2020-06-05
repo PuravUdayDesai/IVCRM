@@ -2,21 +2,21 @@ package ivgroup.master.database.dto.enquiryType;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class EnquiryTypeInsert
 {
-	@NotEmpty(message = "EnquiryTypeName cannot be NULL")
+	@NotNull(message = "EnquiryTypeName cannot be NULL")
 	String enquiryTypeName;
-	@NotEmpty(message = "EnquiryTypeColorCode cannot be NULL")
+	@NotNull(message = "EnquiryTypeColorCode cannot be NULL")
 	String enquiryTypeColorCode;
-	@NotEmpty(message = "CompanyId cannot be NULL")
+	@NotNull(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotEmpty(message = "CreatedBy cannot be NULL")
+	@NotNull(message = "CreatedBy cannot be NULL")
 	Long createdBy;
-	@NotEmpty(message = "CreatedOn cannot be NULL")
+	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
 	
@@ -25,11 +25,11 @@ public class EnquiryTypeInsert
 		
 	}
 
-	public EnquiryTypeInsert(@NotEmpty(message = "EnquiryTypeName cannot be NULL") String enquiryTypeName,
-			@NotEmpty(message = "EnquiryTypeColorCode cannot be NULL") String enquiryTypeColorCode,
-			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
-			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
+	public EnquiryTypeInsert(@NotNull(message = "EnquiryTypeName cannot be NULL") String enquiryTypeName,
+			@NotNull(message = "EnquiryTypeColorCode cannot be NULL") String enquiryTypeColorCode,
+			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
+			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
 		super();
 		this.enquiryTypeName = enquiryTypeName;
 		this.enquiryTypeColorCode = enquiryTypeColorCode;

@@ -1,20 +1,20 @@
 package ivgroup.master.database.dto.geoMapPlotting;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class CompanyGeoMapPlotting 
 {
-	@NotEmpty(message = "CompanyId cannot be NULL")
+	@NotNull(message = "CompanyId cannot be NULL")
 	Long companyId;
-	@NotEmpty(message = "Latitude cannot be NULL")
+	@NotNull(message = "Latitude cannot be NULL")
 	String latitude;
-	@NotEmpty(message = "Longitude cannot be NULL")
+	@NotNull(message = "Longitude cannot be NULL")
 	String longitude;
-	@NotEmpty(message = "CompanyName cannot be NULL")
+	@NotNull(message = "CompanyName cannot be NULL")
 	String companyName;
-	@NotEmpty(message = "CompanyCode cannot be NULL")
+	@NotNull(message = "CompanyCode cannot be NULL")
 	String companyCode;
-	@NotEmpty(message = "MarkForDelete cannot be NULL")
+	@NotNull(message = "MarkForDelete cannot be NULL")
 	Boolean markForDelete;
 	
 	public CompanyGeoMapPlotting()
@@ -23,12 +23,12 @@ public class CompanyGeoMapPlotting
 	}
 
 	public CompanyGeoMapPlotting(
-			@NotEmpty(message = "CompanyId cannot be NULL") Long companyId,
-			@NotEmpty(message = "Latitude cannot be NULL") String latitude,
-			@NotEmpty(message = "Longitude cannot be NULL") String longitude,
-			@NotEmpty(message = "CompanyName cannot be NULL") String companyName,
-			@NotEmpty(message = "CompanyCode cannot be NULL") String companyCode,
-			@NotEmpty(message = "MarkForDelete cannot be NULL") Boolean markForDelete) {
+			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
+			@NotNull(message = "Latitude cannot be NULL") String latitude,
+			@NotNull(message = "Longitude cannot be NULL") String longitude,
+			@NotNull(message = "CompanyName cannot be NULL") String companyName,
+			@NotNull(message = "CompanyCode cannot be NULL") String companyCode,
+			@NotNull(message = "MarkForDelete cannot be NULL") Boolean markForDelete) {
 		super();
 		this.companyId = companyId;
 		this.latitude = latitude;

@@ -1,34 +1,34 @@
 package ivgroup.master.database.dto.report;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class LocationNStatusReport {
 
-	@NotEmpty
+	@NotNull
 	String LocationName;
 
-	@NotEmpty
+	@NotNull
 	Long NumOfTickets;
 
-	@NotEmpty
+	@NotNull
 	Long Prospects;
 
-	@NotEmpty
+	@NotNull
 	Long CallBack;
 
-	@NotEmpty
+	@NotNull
 	Long DemoPending;
 
-	@NotEmpty
+	@NotNull
 	Long Quotation;
 
-	@NotEmpty
+	@NotNull
 	Long PaymentPending;
 
-	@NotEmpty
+	@NotNull
 	Long Closure;
 
-	@NotEmpty
+	@NotNull
 	Long Dead;
 
 	public String getLocationName() {
@@ -103,9 +103,9 @@ public class LocationNStatusReport {
 		Dead = dead;
 	}
 
-	public LocationNStatusReport(@NotEmpty String locationName, @NotEmpty Long numOfTickets, @NotEmpty Long prospects,
-			@NotEmpty Long callBack, @NotEmpty Long demoPending, @NotEmpty Long quotation, @NotEmpty Long paymentPending,
-			@NotEmpty Long closure, @NotEmpty Long dead) {
+	public LocationNStatusReport(@NotNull String locationName, @NotNull Long numOfTickets, @NotNull Long prospects,
+			@NotNull Long callBack, @NotNull Long demoPending, @NotNull Long quotation, @NotNull Long paymentPending,
+			@NotNull Long closure, @NotNull Long dead) {
 		super();
 		LocationName = locationName;
 		NumOfTickets = numOfTickets;

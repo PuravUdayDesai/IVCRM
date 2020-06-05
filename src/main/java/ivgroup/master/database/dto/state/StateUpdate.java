@@ -2,7 +2,7 @@ package ivgroup.master.database.dto.state;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -20,14 +20,14 @@ public class StateUpdate {
 		
 	private Integer DeviceType;
 
-	@NotEmpty(message = "LastEditOn cannot be NULL")
+	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp LastEditOn;
 	
-	@NotEmpty(message = "LastEditBy cannot be NULL")
+	@NotNull(message = "LastEditBy cannot be NULL")
 	Long LastEditBy;
 	
-	@NotEmpty(message = "LastEditDeviceType cannot be NULL")
+	@NotNull(message = "LastEditDeviceType cannot be NULL")
 	Integer LastEditDeviceType;
 
 	public String getStateName() {
@@ -103,9 +103,9 @@ public class StateUpdate {
 	}
 
 	public StateUpdate(String stateName, String stateCode, Long countryID, String stateDescription, Boolean isActive,
-			Integer deviceType, @NotEmpty(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
-			@NotEmpty(message = "LastEditBy cannot be NULL") Long lastEditBy,
-			@NotEmpty(message = "LastEditDeviceType cannot be NULL") Integer lastEditDeviceType) {
+			Integer deviceType, @NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
+			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
+			@NotNull(message = "LastEditDeviceType cannot be NULL") Integer lastEditDeviceType) {
 		super();
 		StateName = stateName;
 		StateCode = stateCode;
