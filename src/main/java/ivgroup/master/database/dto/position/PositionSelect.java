@@ -2,6 +2,8 @@ package ivgroup.master.database.dto.position;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -14,6 +16,8 @@ public class PositionSelect
 	@NotNull(message = "PositionName cannot be NULL")
 	String positionName;
 	@NotNull(message = "PositionPriority cannot be NULL")
+	@Min(value=1)
+	@Max(value=15)
 	Integer positionPriority;
 	@NotNull(message = "CompanyId cannot be NULL")
 	Long companyId;
@@ -57,7 +61,7 @@ public class PositionSelect
 
 	public PositionSelect(@NotNull(message = "PositionId cannot be NULL") Long positionId,
 			@NotNull(message = "PositionName cannot be NULL") String positionName,
-			@NotNull(message = "PositionPriority cannot be NULL") Integer positionPriority,
+			@NotNull(message = "PositionPriority cannot be NULL") @Min(value=1) @Max(value=15) Integer positionPriority,
 			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
 			@NotNull(message = "CompanyName cannot be NULL") String companyName,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
