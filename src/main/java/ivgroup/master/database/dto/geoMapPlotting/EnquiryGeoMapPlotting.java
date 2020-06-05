@@ -1,26 +1,26 @@
 package ivgroup.master.database.dto.geoMapPlotting;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class EnquiryGeoMapPlotting 
 {
-	@NotEmpty(message = "EnquiryId cannot be NULL")
+	@NotNull(message = "EnquiryId cannot be NULL")
 	Long enquiryId;
-	@NotEmpty(message = "Latitude cannot be NULL")
+	@NotNull(message = "Latitude cannot be NULL")
 	String latitude;
-	@NotEmpty(message = "Longitude cannot be NULL")
+	@NotNull(message = "Longitude cannot be NULL")
 	String longitude;
-	@NotEmpty(message = "CompanyName cannot be NULL")
+	@NotNull(message = "CompanyName cannot be NULL")
 	String companyName;
-	@NotEmpty(message = "ClientName cannot be NULL")
+	@NotNull(message = "ClientName cannot be NULL")
 	String clientName;
-	@NotEmpty(message = "ContactPerson cannot be NULL")
+	@NotNull(message = "ContactPerson cannot be NULL")
 	String contactPerson;
-	@NotEmpty(message = "EmailId cannot be NULL")
+	@NotNull(message = "EmailId cannot be NULL")
 	String emailId;
-	@NotEmpty(message = "ContactNumber cannot be NULL")
+	@NotNull(message = "ContactNumber cannot be NULL")
 	String contactNumber;
-	@NotEmpty(message = "EnquiryTypeName cannot be NULL")
+	@NotNull(message = "EnquiryTypeName cannot be NULL")
 	String enquiryTypeName;
 	
 	public EnquiryGeoMapPlotting()
@@ -29,15 +29,15 @@ public class EnquiryGeoMapPlotting
 	}
 
 	public EnquiryGeoMapPlotting(
-			@NotEmpty(message = "EnquiryId cannot be NULL") Long enquiryId,
-			@NotEmpty(message = "Latitude cannot be NULL") String latitude,
-			@NotEmpty(message = "Longitude cannot be NULL") String longitude,
-			@NotEmpty(message = "CompanyName cannot be NULL") String companyName,
-			@NotEmpty(message = "ClientName cannot be NULL") String clientName,
-			@NotEmpty(message = "ContactPerson cannot be NULL") String contactPerson,
-			@NotEmpty(message = "EmailId cannot be NULL") String emailId,
-			@NotEmpty(message = "ContactNumber cannot be NULL") String contactNumber,
-			@NotEmpty(message = "EnquiryTypeName cannot be NULL") String enquiryTypeName) {
+			@NotNull(message = "EnquiryId cannot be NULL") Long enquiryId,
+			@NotNull(message = "Latitude cannot be NULL") String latitude,
+			@NotNull(message = "Longitude cannot be NULL") String longitude,
+			@NotNull(message = "CompanyName cannot be NULL") String companyName,
+			@NotNull(message = "ClientName cannot be NULL") String clientName,
+			@NotNull(message = "ContactPerson cannot be NULL") String contactPerson,
+			@NotNull(message = "EmailId cannot be NULL") String emailId,
+			@NotNull(message = "ContactNumber cannot be NULL") String contactNumber,
+			@NotNull(message = "EnquiryTypeName cannot be NULL") String enquiryTypeName) {
 		super();
 		this.enquiryId = enquiryId;
 		this.latitude = latitude;

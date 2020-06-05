@@ -1,25 +1,25 @@
 package ivgroup.master.database.dto.report;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class LocationPriorityReport {
 
-	@NotEmpty
+	@NotNull
 	String LocationName;
 
-	@NotEmpty
+	@NotNull
 	Long NumOfTickets;
 
-	@NotEmpty
+	@NotNull
 	Long Immediate;
 
-	@NotEmpty
+	@NotNull
 	Long High;
 
-	@NotEmpty
+	@NotNull
 	Long Normal;
 
-	@NotEmpty
+	@NotNull
 	Long Low;
 
 	public String getLocationName() {
@@ -70,8 +70,8 @@ public class LocationPriorityReport {
 		Low = low;
 	}
 
-	public LocationPriorityReport(@NotEmpty String locationName, @NotEmpty Long numOfTickets, @NotEmpty Long immediate,
-			@NotEmpty Long high, @NotEmpty Long normal, @NotEmpty Long low) {
+	public LocationPriorityReport(@NotNull String locationName, @NotNull Long numOfTickets, @NotNull Long immediate,
+			@NotNull Long high, @NotNull Long normal, @NotNull Long low) {
 		super();
 		LocationName = locationName;
 		NumOfTickets = numOfTickets;

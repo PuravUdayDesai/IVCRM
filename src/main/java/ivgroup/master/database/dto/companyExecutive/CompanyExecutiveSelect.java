@@ -1,36 +1,36 @@
 package ivgroup.master.database.dto.companyExecutive;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class CompanyExecutiveSelect {
 	
-	@NotEmpty(message = "ExecutiveId cannot be NULL")
+	@NotNull(message = "ExecutiveId cannot be NULL")
 	String executiveId;
-	@NotEmpty(message = "ExecutiveName cannot be NULL")
+	@NotNull(message = "ExecutiveName cannot be NULL")
 	String executiveName;
-	@NotEmpty(message = "LoginID cannot be NULL")
+	@NotNull(message = "LoginID cannot be NULL")
 	String loginID;
-	@NotEmpty(message = "Password cannot be NULL")
+	@NotNull(message = "Password cannot be NULL")
 	String password;
-	@NotEmpty(message = "CompanyBranchID cannot be NULL")
+	@NotNull(message = "CompanyBranchID cannot be NULL")
 	Long companyBranchID;
-	@NotEmpty(message = "CompanyBranchName cannot be NULL")
+	@NotNull(message = "CompanyBranchName cannot be NULL")
 	String companyBranchName;
-	@NotEmpty(message = "CompanyBranchCode cannot be NULL")
+	@NotNull(message = "CompanyBranchCode cannot be NULL")
 	String companyBranchCode;
-	@NotEmpty(message = "BaseCityID cannot be NULL")
+	@NotNull(message = "BaseCityID cannot be NULL")
 	Long cityID;
-	@NotEmpty(message = "CityName cannot be NULL")
+	@NotNull(message = "CityName cannot be NULL")
 	String cityName;
-	@NotEmpty(message = "CompanyID cannot be NULL")
+	@NotNull(message = "CompanyID cannot be NULL")
 	Long companyID;
-	@NotEmpty(message = "CompanyName cannot be NULL")
+	@NotNull(message = "CompanyName cannot be NULL")
 	String companyName;
-	@NotEmpty(message = "CompanyCode cannot be NULL")
+	@NotNull(message = "CompanyCode cannot be NULL")
 	String companyCode;
-	@NotEmpty(message = "ContactNumber cannot be NULL")
+	@NotNull(message = "ContactNumber cannot be NULL")
 	String contactNumber;
-	@NotEmpty(message = "IsActive cannot be NULL")
+	@NotNull(message = "IsActive cannot be NULL")
 	Boolean isActive;
 	
 	public CompanyExecutiveSelect()
@@ -39,20 +39,20 @@ public class CompanyExecutiveSelect {
 	}
 
 	public CompanyExecutiveSelect(
-			@NotEmpty(message = "ExecutiveId cannot be NULL") String executiveId,
-			@NotEmpty(message = "ExecutiveName cannot be NULL") String executiveName,
-			@NotEmpty(message = "LoginID cannot be NULL") String loginID,
-			@NotEmpty(message = "Password cannot be NULL") String password,
-			@NotEmpty(message = "CompanyBranchID cannot be NULL") Long companyBranchID,
-			@NotEmpty(message = "CompanyBranchName cannot be NULL") String companyBranchName,
-			@NotEmpty(message = "CompanyBranchCode cannot be NULL") String companyBranchCode,
-			@NotEmpty(message = "BaseCityID cannot be NULL") Long cityID,
-			@NotEmpty(message = "CityName cannot be NULL") String cityName,
-			@NotEmpty(message = "CompanyID cannot be NULL") Long companyID,
-			@NotEmpty(message = "CompanyName cannot be NULL") String companyName,
-			@NotEmpty(message = "CompanyCode cannot be NULL") String companyCode,
-			@NotEmpty(message = "ContactNumber cannot be NULL") String contactNumber,
-			@NotEmpty(message = "IsActive cannot be NULL") Boolean isActive) {
+			@NotNull(message = "ExecutiveId cannot be NULL") String executiveId,
+			@NotNull(message = "ExecutiveName cannot be NULL") String executiveName,
+			@NotNull(message = "LoginID cannot be NULL") String loginID,
+			@NotNull(message = "Password cannot be NULL") String password,
+			@NotNull(message = "CompanyBranchID cannot be NULL") Long companyBranchID,
+			@NotNull(message = "CompanyBranchName cannot be NULL") String companyBranchName,
+			@NotNull(message = "CompanyBranchCode cannot be NULL") String companyBranchCode,
+			@NotNull(message = "BaseCityID cannot be NULL") Long cityID,
+			@NotNull(message = "CityName cannot be NULL") String cityName,
+			@NotNull(message = "CompanyID cannot be NULL") Long companyID,
+			@NotNull(message = "CompanyName cannot be NULL") String companyName,
+			@NotNull(message = "CompanyCode cannot be NULL") String companyCode,
+			@NotNull(message = "ContactNumber cannot be NULL") String contactNumber,
+			@NotNull(message = "IsActive cannot be NULL") Boolean isActive) {
 		super();
 		this.executiveId = executiveId;
 		this.executiveName = executiveName;

@@ -2,32 +2,32 @@ package ivgroup.master.database.dto.callTransaction;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CallTransactionSelect {
 	
-	@NotEmpty(message="CallTransactionId cannot be NULL")
+	@NotNull(message="CallTransactionId cannot be NULL")
 	Long callTransactionId;
-	@NotEmpty(message="ClientId cannot be NULL")
+	@NotNull(message="ClientId cannot be NULL")
 	Long clientId;
-	@NotEmpty(message="CompanyExecutiveId cannot be NULL")
+	@NotNull(message="CompanyExecutiveId cannot be NULL")
 	Long companyExecutiveId;
-	@NotEmpty(message="ClientNameOnCompanyExecutiveList cannot be NULL")
+	@NotNull(message="ClientNameOnCompanyExecutiveList cannot be NULL")
 	String clientNameOnCompanyExecutiveList;
-	@NotEmpty(message="ClientContactNumber cannot be NULL")
+	@NotNull(message="ClientContactNumber cannot be NULL")
 	String clientContactNumber;
-	@NotEmpty(message="CallType cannot be NULL")
+	@NotNull(message="CallType cannot be NULL")
 	Integer callType;
-	@NotEmpty(message="TalkDuration cannot be NULL")
+	@NotNull(message="TalkDuration cannot be NULL")
 	Long talkDuration;
-	@NotEmpty(message="CallTime cannot be NULL")
+	@NotNull(message="CallTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp callTime;
-	@NotEmpty(message="FileURL cannot be NULL")
+	@NotNull(message="FileURL cannot be NULL")
 	String fileURL;
-	@NotEmpty(message="FilePath cannot be NULL")
+	@NotNull(message="FilePath cannot be NULL")
 	String filePath;
 	
 	public CallTransactionSelect() {
@@ -35,16 +35,16 @@ public class CallTransactionSelect {
 	}
 
 	public CallTransactionSelect(
-			@NotEmpty(message = "CallTransactionId cannot be NULL") Long callTransactionId,
-			@NotEmpty(message = "ClientId cannot be NULL") Long clientId,
-			@NotEmpty(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
-			@NotEmpty(message = "ClientNameOnCompanyExecutiveList cannot be NULL") String clientNameOnCompanyExecutiveList,
-			@NotEmpty(message = "ClientContactNumber cannot be NULL") String clientContactNumber,
-			@NotEmpty(message = "CallType cannot be NULL") Integer callType,
-			@NotEmpty(message = "TalkDuration cannot be NULL") Long talkDuration,
-			@NotEmpty(message = "CallTime cannot be NULL") Timestamp callTime,
-			@NotEmpty(message = "FileURL cannot be NULL") String fileURL,
-			@NotEmpty(message = "FilePath cannot be NULL") String filePath) {
+			@NotNull(message = "CallTransactionId cannot be NULL") Long callTransactionId,
+			@NotNull(message = "ClientId cannot be NULL") Long clientId,
+			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
+			@NotNull(message = "ClientNameOnCompanyExecutiveList cannot be NULL") String clientNameOnCompanyExecutiveList,
+			@NotNull(message = "ClientContactNumber cannot be NULL") String clientContactNumber,
+			@NotNull(message = "CallType cannot be NULL") Integer callType,
+			@NotNull(message = "TalkDuration cannot be NULL") Long talkDuration,
+			@NotNull(message = "CallTime cannot be NULL") Timestamp callTime,
+			@NotNull(message = "FileURL cannot be NULL") String fileURL,
+			@NotNull(message = "FilePath cannot be NULL") String filePath) {
 		super();
 		this.callTransactionId = callTransactionId;
 		this.clientId = clientId;

@@ -1,25 +1,25 @@
 package ivgroup.master.database.dto.report;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class ExecutiveReport {
 
-	@NotEmpty
+	@NotNull
 	String ExecutiveName;
 
-	@NotEmpty
+	@NotNull
 	Long TotalTickets;
 
-	@NotEmpty
+	@NotNull
 	Long TicketCompleted;
 
-	@NotEmpty
+	@NotNull
 	Long TicketDelayed;
 
-	@NotEmpty
+	@NotNull
 	Long TicketPending;
 
-	@NotEmpty
+	@NotNull
 	Integer PlRate;
 
 	public String getExecutiveName() {
@@ -70,8 +70,8 @@ public class ExecutiveReport {
 		PlRate = plRate;
 	}
 
-	public ExecutiveReport(@NotEmpty String executiveName, @NotEmpty Long totalTickets, @NotEmpty Long ticketCompleted,
-			@NotEmpty Long ticketDelayed, @NotEmpty Long ticketPending, @NotEmpty Integer plRate) {
+	public ExecutiveReport(@NotNull String executiveName, @NotNull Long totalTickets, @NotNull Long ticketCompleted,
+			@NotNull Long ticketDelayed, @NotNull Long ticketPending, @NotNull Integer plRate) {
 		super();
 		ExecutiveName = executiveName;
 		TotalTickets = totalTickets;

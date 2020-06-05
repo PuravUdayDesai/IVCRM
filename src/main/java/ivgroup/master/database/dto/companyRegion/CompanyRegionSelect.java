@@ -1,37 +1,37 @@
 package ivgroup.master.database.dto.companyRegion;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class CompanyRegionSelect {
-	@NotEmpty(message = "CompanyRegionID cannot be NULL")
+	@NotNull(message = "CompanyRegionID cannot be NULL")
 	Long companyRegionID;
-	@NotEmpty(message = "CompanyRegionName cannot be NULL")
+	@NotNull(message = "CompanyRegionName cannot be NULL")
 	String companyRegionName;
-	@NotEmpty(message = "CompanyRegionCode cannot be NULL")
+	@NotNull(message = "CompanyRegionCode cannot be NULL")
 	String companyRegionCode;
-	@NotEmpty(message = "CompanyRegionDescription cannot be NULL")
+	@NotNull(message = "CompanyRegionDescription cannot be NULL")
 	String companyRegionDescription;
-	@NotEmpty(message = "CompanyID cannot be NULL")
+	@NotNull(message = "CompanyID cannot be NULL")
 	Long companyID;
-	@NotEmpty(message = "CompanyName cannot be NULL")
+	@NotNull(message = "CompanyName cannot be NULL")
 	String companyName;
-	@NotEmpty(message = "CompanyCode cannot be NULL")
+	@NotNull(message = "CompanyCode cannot be NULL")
 	String companyCode;
-	@NotEmpty(message = "IsActive cannot be NULL")
+	@NotNull(message = "IsActive cannot be NULL")
 	Boolean isActive;
 	
 	public CompanyRegionSelect() {
 		
 	}
 
-	public CompanyRegionSelect(@NotEmpty(message = "CompanyRegionID cannot be NULL") Long companyRegionID,
-			@NotEmpty(message = "CompanyRegionName cannot be NULL") String companyRegionName,
-			@NotEmpty(message = "CompanyRegionCode cannot be NULL") String companyRegionCode,
-			@NotEmpty(message = "CompanyRegionDescription cannot be NULL") String companyRegionDescription,
-			@NotEmpty(message = "CompanyID cannot be NULL") Long companyID,
-			@NotEmpty(message = "CompanyName cannot be NULL") String companyName,
-			@NotEmpty(message = "CompanyCode cannot be NULL") String companyCode,
-			@NotEmpty(message = "IsActive cannot be NULL") Boolean isActive) {
+	public CompanyRegionSelect(@NotNull(message = "CompanyRegionID cannot be NULL") Long companyRegionID,
+			@NotNull(message = "CompanyRegionName cannot be NULL") String companyRegionName,
+			@NotNull(message = "CompanyRegionCode cannot be NULL") String companyRegionCode,
+			@NotNull(message = "CompanyRegionDescription cannot be NULL") String companyRegionDescription,
+			@NotNull(message = "CompanyID cannot be NULL") Long companyID,
+			@NotNull(message = "CompanyName cannot be NULL") String companyName,
+			@NotNull(message = "CompanyCode cannot be NULL") String companyCode,
+			@NotNull(message = "IsActive cannot be NULL") Boolean isActive) {
 		super();
 		this.companyRegionID = companyRegionID;
 		this.companyRegionName = companyRegionName;

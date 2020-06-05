@@ -1,12 +1,12 @@
 package ivgroup.master.database.dto.companyExecutivePL;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class CompanyExecutivePLGeneralSelectForYear {
 
-	@NotEmpty(message="PL RATE cannot be NULL")
+	@NotNull(message="PL RATE cannot be NULL")
 	Double PLRate;
-	@NotEmpty(message="DateOfEntry cannot be NULL")
+	@NotNull(message="DateOfEntry cannot be NULL")
 	Integer dateOfEntry;
 	
 	public CompanyExecutivePLGeneralSelectForYear()
@@ -14,8 +14,8 @@ public class CompanyExecutivePLGeneralSelectForYear {
 
 	}
 
-	public CompanyExecutivePLGeneralSelectForYear(@NotEmpty(message = "PL RATE cannot be NULL") Double pLRate,
-			@NotEmpty(message = "DateOfEntry cannot be NULL") Integer dateOfEntry) {
+	public CompanyExecutivePLGeneralSelectForYear(@NotNull(message = "PL RATE cannot be NULL") Double pLRate,
+			@NotNull(message = "DateOfEntry cannot be NULL") Integer dateOfEntry) {
 		super();
 		PLRate = pLRate;
 		this.dateOfEntry = dateOfEntry;

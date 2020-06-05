@@ -2,7 +2,7 @@ package ivgroup.master.database.dto.ticket;
 
 import java.util.List;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class TicketFilterSelect 
 {
@@ -12,7 +12,7 @@ public class TicketFilterSelect
 	List<Long> productId;
 	List<Long> companyId;
 	List<Long> enquiryId;
-	@NotEmpty(message = "CompanyExecutiveId cannot be NULL")
+	@NotNull(message = "CompanyExecutiveId cannot be NULL")
 	Long companyExecutiveId;
 	
 	public TicketFilterSelect() 
@@ -27,7 +27,7 @@ public class TicketFilterSelect
 			List<Long> productId, 
 			List<Long> companyId, 
 			List<Long> enquiryId,
-			@NotEmpty(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId) 
+			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId) 
 	{
 		super();
 		this.priorityId = priorityId;

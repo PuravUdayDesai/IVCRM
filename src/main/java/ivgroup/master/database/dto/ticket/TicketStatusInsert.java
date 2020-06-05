@@ -2,19 +2,19 @@ package ivgroup.master.database.dto.ticket;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class TicketStatusInsert 
 {
-	@NotEmpty(message = "TicketId cannot be NULL")
+	@NotNull(message = "TicketId cannot be NULL")
 	Long ticketId;
-	@NotEmpty(message = "StatusId cannot be NULL")
+	@NotNull(message = "StatusId cannot be NULL")
 	Long statusId;
-	@NotEmpty(message = "CreatedBy cannot be NULL")
+	@NotNull(message = "CreatedBy cannot be NULL")
 	Long createdBy;
-	@NotEmpty(message = "CreatedOn cannot be NULL")
+	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp createdOn;
 
@@ -23,10 +23,10 @@ public class TicketStatusInsert
 		
 	}
 
-	public TicketStatusInsert(@NotEmpty(message = "TicketId cannot be NULL") Long ticketId,
-			@NotEmpty(message = "StatusId cannot be NULL") Long statusId,
-			@NotEmpty(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotEmpty(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
+	public TicketStatusInsert(@NotNull(message = "TicketId cannot be NULL") Long ticketId,
+			@NotNull(message = "StatusId cannot be NULL") Long statusId,
+			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
+			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
 		super();
 		this.ticketId = ticketId;
 		this.statusId = statusId;

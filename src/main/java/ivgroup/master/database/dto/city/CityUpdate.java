@@ -2,7 +2,7 @@ package ivgroup.master.database.dto.city;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -24,14 +24,14 @@ public class CityUpdate {
 
 	private Integer DeviceType;
 	
-	@NotEmpty(message = "LastEditOn cannot be NULL")	
+	@NotNull(message = "LastEditOn cannot be NULL")	
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	private Timestamp LastEditOn;
 		
-	@NotEmpty(message = "LastEditBy cannot be NULL")
+	@NotNull(message = "LastEditBy cannot be NULL")
 	Long LastEditBy;
 	
-	@NotEmpty(message = "LastEditDeviceType cannot be NULL")
+	@NotNull(message = "LastEditDeviceType cannot be NULL")
 	Integer LastEditDeviceType;
 
 	public long getCityID() {
@@ -124,9 +124,9 @@ public class CityUpdate {
 
 	public CityUpdate(long cityID, String cityName, String cityCode, Long countryID, Boolean isActive, Long stateID,
 			String cityDescription, Integer deviceType,
-			@NotEmpty(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
-			@NotEmpty(message = "LastEditBy cannot be NULL") Long lastEditBy,
-			@NotEmpty(message = "LastEditDeviceType cannot be NULL") Integer lastEditDeviceType) {
+			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
+			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
+			@NotNull(message = "LastEditDeviceType cannot be NULL") Integer lastEditDeviceType) {
 		super();
 		CityID = cityID;
 		CityName = cityName;

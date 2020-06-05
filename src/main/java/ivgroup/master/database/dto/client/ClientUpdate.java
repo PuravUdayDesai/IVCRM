@@ -3,7 +3,7 @@ package ivgroup.master.database.dto.client;
 import java.sql.Timestamp;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -27,10 +27,10 @@ public class ClientUpdate
 	String latitude;
 	String longitude;
 	Boolean isActive;
-	@NotEmpty(message = "LastEditOn cannot be NULL")
+	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp lastEditOn;
-	@NotEmpty(message = "LastEditBy cannot be NULL")
+	@NotNull(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
 	
 	public ClientUpdate()
@@ -55,8 +55,8 @@ public class ClientUpdate
 			String latitude,
 			String longitude,
 			Boolean isActive,
-			@NotEmpty(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
-			@NotEmpty(message = "LastEditBy cannot be NULL") Long lastEditBy) {
+			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
+			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy) {
 		super();
 		this.contactName = contactName;
 		this.contactPerson = contactPerson;

@@ -1,46 +1,46 @@
 package ivgroup.master.database.dto.companyArea;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 public class CompanyAreaSelect {
 	
-	@NotEmpty(message = "CompanyAreaID cannot be NULL")
+	@NotNull(message = "CompanyAreaID cannot be NULL")
 	Long companyAreaID;
-	@NotEmpty(message = "CompanyAreaName cannot be NULL")
+	@NotNull(message = "CompanyAreaName cannot be NULL")
 	String companyAreaName;
-	@NotEmpty(message = "CompanyAreaCode cannot be NULL")
+	@NotNull(message = "CompanyAreaCode cannot be NULL")
 	String companyAreaCode;
-	@NotEmpty(message = "CompanyAreaDescription cannot be NULL")
+	@NotNull(message = "CompanyAreaDescription cannot be NULL")
 	String companyAreaDescription;
-	@NotEmpty(message = "CompanyID cannot be NULL")
+	@NotNull(message = "CompanyID cannot be NULL")
 	Long companyID;
-	@NotEmpty(message = "CompanyName cannot be NULL")
+	@NotNull(message = "CompanyName cannot be NULL")
 	String companyName;
-	@NotEmpty(message = "CompanyCode cannot be NULL")
+	@NotNull(message = "CompanyCode cannot be NULL")
 	String companyCode;
-	@NotEmpty(message = "CompanyRegionId cannot be NULL")
+	@NotNull(message = "CompanyRegionId cannot be NULL")
 	Long companyRegionId;
-	@NotEmpty(message = "CompanyRegionName cannot be NULL")
+	@NotNull(message = "CompanyRegionName cannot be NULL")
 	String companyRegionName;
-	@NotEmpty(message = "CompanyRegionCode cannot be NULL")
+	@NotNull(message = "CompanyRegionCode cannot be NULL")
 	String companyRegionCode;
-	@NotEmpty(message = "IsActive cannot be NULL")
+	@NotNull(message = "IsActive cannot be NULL")
 	Boolean isActive;
 	
 	public CompanyAreaSelect() {
 		
 	}
 
-	public CompanyAreaSelect(@NotEmpty(message = "CompanyAreaID cannot be NULL") Long companyAreaID,
-			@NotEmpty(message = "CompanyAreaName cannot be NULL") String companyAreaName,
-			@NotEmpty(message = "CompanyAreaCode cannot be NULL") String companyAreaCode,
-			@NotEmpty(message = "CompanyAreaDescription cannot be NULL") String companyAreaDescription,
-			@NotEmpty(message = "CompanyID cannot be NULL") Long companyID,
-			@NotEmpty(message = "CompanyName cannot be NULL") String companyName,
-			@NotEmpty(message = "CompanyCode cannot be NULL") String companyCode,
-			@NotEmpty(message = "CompanyRegionId cannot be NULL") Long companyRegionId,
-			@NotEmpty(message = "CompanyRegionName cannot be NULL") String companyRegionName,
-			@NotEmpty(message = "CompanyRegionCode cannot be NULL") String companyRegionCode,
-			@NotEmpty(message = "IsActive cannot be NULL") Boolean isActive) {
+	public CompanyAreaSelect(@NotNull(message = "CompanyAreaID cannot be NULL") Long companyAreaID,
+			@NotNull(message = "CompanyAreaName cannot be NULL") String companyAreaName,
+			@NotNull(message = "CompanyAreaCode cannot be NULL") String companyAreaCode,
+			@NotNull(message = "CompanyAreaDescription cannot be NULL") String companyAreaDescription,
+			@NotNull(message = "CompanyID cannot be NULL") Long companyID,
+			@NotNull(message = "CompanyName cannot be NULL") String companyName,
+			@NotNull(message = "CompanyCode cannot be NULL") String companyCode,
+			@NotNull(message = "CompanyRegionId cannot be NULL") Long companyRegionId,
+			@NotNull(message = "CompanyRegionName cannot be NULL") String companyRegionName,
+			@NotNull(message = "CompanyRegionCode cannot be NULL") String companyRegionCode,
+			@NotNull(message = "IsActive cannot be NULL") Boolean isActive) {
 		super();
 		this.companyAreaID = companyAreaID;
 		this.companyAreaName = companyAreaName;
