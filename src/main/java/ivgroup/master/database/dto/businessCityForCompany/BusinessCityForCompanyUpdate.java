@@ -2,6 +2,7 @@ package ivgroup.master.database.dto.businessCityForCompany;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -26,6 +27,7 @@ public class BusinessCityForCompanyUpdate {
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@NotNull(message = "LastEditOn cannot be NULL")
+	@FutureOrPresent
 	Timestamp LastEditOn;
 	
 	@NotNull(message = "LastEditBy cannot be NULL")
@@ -124,7 +126,7 @@ public class BusinessCityForCompanyUpdate {
 
 	public BusinessCityForCompanyUpdate(Long companyID, Long countryID, Long stateID, String cityName, String cityCode,
 			String cityDescription, Integer deviceType, Boolean isActive,
-			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
+			@NotNull(message = "LastEditOn cannot be NULL") @FutureOrPresent Timestamp lastEditOn,
 			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
 			@NotNull(message = "LastEditDeviceType cannot be NULL") Integer lastEditDeviceType) {
 		super();

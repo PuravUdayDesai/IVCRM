@@ -2,6 +2,7 @@ package ivgroup.master.database.dto.companyExecutive;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -24,6 +25,7 @@ public class CompanyExecutiveInsert {
 	String contactNumber;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@FutureOrPresent
 	Timestamp createdOn;
 	@NotNull(message = "CreatedBy cannot be NULL")
 	Long createdBy;
@@ -42,7 +44,7 @@ public class CompanyExecutiveInsert {
 			@NotNull(message = "BaseCityId cannot be NULL") Long baseCityId,
 			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
 			@NotNull(message = "ContactNumber cannot be NULL") String contactNumber,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotNull(message = "CreatedOn cannot be NULL") @FutureOrPresent Timestamp createdOn,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
 			@NotNull(message = "CreatedDeviceType cannot be NULL") Integer createdDeviceType) {
 		super();

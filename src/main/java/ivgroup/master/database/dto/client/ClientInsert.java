@@ -3,6 +3,7 @@ package ivgroup.master.database.dto.client;
 import java.sql.Timestamp;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -42,6 +43,7 @@ public class ClientInsert
 	String longitude;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@FutureOrPresent
 	Timestamp createdOn;
 	@NotNull(message = "CreatedBy cannot be NULL")
 	Long createdBy;
@@ -68,7 +70,7 @@ public class ClientInsert
 			@NotNull(message = "Pincode cannot be NULL") String pincode,
 			@NotNull(message = "Latitude cannot be NULL") String latitude,
 			@NotNull(message = "Longitude cannot be NULL") String longitude,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
+			@NotNull(message = "CreatedOn cannot be NULL") @FutureOrPresent Timestamp createdOn,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy) {
 		super();
 		this.contactName = contactName;

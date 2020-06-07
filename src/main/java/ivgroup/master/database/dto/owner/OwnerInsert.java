@@ -3,6 +3,7 @@ package ivgroup.master.database.dto.owner;
 import java.sql.Timestamp;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -22,6 +23,7 @@ public class OwnerInsert {
 	String ownerPassword;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@FutureOrPresent
 	Timestamp createdOn;
 	
 	public OwnerInsert() {
@@ -33,7 +35,7 @@ public class OwnerInsert {
 			@NotNull(message = "OwnerEmail cannot be NULL") @Email(message= "EmailId provider is INCORRECT") String ownerEmail,
 			@NotNull(message = "OwnerUserName cannot be NULL") String ownerUserName,
 			@NotNull(message = "OwnerPassword cannot be NULL") String ownerPassword,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
+			@NotNull(message = "CreatedOn cannot be NULL") @FutureOrPresent Timestamp createdOn) {
 		super();
 		this.ownerName = ownerName;
 		this.ownerContact = ownerContact;

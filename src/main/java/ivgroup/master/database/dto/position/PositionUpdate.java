@@ -2,6 +2,7 @@ package ivgroup.master.database.dto.position;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -49,6 +50,7 @@ public class PositionUpdate
 	Long lastEditBy;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@FutureOrPresent
 	Timestamp lastEditOn;
 	
 	public PositionUpdate()
@@ -71,7 +73,7 @@ public class PositionUpdate
 			String position,
 			Boolean isActive,
 			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
-			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn) {
+			@NotNull(message = "LastEditOn cannot be NULL") @FutureOrPresent Timestamp lastEditOn) {
 		super();
 		this.positionName = positionName;
 		this.positionPriority = positionPriority;

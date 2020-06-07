@@ -2,6 +2,7 @@ package ivgroup.master.database.dto.position;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -17,7 +18,7 @@ public class PositionInsert
 	String positionName;
 	@NotNull(message = "PositionPriority cannot be NULL")
 	@Min(value=1)
-	@Max(value=15)
+	@Max(value=25)
 	Integer positionPriority;
 	@NotNull(message = "CompanyId cannot be NULL")
 	Long companyId;
@@ -61,6 +62,7 @@ public class PositionInsert
 	Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@FutureOrPresent
 	Timestamp createdOn;
 	
 	public PositionInsert()
@@ -82,7 +84,7 @@ public class PositionInsert
 			@NotNull(message = "Ticket cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String ticket,
 			@NotNull(message = "Position cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String position,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
+			@NotNull(message = "CreatedOn cannot be NULL") @FutureOrPresent Timestamp createdOn) {
 		super();
 		this.positionName = positionName;
 		this.positionPriority = positionPriority;

@@ -2,6 +2,7 @@ package ivgroup.master.database.dto.enquiry;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -14,9 +15,11 @@ public class EnquiryDetailsForNewProductTicketInsert
 	Long enquiryType;
 	@NotNull(message = "StartDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@FutureOrPresent
 	Timestamp startDateAndTime;
 	@NotNull(message = "DeadlineDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@FutureOrPresent
 	Timestamp deadlineDateAndTime;
 	@NotNull(message = "CompanyId cannot be NULL")
 	Long companyId;
@@ -29,8 +32,8 @@ public class EnquiryDetailsForNewProductTicketInsert
 	public EnquiryDetailsForNewProductTicketInsert(
 			@NotNull(message = "EnquiryRemarks cannot be NULL") String enquiryRemarks,
 			@NotNull(message = "EnquiryType cannot be NULL") Long enquiryType,
-			@NotNull(message = "StartDateAndTime cannot be NULL") Timestamp startDateAndTime,
-			@NotNull(message = "DeadlineDateAndTime cannot be NULL") Timestamp deadlineDateAndTime,
+			@NotNull(message = "StartDateAndTime cannot be NULL") @FutureOrPresent Timestamp startDateAndTime,
+			@NotNull(message = "DeadlineDateAndTime cannot be NULL") @FutureOrPresent Timestamp deadlineDateAndTime,
 			@NotNull(message = "CompanyId cannot be NULL") Long companyId) {
 		super();
 		this.enquiryRemarks = enquiryRemarks;
