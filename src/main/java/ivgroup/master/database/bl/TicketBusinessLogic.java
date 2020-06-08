@@ -953,4 +953,25 @@ public class TicketBusinessLogic
 		}
 		return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.OK);
 	}
+	
+	public ResponseEntity<List<NonAccessibleExecutiveListSelect>> selectNonAccessibleExecutivesOfTicketByCompanyExecutive(Long ticketId,Long companyExecutiveId)
+	{
+		List<NonAccessibleExecutiveListSelect> ll=new ArrayList<NonAccessibleExecutiveListSelect>();
+		if(ticketId==null||companyExecutiveId==null)
+		{
+			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			ll=tdi.selectNonAccessibleExecutiveOfTicketByCompanyExecutive(ticketId, companyExecutiveId);
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(ll.isEmpty())
+		{
+			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.OK);
+	}
 }

@@ -714,4 +714,28 @@ public class TicketDAOImpl implements TicketDAO
 		return ll;
 	}
 
+	@Override
+	public List<NonAccessibleExecutiveListSelect> selectNonAccessibleExecutiveOfTicketByCompanyExecutive(Long ticketId,Long companyExecutiveId) throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM ticket.\"fn_selectNonExistingCompanyExecutivesInTicketByCompanyExecutiveId\"(?,?);");
+		stmt.setLong(1, ticketId);
+		stmt.setLong(2, companyExecutiveId);
+		ResultSet rs=stmt.executeQuery();
+		List<NonAccessibleExecutiveListSelect> ll=new ArrayList<NonAccessibleExecutiveListSelect>();
+		while(rs.next())
+		{
+			ll.add(new NonAccessibleExecutiveListSelect(
+					rs.getString("CompanyExecutiveId"),
+					rs.getString("CompanyExecutiveName"),
+					rs.getString("ContactNumber"),
+					rs.getLong("CompanyID")
+					));
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return ll;
+	}
+
 }

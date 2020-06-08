@@ -1156,4 +1156,25 @@ public class EnquiryBusinessLogic
 		}
 		return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.OK);
 	}
+	
+	public ResponseEntity<List<NonAccessibleExecutiveListSelect>> selectNonAccessibleExecutivesOfEnquiryByCompanyExecutiveId(Long enquiryId,Long companyExecutiveId)
+	{
+		List<NonAccessibleExecutiveListSelect> ll=new ArrayList<NonAccessibleExecutiveListSelect>();
+		if(enquiryId==null||companyExecutiveId==null)
+		{
+			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			ll=edi.selectNonAccessibleExecutiveOfEnquiryByCompanyExecutiveId(enquiryId, companyExecutiveId);
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(ll.isEmpty())
+		{
+			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.OK);
+	}
 }
