@@ -161,4 +161,10 @@ public class EnquiryController
 	{
 		return ebl.selectNonAccessibleExecutivesOfEnquiry(enquiryId);
 	}
+	
+	@GetMapping(path="/enquiryNonAccessibleExecutives/companyExecutive/{enquiryId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<@Valid NonAccessibleExecutiveListSelect>> selectNonAccessibleExecutivesOfEnquiryByCompanyExecutiveId(@PathVariable @NotNull Long enquiryId,@RequestParam("companyExecutiveId") @NotNull Long companyExecutiveId)
+	{
+		return ebl.selectNonAccessibleExecutivesOfEnquiryByCompanyExecutiveId(enquiryId, companyExecutiveId);
+	}
 }

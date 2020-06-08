@@ -2,6 +2,7 @@ package ivgroup.master.database.dto.ticket;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -16,6 +17,7 @@ public class TicketStatusInsert
 	Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@FutureOrPresent
 	Timestamp createdOn;
 
 	public TicketStatusInsert()
@@ -26,7 +28,7 @@ public class TicketStatusInsert
 	public TicketStatusInsert(@NotNull(message = "TicketId cannot be NULL") Long ticketId,
 			@NotNull(message = "StatusId cannot be NULL") Long statusId,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
+			@FutureOrPresent @NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
 		super();
 		this.ticketId = ticketId;
 		this.statusId = statusId;

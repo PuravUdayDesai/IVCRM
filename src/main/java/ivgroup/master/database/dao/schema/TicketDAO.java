@@ -32,6 +32,7 @@ public interface TicketDAO
 	public List<SchedulerNotificationInsert> 				selectDeadlineDateCrossoverExecutiveList(Date currentDate)										throws SQLException,ClassNotFoundException;
 	public List<ScheduerCompanyExecutivePLUpdateInsert> 	selectCompanyExecutivePLUpdates(Date currentDate)												throws SQLException,ClassNotFoundException;
 	public List<NonAccessibleExecutiveListSelect>			selectNonAccessibleExecutivesOfTicket(Long ticketId)											throws SQLException,ClassNotFoundException;
+	public List<NonAccessibleExecutiveListSelect>			selectNonAccessibleExecutiveOfTicketByCompanyExecutive(Long ticketId,Long companyExecutiveId)	throws SQLException,ClassNotFoundException;
 	public Long 											checkCompanyExecutiveTicketAccessDependency(Long ticketId,Long companyExecutiveId)				throws SQLException,ClassNotFoundException;
 	public Long 											addTicket(TicketInsert ti)																		throws SQLException,ClassNotFoundException;
 	public Boolean 											addTicketStatus(TicketStatusInsert ti)															throws SQLException,ClassNotFoundException;

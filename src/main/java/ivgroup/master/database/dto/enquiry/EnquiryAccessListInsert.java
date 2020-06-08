@@ -2,6 +2,7 @@ package ivgroup.master.database.dto.enquiry;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -14,6 +15,7 @@ public class EnquiryAccessListInsert
 	Long companyExecutiveId;
 	@NotNull(message = "AccessApplicationTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@FutureOrPresent
 	Timestamp accessApplicationTime;
 	
 	public EnquiryAccessListInsert()
@@ -24,7 +26,7 @@ public class EnquiryAccessListInsert
 	public EnquiryAccessListInsert(
 			@NotNull(message = "EnquiryId cannot be NULL") Long enquiryId,
 			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
-			@NotNull(message = "AccessApplicationTime cannot be NULL") Timestamp accessApplicationTime) {
+			@NotNull(message = "AccessApplicationTime cannot be NULL") @FutureOrPresent Timestamp accessApplicationTime) {
 		super();
 		this.enquiryId = enquiryId;
 		this.companyExecutiveId = companyExecutiveId;

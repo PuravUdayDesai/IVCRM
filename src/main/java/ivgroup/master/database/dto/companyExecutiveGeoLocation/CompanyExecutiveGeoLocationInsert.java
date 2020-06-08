@@ -2,6 +2,7 @@ package ivgroup.master.database.dto.companyExecutiveGeoLocation;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -14,6 +15,7 @@ public class CompanyExecutiveGeoLocationInsert
 	Long companyId;
 	@NotNull(message = "EntryDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@FutureOrPresent
 	Timestamp entryDateAndTime;
 	@NotNull(message = "Latitude cannot be NULL")
 	String latitude;
@@ -44,7 +46,7 @@ public class CompanyExecutiveGeoLocationInsert
 	public CompanyExecutiveGeoLocationInsert(
 			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
 			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
-			@NotNull(message = "EntryDateAndTime cannot be NULL") Timestamp entryDateAndTime,
+			@NotNull(message = "EntryDateAndTime cannot be NULL") @FutureOrPresent Timestamp entryDateAndTime,
 			@NotNull(message = "Latitude cannot be NULL") String latitude,
 			@NotNull(message = "Longitude cannot be NULL") String longitude,
 			@NotNull(message = "CountryName cannot be NULL") String countryName,

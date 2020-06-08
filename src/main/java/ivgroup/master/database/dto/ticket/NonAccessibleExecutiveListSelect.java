@@ -2,8 +2,9 @@ package ivgroup.master.database.dto.ticket;
 
 import javax.validation.constraints.NotNull;
 
-public class NonAccessibleExecutiveListSelect 
+public class NonAccessibleExecutiveListSelect
 {
+
 	@NotNull(message = "CompanyExecutiveId cannot be NULL")
 	String companyExecutiveId;
 	@NotNull(message = "CompanyExecutiveName cannot be NULL")

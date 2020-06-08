@@ -149,4 +149,10 @@ public class TicketController
 		return tbl.selectNonAccessibleExecutivesOfTicket(ticketId);
 	}
 	
+	@GetMapping(path="/ticketNonAccessibleExecutives/companyExecutive/{ticketId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<NonAccessibleExecutiveListSelect>> selectNonAccessibleExecutivesOfTicketByCompanyExecutive(@PathVariable @NotNull Long ticketId,@RequestParam("companyExecutiveId") @NotNull Long companyExecutiveId)
+	{
+		return tbl.selectNonAccessibleExecutivesOfTicketByCompanyExecutive(ticketId, companyExecutiveId);
+	}
+
 }

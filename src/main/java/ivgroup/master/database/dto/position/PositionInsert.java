@@ -2,6 +2,9 @@ package ivgroup.master.database.dto.position;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -14,6 +17,8 @@ public class PositionInsert
 	@NotNull(message = "PositionName cannot be NULL")
 	String positionName;
 	@NotNull(message = "PositionPriority cannot be NULL")
+	@Min(value=1)
+	@Max(value=25)
 	Integer positionPriority;
 	@NotNull(message = "CompanyId cannot be NULL")
 	Long companyId;
@@ -57,6 +62,7 @@ public class PositionInsert
 	Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@FutureOrPresent
 	Timestamp createdOn;
 	
 	public PositionInsert()
@@ -64,22 +70,21 @@ public class PositionInsert
 		
 	}
 
-
-
-	public PositionInsert(@NotNull(message = "PositionName cannot be NULL") String positionName,
-			@NotNull(message = "PositionPriority cannot be NULL") Integer positionPriority,
+	public PositionInsert(
+			@NotNull(message = "PositionName cannot be NULL") String positionName,
+			@NotNull(message = "PositionPriority cannot be NULL") @Min(1) @Max(15) Integer positionPriority,
 			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
-			@NotNull(message = "Company cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String company,
-			@NotNull(message = "CompanyBranch cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String companyBranch,
-			@NotNull(message = "CompanyExecutive cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String companyExecutive,
-			@NotNull(message = "Client cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String client,
-			@NotNull(message = "Product cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String product,
-			@NotNull(message = "Location cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String location,
-			@NotNull(message = "Enquiry cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String enquiry,
-			@NotNull(message = "Ticket cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String ticket,
-			@NotNull(message = "Position cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+") String position,
+			@NotNull(message = "Company cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String company,
+			@NotNull(message = "CompanyBranch cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String companyBranch,
+			@NotNull(message = "CompanyExecutive cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String companyExecutive,
+			@NotNull(message = "Client cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String client,
+			@NotNull(message = "Product cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String product,
+			@NotNull(message = "Location cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String location,
+			@NotNull(message = "Enquiry cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String enquiry,
+			@NotNull(message = "Ticket cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String ticket,
+			@NotNull(message = "Position cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String position,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
+			@NotNull(message = "CreatedOn cannot be NULL") @FutureOrPresent Timestamp createdOn) {
 		super();
 		this.positionName = positionName;
 		this.positionPriority = positionPriority;
@@ -96,8 +101,6 @@ public class PositionInsert
 		this.createdBy = createdBy;
 		this.createdOn = createdOn;
 	}
-
-
 
 	public String getPositionName() {
 		return positionName;

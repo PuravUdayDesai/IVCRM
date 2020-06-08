@@ -2,6 +2,7 @@ package ivgroup.master.database.dto.ticket;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -14,6 +15,7 @@ public class TicketAccessListInsert
 	Long companyExecutiveId;
 	@NotNull(message = "AccessApplicationTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@FutureOrPresent
 	Timestamp accessApplicationTime;
 	@NotNull(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
@@ -27,7 +29,7 @@ public class TicketAccessListInsert
 	public TicketAccessListInsert(
 			@NotNull(message = "TicketId cannot be NULL") Long ticketId,
 			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutiveId,
-			@NotNull(message = "AccessApplicationTime cannot be NULL") Timestamp accessApplicationTime,
+			@NotNull(message = "AccessApplicationTime cannot be NULL") @FutureOrPresent Timestamp accessApplicationTime,
 			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy) {
 		super();
 		this.ticketId = ticketId;

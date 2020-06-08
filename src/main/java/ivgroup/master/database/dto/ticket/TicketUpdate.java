@@ -2,6 +2,7 @@ package ivgroup.master.database.dto.ticket;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -12,10 +13,12 @@ public class TicketUpdate
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	Timestamp startDateAndTime;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@FutureOrPresent 
 	Timestamp deadlineDateAndTime;
 	Integer ticketPriority;
-	@NotNull(message = "LastEditOn cannot be NULL")
+	@NotNull(message = "LastEditOn cannot be NSULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@FutureOrPresent 
 	Timestamp lastEditOn;
 	@NotNull(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
@@ -25,8 +28,12 @@ public class TicketUpdate
 		
 	}
 
-	public TicketUpdate(String ticketRemarks, Timestamp startDateAndTime, Timestamp deadlineDateAndTime,
-			Integer ticketPriority, @NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
+	public TicketUpdate(
+			String ticketRemarks, 
+			@FutureOrPresent Timestamp startDateAndTime, 
+			@FutureOrPresent Timestamp deadlineDateAndTime,
+			Integer ticketPriority, 
+			@NotNull(message = "LastEditOn cannot be NULL") Timestamp lastEditOn,
 			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy) {
 		super();
 		this.ticketRemarks = ticketRemarks;

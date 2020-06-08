@@ -3,6 +3,7 @@ package ivgroup.master.database.dto.enquiry;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -41,9 +42,11 @@ public class EnquiryInsert
 	Long statusId;
 	@NotNull(message = "StartDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@FutureOrPresent
 	Timestamp startDateAndTime;
 	@NotNull(message = "DeadlineDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@FutureOrPresent
 	Timestamp deadlineDateAndTime;
 	@NotNull(message = "Prioirty cannot be NULL")
 	Integer prioirty;
@@ -75,12 +78,12 @@ public class EnquiryInsert
 			@NotNull(message = "Latitude cannot be NULL") String latitude,
 			@NotNull(message = "Longitude cannot be NULL") String longitude,
 			@NotNull(message = "StatusId cannot be NULL") Long statusId,
-			@NotNull(message = "StartDateAndTime cannot be NULL") Timestamp startDateAndTime,
-			@NotNull(message = "DeadlineDateAndTime cannot be NULL") Timestamp deadlineDateAndTime,
+			@NotNull(message = "StartDateAndTime cannot be NULL") @FutureOrPresent Timestamp startDateAndTime,
+			@NotNull(message = "DeadlineDateAndTime cannot be NULL") @FutureOrPresent Timestamp deadlineDateAndTime,
 			@NotNull(message = "Prioirty cannot be NULL") Integer prioirty,
 			@NotNull(message = "Product cannot be NULL") List<Long> productId,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn) {
+			@NotNull(message = "CreatedOn cannot be NULL") @FutureOrPresent Timestamp createdOn) {
 		super();
 		this.companyId = companyId;
 		this.enquiryRemarks = enquiryRemarks;
