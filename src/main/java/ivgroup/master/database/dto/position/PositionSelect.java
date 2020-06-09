@@ -31,7 +31,7 @@ public class PositionSelect
 	@NotNull(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
 	@NotNull(message = "LastEditOn cannot be NULL")
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="IST")
 	Timestamp lastEditOn;
 	@NotNull(message = "IsActive cannot be NULL")
 	Boolean isActive;

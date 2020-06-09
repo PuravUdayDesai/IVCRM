@@ -109,7 +109,7 @@ public class CompanyExecutivePLUpdateScheduler
 																	record.getCompanyExecutiveId(),
 																	record.getCompanyExecutiveName(),
 																	"PLRate Update",
-																	"Hey "+record.getCompanyExecutiveName()+", we have updated you're PLRate(PotentialLiability Rate) by: "+pLrate+" due to completion of "+workPercentage+"% out of 100%.",
+																	"Hey "+record.getCompanyExecutiveName()+", we have updated you're PLRate(PotentialLiability Rate) by: "+pLrate+", you have completed "+workPercentage+"% out of 100%.",
 																	new Timestamp(System.currentTimeMillis())));
 					}
 					

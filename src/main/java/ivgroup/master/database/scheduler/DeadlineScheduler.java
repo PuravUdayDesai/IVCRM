@@ -48,7 +48,7 @@ public class DeadlineScheduler
 								record.getCompanyExecutiveId(),
 								record.getCompanyExecutiveName(),
 								"Deadline Date Arrival",
-								"Hey "+record.getCompanyExecutiveName()+", your Deadline Date For Client "+record.getClientName()+" About Product "+record.getProductName()+" is today, please complete you're leftover work, as you're PLRate will be updated accordingly, if you need more time for this Ticket then please update the Deadline Date associated with this Ticket.",
+								"Hey "+record.getCompanyExecutiveName()+", your Deadline Date For Client "+record.getClientName()+" About Product "+record.getProductName()+" is today, please complete you're leftover work if pending, as you're PLRate will be updated accordingly, if you need more time for this Ticket then please update the Deadline Date associated with this Ticket.",
 								new Timestamp(System.currentTimeMillis())));
 					}
 					

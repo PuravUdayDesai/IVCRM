@@ -2,8 +2,15 @@ package ivgroup.master.database.bl;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.ListIterator;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +28,39 @@ public class NotificationBusinessLogic {
 	@Autowired
 	NotificationDao notification_dao;
 	
-	public ResponseEntity<List<NotificationSelect>> selectNotifications(Long companyExecutiveID){
-		List<NotificationSelect> res = notification_dao.selectNotifications(companyExecutiveID);
-		if (res == null)
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		else
-			return new ResponseEntity<>(res, HttpStatus.OK);
+	private final static String month[] = {
+									"January", 
+									"February", 
+									"March", 
+									"April", 
+									"May", 
+									"June", 
+									"July", 
+									"August", 
+									"September", 
+									"October", 
+									"November",
+            						"December" 
+								  }; 
+	
+	public ResponseEntity<List<NotificationSelect>> selectNotifications(Long companyExecutiveID)
+	{
+		List<NotificationSelect> res = new ArrayList<NotificationSelect>();
+		ListIterator<NotificationSelect> li=notification_dao.selectNotifications(companyExecutiveID).listIterator();
+		
+		while(li.hasNext())
+		{
+			NotificationSelect ns=li.next();
+			Timestamp t=ns.getNotificationTime();
+			DateTime dt = new DateTime(t.getTime());
+			SimpleDateFormat formatDate=new SimpleDateFormat("EEEE");
+			Calendar gCal=new GregorianCalendar(dt.getYear(),dt.getMonthOfYear(),dt.getDayOfMonth(),dt.getHourOfDay(),dt.getMinuteOfHour(),dt.getSecondOfMinute());
+			String notificationTimeString=formatDate.format(t.getTime())+" "+dt.getDayOfMonth()+" "+month[gCal.get(Calendar.MONTH)-1]+" "+dt.getYear()+" "+dt.getHourOfDay()+":"+dt.getMinuteOfHour()+":"+dt.getSecondOfMinute();
+			ns.setNotificationTimeString(notificationTimeString);
+			res.add(ns);
+		}
+		
+		return new ResponseEntity<>(res, HttpStatus.OK);
 	}
 	
 	public ResponseEntity<Void> addNotification(NotificationInsert n_ins){

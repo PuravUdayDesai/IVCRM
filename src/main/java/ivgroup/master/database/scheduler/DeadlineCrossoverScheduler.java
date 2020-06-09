@@ -47,8 +47,8 @@ public class DeadlineCrossoverScheduler
 						nbl.addNotification(new NotificationInsert(
 								record.getCompanyExecutiveId(),
 								record.getCompanyExecutiveName(),
-								"Deadline Crossover Date Arrival",
-								"Hey "+record.getCompanyExecutiveName()+", your Deadline Date For Client "+record.getClientName()+" About Product "+record.getProductName()+" has been crossed, you're PLRate has been updated accordingly.",
+								"Deadline Date Has Been Crossed",
+								"Oops, "+record.getCompanyExecutiveName()+", your Deadline Date For Client "+record.getClientName()+" About Product "+record.getProductName()+" has been crossed, you're PLRate has been updated accordingly.",
 								new Timestamp(System.currentTimeMillis())));
 					}
 					

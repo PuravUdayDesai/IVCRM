@@ -33,10 +33,16 @@ public class NotificationDaoImpl implements NotificationDao {
 				return notification_list;
 			} else {
 				do {
-					notification_list.add(new NotificationSelect(rs.getLong("CompanyExecutiveID"), rs.getString("CompanyExecutiveName"),
-							rs.getLong("NotificationID"), rs.getString("NotificationSubject"),
-							rs.getString("NotificationDescription"),rs.getTimestamp("NotificationTime"),
-							rs.getBoolean("ReadIndex")));
+					notification_list.add(
+							new NotificationSelect(
+									rs.getLong("CompanyExecutiveID"), 
+									rs.getString("CompanyExecutiveName"),
+									rs.getLong("NotificationID"), 
+									rs.getString("NotificationSubject"),
+									rs.getString("NotificationDescription"),
+									rs.getTimestamp("NotificationTime"),
+									"",
+									rs.getBoolean("ReadIndex")));
 				} while (rs.next());
 			}
 			return notification_list;
