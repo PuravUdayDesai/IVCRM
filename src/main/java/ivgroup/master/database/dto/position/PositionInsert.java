@@ -2,10 +2,10 @@ package ivgroup.master.database.dto.position;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -62,7 +62,7 @@ public class PositionInsert
 	Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@FutureOrPresent
+	@PastOrPresent
 	Timestamp createdOn;
 	
 	public PositionInsert()
@@ -84,7 +84,7 @@ public class PositionInsert
 			@NotNull(message = "Ticket cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String ticket,
 			@NotNull(message = "Position cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String position,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "CreatedOn cannot be NULL") @FutureOrPresent Timestamp createdOn) {
+			@NotNull(message = "CreatedOn cannot be NULL") @PastOrPresent Timestamp createdOn) {
 		super();
 		this.positionName = positionName;
 		this.positionPriority = positionPriority;

@@ -2,8 +2,8 @@ package ivgroup.master.database.dto.area;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -29,7 +29,7 @@ public class AreaInsert {
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@NotNull(message = "CreatedOn cannot be NULL")	
-	@FutureOrPresent
+	@PastOrPresent
 	private Timestamp CreatedOn;
 
 	@NotNull(message = "CreatedBy cannot be NULL")
@@ -39,7 +39,7 @@ public class AreaInsert {
 	private Integer DeviceType;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@FutureOrPresent
+	@PastOrPresent
 	Timestamp LastEditOn;
 	
 	Long LastEditBy;
@@ -148,10 +148,10 @@ public class AreaInsert {
 			@NotNull(message = "CountryID cannot be NULL") Long countryID,
 			@NotNull(message = "StateID cannot be NULL") Long stateID,
 			@NotNull(message = "CityID cannot be NULL") Long cityID,
-			@NotNull(message = "CreatedOn cannot be NULL") @FutureOrPresent Timestamp createdOn,
+			@NotNull(message = "CreatedOn cannot be NULL") @PastOrPresent Timestamp createdOn,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
 			@NotNull(message = "DeviceType cannot be NULL") Integer deviceType,
-			@FutureOrPresent Timestamp lastEditOn, 
+			@PastOrPresent Timestamp lastEditOn, 
 			Long lastEditBy,
 			Integer lastEditDeviceType) {
 		super();

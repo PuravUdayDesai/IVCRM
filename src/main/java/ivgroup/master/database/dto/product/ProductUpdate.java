@@ -2,8 +2,8 @@ package ivgroup.master.database.dto.product;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -17,7 +17,7 @@ public class ProductUpdate {
 	Long lastEditBy;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@FutureOrPresent
+	@PastOrPresent
 	Timestamp lastEditOn;
 	Boolean isActive;
 	
@@ -27,7 +27,7 @@ public class ProductUpdate {
 
 	public ProductUpdate(String productName, String productDescription, Long companyId, Double cost,
 			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
-			@NotNull(message = "LastEditOn cannot be NULL") @FutureOrPresent Timestamp lastEditOn, Boolean isActive) {
+			@NotNull(message = "LastEditOn cannot be NULL") @PastOrPresent Timestamp lastEditOn, Boolean isActive) {
 		super();
 		this.productName = productName;
 		this.productDescription = productDescription;

@@ -2,8 +2,8 @@ package ivgroup.master.database.dto.status;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -17,7 +17,7 @@ public class StatusUpdate
 	Long lastEditBy;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@FutureOrPresent
+	@PastOrPresent
 	Timestamp lastEditOn;
 	
 	public StatusUpdate()
@@ -27,7 +27,7 @@ public class StatusUpdate
 
 	public StatusUpdate(String statusName, String statusColorCode, Integer workProgress, Long companyId,
 			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
-			@NotNull(message = "LastEditOn cannot be NULL") @FutureOrPresent Timestamp lastEditOn) {
+			@NotNull(message = "LastEditOn cannot be NULL") @PastOrPresent Timestamp lastEditOn) {
 		super();
 		this.statusName = statusName;
 		this.statusColorCode = statusColorCode;

@@ -2,8 +2,8 @@ package ivgroup.master.database.dto.companyAddressDetails;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 public class CompanyAddressDetailsUpdate {
 
@@ -17,7 +17,7 @@ public class CompanyAddressDetailsUpdate {
 	String latitude;
 	String longitude;
 	@NotNull(message = "LastEditOn cannot be NULL")
-	@FutureOrPresent
+	@PastOrPresent
 	Timestamp lastEditOn;
 	@NotNull(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
@@ -32,7 +32,7 @@ public class CompanyAddressDetailsUpdate {
 
 	public CompanyAddressDetailsUpdate(String addressLine1, String addressLine2, String addressLine3, Long pincode,
 			Long cityId, Long stateId, Long countryId, String latitude, String longitude,
-			@NotNull(message = "LastEditOn cannot be NULL") @FutureOrPresent Timestamp lastEditOn,
+			@NotNull(message = "LastEditOn cannot be NULL") @PastOrPresent Timestamp lastEditOn,
 			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
 			@NotNull(message = "LastEditDeviceType cannot be NULL") Integer lastEditDeviceType) {
 		super();

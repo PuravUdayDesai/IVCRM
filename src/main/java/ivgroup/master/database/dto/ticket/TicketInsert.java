@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -19,7 +20,7 @@ public class TicketInsert
 	Long statusId;
 	@NotNull(message = "StartDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@FutureOrPresent
+	@PastOrPresent
 	Timestamp startDateAndTime;
 	@NotNull(message = "DeadlineDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
@@ -35,7 +36,7 @@ public class TicketInsert
 	Long companyId;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@FutureOrPresent
+	@PastOrPresent
 	Timestamp createdOn;
 	@NotNull(message = "CreatedBy cannot be NULL")
 	Long createdBy;
@@ -50,13 +51,13 @@ public class TicketInsert
 			@NotNull(message = "EnquiryRemarks cannot be NULL") String enquiryRemarks,
 			@NotNull(message = "TicketRemarks cannot be NULL") String ticketRemarks,
 			@NotNull(message = "StatusId cannot be NULL") Long statusId,
-			@NotNull(message = "StartDateAndTime cannot be NULL") @FutureOrPresent Timestamp startDateAndTime,
+			@NotNull(message = "StartDateAndTime cannot be NULL") @PastOrPresent Timestamp startDateAndTime,
 			@NotNull(message = "DeadlineDateAndTime cannot be NULL") @FutureOrPresent Timestamp deadlineDateAndTime,
 			@NotNull(message = "ProductId cannot be NULL") Long productId,
 			@NotNull(message = "TicketType cannot be NULL") Long ticketType,
 			@NotNull(message = "TicketPriority cannot be NULL") Integer ticketPriority,
 			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
-			@NotNull(message = "CreatedOn cannot be NULL") @FutureOrPresent Timestamp createdOn,
+			@NotNull(message = "CreatedOn cannot be NULL") @PastOrPresent Timestamp createdOn,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy) {
 		super();
 		this.enquiryId = enquiryId;

@@ -2,8 +2,8 @@ package ivgroup.master.database.dto.status;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -21,7 +21,7 @@ public class StatusInsert
 	Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@FutureOrPresent
+	@PastOrPresent
 	Timestamp createdOn;
 	
 	public StatusInsert()
@@ -34,7 +34,7 @@ public class StatusInsert
 			@NotNull(message = "WorkProgress cannot be NULL") Integer workProgress,
 			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "CreatedOn cannot be NULL") @FutureOrPresent Timestamp createdOn) {
+			@NotNull(message = "CreatedOn cannot be NULL") @PastOrPresent Timestamp createdOn) {
 		super();
 		this.statusName = statusName;
 		this.statusColorCode = statusColorCode;

@@ -2,8 +2,8 @@ package ivgroup.master.database.dto.area;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -27,7 +27,7 @@ public class AreaUpdate {
 	
 	@NotNull(message = "LastEditOn cannot be NULL")	
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@FutureOrPresent
+	@PastOrPresent
 	private Timestamp LastEditOn;
 		
 	@NotNull(message = "LastEditBy cannot be NULL")
@@ -126,7 +126,7 @@ public class AreaUpdate {
 	
 	public AreaUpdate(String businessAreaName, String businessAreaCode, String businessAreaDescription, Long countryID,
 			Long stateID, Long cityID, Integer deviceType, Boolean isActive,
-			@NotNull(message = "LastEditOn cannot be NULL") @FutureOrPresent Timestamp lastEditOn,
+			@NotNull(message = "LastEditOn cannot be NULL") @PastOrPresent Timestamp lastEditOn,
 			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
 			@NotNull(message = "LastEditDeviceType cannot be NULL") Integer lastEditDeviceType) {
 		super();

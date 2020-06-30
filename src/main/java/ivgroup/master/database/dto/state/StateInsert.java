@@ -2,8 +2,8 @@ package ivgroup.master.database.dto.state;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -23,7 +23,7 @@ public class StateInsert {
 
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@FutureOrPresent
+	@PastOrPresent
 	private Timestamp CreatedOn;
 
 	@NotNull(message = "CreatedBy cannot be NULL")
@@ -33,7 +33,7 @@ public class StateInsert {
 	private Integer DeviceType;
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@FutureOrPresent
+	@PastOrPresent
 	private Timestamp LastEditOn;
 	
 	private Long LastEditBy;
@@ -124,7 +124,7 @@ public class StateInsert {
 			@NotNull(message = "StateCode cannot be NULL") String stateCode,
 			@NotNull(message = "CountryID cannot be NULL") Long countryID,
 			@NotNull(message = "StateDescription cannot be NULL") String stateDescription,
-			@NotNull(message = "CreatedOn cannot be NULL") @FutureOrPresent Timestamp createdOn,
+			@NotNull(message = "CreatedOn cannot be NULL") @PastOrPresent Timestamp createdOn,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
 			@NotNull(message = "DeviceType cannot be NULL") Integer deviceType) {
 		super();

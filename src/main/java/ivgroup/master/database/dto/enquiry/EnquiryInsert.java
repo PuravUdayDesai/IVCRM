@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -42,7 +43,7 @@ public class EnquiryInsert
 	Long statusId;
 	@NotNull(message = "StartDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@FutureOrPresent
+	@PastOrPresent
 	Timestamp startDateAndTime;
 	@NotNull(message = "DeadlineDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
@@ -78,12 +79,12 @@ public class EnquiryInsert
 			@NotNull(message = "Latitude cannot be NULL") String latitude,
 			@NotNull(message = "Longitude cannot be NULL") String longitude,
 			@NotNull(message = "StatusId cannot be NULL") Long statusId,
-			@NotNull(message = "StartDateAndTime cannot be NULL") @FutureOrPresent Timestamp startDateAndTime,
+			@NotNull(message = "StartDateAndTime cannot be NULL") @PastOrPresent Timestamp startDateAndTime,
 			@NotNull(message = "DeadlineDateAndTime cannot be NULL") @FutureOrPresent Timestamp deadlineDateAndTime,
 			@NotNull(message = "Prioirty cannot be NULL") Integer prioirty,
 			@NotNull(message = "Product cannot be NULL") List<Long> productId,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "CreatedOn cannot be NULL") @FutureOrPresent Timestamp createdOn) {
+			@NotNull(message = "CreatedOn cannot be NULL") @PastOrPresent Timestamp createdOn) {
 		super();
 		this.companyId = companyId;
 		this.enquiryRemarks = enquiryRemarks;

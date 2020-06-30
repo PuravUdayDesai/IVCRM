@@ -2,8 +2,8 @@ package ivgroup.master.database.dto.companyAddressDetails;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -29,7 +29,7 @@ public class CompanyAddressDetailsInsert {
 	String longitude;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@FutureOrPresent
+	@PastOrPresent
 	Timestamp createdOn;
 	@NotNull(message = "CreatedBy cannot be NULL")
 	Long createdBy;
@@ -37,7 +37,7 @@ public class CompanyAddressDetailsInsert {
 	Integer createdDeviceType;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@FutureOrPresent
+	@PastOrPresent
 	Timestamp lastEditOn;
 	@NotNull(message = "LastEditBy cannot be NULL")
 	Long lastEditBy;
@@ -57,10 +57,10 @@ public class CompanyAddressDetailsInsert {
 			@NotNull(message = "CountryId cannot be NULL") Long countryId,
 			@NotNull(message = "Latitude cannot be NULL") String latitude,
 			@NotNull(message = "Longitude cannot be NULL") String longitude,
-			@NotNull(message = "CreatedOn cannot be NULL") @FutureOrPresent Timestamp createdOn,
+			@NotNull(message = "CreatedOn cannot be NULL") @PastOrPresent Timestamp createdOn,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
 			@NotNull(message = "CreatedDeviceType cannot be NULL") Integer createdDeviceType,
-			@NotNull(message = "LastEditOn cannot be NULL") @FutureOrPresent Timestamp lastEditOn,
+			@NotNull(message = "LastEditOn cannot be NULL") @PastOrPresent Timestamp lastEditOn,
 			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
 			@NotNull(message = "LastEditDeviceType cannot be NULL") Integer lastEditDeviceType) {
 		super();

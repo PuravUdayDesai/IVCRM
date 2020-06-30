@@ -2,8 +2,8 @@ package ivgroup.master.database.dto.enquiryType;
 
 import java.sql.Timestamp;
 
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -19,7 +19,7 @@ public class EnquiryTypeInsert
 	Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@FutureOrPresent
+	@PastOrPresent
 	Timestamp createdOn;
 	
 	public EnquiryTypeInsert()
@@ -31,7 +31,7 @@ public class EnquiryTypeInsert
 			@NotNull(message = "EnquiryTypeColorCode cannot be NULL") String enquiryTypeColorCode,
 			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
-			@NotNull(message = "CreatedOn cannot be NULL") @FutureOrPresent Timestamp createdOn) {
+			@NotNull(message = "CreatedOn cannot be NULL") @PastOrPresent Timestamp createdOn) {
 		super();
 		this.enquiryTypeName = enquiryTypeName;
 		this.enquiryTypeColorCode = enquiryTypeColorCode;
