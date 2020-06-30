@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ivgroup.master.database.Constants;
 import ivgroup.master.database.bl.ClientBusinessLogic;
+import ivgroup.master.database.dto.client.ClientContactCheckSelect;
 import ivgroup.master.database.dto.client.ClientInsert;
 import ivgroup.master.database.dto.client.ClientSelect;
 import ivgroup.master.database.dto.client.ClientUpdate;
@@ -79,6 +81,12 @@ public class ClientController
 	public ResponseEntity<Void> deleteClientAndClientLocation(@PathVariable @NotNull Long clientId)
 	{
 		return cbl.deleteClientAndClientLocation(clientId);
+	}
+	
+	@GetMapping(path="/checkForClientContact/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<ClientContactCheckSelect> checkForClientContactNumber(@RequestParam("contactNumber") @NotNull String contactNumber,@PathVariable @NotNull Long companyExecutiveId)
+	{
+		return cbl.checkForClientContactNumber(contactNumber, companyExecutiveId);
 	}
 
 }

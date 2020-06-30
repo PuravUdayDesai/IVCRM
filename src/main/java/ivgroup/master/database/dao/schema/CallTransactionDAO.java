@@ -15,9 +15,9 @@ import org.springframework.core.io.Resource;
 
 public interface CallTransactionDAO {
 
-	public String storeFile(MultipartFile file,CallTransactionInsert cti)throws IOException;
-	public Boolean addCallTransaction(CallTransactionInsert cti,String fileURL,String qualifiedFilePath)throws SQLException,ClassNotFoundException;
-	public Resource loadFile(String fileURL)throws MalformedURLException;
-	public List<CallTransactionSelect> selectCallTransactionsByCompanyExecutiveId(Long companyExecutiveId)throws SQLException,ClassNotFoundException;
-	public List<CallTransactionSelect> selectCallTransactionsByCompanyExecutiveIdAndCallDate(Long companyExecutiveId,Date callDate)throws SQLException,ClassNotFoundException;
+	public String storeFile(MultipartFile file,CallTransactionInsert cti)															throws IOException;
+	public Boolean addCallTransaction(CallTransactionInsert cti,String fileURL,String qualifiedFilePath)							throws SQLException,ClassNotFoundException;
+	public Resource loadFile(String fileURL)																						throws MalformedURLException;
+	public List<CallTransactionSelect> selectCallTransactionsByCompanyExecutiveId(Long companyExecutiveId)							throws SQLException,ClassNotFoundException;
+	public List<CallTransactionSelect> selectCallTransactionsByCompanyExecutiveIdAndCallDate(Long companyExecutiveId,Date callDate)	throws SQLException,ClassNotFoundException;
 }

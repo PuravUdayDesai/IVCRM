@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
 import ivgroup.master.database.dao.schema.ClientDAO;
+import ivgroup.master.database.dto.client.ClientContactCheckSelect;
 import ivgroup.master.database.dto.client.ClientInsert;
 import ivgroup.master.database.dto.client.ClientSelect;
 
@@ -787,6 +788,37 @@ public class ClientDAOImpl implements ClientDAO
 		rs.close();
 		stmt.close();
 		return rsMain;
+	}
+
+	@Override
+	public ClientContactCheckSelect checkForClientContactNumber(String contactNumber, Long companyExecutiveId)throws SQLException, ClassNotFoundException
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM client.\"fn_checkClientContactNumber\"(?,?);");
+		stmt.setString(1, contactNumber);
+		stmt.setLong(2, companyExecutiveId);
+		ResultSet rs=stmt.executeQuery();
+		ClientContactCheckSelect contactBody=null;
+		if(rs.next())
+		{
+			contactBody=new ClientContactCheckSelect(
+					rs.getLong("check")!=0?true:false,
+					rs.getLong("ClientId"),
+					rs.getString("ContactName")
+					); 
+		}
+		else
+		{
+			contactBody=new ClientContactCheckSelect(
+					false,
+					0L,
+					"NA"
+					);
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return contactBody;
 	}
 
 }

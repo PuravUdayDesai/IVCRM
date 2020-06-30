@@ -62,7 +62,6 @@ public class CallTransactionController {
 	}
 	
 	@PostMapping(path="/file")
-	@CrossOrigin(origins = "http://localhost:8080")
 	public ResponseEntity<Resource> loadFile(@RequestBody @NotNull Path filePath, HttpServletRequest request)
 	{
 		return ctbl.loadFile(filePath.toString(),request);
@@ -85,6 +84,7 @@ public class CallTransactionController {
 		
 		 ctbl.downloadFile(request, response, filePath, fileName);
 	}
+	
 	
 	
 }

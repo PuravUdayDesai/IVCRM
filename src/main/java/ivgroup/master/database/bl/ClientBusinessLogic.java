@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
 import ivgroup.master.database.dao.impl.ClientDAOImpl;
+import ivgroup.master.database.dto.client.ClientContactCheckSelect;
 import ivgroup.master.database.dto.client.ClientInsert;
 import ivgroup.master.database.dto.client.ClientSelect;
 import ivgroup.master.database.dto.client.ClientUpdate;
@@ -837,6 +838,23 @@ if(	cu.getAddressLine1()!=null||
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		}
 		return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+	}
+	
+	public ResponseEntity<ClientContactCheckSelect> checkForClientContactNumber(String contactNumber, Long companyExecutiveId)
+	{
+		ClientContactCheckSelect contactCheckBody=new ClientContactCheckSelect();
+		if(contactNumber==null||companyExecutiveId==null)
+		{
+			return new ResponseEntity<ClientContactCheckSelect>(contactCheckBody,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			contactCheckBody=cdi.checkForClientContactNumber(contactNumber, companyExecutiveId);
+		} catch (ClassNotFoundException e) {
+			return new ResponseEntity<ClientContactCheckSelect>(contactCheckBody,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			return new ResponseEntity<ClientContactCheckSelect>(contactCheckBody,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<ClientContactCheckSelect>(contactCheckBody,HttpStatus.OK);
 	}
 	
 }
