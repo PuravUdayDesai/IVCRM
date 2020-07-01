@@ -10,19 +10,19 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class TicketUpdate 
 {
-	String ticketRemarks;
+	private String ticketRemarks;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp startDateAndTime;
+	private Timestamp startDateAndTime;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@FutureOrPresent 
-	Timestamp deadlineDateAndTime;
-	Integer ticketPriority;
+	private Timestamp deadlineDateAndTime;
+	private Integer ticketPriority;
 	@NotNull(message = "LastEditOn cannot be NSULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent 
-	Timestamp lastEditOn;
+	private Timestamp lastEditOn;
 	@NotNull(message = "LastEditBy cannot be NULL")
-	Long lastEditBy;
+	private Long lastEditBy;
 	
 	public TicketUpdate()
 	{

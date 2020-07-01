@@ -9,22 +9,22 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class TicketStatusLogSelect 
 {
 	@NotNull(message = "TicketStatusId cannot be NULL")
-	Long ticketStatusId;
+	private Long ticketStatusId;
 	@NotNull(message = "TicketId cannot be NULL")
-	Long ticketId;
+	private Long ticketId;
 	@NotNull(message = "StatusId cannot be NULL")
-	Long statusId;
+	private Long statusId;
 	@NotNull(message = "StatusName cannot be NULL")
-	String statusName;
+	private String statusName;
 	@NotNull(message = "workProgress cannot be NULL")
-	Integer workProgress;
+	private Integer workProgress;
 	@NotNull(message = "StatusColorCode cannot be NULL")
-	String statusColorCode;
+	private String statusColorCode;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp lastEditOn;
+	private Timestamp lastEditOn;
 	@NotNull(message = "LastEditBy cannot be NULL")
-	Long lastEditBy;
+	private Long lastEditBy;
 	
 	public TicketStatusLogSelect()
 	{

@@ -10,15 +10,15 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class TicketStatusInsert 
 {
 	@NotNull(message = "TicketId cannot be NULL")
-	Long ticketId;
+	private Long ticketId;
 	@NotNull(message = "StatusId cannot be NULL")
-	Long statusId;
+	private Long statusId;
 	@NotNull(message = "CreatedBy cannot be NULL")
-	Long createdBy;
+	private Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp createdOn;
+	private Timestamp createdOn;
 
 	public TicketStatusInsert()
 	{

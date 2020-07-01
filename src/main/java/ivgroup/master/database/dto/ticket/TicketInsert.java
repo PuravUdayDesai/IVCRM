@@ -11,35 +11,35 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class TicketInsert 
 {
 	@NotNull(message = "EnquiryId cannot be NULL")
-	Long enquiryId;
+	private Long enquiryId;
 	@NotNull(message = "EnquiryRemarks cannot be NULL")
-	String enquiryRemarks;
+	private String enquiryRemarks;
 	@NotNull(message = "TicketRemarks cannot be NULL")
-	String ticketRemarks;
+	private String ticketRemarks;
 	@NotNull(message = "StatusId cannot be NULL")
-	Long statusId;
+	private Long statusId;
 	@NotNull(message = "StartDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp startDateAndTime;
+	private Timestamp startDateAndTime;
 	@NotNull(message = "DeadlineDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@FutureOrPresent
-	Timestamp deadlineDateAndTime;
+	private Timestamp deadlineDateAndTime;
 	@NotNull(message = "ProductId cannot be NULL")
-	Long productId;
+	private Long productId;
 	@NotNull(message = "TicketType cannot be NULL")
-	Long ticketType;
+	private Long ticketType;
 	@NotNull(message = "TicketPriority cannot be NULL")
-	Integer ticketPriority;
+	private Integer ticketPriority;
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp createdOn;
+	private Timestamp createdOn;
 	@NotNull(message = "CreatedBy cannot be NULL")
-	Long createdBy;
+	private Long createdBy;
 	
 	public TicketInsert()
 	{

@@ -9,12 +9,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class TicketFollowupDateSelect 
 {
 	@NotNull(message = "TicketFollowupDateId cannot be NULL")
-	Long ticketFollowupDateId;
+	private Long ticketFollowupDateId;
 	@NotNull(message = "TicketId cannot be NULL")
-	Long ticketId;
+	private Long ticketId;
 	@NotNull(message = "FollowupDate cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp followupDate;
+	private Timestamp followupDate;
 	
 	public TicketFollowupDateSelect()
 	{

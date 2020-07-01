@@ -10,57 +10,57 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class TicketDetailsSelect 
 {
 	@NotNull(message = "TicketId cannot be NULL")
-	Long ticketId;
+	private Long ticketId;
 	@NotNull(message = "EnquiryId cannot be NULL")
-	Long enquiryId;
+	private Long enquiryId;
 	@NotNull(message = "TicketAccessId cannot be NULL")
-	Long ticketAccessId;
+	private Long ticketAccessId;
 	@NotNull(message = "CompanyExecutiveId cannot be NULL")
-	Long companyExecutiveId;
+	private Long companyExecutiveId;
 	@NotNull(message = "CompanyExecutiveName cannot be NULL")
-	String companyExecutiveName;
+	private String companyExecutiveName;
 	@NotNull(message = "EnquiryRemarks cannot be NULL")
-	String enquiryRemarks;
+	private String enquiryRemarks;
 	@NotNull(message = "TicketRemarks cannot be NULL")
-	String ticketRemarks;
+	private String ticketRemarks;
 	@NotNull(message = "StartDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp startDateAndTime;
+	private Timestamp startDateAndTime;
 	@NotNull(message = "DeadlineDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp deadlineDateAndTime;
+	private Timestamp deadlineDateAndTime;
 	@NotNull(message = "ProductId cannot be NULL")
-	Long productId;
+	private Long productId;
 	@NotNull(message = "ProductName cannot be NULL")
-	String productName;
+	private String productName;
 	@NotNull(message = "TicketType cannot be NULL")
-	Long ticketType;
+	private Long ticketType;
 	@NotNull(message = "TicketTypeName cannot be NULL")
-	String ticketTypeName;
+	private String ticketTypeName;
 	@NotNull(message = "TicketPriority cannot be NULL")
-	Integer ticketPriority;
+	private Integer ticketPriority;
 	@NotNull(message = "TicketPriorityName cannot be NULL")
-	String ticketPriorityName;
+	private String ticketPriorityName;
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	@NotNull(message = "CompanyName cannot be NULL")
-	String companyName;
+	private String companyName;
 	@NotNull(message = "StatusId cannot be NULL")
-	Long statusId;
+	private Long statusId;
 	@NotNull(message = "StatusName cannot be NULL")
-	String statusName;
+	private String statusName;
 	@NotNull(message = "FollowupDate cannot be NULL")
-	List<TicketFollowupDateSelect> followupDate;
+	private List<TicketFollowupDateSelect> followupDate;
 	@NotNull(message = "CreatedBy cannot be NULL")
-	Long createdBy;
+	private Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp createdOn;
+	private Timestamp createdOn;
 	@NotNull(message = "LastEditBy cannot be NULL")
-	Long lastEditBy;
+	private Long lastEditBy;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp lastEditOn;
+	private Timestamp lastEditOn;
 	
 	public TicketDetailsSelect()
 	{

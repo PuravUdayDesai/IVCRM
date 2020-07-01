@@ -6,13 +6,13 @@ public class NonAccessibleExecutiveListSelect
 {
 
 	@NotNull(message = "CompanyExecutiveId cannot be NULL")
-	String companyExecutiveId;
+	private String companyExecutiveId;
 	@NotNull(message = "CompanyExecutiveName cannot be NULL")
-	String companyExecutiveName;
+	private String companyExecutiveName;
 	@NotNull(message = "ContactNumber cannot be NULL")
-	String contactNumber;
+	private String contactNumber;
 	@NotNull(message = "CompanyID cannot be NULL")
-	Long companyID;
+	private Long companyID;
 	
 	public NonAccessibleExecutiveListSelect()
 	{

@@ -6,14 +6,14 @@ import javax.validation.constraints.NotNull;
 
 public class TicketFilterSelect 
 {
-	List<Integer> priorityId;
-	List<Long> statusId;
-	List<Long> ticketType;
-	List<Long> productId;
-	List<Long> companyId;
-	List<Long> enquiryId;
+	private List<Integer> priorityId;
+	private List<Long> statusId;
+	private List<Long> ticketType;
+	private List<Long> productId;
+	private List<Long> companyId;
+	private List<Long> enquiryId;
 	@NotNull(message = "CompanyExecutiveId cannot be NULL")
-	Long companyExecutiveId;
+	private Long companyExecutiveId;
 	
 	public TicketFilterSelect() 
 	{
