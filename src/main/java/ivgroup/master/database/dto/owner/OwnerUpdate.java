@@ -10,17 +10,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class OwnerUpdate {
 	
-	String ownerName;
-	String ownerContact;
+	private String ownerName;
+	private String ownerContact;
 	@Email(message= "EmailId provider is INCORRECT")
-	String ownerEmail;
-	Boolean isActive;
-	String ownerUserName;
-	String ownerPassword;
+	private String ownerEmail;
+	private Boolean isActive;
+	private String ownerUserName;
+	private String ownerPassword;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp lastEditOn;
+	private Timestamp lastEditOn;
 	
 	public OwnerUpdate() {
 		

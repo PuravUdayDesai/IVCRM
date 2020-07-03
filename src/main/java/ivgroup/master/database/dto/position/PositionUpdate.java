@@ -13,45 +13,45 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class PositionUpdate 
 {
-	String positionName;
+	private String positionName;
 	@Min(value=1)
 	@Max(value=15)
-	Integer positionPriority;
-	Long companyId;
+	private Integer positionPriority;
+	private Long companyId;
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String company;
+	private String company;
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String companyBranch;
+	private String companyBranch;
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String companyExecutive;
+	private String companyExecutive;
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String client;
+	private String client;
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String product;
+	private String product;
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String location;
+	private String location;
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String enquiry;
+	private String enquiry;
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String ticket;
+	private String ticket;
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String position;
-	Boolean isActive;
+	private String position;
+	private Boolean isActive;
 	@NotNull(message = "LastEditBy cannot be NULL")
-	Long lastEditBy;
+	private Long lastEditBy;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp lastEditOn;
+	private Timestamp lastEditOn;
 	
 	public PositionUpdate()
 	{

@@ -5,22 +5,22 @@ import javax.validation.constraints.NotNull;
 public class LocationPriorityReport {
 
 	@NotNull
-	String LocationName;
+	private String LocationName;
 
 	@NotNull
-	Long NumOfTickets;
+	private Long NumOfTickets;
 
 	@NotNull
-	Long Immediate;
+	private Long Immediate;
 
 	@NotNull
-	Long High;
+	private Long High;
 
 	@NotNull
-	Long Normal;
+	private Long Normal;
 
 	@NotNull
-	Long Low;
+	private Long Low;
 
 	public String getLocationName() {
 		return LocationName;

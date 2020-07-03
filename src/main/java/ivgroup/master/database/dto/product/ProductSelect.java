@@ -8,29 +8,29 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ProductSelect {
 	@NotNull(message = "Id cannot be NULL")
-	Long id;
+	private Long id;
 	@NotNull(message = "ProductName cannot be NULL")	
-	String productName;
+	private String productName;
 	@NotNull(message = "ProductDescription cannot be NULL")
-	String productDescription;
+	private String productDescription;
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	@NotNull(message = "CompanyName cannot be NULL")
-	String companyName;
+	private String companyName;
 	@NotNull(message = "Cost cannot be NULL")
-	Double cost;
+	private Double cost;
 	@NotNull(message = "CreatedBy cannot be NULL")
-	Long createdBy;
+	private Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp createdOn;
+	private Timestamp createdOn;
 	@NotNull(message = "LastEditBy cannot be NULL")
-	Long lastEditBy;
+	private Long lastEditBy;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp lastEditOn;
+	private Timestamp lastEditOn;
 	@NotNull(message = "IsActive cannot be NULL")
-	Boolean isActive;
+	private Boolean isActive;
 	
 	public ProductSelect() {
 		

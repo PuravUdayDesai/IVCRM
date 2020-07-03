@@ -9,17 +9,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ProductUpdate {
 	
-	String productName;
-	String productDescription;
-	Long companyId;
-	Double cost;
+	private String productName;
+	private String productDescription;
+	private Long companyId;
+	private Double cost;
 	@NotNull(message = "LastEditBy cannot be NULL")
-	Long lastEditBy;
+	private Long lastEditBy;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp lastEditOn;
-	Boolean isActive;
+	private Timestamp lastEditOn;
+	private Boolean isActive;
 	
 	public ProductUpdate() {
 		

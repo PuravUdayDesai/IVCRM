@@ -5,11 +5,11 @@ import javax.validation.constraints.NotNull;
 public class PrioritySelect
 {
 	@NotNull(message = "PriorityId cannot be NULL")
-	Long priorityId;
+	private Long priorityId;
 	@NotNull(message = "PriorityName cannot be NULL")
-	String priorityName;
+	private String priorityName;
 	@NotNull(message = "PriorityPosition cannot be NULL")
-	Short priorityPosition;
+	private Short priorityPosition;
 	
 	public PrioritySelect()
 	{

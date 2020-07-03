@@ -5,15 +5,15 @@ import javax.validation.constraints.NotNull;
 public class ScheduerCompanyExecutivePLUpdateInsert 
 {
 	@NotNull(message="CompanyExecutiveId cannot be NULL")
-	Long companyExecutiveId;
+	private Long companyExecutiveId;
 	@NotNull(message="CompanyExecutiveName cannot be NULL")
-	String companyExecutiveName;
+	private String companyExecutiveName;
 	@NotNull(message="CurrentWorkProgress cannot be NULL")
-	Integer currentWorkProgress;
+	private Integer currentWorkProgress;
 	@NotNull(message="ThresholdWorkProgress cannot be NULL")
-	Integer thresholdWorkProgress;
+	private Integer thresholdWorkProgress;
 	@NotNull(message="TicketId cannot be NULL")
-	Long ticketId;
+	private Long ticketId;
 	
 	public ScheduerCompanyExecutivePLUpdateInsert()
 	{

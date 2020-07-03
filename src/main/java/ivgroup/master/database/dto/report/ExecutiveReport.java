@@ -5,22 +5,22 @@ import javax.validation.constraints.NotNull;
 public class ExecutiveReport {
 
 	@NotNull
-	String ExecutiveName;
+	private String ExecutiveName;
 
 	@NotNull
-	Long TotalTickets;
+	private Long TotalTickets;
 
 	@NotNull
-	Long TicketCompleted;
+	private Long TicketCompleted;
 
 	@NotNull
-	Long TicketDelayed;
+	private Long TicketDelayed;
 
 	@NotNull
-	Long TicketPending;
+	private Long TicketPending;
 
 	@NotNull
-	Integer PlRate;
+	private Integer PlRate;
 
 	public String getExecutiveName() {
 		return ExecutiveName;

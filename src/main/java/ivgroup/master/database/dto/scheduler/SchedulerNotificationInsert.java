@@ -5,13 +5,13 @@ import javax.validation.constraints.NotNull;
 public class SchedulerNotificationInsert
 {
 	@NotNull(message = "CompanyExecutiveId cannot be NULL")
-	Long companyExecutiveId;
+	private Long companyExecutiveId;
 	@NotNull(message = "CompanyExecutiveName cannot be NULL")
-	String companyExecutiveName;
+	private String companyExecutiveName;
 	@NotNull(message = "ProductName cannot be NULL")
-	String productName;
+	private String productName;
 	@NotNull(message = "ClientName cannot be NULL")
-	String clientName;
+	private String clientName;
 	
 	public SchedulerNotificationInsert()
 	{

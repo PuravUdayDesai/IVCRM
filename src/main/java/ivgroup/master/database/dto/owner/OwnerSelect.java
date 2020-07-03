@@ -9,26 +9,26 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class OwnerSelect {
 	@NotNull(message = "Id cannot be NULL")
-	Long id;
+	private Long id;
 	@NotNull(message = "OwnerName cannot be NULL")
-	String ownerName;
+	private String ownerName;
 	@NotNull(message = "OwnerContact cannot be NULL")
-	String ownerContact;
+	private String ownerContact;
 	@NotNull(message = "OwnerEmail cannot be NULL")
 	@Email(message= "EmailId provider is INCORRECT")
-	String ownerEmail;
+	private String ownerEmail;
 	@NotNull(message = "UserName cannot be NULL")
-	String userName;
+	private String userName;
 	@NotNull(message = "Password cannot be NULL")
-	String password;
+	private String password;
 	@NotNull(message = "IsActive cannot be NULL")
-	Boolean isActive;
+	private Boolean isActive;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp createdOn;
+	private Timestamp createdOn;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp lastEditOn;
+	private Timestamp lastEditOn;
 	
 	public OwnerSelect() {
 		

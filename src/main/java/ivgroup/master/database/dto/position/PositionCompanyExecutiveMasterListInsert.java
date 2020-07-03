@@ -9,39 +9,39 @@ public class PositionCompanyExecutiveMasterListInsert
 	@NotNull(message = "Company cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String company;
+	private String company;
 	@NotNull(message = "CompanyBranch cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String companyBranch;
+	private String companyBranch;
 	@NotNull(message = "CompanyExecutive cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String companyExecutive;
+	private String companyExecutive;
 	@NotNull(message = "Client cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String client;
+	private String client;
 	@NotNull(message = "Product cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String product;
+	private String product;
 	@NotNull(message = "Location cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String location;
+	private String location;
 	@NotNull(message = "Enquiry cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String enquiry;
+	private String enquiry;
 	@NotNull(message = "Ticket cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String ticket;
+	private String ticket;
 	@NotNull(message = "Position cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String position;
+	private String position;
 	
 	public PositionCompanyExecutiveMasterListInsert()
 	{

@@ -5,25 +5,25 @@ import javax.validation.constraints.NotNull;
 public class LocationTimeReport {
 
 	@NotNull
-	String LocationName;
+	private String LocationName;
 
 	@NotNull
-	Long NumOfTickets;
+	private Long NumOfTickets;
 
 	@NotNull
-	Long Today;
+	private Long Today;
 
 	@NotNull
-	Long Tommorow;
+	private Long Tommorow;
 
 	@NotNull
-	Long NextWeek;
+	private Long NextWeek;
 
 	@NotNull
-	Long NextMonth;
+	private Long NextMonth;
 
 	@NotNull
-	Long NextQuarter;
+	private Long NextQuarter;
 
 	public String getLocationName() {
 		return LocationName;

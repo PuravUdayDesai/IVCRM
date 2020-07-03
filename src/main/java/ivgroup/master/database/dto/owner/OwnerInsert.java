@@ -11,20 +11,20 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class OwnerInsert {
 
 	@NotNull(message = "OwnerName cannot be NULL")
-	String ownerName;
+	private String ownerName;
 	@NotNull(message = "OwnerContact cannot be NULL")
-	String ownerContact;
+	private String ownerContact;
 	@NotNull(message = "OwnerEmail cannot be NULL")
 	@Email(message= "EmailId provider is INCORRECT")
-	String ownerEmail;
+	private String ownerEmail;
 	@NotNull(message = "OwnerUserName cannot be NULL")
-	String ownerUserName;
+	private String ownerUserName;
 	@NotNull(message = "OwnerPassword cannot be NULL")
-	String ownerPassword;
+	private String ownerPassword;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp createdOn;
+	private Timestamp createdOn;
 	
 	public OwnerInsert() {
 		

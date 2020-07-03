@@ -12,47 +12,47 @@ public class PositionSelect
 {
 
 	@NotNull(message = "PositionId cannot be NULL")
-	Long positionId;
+	private Long positionId;
 	@NotNull(message = "PositionName cannot be NULL")
-	String positionName;
+	private String positionName;
 	@NotNull(message = "PositionPriority cannot be NULL")
 	@Min(value=1)
 	@Max(value=15)
-	Integer positionPriority;
+	private Integer positionPriority;
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	@NotNull(message = "CompanyName cannot be NULL")
-	String companyName;
+	private String companyName;
 	@NotNull(message = "CreatedBy cannot be NULL")
-	Long createdBy;
+	private Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp createdOn;
+	private Timestamp createdOn;
 	@NotNull(message = "LastEditBy cannot be NULL")
-	Long lastEditBy;
+	private Long lastEditBy;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="IST")
-	Timestamp lastEditOn;
+	private Timestamp lastEditOn;
 	@NotNull(message = "IsActive cannot be NULL")
-	Boolean isActive;
+	private Boolean isActive;
 	@NotNull(message = "Company cannot be NULL")
-	String company;
+	private String company;
 	@NotNull(message = "CompanyBranch cannot be NULL")
-	String companyBranch;
+	private String companyBranch;
 	@NotNull(message = "CompanyExecutive cannot be NULL")
-	String companyExecutive;
+	private String companyExecutive;
 	@NotNull(message = "Client cannot be NULL")
-	String client;
+	private String client;
 	@NotNull(message = "Product cannot be NULL")
-	String product;
+	private String product;
 	@NotNull(message = "Location cannot be NULL")
-	String location;
+	private String location;
 	@NotNull(message = "Enquiry cannot be NULL")
-	String enquiry;
+	private String enquiry;
 	@NotNull(message = "Ticket cannot be NULL")
-	String ticket;
+	private String ticket;
 	@NotNull(message = "Position cannot be NULL")
-	String position;
+	private String position;
 	
 	public PositionSelect()
 	{

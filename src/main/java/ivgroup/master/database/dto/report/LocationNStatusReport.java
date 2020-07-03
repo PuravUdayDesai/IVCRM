@@ -5,31 +5,31 @@ import javax.validation.constraints.NotNull;
 public class LocationNStatusReport {
 
 	@NotNull
-	String LocationName;
+	private String LocationName;
 
 	@NotNull
-	Long NumOfTickets;
+	private Long NumOfTickets;
 
 	@NotNull
-	Long Prospects;
+	private Long Prospects;
 
 	@NotNull
-	Long CallBack;
+	private Long CallBack;
 
 	@NotNull
-	Long DemoPending;
+	private Long DemoPending;
 
 	@NotNull
-	Long Quotation;
+	private Long Quotation;
 
 	@NotNull
-	Long PaymentPending;
+	private Long PaymentPending;
 
 	@NotNull
-	Long Closure;
+	private Long Closure;
 
 	@NotNull
-	Long Dead;
+	private Long Dead;
 
 	public String getLocationName() {
 		return LocationName;

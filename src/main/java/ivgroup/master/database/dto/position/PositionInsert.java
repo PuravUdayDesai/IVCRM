@@ -15,55 +15,55 @@ public class PositionInsert
 {
 
 	@NotNull(message = "PositionName cannot be NULL")
-	String positionName;
+	private String positionName;
 	@NotNull(message = "PositionPriority cannot be NULL")
 	@Min(value=1)
 	@Max(value=25)
-	Integer positionPriority;
+	private Integer positionPriority;
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	@NotNull(message = "Company cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String company;
+	private String company;
 	@NotNull(message = "CompanyBranch cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String companyBranch;
+	private String companyBranch;
 	@NotNull(message = "CompanyExecutive cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String companyExecutive;
+	private String companyExecutive;
 	@NotNull(message = "Client cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String client;
+	private String client;
 	@NotNull(message = "Product cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String product;
+	private String product;
 	@NotNull(message = "Location cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String location;
+	private String location;
 	@NotNull(message = "Enquiry cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String enquiry;
+	private String enquiry;
 	@NotNull(message = "Ticket cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String ticket;
+	private String ticket;
 	@NotNull(message = "Position cannot be NULL")
 	@Size(min = 1, max=4)
 	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
-	String position;
+	private String position;
 	@NotNull(message = "CreatedBy cannot be NULL")
-	Long createdBy;
+	private Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp createdOn;
+	private Timestamp createdOn;
 	
 	public PositionInsert()
 	{

@@ -5,19 +5,19 @@ import javax.validation.constraints.NotNull;
 public class ProductReport {
 
 	@NotNull
-	String ProductName;
+	private String ProductName;
 
 	@NotNull
-	Long NumOfTickets;
+	private Long NumOfTickets;
 
 	@NotNull
-	Long NumOfClients;
+	private Long NumOfClients;
 
 	@NotNull
-	Long CompletedTickets;
+	private Long CompletedTickets;
 
 	@NotNull
-	Double TotalRevenue;
+	private Double TotalRevenue;
 
 	public String getProductName() {
 		return ProductName;

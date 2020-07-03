@@ -5,11 +5,11 @@ import javax.validation.constraints.NotNull;
 public class OwnerLoginCredentials {
 
 	@NotNull(message = "UserName cannot be NULL")
-	String userName;
+	private String userName;
 	@NotNull(message = "Password cannot be NULL")
-	String password;
+	private String password;
 	@NotNull(message = "SecretKey cannot be NULL")
-	String secretKey;
+	private String secretKey;
 	
 	public OwnerLoginCredentials() {
 		
