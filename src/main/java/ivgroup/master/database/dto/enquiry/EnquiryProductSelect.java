@@ -5,15 +5,15 @@ import javax.validation.constraints.NotNull;
 public class EnquiryProductSelect 
 {
 	@NotNull(message = "EnquiryId cannot be NULL")
-	Long enquiryId;
+	private Long enquiryId;
 	@NotNull(message = "EnquiryProductId cannot be NULL")
-	Long enquiryProductId;
+	private Long enquiryProductId;
 	@NotNull(message = "ProductId cannot be NULL")
-	Long productId;
+	private Long productId;
 	@NotNull(message = "ProductName cannot be NULL")
-	String productName;
+	private String productName;
 	@NotNull(message = "ProductCharges cannot be NULL")
-	Double productCharges;
+	private Double productCharges;
 	
 	public EnquiryProductSelect()
 	{

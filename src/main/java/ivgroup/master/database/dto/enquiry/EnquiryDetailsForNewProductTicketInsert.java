@@ -10,19 +10,19 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class EnquiryDetailsForNewProductTicketInsert
 {
 	@NotNull(message = "EnquiryRemarks cannot be NULL")	
-	String enquiryRemarks;
+	private String enquiryRemarks;
 	@NotNull(message = "EnquiryType cannot be NULL")
-	Long enquiryType;
+	private Long enquiryType;
 	@NotNull(message = "StartDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp startDateAndTime;
+	private Timestamp startDateAndTime;
 	@NotNull(message = "DeadlineDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp deadlineDateAndTime;
+	private Timestamp deadlineDateAndTime;
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	
 	public EnquiryDetailsForNewProductTicketInsert()
 	{

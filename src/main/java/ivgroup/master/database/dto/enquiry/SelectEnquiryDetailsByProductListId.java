@@ -5,9 +5,9 @@ import javax.validation.constraints.NotNull;
 public class SelectEnquiryDetailsByProductListId
 {
 	@NotNull(message = "EnquiryId cannot be NULL")
-	Long enquiryId;
+	private Long enquiryId;
 	@NotNull(message = "ProductId cannot be NULL")
-	Long productId;
+	private Long productId;
 	
 	public SelectEnquiryDetailsByProductListId()
 	{

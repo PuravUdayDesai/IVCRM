@@ -2,9 +2,8 @@ package ivgroup.master.database.dto.notification;
 
 public class NotificationUpdate {
 
-	Boolean ReadIndex;
-	
-	Boolean JustArrived;
+	private Boolean ReadIndex;
+	private Boolean JustArrived;
 
 	public Boolean getReadIndex() {
 		return ReadIndex;

@@ -9,25 +9,25 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class EnquiryTypeSelect
 {
 	@NotNull(message = "EnquiryTypeId cannot be NULL")
-	Long enquiryTypeId;
+	private Long enquiryTypeId;
 	@NotNull(message = "EnquiryTypeName cannot be NULL")
-	String enquiryTypeName;
+	private String enquiryTypeName;
 	@NotNull(message = "EnquiryTypeColorCode cannot be NULL")
-	String enquiryTypeColorCode;
+	private String enquiryTypeColorCode;
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	@NotNull(message = "CompanyName cannot be NULL")
-	String companyName;
+	private String companyName;
 	@NotNull(message = "CreatedBy cannot be NULL")
-	Long createdBy;
+	private Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp createdOn;
+	private Timestamp createdOn;
 	@NotNull(message = "LastEditBy cannot be NULL")
-	Long lastEditBy;
+	private Long lastEditBy;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp lastEditOn;
+	private Timestamp lastEditOn;
 	
 	public EnquiryTypeSelect()
 	{

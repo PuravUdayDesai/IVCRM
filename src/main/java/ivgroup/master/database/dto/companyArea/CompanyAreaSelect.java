@@ -4,27 +4,27 @@ import javax.validation.constraints.NotNull;
 public class CompanyAreaSelect {
 	
 	@NotNull(message = "CompanyAreaID cannot be NULL")
-	Long companyAreaID;
+	private Long companyAreaID;
 	@NotNull(message = "CompanyAreaName cannot be NULL")
-	String companyAreaName;
+	private String companyAreaName;
 	@NotNull(message = "CompanyAreaCode cannot be NULL")
-	String companyAreaCode;
+	private String companyAreaCode;
 	@NotNull(message = "CompanyAreaDescription cannot be NULL")
-	String companyAreaDescription;
+	private String companyAreaDescription;
 	@NotNull(message = "CompanyID cannot be NULL")
-	Long companyID;
+	private Long companyID;
 	@NotNull(message = "CompanyName cannot be NULL")
-	String companyName;
+	private String companyName;
 	@NotNull(message = "CompanyCode cannot be NULL")
-	String companyCode;
+	private String companyCode;
 	@NotNull(message = "CompanyRegionId cannot be NULL")
-	Long companyRegionId;
+	private Long companyRegionId;
 	@NotNull(message = "CompanyRegionName cannot be NULL")
-	String companyRegionName;
+	private String companyRegionName;
 	@NotNull(message = "CompanyRegionCode cannot be NULL")
-	String companyRegionCode;
+	private String companyRegionCode;
 	@NotNull(message = "IsActive cannot be NULL")
-	Boolean isActive;
+	private Boolean isActive;
 	
 	public CompanyAreaSelect() {
 		

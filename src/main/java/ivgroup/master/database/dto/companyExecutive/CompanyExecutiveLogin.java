@@ -5,29 +5,29 @@ import javax.validation.constraints.NotNull;
 public class CompanyExecutiveLogin {
 
 	@NotNull(message = "CompanyExecutiveId cannot be NULL")
-	Long companyExecutivId;
+	private Long companyExecutivId;
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	@NotNull(message = "OwnerId cannot be NULL")
-	Long ownerId;
+	private Long ownerId;
 	@NotNull(message = "CompanyAccess cannot be NULL")
-	String companyAccess;
+	private String companyAccess;
 	@NotNull(message = "CompanyBranchAccess cannot be NULL")
-	String companyBranchAccess;
+	private String companyBranchAccess;
 	@NotNull(message = "CompanyExecutiveAccess cannot be NULL")
-	String companyExecutiveAccess;
+	private String companyExecutiveAccess;
 	@NotNull(message = "ClientAccess cannot be NULL")
-	String clientAccess;
+	private String clientAccess;
 	@NotNull(message = "ProductAccess cannot be NULL")
-	String productAccess;
+	private String productAccess;
 	@NotNull(message = "LocationAccess cannot be NULL")
-	String locationAccess;
+	private String locationAccess;
 	@NotNull(message = "EnquiryAccess cannot be NULL")
-	String enquiryAccess;
+	private String enquiryAccess;
 	@NotNull(message = "TicketAccess cannot be NULL")
-	String ticketAccess;
+	private String ticketAccess;
 	@NotNull(message = "PositionAcces cannot be NULL")
-	String positionAcces;
+	private String positionAcces;
 
 	public CompanyExecutiveLogin()
 	{

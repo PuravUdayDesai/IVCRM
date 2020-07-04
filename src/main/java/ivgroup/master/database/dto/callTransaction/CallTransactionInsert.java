@@ -9,20 +9,20 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class CallTransactionInsert {
 
 	@NotNull(message="ClientId cannot be NULL")
-	Long clientId;
+	private Long clientId;
 	@NotNull(message="CompanyExecutiveId cannot be NULL")
-	Long companyExecutiveId;
+	private Long companyExecutiveId;
 	@NotNull(message="ClientNameOnCompanyExecutiveList cannot be NULL")
-	String clientNameOnCompanyExecutiveList;
+	private String clientNameOnCompanyExecutiveList;
 	@NotNull(message="ClientContactNumber cannot be NULL")
-	String clientContactNumber;
+	private String clientContactNumber;
 	@NotNull(message="CallType cannot be NULL")
-	Integer callType;
+	private Integer callType;
 	@NotNull(message="TalkDuration cannot be NULL")
-	Long talkDuration;
+	private Long talkDuration;
 	@NotNull(message="CallTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp callTime;
+	private Timestamp callTime;
 	
 	public CallTransactionInsert()
 	{

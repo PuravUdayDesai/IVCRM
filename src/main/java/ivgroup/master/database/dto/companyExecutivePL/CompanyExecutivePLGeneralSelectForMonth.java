@@ -9,10 +9,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class CompanyExecutivePLGeneralSelectForMonth {
 
 	@NotNull(message="PL RATE cannot be NULL")
-	Double PLRate;
+	private Double PLRate;
 	@NotNull(message="date cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "IST")
-	Date dateOfEntry;
+	private Date dateOfEntry;
 	
 	public CompanyExecutivePLGeneralSelectForMonth()
 	{

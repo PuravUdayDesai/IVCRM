@@ -40,11 +40,11 @@ public class BusinessCityForCompanyInsert {
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp LastEditOn;
+	private Timestamp LastEditOn;
 
-	Long LastEditBy;
+	private Long LastEditBy;
 	
-	Integer LastEditDeviceType;
+	private Integer LastEditDeviceType;
 
 	public Long getCompanyID() {
 		return CompanyID;

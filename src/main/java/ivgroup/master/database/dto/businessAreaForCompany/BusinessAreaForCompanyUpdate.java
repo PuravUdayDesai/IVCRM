@@ -30,13 +30,13 @@ public class BusinessAreaForCompanyUpdate {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@PastOrPresent
-	Timestamp LastEditOn;
+	private Timestamp LastEditOn;
 	
 	@NotNull(message = "LastEditBy cannot be NULL")
-	Long LastEditBy;
+	private Long LastEditBy;
 	
 	@NotNull(message = "LastEditDeviceType cannot be NULL")
-	Integer LastEditDeviceType;
+	private Integer LastEditDeviceType;
 	
 	public Long getStateID() {
 		return StateID;

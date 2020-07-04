@@ -9,14 +9,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class CompanyExecutivePLSelect {
 
 	@NotNull(message="Id cannot be NULL")
-	Long id;
+	private Long id;
 	@NotNull(message="ExecutiveId cannot be NULL")
-	Long executiveId;
+	private Long executiveId;
 	@NotNull(message="PLRate cannot be NULL")
-	Integer PLrate;
+	private Integer PLrate;
 	@NotNull(message="TimeOfEntry cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp dateOfEntry;
+	private Timestamp dateOfEntry;
 	
 	public CompanyExecutivePLSelect() 
 	{

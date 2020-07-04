@@ -5,31 +5,31 @@ import javax.validation.constraints.NotNull;
 public class CompanyBranchAddressDetailsSelect {
 
 	@NotNull(message = "CompanyBranchAddressID cannot be NULL")
-	Long companyBranchAddressID; 
+	private Long companyBranchAddressID; 
 	@NotNull(message = "AddressLine1 cannot be NULL")
-	String addressLine1; 
+	private String addressLine1; 
 	@NotNull(message = "AddressLine2 cannot be NULL")
-	String addressLine2; 
+	private String addressLine2; 
 	@NotNull(message = "AddressLine3 cannot be NULL")
-	String addressLine3; 
+	private String addressLine3; 
 	@NotNull(message = "Pincode cannot be NULL")
-	Long pincode; 
+	private Long pincode; 
 	@NotNull(message = "CityID cannot be NULL")
-	Long cityID; 
+	private Long cityID; 
 	@NotNull(message = "CityName cannot be NULL")
-	String cityName; 
+	private String cityName; 
 	@NotNull(message = "StateID cannot be NULL")
-	Long stateID; 
+	private Long stateID; 
 	@NotNull(message = "StateName cannot be NULL")
-	String stateName;
+	private String stateName;
 	@NotNull(message = "CountryID cannot be NULL")
-	Long countryID;
+	private Long countryID;
 	@NotNull(message = "CountryName cannot be NULL")
-	String countryName; 
+	private String countryName; 
 	@NotNull(message = "Latitude cannot be NULL")
-	String latitude; 
+	private String latitude; 
 	@NotNull(message = "Longitude cannot be NULL")
-	String longitude;
+	private String longitude;
 	
 	public CompanyBranchAddressDetailsSelect() {
 		

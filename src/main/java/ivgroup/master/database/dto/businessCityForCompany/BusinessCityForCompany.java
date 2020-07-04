@@ -52,13 +52,13 @@ public class BusinessCityForCompany {
 	private Integer DeviceType;
 
 	@NotNull(message = "LastEditOn cannot be NULL")
-	Timestamp LastEditOn;
+	private Timestamp LastEditOn;
 	
 	@NotNull(message = "LastEditBy cannot be NULL")
-	Long LastEditBy;
+	private Long LastEditBy;
 	
 	@NotNull(message = "LastEditDeviceType cannot be NULL")
-	Integer LastEditDeviceType;
+	private Integer LastEditDeviceType;
 	
 	public Long getCountryID() {
 		return CountryID;

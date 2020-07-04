@@ -10,27 +10,27 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class CompanyExecutiveInsert {
 
 	@NotNull(message = "ExecutiveName cannot be NULL")
-	String executiveName;
+	private String executiveName;
 	@NotNull(message = "LoginId cannot be NULL")
-	String loginId;
+	private String loginId;
 	@NotNull(message = "Password cannot be NULL")
-	String password;
+	private String password;
 	@NotNull(message = "CompanyBranchId cannot be NULL")
-	Long companyBranchId;
+	private Long companyBranchId;
 	@NotNull(message = "BaseCityId cannot be NULL")
-	Long baseCityId;
+	private Long baseCityId;
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	@NotNull(message = "ContactNumber cannot be NULL")
-	String contactNumber;
+	private String contactNumber;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp createdOn;
+	private Timestamp createdOn;
 	@NotNull(message = "CreatedBy cannot be NULL")
-	Long createdBy;
+	private Long createdBy;
 	@NotNull(message = "CreatedDeviceType cannot be NULL")
-	Integer createdDeviceType;
+	private Integer createdDeviceType;
 	
 	public CompanyExecutiveInsert() {
 		

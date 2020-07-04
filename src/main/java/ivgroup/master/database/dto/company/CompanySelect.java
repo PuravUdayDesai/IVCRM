@@ -6,37 +6,37 @@ import javax.validation.constraints.NotNull;
 public class CompanySelect {
 
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId; 
+	private Long companyId; 
 	@NotNull(message = "CompanyCode cannot be NULL")
-	String companyCode; 
+	private String companyCode; 
 	@NotNull(message = "CompanyName cannot be NULL")
-	String companyName; 
+	private String companyName; 
 	@NotNull(message = "OwnerContactId cannot be NULL")
-	Long ownerContactId; 
+	private Long ownerContactId; 
 	@NotNull(message = "CompanyAddressId cannot be NULL")
-	Long companyAddressId; 
+	private Long companyAddressId; 
 	@NotNull(message = "AddressLine1 cannot be NULL")
-	String addressLine1;
+	private String addressLine1;
 	@NotNull(message = "AddressLine2 cannot be NULL")
-	String addressLine2;
+	private String addressLine2;
 	@NotNull(message = "AddressLine3 cannot be NULL")
-	String addressLine3;
+	private String addressLine3;
 	@NotNull(message = "Pincode cannot be NULL")
-	Long pincode;
+	private Long pincode;
 	@NotNull(message = "CityId cannot be NULL")
-	Long cityId; 
+	private Long cityId; 
 	@NotNull(message = "CityName cannot be NULL")
-	String cityName;
+	private String cityName;
 	@NotNull(message = "StateId cannot be NULL")
-	Long stateId;
+	private Long stateId;
 	@NotNull(message = "CountryId cannot be NULL")
-	Long countryId;
+	private Long countryId;
 	@NotNull(message = "Latitude cannot be NULL")
-	String latitude;
+	private String latitude;
 	@NotNull(message = "Longitude cannot be NULL")
-	String longitude;
+	private String longitude;
 	@NotNull(message = "IsActive cannot be NULL")
-	Boolean isActive; 
+	private Boolean isActive; 
 	
 	public CompanySelect() {
 		

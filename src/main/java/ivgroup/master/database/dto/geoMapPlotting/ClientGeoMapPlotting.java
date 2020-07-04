@@ -5,21 +5,21 @@ import javax.validation.constraints.NotNull;
 public class ClientGeoMapPlotting 
 {
 	@NotNull(message = "ClientId cannot be NULL")
-	Long clientId;
+	private Long clientId;
 	@NotNull(message = "Latitude cannot be NULL")
-	String latitude;
+	private String latitude;
 	@NotNull(message = "Longitude cannot be NULL")
-	String longitude;
+	private String longitude;
 	@NotNull(message = "ContactName cannot be NULL")
-	String contactName;
+	private String contactName;
 	@NotNull(message = "ContactPerson cannot be NULL")
-	String contactPerson;
+	private String contactPerson;
 	@NotNull(message = "EmailId cannot be NULL")
-	String emailId;
+	private String emailId;
 	@NotNull(message = "ContactNumber cannot be NULL")
-	String contactNumber;
+	private String contactNumber;
 	@NotNull(message = "MarkForDelete cannot be NULL")
-	Boolean markForDelete;
+	private Boolean markForDelete;
 	
 	public ClientGeoMapPlotting()
 	{

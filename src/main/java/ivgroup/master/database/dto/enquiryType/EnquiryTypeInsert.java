@@ -10,17 +10,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class EnquiryTypeInsert
 {
 	@NotNull(message = "EnquiryTypeName cannot be NULL")
-	String enquiryTypeName;
+	private String enquiryTypeName;
 	@NotNull(message = "EnquiryTypeColorCode cannot be NULL")
-	String enquiryTypeColorCode;
+	private String enquiryTypeColorCode;
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	@NotNull(message = "CreatedBy cannot be NULL")
-	Long createdBy;
+	private Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp createdOn;
+	private Timestamp createdOn;
 	
 	public EnquiryTypeInsert()
 	{

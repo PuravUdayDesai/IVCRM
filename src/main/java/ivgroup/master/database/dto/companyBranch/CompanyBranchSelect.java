@@ -4,59 +4,59 @@ import javax.validation.constraints.NotNull;
 
 public class CompanyBranchSelect {
 	@NotNull(message = "companyBranchID cannot be NULL")
-		Long CompanyBranchID;
+	private	Long CompanyBranchID;
 	@NotNull(message = "companyBranchName cannot be NULL")
-		String CompanyBranchName;
+	private	String CompanyBranchName;
 	@NotNull(message = "companyBranchCode cannot be NULL")
-		String CompanyBranchCode;
+	private	String CompanyBranchCode;
 	@NotNull(message = "companyRegionID cannot be NULL")
-		Long CompanyRegionID;
+	private	Long CompanyRegionID;
 	@NotNull(message = "companyRegionName cannot be NULL")
-		String CompanyRegionName;
+	private	String CompanyRegionName;
 	@NotNull(message = "companyRegionCode cannot be NULL")
-		String CompanyRegionCode;
+	private	String CompanyRegionCode;
 	@NotNull(message = "companyAreaID cannot be NULL")
-		Long CompanyAreaID;
+	private	Long CompanyAreaID;
 	@NotNull(message = "companyAreaName cannot be NULL")
-		String CompanyAreaName;
+	private	String CompanyAreaName;
 	@NotNull(message = "companyAreaCode cannot be NULL")
-		String CompanyAreaCode;
+	private	String CompanyAreaCode;
 	@NotNull(message = "companyBranchType cannot be NULL")
-		Integer CompanyBranchType;
+	private	Integer CompanyBranchType;
 	@NotNull(message = "companyId cannot be NULL")
-		Long CompanyId; 
+	private	Long CompanyId; 
 	@NotNull(message = "companyName cannot be NULL")
-		String CompanyName;
+	private	String CompanyName;
 	@NotNull(message = "companyCode cannot be NULL")
-		String CompanyCode;  
+	private	String CompanyCode;  
 	@NotNull(message = "addressLine1 cannot be NULL")
-		String AddressLine1; 
+	private	String AddressLine1; 
 	@NotNull(message = "addressLine2 cannot be NULL")
-		String AddressLine2; 
+	private	String AddressLine2; 
 	@NotNull(message = "addressLine3 cannot be NULL")
-		String AddressLine3; 
+	private	String AddressLine3; 
 	@NotNull(message = "pincode cannot be NULL")
-		Long Pincode; 
+	private	Long Pincode; 
 	@NotNull(message = "cityID cannot be NULL")
-		Long CityID; 
+	private	Long CityID; 
 	@NotNull(message = "cityName cannot be NULL")
-		String CityName; 
+	private	String CityName; 
 	@NotNull(message = "stateID cannot be NULL")
-		Long StateID; 
+	private	Long StateID; 
 	@NotNull(message = "countryID cannot be NULL")
-		Long CountryID; 
+	private	Long CountryID; 
 	@NotNull(message = "latitude cannot be NULL")
-		String Latitude; 
+	private	String Latitude; 
 	@NotNull(message = "longitude cannot be NULL")
-		String Longitude; 
+	private	String Longitude; 
 	@NotNull(message = "executiveId cannot be NULL")
-		Long ExecutiveId;
+	private	Long ExecutiveId;
 	@NotNull(message = "executiveName cannot be NULL")
-		String ExecutiveName;
+	private	String ExecutiveName;
 	@NotNull(message = "contactNumber cannot be NULL")
-		String ContactNumber;
+	private	String ContactNumber;
 	@NotNull(message = "ssActive cannot be NULL")
-		Boolean IsActive;
+	private	Boolean IsActive;
 	
 public CompanyBranchSelect() {
 	

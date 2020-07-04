@@ -9,20 +9,20 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CompanyUpdate {
 
-	String companyCode; 
-	String companyName; 
-	Long ownerContactId; 
-	Long companyAddress; 
-	Long cityId; 
-	Boolean isActive; 
+	private String companyCode; 
+	private String companyName; 
+	private Long ownerContactId; 
+	private Long companyAddress; 
+	private Long cityId; 
+	private Boolean isActive; 
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp lastEditOn;
+	private Timestamp lastEditOn;
 	@NotNull(message = "LastEditBy cannot be NULL")
-	Long lastEditBy;
+	private Long lastEditBy;
 	@NotNull(message = "LastEditDeviceType cannot be NULL")
-	Integer lastEditDeviceType;
+	private Integer lastEditDeviceType;
 	
 	public CompanyUpdate() {
 		

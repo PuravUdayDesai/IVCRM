@@ -9,22 +9,22 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class CompanyExecutiveGeoLocationSelect 
 {
 	@NotNull(message = "CompanyExecutiveGeoLocationId cannot be NULL")
-	Long companyExecutiveGeoLocationId;
+	private Long companyExecutiveGeoLocationId;
 	@NotNull(message = "Latitude cannot be NULL")
-	String latitude;
+	private String latitude;
 	@NotNull(message = "Longitude cannot be NULL")
-	String longitude;
+	private String longitude;
 	@NotNull(message = "CompanyExecutiveId cannot be NULL")
-	Long companyExecutiveId;
+	private Long companyExecutiveId;
 	@NotNull(message = "CompanyExecutiveName cannot be NULL")
-	String companyExecutiveName;
+	private String companyExecutiveName;
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	@NotNull(message = "CompanyName cannot be NULL")
-	String companyName;
+	private String companyName;
 	@NotNull(message = "EntryDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp entryDateAndTime;
+	private Timestamp entryDateAndTime;
 	
 	public CompanyExecutiveGeoLocationSelect()
 	{

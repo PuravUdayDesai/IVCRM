@@ -10,33 +10,33 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class CompanyExecutiveGeoLocationInsert
 {
 	@NotNull(message = "CompanyExecutiveId cannot be NULL")
-	Long companyExecutiveId;
+	private Long companyExecutiveId;
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	@NotNull(message = "EntryDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp entryDateAndTime;
+	private Timestamp entryDateAndTime;
 	@NotNull(message = "Latitude cannot be NULL")
-	String latitude;
+	private String latitude;
 	@NotNull(message = "Longitude cannot be NULL")
-	String longitude;
+	private String longitude;
 	@NotNull(message = "CountryName cannot be NULL")
-	String countryName;
+	private String countryName;
 	@NotNull(message = "StateName cannot be NULL")
-	String stateName;
+	private String stateName;
 	@NotNull(message = "CityName cannot be NULL")
-	String cityName;
+	private String cityName;
 	@NotNull(message = "AreaName cannot be NULL")
-	String areaName;
+	private String areaName;
 	@NotNull(message = "AddressLine1 cannot be NULL")
-	String addressLine1;
+	private String addressLine1;
 	@NotNull(message = "AddressLine2 cannot be NULL")
-	String addressLine2;
+	private String addressLine2;
 	@NotNull(message = "AddressLine3 cannot be NULL")
-	String addressLine3;
+	private String addressLine3;
 	@NotNull(message = "Pincode cannot be NULL")
-	String pincode;
+	private String pincode;
 	
 	public CompanyExecutiveGeoLocationInsert()
 	{

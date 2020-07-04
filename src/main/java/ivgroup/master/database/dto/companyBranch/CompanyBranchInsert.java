@@ -10,51 +10,51 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class CompanyBranchInsert
 {
 	@NotNull(message = "AddressLine1 cannot be NULL")
-	String addressLine1;
+	private String addressLine1;
 	@NotNull(message = "AddressLine2 cannot be NULL")
-	String addressLine2;
+	private String addressLine2;
 	@NotNull(message = "AddressLine3 cannot be NULL")
-	String addressLine3;
+	private String addressLine3;
 	@NotNull(message = "Pincode cannot be NULL")
-	Long pincode;
+	private Long pincode;
 	@NotNull(message = "CityID cannot be NULL")
-	Long cityID;
+	private Long cityID;
 	@NotNull(message = "StateID cannot be NULL")
-	Long stateID;
+	private Long stateID;
 	@NotNull(message = "CountryID cannot be NULL")
-	Long countryID;
+	private Long countryID;
 	@NotNull(message = "Latitude cannot be NULL")
-	String latitude;
+	private String latitude;
 	@NotNull(message = "Longitude cannot be NULL")
-	String longitude;
+	private String longitude;
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	@NotNull(message = "CompanyRegionId cannot be NULL")
-	Long companyRegionId;
+	private Long companyRegionId;
 	@NotNull(message = "CompanyAreaId cannot be NULL")
-	Long companyAreaId;
+	private Long companyAreaId;
 	@NotNull(message = "CompanyBranchName cannot be NULL")
-	String companyBranchName;
+	private String companyBranchName;
 	@NotNull(message = "CompanyBranchCode cannot be NULL")
-	String companyBranchCode;
+	private String companyBranchCode;
 	@NotNull(message = "CompanyBranchType cannot be NULL")
-	Integer companyBranchType;
+	private Integer companyBranchType;
 	@NotNull(message = "ExecutiveName cannot be NULL")
-	String executiveName; 
+	private String executiveName; 
 	@NotNull(message = "LoginID cannot be NULL")
-	String loginID; 
+	private String loginID; 
 	@NotNull(message = "Password cannot be NULL")
-	String password;
+	private String password;
 	@NotNull(message = "ContactNumber cannot be NULL")
-	String contactNumber;
+	private String contactNumber;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp createdOn;
+	private Timestamp createdOn;
 	@NotNull(message = "CreatedBy cannot be NULL")
-	Long createdBy;
+	private Long createdBy;
 	@NotNull(message = "DeviceType cannot be NULL")
-	Integer deviceType;
+	private Integer deviceType;
 	
 public CompanyBranchInsert() {
 	

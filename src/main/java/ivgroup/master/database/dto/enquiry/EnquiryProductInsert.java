@@ -10,21 +10,21 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class EnquiryProductInsert
 {
 	@NotNull(message = "EnquiryId cannot be NULL")
-	Long enquiryId;
+	private Long enquiryId;
 	@NotNull(message = "ProductId cannot be NULL")
-	Long productId;
+	private Long productId;
 	@NotNull(message = "StatusId cannot be NULL")
-	Long statusId;
+	private Long statusId;
 	@NotNull(message = "TicketRemarks cannot be NULL")
-	String ticketRemarks;
+	private String ticketRemarks;
 	@NotNull(message = "PriorityId cannot be NULL")
-	Integer priorityId;
+	private Integer priorityId;
 	@NotNull(message = "CreatedBy cannot be NULL")
-	Long createdBy;
+	private Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp createdOn;
+	private Timestamp createdOn;
 	
 	public EnquiryProductInsert()
 	{

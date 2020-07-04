@@ -5,19 +5,19 @@ import javax.validation.constraints.NotNull;
 public class CompanyBranchGeoMapPlotting 
 {
 	@NotNull(message = "CompanyBranchId cannot be NULL")
-	Long companyBranchId;
+	private Long companyBranchId;
 	@NotNull(message = "Latitude cannot be NULL")
-	String latitude;
+	private String latitude;
 	@NotNull(message = "Longitude cannot be NULL")
-	String longitude;
+	private String longitude;
 	@NotNull(message = "CompanyBranchName cannot be NULL")
-	String companyBranchName;
+	private String companyBranchName;
 	@NotNull(message = "CompanyBranchCode cannot be NULL")
-	String companyBranchCode;
+	private String companyBranchCode;
 	@NotNull(message = "companyName cannot be NULL")
-	String companyName;
+	private String companyName;
 	@NotNull(message = "MarkForDelete cannot be NULL")
-	Boolean markForDelete;
+	private Boolean markForDelete;
 	
 	public CompanyBranchGeoMapPlotting()
 	{

@@ -5,23 +5,23 @@ import javax.validation.constraints.NotNull;
 public class EnquiryGeoMapPlotting 
 {
 	@NotNull(message = "EnquiryId cannot be NULL")
-	Long enquiryId;
+	private Long enquiryId;
 	@NotNull(message = "Latitude cannot be NULL")
-	String latitude;
+	private String latitude;
 	@NotNull(message = "Longitude cannot be NULL")
-	String longitude;
+	private String longitude;
 	@NotNull(message = "CompanyName cannot be NULL")
-	String companyName;
+	private String companyName;
 	@NotNull(message = "ClientName cannot be NULL")
-	String clientName;
+	private String clientName;
 	@NotNull(message = "ContactPerson cannot be NULL")
-	String contactPerson;
+	private String contactPerson;
 	@NotNull(message = "EmailId cannot be NULL")
-	String emailId;
+	private String emailId;
 	@NotNull(message = "ContactNumber cannot be NULL")
-	String contactNumber;
+	private String contactNumber;
 	@NotNull(message = "EnquiryTypeName cannot be NULL")
-	String enquiryTypeName;
+	private String enquiryTypeName;
 	
 	public EnquiryGeoMapPlotting()
 	{

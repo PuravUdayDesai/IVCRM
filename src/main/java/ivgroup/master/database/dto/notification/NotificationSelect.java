@@ -9,22 +9,22 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class NotificationSelect {
 
 	@NotNull(message="CompanyExecutiveID cannot be null")
-	Long companyExecutiveID;
+	private Long companyExecutiveID;
 	@NotNull(message="CompanyExecutiveName cannot be null")
-	String companyExecutiveName;
+	private String companyExecutiveName;
 	@NotNull(message="NotificationID cannot be null")
-	Long notificationID;
+	private Long notificationID;
 	@NotNull(message="NotificationSubject cannot be null")
-	String notificationSubject;
+	private String notificationSubject;
 	@NotNull(message="NotificationDescription cannot be null")
-	String notificationDescription;
+	private String notificationDescription;
 	@NotNull(message = "NotificationTime cannot be null")
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="IST")
-	Timestamp notificationTime;
+	private Timestamp notificationTime;
 	@NotNull(message = "NotificationTimeString cannot be NULL")
-	String notificationTimeString;
+	private String notificationTimeString;
 	@NotNull(message="ReadIndex cannot be null")
-	Boolean readIndex;
+	private Boolean readIndex;
 	
 	public NotificationSelect() 
 	{

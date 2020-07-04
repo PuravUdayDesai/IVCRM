@@ -8,19 +8,19 @@ import javax.validation.constraints.PastOrPresent;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class CompanyRegionUpdate {
-	String companyRegionName;
-	String companyRegionCode;
-	String companyRegionDescription;
-	Long companyID;
-	Boolean isActive;
+	private String companyRegionName;
+	private String companyRegionCode;
+	private String companyRegionDescription;
+	private Long companyID;
+	private Boolean isActive;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp lastEditOn;
+	private Timestamp lastEditOn;
 	@NotNull(message = "LastEditBy cannot be NULL")
-	Long lastEditBy;
+	private Long lastEditBy;
 	@NotNull(message = "LastEditDeviceType cannot be NULL")
-	Integer lastEditDeviceType;
+	private Integer lastEditDeviceType;
 	
 	public CompanyRegionUpdate(){
 		

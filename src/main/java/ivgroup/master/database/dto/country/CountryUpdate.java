@@ -22,13 +22,13 @@ public class CountryUpdate {
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp LastEditOn;
+	private Timestamp LastEditOn;
 	
 	@NotNull(message = "LastEditBy cannot be NULL")
-	Long LastEditBy;
+	private Long LastEditBy;
 	
 	@NotNull(message = "LastEditDeviceType cannot be NULL")
-	Integer LastEditDeviceType;
+	private Integer LastEditDeviceType;
 
 	public String getCountryName() {
 		return CountryName;

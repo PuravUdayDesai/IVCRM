@@ -9,18 +9,18 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class EnquiryAccessListSelect
 {
 	@NotNull(message = "EnquiryAccessId cannot be NULL")
-	Long enquiryAccessId;
+	private Long enquiryAccessId;
 	@NotNull(message = "EnquiryId cannot be NULL")
-	Long enquiryId;
+	private Long enquiryId;
 	@NotNull(message = "CompanyExecutiveId cannot be NULL")
-	Long companyExecutiveId;
+	private Long companyExecutiveId;
 	@NotNull(message = "CompanyExecutiveName cannot be NULL")
-	String companyExecutiveName;
+	private String companyExecutiveName;
 	@NotNull(message = "OwnerFlag cannot be NULL")
-	Boolean ownerFlag;
+	private Boolean ownerFlag;
 	@NotNull(message = "AccessApplicationTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp accessApplicationTime;
+	private Timestamp accessApplicationTime;
 	
 	public EnquiryAccessListSelect()
 	{

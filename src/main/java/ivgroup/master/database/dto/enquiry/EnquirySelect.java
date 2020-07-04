@@ -11,80 +11,80 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class EnquirySelect 
 {
 	@NotNull(message = "EnquiryAccessListId cannot be NULL")
-	Long enquiryAccessListId;
+	private Long enquiryAccessListId;
 	@NotNull(message = "EnquiryId cannot be NULL")
-	Long enquiryId;
+	private Long enquiryId;
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	@NotNull(message = "CompanyName cannot be NULL")
-	String companyName;
+	private String companyName;
 	@NotNull(message = "EnquiryRemarks cannot be NULL")
-	String enquiryRemarks;
+	private String enquiryRemarks;
 	@NotNull(message = "EnquiryType cannot be NULL")
-	Long enquiryType;
+	private Long enquiryType;
 	@NotNull(message = "EnquiryTypeName cannot be NULL")
-	String enquiryTypeName;
+	private String enquiryTypeName;
 	@NotNull(message = "EnquiryLocationId cannot be NULL")
-	Long enquiryLocationId;
+	private Long enquiryLocationId;
 	@NotNull(message = "CountryId cannot be NULL")
-	Long countryId;
+	private Long countryId;
 	@NotNull(message = "CountryName cannot be NULL")
-	String countryName;
+	private String countryName;
 	@NotNull(message = "StateId cannot be NULL")
-	Long stateId;
+	private Long stateId;
 	@NotNull(message = "StateName cannot be NULL")
-	String stateName;
+	private String stateName;
 	@NotNull(message = "CityId cannot be NULL")
-	Long cityId;
+	private Long cityId;
 	@NotNull(message = "CityName cannot be NULL")
-	String cityName;
+	private String cityName;
 	@NotNull(message = "AreaId cannot be NULL")
-	Long areaId;
+	private Long areaId;
 	@NotNull(message = "AreaName cannot be NULL")
-	String areaName;
+	private String areaName;
 	@NotNull(message = "AddressLine1 cannot be NULL")
-	String addressLine1;
+	private String addressLine1;
 	@NotNull(message = "AddressLine2 cannot be NULL")
-	String addressLine2;
+	private String addressLine2;
 	@NotNull(message = "AddressLine3 cannot be NULL")
-	String addressLine3;
+	private String addressLine3;
 	@NotNull(message = "Pincode cannot be NULL")
-	String pincode;
+	private String pincode;
 	@NotNull(message = "Latitude cannot be NULL")
-	String latitude;
+	private String latitude;
 	@NotNull(message = "Longitude cannot be NULL")
-	String longitude;
+	private String longitude;
 	@NotNull(message = "StartDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp startDateAndTime;
+	private Timestamp startDateAndTime;
 	@NotNull(message = "DeadlineDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp deadlineDateAndTime;
+	private Timestamp deadlineDateAndTime;
 	@NotNull(message = "EnquiryClientId cannot be NULL")
-	Long enquiryClientId;
+	private Long enquiryClientId;
 	@NotNull(message = "ClientId cannot be NULL")
-	Long clientId;
+	private Long clientId;
 	@NotNull(message = "ClientName cannot be NULL")
-	String clientName;
+	private String clientName;
 	@NotNull(message = "ContactPerson cannot be NULL")
-	String contactPerson;
+	private String contactPerson;
 	@NotNull(message = "EmailId cannot be NULL")
 	@Email(message= "EmailId provider is INCORRECT")
-	String emailId;
+	private String emailId;
 	@NotNull(message = "ContactNumber cannot be NULL")
-	String contactNumber;
+	private String contactNumber;
 	@NotNull(message = "EnquiryProductList cannot be NULL")
-	List<EnquiryProductSelect> enquiryProductList;
+	private List<EnquiryProductSelect> enquiryProductList;
 	@NotNull(message = "CreatedBy cannot be NULL")
-	Long createdBy;
+	private Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp createdOn;
+	private Timestamp createdOn;
 	@NotNull(message = "LastEditBy cannot be NULL")
-	Long lastEditBy;
+	private Long lastEditBy;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp lastEditOn;
+	private Timestamp lastEditOn;
 	
 	public EnquirySelect()
 	{

@@ -10,65 +10,65 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class CompanyInsertWithCompanyBranchType 
 {
 	@NotNull(message = "AddressLine1 cannot be NULL")
-	String addressLine1;
+	private String addressLine1;
 	@NotNull(message = "AddressLine2 cannot be NULL")
-	String addressLine2;
+	private String addressLine2;
 	@NotNull(message = "AddressLine3 cannot be NULL")
-	String addressLine3;
+	private String addressLine3;
 	@NotNull(message = "Pincode cannot be NULL")
-	Long pincode;
+	private Long pincode;
 	@NotNull(message = "CityID cannot be NULL")
-	Long cityID;
+	private Long cityID;
 	@NotNull(message = "StateID cannot be NULL")
-	Long stateID;
+	private Long stateID;
 	@NotNull(message = "CountryID cannot be NULL")
-	Long countryID;
+	private Long countryID;
 	@NotNull(message = "Latitude cannot be NULL")
-	String latitude;
+	private String latitude;
 	@NotNull(message = "Longitude cannot be NULL")
-	String longitude;
+	private String longitude;
 	@NotNull(message = "CompanyCode cannot be NULL")
-	String companyCode; 
+	private String companyCode; 
 	@NotNull(message = "CompanyName cannot be NULL")
-	String companyName; 
+	private String companyName; 
 	@NotNull(message = "OwnerContactId cannot be NULL")
-	Long ownerContactId; 
+	private Long ownerContactId; 
 	@NotNull(message = "CompanyRegionName cannot be NULL")
-	String companyRegionName;
+	private String companyRegionName;
 	@NotNull(message = "CompanyRegionCode cannot be NULL")
-	String companyRegionCode; 
+	private String companyRegionCode; 
 	@NotNull(message = "CompanyRegionDescription cannot be NULL")
-	String companyRegionDescription;
+	private String companyRegionDescription;
 	@NotNull(message = "CompanyAreaName cannot be NULL")
-	String companyAreaName;
+	private String companyAreaName;
 	@NotNull(message = "CompanyAreaCode cannot be NULL")
-	String companyAreaCode; 
+	private String companyAreaCode; 
 	@NotNull(message = "CompanyAreaDescription cannot be NULL")
-	String companyAreaDescription;
+	private String companyAreaDescription;
 	@NotNull(message = "CompanyBranchName cannot be NULL")
-	String companyBranchName;
+	private String companyBranchName;
 	@NotNull(message = "CompanyBranchCode cannot be NULL")
-	String companyBranchCode;
+	private String companyBranchCode;
 	@NotNull(message = "CompanyBranchTypeName cannot be NULL")
-	String companyBranchTypeName;
+	private String companyBranchTypeName;
 	@NotNull(message = "CompanyBranchPosition cannot be NULL")
-	Integer companyBranchPosition;
+	private Integer companyBranchPosition;
 	@NotNull(message = "ExecutiveName cannot be NULL")
-	String executiveName; 
+	private String executiveName; 
 	@NotNull(message = "LoginID cannot be NULL")
-	String loginID; 
+	private String loginID; 
 	@NotNull(message = "Password cannot be NULL")
-	String password;
+	private String password;
 	@NotNull(message = "ContactNumber cannot be NULL")
-	String contactNumber;
+	private String contactNumber;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp createdOn;
+	private Timestamp createdOn;
 	@NotNull(message = "CreatedBy cannot be NULL")
-	Long createdBy;
+	private Long createdBy;
 	@NotNull(message = "DeviceType cannot be NULL")
-	Integer deviceType;
+	private Integer deviceType;
 	
 	public CompanyInsertWithCompanyBranchType()
 	{

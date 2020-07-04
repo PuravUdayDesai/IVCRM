@@ -10,72 +10,72 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class ClientSelect 
 {
 	@NotNull(message = "ClientId cannot be NULL")
-	Long clientId;
+	private Long clientId;
 	@NotNull(message = "ContactName cannot be NULL")
-	String contactName;
+	private String contactName;
 	@NotNull(message = "ContactPerson cannot be NULL")
-	String contactPerson;
+	private String contactPerson;
 	@NotNull(message = "EmailId cannot be NULL")
 	@Email(message= "EmailId provider is INCORRECT")
-	String emailId;
+	private String emailId;
 	@NotNull(message = "ContactNumber cannot be NULL")
-	String contactNumber;
+	private String contactNumber;
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	@NotNull(message = "CompanyName cannot be NULL")
-	String companyName;
+	private String companyName;
 	@NotNull(message = "CountryId cannot be NULL")
-	Long countryId;
+	private Long countryId;
 	@NotNull(message = "CountryName cannot be NULL")
-	String countryName;
+	private String countryName;
 	@NotNull(message = "StateId cannot be NULL")
-	Long stateId;
+	private Long stateId;
 	@NotNull(message = "StateName cannot be NULL")
-	String stateName;
+	private String stateName;
 	@NotNull(message = "CityId cannot be NULL")
-	Long cityId;
+	private Long cityId;
 	@NotNull(message = "CityName cannot be NULL")
-	String cityName;
+	private String cityName;
 	@NotNull(message = "AreaId cannot be NULL")
-	Long areaId;
+	private Long areaId;
 	@NotNull(message = "AreaName cannot be NULL")
-	String areaName;
+	private String areaName;
 	@NotNull(message = "AddressLine1 cannot be NULL")
-	String addressLine1;
+	private String addressLine1;
 	@NotNull(message = "AddressLine2 cannot be NULL")
-	String addressLine2;
+	private String addressLine2;
 	@NotNull(message = "AddressLine3 cannot be NULL")
-	String addressLine3;
+	private String addressLine3;
 	@NotNull(message = "Pincode cannot be NULL")
-	String pincode;
+	private String pincode;
 	@NotNull(message = "Latitude cannot be NULL")
-	String latitude;
+	private String latitude;
 	@NotNull(message = "Longitude cannot be NULL")
-	String longitude;
+	private String longitude;
 	@NotNull(message = "ClientCreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp clientCreatedOn;
+	private Timestamp clientCreatedOn;
 	@NotNull(message = "ClientCreatedBy cannot be NULL")
-	Long clientCreatedBy;
+	private Long clientCreatedBy;
 	@NotNull(message = "ClientLastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp clientLastEditOn;
+	private Timestamp clientLastEditOn;
 	@NotNull(message = "ClientLastEditBy cannot be NULL")
-	Long clientLastEditBy;
+	private Long clientLastEditBy;
 	@NotNull(message = "ClientIsActive cannot be NULL")
-	Boolean clientIsActive;
+	private Boolean clientIsActive;
 	@NotNull(message = "ClientLocationCreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp clientLocationCreatedOn;
+	private Timestamp clientLocationCreatedOn;
 	@NotNull(message = "ClientLocationCreatedBy cannot be NULL")
-	Long clientLocationCreatedBy;
+	private Long clientLocationCreatedBy;
 	@NotNull(message = "ClientLocationLastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp clientLocationLastEditOn;
+	private Timestamp clientLocationLastEditOn;
 	@NotNull(message = "ClientLocationLastEditBy cannot be NULL")
-	Long clientLocationLastEditBy;
+	private Long clientLocationLastEditBy;
 	@NotNull(message = "ClientLocationIsActive cannot be NULL")
-	Boolean clientLocationIsActive;
+	private Boolean clientLocationIsActive;
 	
 	public ClientSelect()
 	{

@@ -10,17 +10,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class CompanyBranchTypeInsert 
 {
 	@NotNull(message = "CompanyBranchTypeName cannot be NULL")
-	String companyBranchTypeName;
+	private String companyBranchTypeName;
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	@NotNull(message = "CompanyBranchPosition cannot be NULL")
-	Integer companyBranchPosition;
+	private Integer companyBranchPosition;
 	@NotNull(message = "CreatedBy cannot be NULL")
-	Long createdBy;
+	private Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp createdOn;
+	private Timestamp createdOn;
 	
 	public CompanyBranchTypeInsert()
 	{

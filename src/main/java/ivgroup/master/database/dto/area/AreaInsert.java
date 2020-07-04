@@ -42,9 +42,9 @@ public class AreaInsert {
 	@PastOrPresent
 	Timestamp LastEditOn;
 	
-	Long LastEditBy;
+	private Long LastEditBy;
 	
-	Integer LastEditDeviceType;
+	private Integer LastEditDeviceType;
 
 	public String getBusinessAreaName() {
 		return BusinessAreaName;

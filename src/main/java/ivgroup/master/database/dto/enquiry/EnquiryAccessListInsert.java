@@ -10,13 +10,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class EnquiryAccessListInsert
 {
 	@NotNull(message = "EnquiryId cannot be NULL")
-	Long enquiryId;
+	private Long enquiryId;
 	@NotNull(message = "CompanyExecutiveId cannot be NULL")
-	Long companyExecutiveId;
+	private Long companyExecutiveId;
 	@NotNull(message = "AccessApplicationTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp accessApplicationTime;
+	private Timestamp accessApplicationTime;
 	
 	public EnquiryAccessListInsert()
 	{

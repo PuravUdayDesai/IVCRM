@@ -5,10 +5,10 @@ import javax.validation.constraints.NotNull;
 public class BusinessAreaForCompanyByCityID {
 
 	@NotNull
-	Long BusinessAreaForCompanyID;
+	private Long BusinessAreaForCompanyID;
 	
 	@NotNull
-	String BusinessAreaForCompanyName;
+	private String BusinessAreaForCompanyName;
 
 	public Long getBusinessAreaForCompanyID() {
 		return BusinessAreaForCompanyID;

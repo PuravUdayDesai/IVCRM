@@ -45,9 +45,9 @@ public class BusinessAreaForCompanyInsert {
 	@PastOrPresent
 	Timestamp LastEditOn;
 
-	Long LastEditBy;
+	private Long LastEditBy;
 	
-	Integer LastEditDeviceType;
+	private Integer LastEditDeviceType;
 
 	public Long getCompanyID() {
 		return CompanyID;

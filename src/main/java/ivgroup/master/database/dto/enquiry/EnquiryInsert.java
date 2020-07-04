@@ -12,52 +12,52 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class EnquiryInsert 
 {
 	@NotNull(message = "CompanyId cannot be NULL")
-	Long companyId;
+	private Long companyId;
 	@NotNull(message = "EnquiryRemarks cannot be NULL")
-	String enquiryRemarks;
+	private String enquiryRemarks;
 	@NotNull(message = "EnquiryType cannot be NULL")
-	Long enquiryType;
+	private Long enquiryType;
 	@NotNull(message = "ClientId cannot be NULL")
-	Long clientId;
+	private Long clientId;
 	@NotNull(message = "CountryId cannot be NULL")
-	Long countryId;
+	private Long countryId;
 	@NotNull(message = "StateId cannot be NULL")
-	Long stateId;
+	private Long stateId;
 	@NotNull(message = "CityId cannot be NULL")
-	Long cityId;
+	private Long cityId;
 	@NotNull(message = "AreaId cannot be NULL")
-	Long areaId;
+	private Long areaId;
 	@NotNull(message = "AddressLine1 cannot be NULL")
-	String addressLine1;
+	private String addressLine1;
 	@NotNull(message = "AddressLine2 cannot be NULL")
-	String addressLine2;
+	private String addressLine2;
 	@NotNull(message = "AddressLine3 cannot be NULL")
-	String addressLine3;
+	private String addressLine3;
 	@NotNull(message = "Pincode cannot be NULL")
-	String pincode;
+	private String pincode;
 	@NotNull(message = "Latitude cannot be NULL")
-	String latitude;
+	private String latitude;
 	@NotNull(message = "Longitude cannot be NULL")
-	String longitude;
+	private String longitude;
 	@NotNull(message = "StatusId cannot be NULL")
-	Long statusId;
+	private Long statusId;
 	@NotNull(message = "StartDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp startDateAndTime;
+	private Timestamp startDateAndTime;
 	@NotNull(message = "DeadlineDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@FutureOrPresent
-	Timestamp deadlineDateAndTime;
+	private Timestamp deadlineDateAndTime;
 	@NotNull(message = "Prioirty cannot be NULL")
-	Integer prioirty;
+	private Integer prioirty;
 	@NotNull(message = "Product cannot be NULL")
-	List<Long> productId;
+	private List<Long> productId;
 	@NotNull(message = "CreatedBy cannot be NULL")
-	Long createdBy;
+	private Long createdBy;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp createdOn;
+	private Timestamp createdOn;
 	
 	public EnquiryInsert()
 	{

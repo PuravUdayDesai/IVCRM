@@ -9,15 +9,15 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class EnquiryTypeUpdate 
 {
-	String enquiryTypeName;
-	String enquiryTypeColorCode;
-	Long companyId;
+	private String enquiryTypeName;
+	private String enquiryTypeColorCode;
+	private Long companyId;
 	@NotNull(message = "LastEditBy cannot be NULL")
-	Long lastEditBy;
+	private Long lastEditBy;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp lastEditOn;
+	private Timestamp lastEditOn;
 	
 	public EnquiryTypeUpdate()
 	{

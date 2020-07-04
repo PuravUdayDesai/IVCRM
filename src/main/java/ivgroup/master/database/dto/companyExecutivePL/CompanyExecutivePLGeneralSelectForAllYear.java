@@ -5,9 +5,9 @@ import javax.validation.constraints.NotNull;
 public class CompanyExecutivePLGeneralSelectForAllYear
 {
 	@NotNull(message="PL RATE cannot be NULL")
-	Double PLRate;
+	private Double PLRate;
 	@NotNull(message="Year cannot be NULL")
-	Integer dateOfEntry;
+	private Integer dateOfEntry;
 	
 	public CompanyExecutivePLGeneralSelectForAllYear()
 	{

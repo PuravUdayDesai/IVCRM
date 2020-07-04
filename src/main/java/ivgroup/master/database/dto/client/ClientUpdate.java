@@ -11,29 +11,29 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class ClientUpdate 
 {
 	
-	String contactName;
-	String contactPerson;
+	private String contactName;
+	private String contactPerson;
 	@Email(message= "EmailId provider is INCORRECT")
-	String emailId;
-	String contactNumber;
-	Long companyId;
-	Long countryId;
-	Long stateId;
-	Long cityId;
-	Long areaId;
-	String addressLine1;
-	String addressLine2;
-	String addressLine3;
-	String pincode;
-	String latitude;
-	String longitude;
-	Boolean isActive;
+	private String emailId;
+	private String contactNumber;
+	private Long companyId;
+	private Long countryId;
+	private Long stateId;
+	private Long cityId;
+	private Long areaId;
+	private String addressLine1;
+	private String addressLine2;
+	private String addressLine3;
+	private String pincode;
+	private String latitude;
+	private String longitude;
+	private Boolean isActive;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
-	Timestamp lastEditOn;
+	private Timestamp lastEditOn;
 	@NotNull(message = "LastEditBy cannot be NULL")
-	Long lastEditBy;
+	private Long lastEditBy;
 	
 	public ClientUpdate()
 	{

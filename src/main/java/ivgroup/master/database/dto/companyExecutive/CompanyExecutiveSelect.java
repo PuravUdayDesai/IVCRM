@@ -5,33 +5,33 @@ import javax.validation.constraints.NotNull;
 public class CompanyExecutiveSelect {
 	
 	@NotNull(message = "ExecutiveId cannot be NULL")
-	String executiveId;
+	private String executiveId;
 	@NotNull(message = "ExecutiveName cannot be NULL")
-	String executiveName;
+	private String executiveName;
 	@NotNull(message = "LoginID cannot be NULL")
-	String loginID;
+	private String loginID;
 	@NotNull(message = "Password cannot be NULL")
-	String password;
+	private String password;
 	@NotNull(message = "CompanyBranchID cannot be NULL")
-	Long companyBranchID;
+	private Long companyBranchID;
 	@NotNull(message = "CompanyBranchName cannot be NULL")
-	String companyBranchName;
+	private String companyBranchName;
 	@NotNull(message = "CompanyBranchCode cannot be NULL")
-	String companyBranchCode;
+	private String companyBranchCode;
 	@NotNull(message = "BaseCityID cannot be NULL")
-	Long cityID;
+	private Long cityID;
 	@NotNull(message = "CityName cannot be NULL")
-	String cityName;
+	private String cityName;
 	@NotNull(message = "CompanyID cannot be NULL")
-	Long companyID;
+	private Long companyID;
 	@NotNull(message = "CompanyName cannot be NULL")
-	String companyName;
+	private String companyName;
 	@NotNull(message = "CompanyCode cannot be NULL")
-	String companyCode;
+	private String companyCode;
 	@NotNull(message = "ContactNumber cannot be NULL")
-	String contactNumber;
+	private String contactNumber;
 	@NotNull(message = "IsActive cannot be NULL")
-	Boolean isActive;
+	private Boolean isActive;
 	
 	public CompanyExecutiveSelect()
 	{

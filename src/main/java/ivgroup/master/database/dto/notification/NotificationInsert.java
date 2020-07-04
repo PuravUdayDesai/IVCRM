@@ -9,20 +9,20 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class NotificationInsert {
 	
 	@NotNull(message="CompanyExecutiveID cannot be null")
-	Long CompanyExecutiveID;
+	private Long CompanyExecutiveID;
 	
 	@NotNull(message="CompanyExecutiveName cannot be null")
-	String CompanyExecutiveName;
+	private String CompanyExecutiveName;
 	
 	@NotNull(message="NotificationSubject cannot be null")
-	String NotificationSubject;
+	private String NotificationSubject;
 	
 	@NotNull(message="NotificationDescription cannot be null")
-	String NotificationDescription;
+	private String NotificationDescription;
 	
 	@NotNull(message = "NotificationTime cannot be null")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	Timestamp NotificationTime;
+	private Timestamp NotificationTime;
 
 	public Long getCompanyExecutiveID() {
 		return CompanyExecutiveID;
