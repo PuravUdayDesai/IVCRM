@@ -40,7 +40,7 @@ public class EnquiryController
 	EnquiryBusinessLogic ebl;
 	
 	
-	@PostMapping(consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
+	@PostMapping(consumes = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> addEnquiry(@Valid @RequestBody EnquiryInsert ei)
 	{

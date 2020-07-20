@@ -2,6 +2,7 @@ package ivgroup.master.database.dto.ticket;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 
@@ -13,7 +14,7 @@ public class TicketFollowupDateInsert
 	private Long ticketId;
 	@NotNull(message = "FollowupDate cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@PastOrPresent
+	@FutureOrPresent
 	private Timestamp followupDate;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")

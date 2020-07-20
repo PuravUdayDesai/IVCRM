@@ -53,8 +53,8 @@ public class CallTransactionBusinessLogic {
 	private static String urlCreator(String filePath,String fileName) {
 		//http://localhost:8080/fileDownload/view?filePath=member/documents/1/9&fileName=JSP complete reference.pdf
 		String protocol="http://";
-		String host="localhost";
-		String portNumber="8082";
+		String host="6a6a6f4b845c.ngrok.io";
+		String portNumber="";
 		String basePath="/callTransaction/fileView";
 		String url=protocol+host+":"+portNumber+basePath+"?filePath="+filePath.replace("\\", "/")+"&fileName="+fileName;
 		return url;
@@ -69,7 +69,8 @@ public class CallTransactionBusinessLogic {
 	
 	public ResponseEntity<Void> addCallTransaction(MultipartFile file,CallTransactionInsert cti)
 	{
-		if(fileGenere(file.getContentType())=="audio") {
+		System.out.println(file.getContentType());
+		if(fileGenere(file.getContentType()).equalsIgnoreCase("audio")) {
 		String fileURL="NEGATIVE";
 		try {
 			fileURL=ctdi.storeFile(file, cti);

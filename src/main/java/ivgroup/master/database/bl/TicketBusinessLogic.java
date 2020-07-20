@@ -141,13 +141,14 @@ public class TicketBusinessLogic
 	{
 		if(ti==null)
 		{
+			System.out.println("Here");
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
 		try {
 			if(	ti.getFollowupDate().before(tdi.getStartDateAndTimeOfTicket(ti.getTicketId()))||
 				ti.getFollowupDate().after(tdi.getDeadlineDateAndTimeOfTicket(ti.getTicketId())))
 			{
-				
+				System.out.println("Here2");
 				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 			}
 		} catch (ClassNotFoundException e) {
@@ -165,6 +166,7 @@ public class TicketBusinessLogic
 		}
 		if(count==0)
 		{
+			System.out.println("Here3");
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
 		Boolean rsMain=false;
@@ -176,6 +178,7 @@ public class TicketBusinessLogic
 			if(rsMainRes.getStatusCode()!=HttpStatus.OK||rsMainRes2.getStatusCode()!=HttpStatus.OK)
 			{
 				c.close();
+				System.out.println("Here4");
 				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 			}
 			c.close();
@@ -186,6 +189,7 @@ public class TicketBusinessLogic
 		}
 		if(!rsMain)
 		{
+			System.out.println("Here5");
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<Void>(HttpStatus.CREATED);

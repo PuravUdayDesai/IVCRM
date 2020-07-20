@@ -440,6 +440,7 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		stmt.setLong(2, eai.getCompanyExecutiveId());
 		stmt.setTimestamp(3, eai.getAccessApplicationTime());
 		ResultSet rs=stmt.executeQuery();
+		System.out.println(stmt);
 		Boolean rsMain=false;
 		c.commit();
 		if(rs.next())
