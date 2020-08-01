@@ -502,7 +502,13 @@ public class CompanyExecutiveDAOImpl implements CompanyExecutiveDAO{
 					rs.getString("Location"),
 					rs.getString("Enquiry"),
 					rs.getString("Ticket"),
-					rs.getString("Position")
+					rs.getString("Position"),
+					rs.getLong("NotificationCountToBeRead"),
+					rs.getLong("NotificationCountForNew"),
+					rs.getLong("ImmediateStatusTicketCount"),
+					rs.getLong("HighStatusTicketCount"),
+					rs.getLong("NormalStatusTicketCount"),
+					rs.getLong("LowStatusTicketCount")
 					);
 		}
 		rs.close();
