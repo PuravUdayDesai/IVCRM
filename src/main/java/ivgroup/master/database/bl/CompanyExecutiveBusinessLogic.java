@@ -536,6 +536,7 @@ if(cu.getLastEditDeviceType()!=null) {
 		}
 		try {
 			cel=cdi.loginCompanyExecutive(loginId, password);
+			
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<CompanyExecutiveLogin>(cel,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
@@ -546,6 +547,7 @@ if(cu.getLastEditDeviceType()!=null) {
 		{
 			return new ResponseEntity<CompanyExecutiveLogin>(cel,HttpStatus.NO_CONTENT);
 		}
+		cel.setAccessToken("getAccessToken()");
 		return new ResponseEntity<CompanyExecutiveLogin>(cel,HttpStatus.OK);
 	}
 
