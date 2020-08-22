@@ -18,6 +18,7 @@ import ivgroup.master.database.dao.impl.CompanyBranchDAOImpl;
 import ivgroup.master.database.dao.impl.CompanyDAOImpl;
 import ivgroup.master.database.dto.company.CompanyInsert;
 import ivgroup.master.database.dto.company.CompanyInsertWithCompanyBranchType;
+import ivgroup.master.database.dto.company.CompanyInsertWithExecutivePosition;
 import ivgroup.master.database.dto.company.CompanyInsetWithCompanyBranchTypeAndExecutivePosition;
 import ivgroup.master.database.dto.company.CompanySelect;
 import ivgroup.master.database.dto.company.CompanyUpdate;
@@ -232,6 +233,51 @@ public class CompanyBusinessLogic {
 		}
 		return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 	}
+	
+	public ResponseEntity<Void> addCompanyWithExecutivePosition(CompanyInsertWithExecutivePosition ci)
+	{
+		if(ci==null) {
+			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+		}
+		HashMap<Long,Long> value=new HashMap<Long,Long>();
+		try {
+			value=cdi.addCompanyWithExecutivePosition(ci);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(value.isEmpty()) {
+			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+		}
+		Long executiveId=null;
+		Long branchId=null;
+		
+		for(Long key:value.keySet()) {
+			executiveId=key;
+			branchId=value.get(key);
+		}
+		Boolean rs=false;
+		try {
+		rs=cbdi.updateCompanyBranchCompanyBranchPrimaryContactID(	ConnectionProvider.getConnection(), 
+																	branchId, 
+																	executiveId);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		if(rs) {
+			return new ResponseEntity<Void>(HttpStatus.CREATED);
+		}
+		return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+	}
+
 	
 	public ResponseEntity<List<CompanySelect>> selectCompany(){
 		List<CompanySelect> lcs=new ArrayList<CompanySelect>();

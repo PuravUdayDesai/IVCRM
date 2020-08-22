@@ -15,6 +15,7 @@ import ivgroup.master.database.connection.ConnectionProvider;
 import ivgroup.master.database.dao.schema.CompanyDAO;
 import ivgroup.master.database.dto.company.CompanyInsert;
 import ivgroup.master.database.dto.company.CompanyInsertWithCompanyBranchType;
+import ivgroup.master.database.dto.company.CompanyInsertWithExecutivePosition;
 import ivgroup.master.database.dto.company.CompanyInsetWithCompanyBranchTypeAndExecutivePosition;
 import ivgroup.master.database.dto.company.CompanySelect;
 
@@ -214,6 +215,68 @@ public class CompanyDAOImpl implements CompanyDAO{
 		c.close();
 		return value;
 	}
+	
+	@Override
+	public HashMap<Long, Long> addCompanyWithExecutivePosition(CompanyInsertWithExecutivePosition ci)throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM company.\"fn_insertCompanyWithExecutivePosition\"(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+		stmt.setString(1, ci.getAddressLine1());
+		stmt.setString(2, ci.getAddressLine2());
+		stmt.setString(3, ci.getAddressLine3());
+		stmt.setLong(4, ci.getPincode());
+		stmt.setLong(5, ci.getCityID());
+		stmt.setLong(6, ci.getStateID());
+		stmt.setLong(7, ci.getCountryID());
+		stmt.setString(8, ci.getLatitude());
+		stmt.setString(9, ci.getLongitude());
+		stmt.setString(10, (ci.getLatitude()+","+ci.getLongitude()));
+		stmt.setString(11, ci.getCompanyCode());
+		stmt.setString(12, ci.getCompanyName());
+		stmt.setLong(13, ci.getOwnerContactId());
+		stmt.setString(14, ci.getCompanyRegionName());
+		stmt.setString(15, ci.getCompanyRegionCode());
+		stmt.setString(16, ci.getCompanyRegionDescription());
+		stmt.setString(17, ci.getCompanyAreaName());
+		stmt.setString(18, ci.getCompanyAreaCode());
+		stmt.setString(19, ci.getCompanyAreaDescription());
+		stmt.setString(20, ci.getCompanyBranchName());
+		stmt.setString(21, ci.getCompanyBranchCode());
+		stmt.setInt(22, ci.getCompanyBranchType());
+		stmt.setString(23, ci.getExecutiveName());
+		stmt.setString(24, ci.getLoginID());
+		stmt.setString(25, ci.getPassword());
+		stmt.setString(26, ci.getContactNumber());
+		stmt.setString(27, ci.getPositionName());
+		stmt.setInt(28, ci.getPositionPriority());
+		stmt.setString(29, ci.getCompanyGrant());
+		stmt.setString(30, ci.getCompanyBranchGrant());
+		stmt.setString(31, ci.getCompanyExecutiveGrant());
+		stmt.setString(32, ci.getClientGrant());
+		stmt.setString(33, ci.getProductGrant());
+		stmt.setString(34, ci.getLocationGrant());
+		stmt.setString(35, ci.getEnquiryGrant());
+		stmt.setString(36, ci.getTicketGrant());
+		stmt.setString(37, ci.getPositionGrant());
+		stmt.setTimestamp(38, ci.getCreatedOn());
+		stmt.setLong(39, ci.getCreatedBy());
+		stmt.setInt(40, ci.getDeviceType());
+		stmt.setTimestamp(41, ci.getCreatedOn());
+		stmt.setLong(42, ci.getCreatedBy());
+		stmt.setInt(43, ci.getDeviceType());
+
+		ResultSet rs=stmt.executeQuery();
+		c.commit();
+		HashMap<Long,Long> value=new HashMap<Long,Long>();
+		while(rs.next()) {
+			value.put(rs.getLong("ExecutiveID"), rs.getLong("CompanyBranchID") );
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return value;
+	}
+
 	
 	@Override
 	public List<CompanySelect> selectCompany() throws ClassNotFoundException, SQLException {
@@ -571,5 +634,6 @@ public class CompanyDAOImpl implements CompanyDAO{
 		stmt.close();
 		return rsMain;
 	}
+
 
 }

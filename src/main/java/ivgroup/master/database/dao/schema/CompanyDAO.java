@@ -8,6 +8,7 @@ import java.util.List;
 
 import ivgroup.master.database.dto.company.CompanyInsert;
 import ivgroup.master.database.dto.company.CompanyInsertWithCompanyBranchType;
+import ivgroup.master.database.dto.company.CompanyInsertWithExecutivePosition;
 import ivgroup.master.database.dto.company.CompanyInsetWithCompanyBranchTypeAndExecutivePosition;
 import ivgroup.master.database.dto.company.CompanySelect;
 
@@ -31,6 +32,7 @@ public interface CompanyDAO {
 	public HashMap<Long, Long> 	addCompany(CompanyInsert ci) 																			throws SQLException,ClassNotFoundException;
 	public HashMap<Long, Long>	addCompanyWithCompanyBranchType(CompanyInsertWithCompanyBranchType ci) 									throws SQLException,ClassNotFoundException;
 	public HashMap<Long, Long>	addCompanyWithCompanyBranchTypeAndPosition(CompanyInsetWithCompanyBranchTypeAndExecutivePosition ci)	throws SQLException,ClassNotFoundException;
+	public HashMap<Long, Long>	addCompanyWithExecutivePosition(CompanyInsertWithExecutivePosition ci) 									throws SQLException,ClassNotFoundException;
 	public Long 				checkCompanyDeleteStatus(Long companyId)																throws SQLException,ClassNotFoundException;
 	public Long 				deleteCompany(Long companyId)																			throws SQLException,ClassNotFoundException;
 	

@@ -22,6 +22,7 @@ import ivgroup.master.database.Constants;
 import ivgroup.master.database.bl.CompanyBusinessLogic;
 import ivgroup.master.database.dto.company.CompanyInsert;
 import ivgroup.master.database.dto.company.CompanyInsertWithCompanyBranchType;
+import ivgroup.master.database.dto.company.CompanyInsertWithExecutivePosition;
 import ivgroup.master.database.dto.company.CompanyInsetWithCompanyBranchTypeAndExecutivePosition;
 import ivgroup.master.database.dto.company.CompanySelect;
 import ivgroup.master.database.dto.company.CompanyUpdate;
@@ -53,6 +54,14 @@ public class CompanyController {
 	public ResponseEntity<Void> addCompanyWithCompanyBranchTypeAndPosition(@Valid @RequestBody CompanyInsetWithCompanyBranchTypeAndExecutivePosition ci)
 	{
 		return cbl.addCompanyWithCompanyBranchTypeAndPosition(ci);
+	}
+	
+	@PostMapping(path="/executivePosition",
+			consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
+			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<Void> addCompanyWithExecutivePosition(@Valid @RequestBody CompanyInsertWithExecutivePosition ci)
+	{
+		return cbl.addCompanyWithExecutivePosition(ci);
 	}
 	
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
