@@ -508,7 +508,8 @@ public class CompanyExecutiveDAOImpl implements CompanyExecutiveDAO{
 					rs.getLong("ImmediateStatusTicketCount"),
 					rs.getLong("HighStatusTicketCount"),
 					rs.getLong("NormalStatusTicketCount"),
-					rs.getLong("LowStatusTicketCount")
+					rs.getLong("LowStatusTicketCount"),
+					"null-token"
 					);
 		}
 		rs.close();

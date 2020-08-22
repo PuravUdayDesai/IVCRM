@@ -20,6 +20,7 @@ import ivgroup.master.database.Constants;
 import ivgroup.master.database.bl.OwnerBusinessLogic;
 import ivgroup.master.database.dto.owner.OwnerInsert;
 import ivgroup.master.database.dto.owner.OwnerLoginCredentials;
+import ivgroup.master.database.dto.owner.OwnerLoginResponseModel;
 import ivgroup.master.database.dto.owner.OwnerSelect;
 import ivgroup.master.database.dto.owner.OwnerUpdate;
 
@@ -38,7 +39,7 @@ public class OwnerController {
 	}
 	
 	@PostMapping(path="/login",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<Long> loginOwner(@RequestBody @Valid OwnerLoginCredentials olc)
+	public ResponseEntity<OwnerLoginResponseModel> loginOwner(@RequestBody @Valid OwnerLoginCredentials olc)
 	{
 		return obl.loginOwner(olc);
 	}

@@ -18,6 +18,7 @@ import ivgroup.master.database.dao.impl.OwnerDAOImpl;
 import ivgroup.master.database.dto.owner.OwnerCredentials;
 import ivgroup.master.database.dto.owner.OwnerInsert;
 import ivgroup.master.database.dto.owner.OwnerLoginCredentials;
+import ivgroup.master.database.dto.owner.OwnerLoginResponseModel;
 import ivgroup.master.database.dto.owner.OwnerSelect;
 import ivgroup.master.database.dto.owner.OwnerUpdate;
 
@@ -50,25 +51,28 @@ public class OwnerBusinessLogic{
 		 return new ResponseEntity<OwnerSelect>(rs,HttpStatus.OK);
 	}
 	
-	public ResponseEntity<Long> loginOwner(OwnerLoginCredentials olc)
+	public ResponseEntity<OwnerLoginResponseModel> loginOwner(OwnerLoginCredentials olc)
 	{
 		Long ownerId=null;
+		OwnerLoginResponseModel ownerResponseModel=new OwnerLoginResponseModel();
 		if(olc==null)
 		{
-			return new ResponseEntity<Long>(ownerId,HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<OwnerLoginResponseModel>(ownerResponseModel,HttpStatus.BAD_REQUEST);
 		}
 		try {
 			ownerId=odi.loginOwner(olc.getUserName(), olc.getPassword(), olc.getSecretKey());
 		} catch (ClassNotFoundException e) {
-			return new ResponseEntity<Long>(ownerId,HttpStatus.NOT_FOUND);
+			return new ResponseEntity<OwnerLoginResponseModel>(ownerResponseModel,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			return new ResponseEntity<Long>(ownerId,HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<OwnerLoginResponseModel>(ownerResponseModel,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ownerId==null)
 		{
-			return new ResponseEntity<Long>(ownerId,HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<OwnerLoginResponseModel>(ownerResponseModel,HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<Long>(ownerId,HttpStatus.OK);
+		ownerResponseModel.setOwnerId(ownerId);
+		ownerResponseModel.setAccessToken("getAccessToken()");
+		return new ResponseEntity<OwnerLoginResponseModel>(ownerResponseModel,HttpStatus.OK);
 	}
 	
 	public ResponseEntity<Void> addOwner(OwnerInsert oi)

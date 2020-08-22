@@ -40,6 +40,8 @@ public class CompanyExecutiveLogin {
 	private Long normalStatusTicketCount;
 	@NotNull(message = "PositionAcces cannot be NULL")
 	private Long lowStatusTicketCount;
+	@NotNull(message="AccessToken cannot be NULL")
+	private String accessToken;
 	 
 
 	public CompanyExecutiveLogin()
@@ -47,7 +49,8 @@ public class CompanyExecutiveLogin {
 		
 	}
 	
-	public CompanyExecutiveLogin(@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutivId,
+	public CompanyExecutiveLogin(
+			@NotNull(message = "CompanyExecutiveId cannot be NULL") Long companyExecutivId,
 			@NotNull(message = "CompanyId cannot be NULL") Long companyId,
 			@NotNull(message = "OwnerId cannot be NULL") Long ownerId,
 			@NotNull(message = "CompanyAccess cannot be NULL") String companyAccess,
@@ -64,7 +67,8 @@ public class CompanyExecutiveLogin {
 			@NotNull(message = "PositionAcces cannot be NULL") Long immediateStatusTicketCount,
 			@NotNull(message = "PositionAcces cannot be NULL") Long highStatusTicketCount,
 			@NotNull(message = "PositionAcces cannot be NULL") Long normalStatusTicketCount,
-			@NotNull(message = "PositionAcces cannot be NULL") Long lowStatusTicketCount) {
+			@NotNull(message = "PositionAcces cannot be NULL") Long lowStatusTicketCount,
+			@NotNull(message = "AccessToken cannot be NULL") String accessToken) {
 		super();
 		this.companyExecutivId = companyExecutivId;
 		this.companyId = companyId;
@@ -84,7 +88,10 @@ public class CompanyExecutiveLogin {
 		this.highStatusTicketCount = highStatusTicketCount;
 		this.normalStatusTicketCount = normalStatusTicketCount;
 		this.lowStatusTicketCount = lowStatusTicketCount;
+		this.accessToken = accessToken;
 	}
+
+
 
 	public Long getCompanyExecutivId() {
 		return companyExecutivId;
@@ -230,4 +237,12 @@ public class CompanyExecutiveLogin {
 		this.lowStatusTicketCount = lowStatusTicketCount;
 	}
 
+	public String getAccessToken() {
+		return accessToken;
+	}
+
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
+	}
+	
 }
