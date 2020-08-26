@@ -29,7 +29,7 @@ public class CompanyRegionBusinessLogic {
 		}
 		Boolean rs=false;
 		try {
-			 rs=crdi.addCompanyRegion(cri);
+			rs=crdi.addCompanyRegion(cri);
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {

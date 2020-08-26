@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
@@ -34,6 +35,9 @@ public class CompanyBusinessLogic {
 
 	@Autowired
 	CompanyAddressDetailsDAOImpl cadi;
+
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	public ResponseEntity<Void> deleteCompany(Long companyId)
 	{
@@ -110,6 +114,7 @@ public class CompanyBusinessLogic {
 		}
 		HashMap<Long,Long> value=new HashMap<Long,Long>();
 		try {
+			ci.setPassword(bCryptPasswordEncoder.encode(ci.getPassword()));
 			value=cdi.addCompany(ci);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -130,6 +135,7 @@ public class CompanyBusinessLogic {
 		}
 		Boolean rs=false;
 		try {
+		
 		rs=cbdi.updateCompanyBranchCompanyBranchPrimaryContactID(	ConnectionProvider.getConnection(), 
 																branchId, 
 																executiveId);
@@ -155,6 +161,7 @@ public class CompanyBusinessLogic {
 		}
 		HashMap<Long,Long> value=new HashMap<Long,Long>();
 		try {
+			ci.setPassword(bCryptPasswordEncoder.encode(ci.getPassword()));
 			value=cdi.addCompanyWithCompanyBranchType(ci);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -197,6 +204,7 @@ public class CompanyBusinessLogic {
 		}
 		HashMap<Long,Long> value=new HashMap<Long,Long>();
 		try {
+			ci.setPassword(bCryptPasswordEncoder.encode(ci.getPassword()));
 			value=cdi.addCompanyWithCompanyBranchTypeAndPosition(ci);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -241,6 +249,7 @@ public class CompanyBusinessLogic {
 		}
 		HashMap<Long,Long> value=new HashMap<Long,Long>();
 		try {
+			ci.setPassword(bCryptPasswordEncoder.encode(ci.getPassword()));
 			value=cdi.addCompanyWithExecutivePosition(ci);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

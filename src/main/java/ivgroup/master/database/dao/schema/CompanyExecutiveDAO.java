@@ -34,5 +34,5 @@ public interface CompanyExecutiveDAO {
 	public Boolean 							updateCompanyExecutiveLastEditDeviceType(Connection c, Long companyExecutiveId, Integer lastEditDeviceType)		throws SQLException, ClassNotFoundException;	
 	public Boolean 							addCompanyExecutive(CompanyExecutiveInsert cei)																	throws SQLException, ClassNotFoundException;
 	public Boolean 							deleteCompanyExecutive(Long companyExecutiveId)																	throws SQLException, ClassNotFoundException;
-	public CompanyExecutiveLogin			loginCompanyExecutive(String loginId,String password)															throws SQLException, ClassNotFoundException;
+	public CompanyExecutiveLogin			loginCompanyExecutive(String loginId)																			throws SQLException, ClassNotFoundException;
 }

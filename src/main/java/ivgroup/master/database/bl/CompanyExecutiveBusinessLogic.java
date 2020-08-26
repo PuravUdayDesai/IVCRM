@@ -9,6 +9,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
@@ -17,6 +22,8 @@ import ivgroup.master.database.dto.companyExecutive.CompanyExecutiveInsert;
 import ivgroup.master.database.dto.companyExecutive.CompanyExecutiveLogin;
 import ivgroup.master.database.dto.companyExecutive.CompanyExecutiveSelect;
 import ivgroup.master.database.dto.companyExecutive.CompanyExecutiveUpdate;
+import ivgroup.master.database.service.IVUserDetailsService;
+import ivgroup.master.database.util.JwtUtil;
 
 @Service
 public class CompanyExecutiveBusinessLogic {
@@ -24,6 +31,18 @@ public class CompanyExecutiveBusinessLogic {
 	@Autowired
 	CompanyExecutiveDAOImpl cdi;
 	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+    @Autowired
+    private AuthenticationManager authenticationManager;
+    
+    @Autowired
+    private JwtUtil jwtUtil;
+	
+    @Autowired
+    private IVUserDetailsService ivUserDetailsService;
+    
 	public ResponseEntity<Void> addCompanyExecutive(CompanyExecutiveInsert cei)
 	{
 		if(cei==null) {
@@ -31,6 +50,7 @@ public class CompanyExecutiveBusinessLogic {
 		}
 		Boolean rs=false;
 		try {
+			cei.setPassword(bCryptPasswordEncoder.encode(cei.getPassword()));
 		 rs=cdi.addCompanyExecutive(cei);
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
@@ -527,27 +547,40 @@ if(cu.getLastEditDeviceType()!=null) {
 				return new ResponseEntity<Void>(HttpStatus.OK); 
 	}
 	
-	public ResponseEntity<CompanyExecutiveLogin> loginCompanyExecutive(String loginId, String password)
+	public ResponseEntity<CompanyExecutiveLogin> loginCompanyExecutive(String loginId, String password) 
 	{
 		CompanyExecutiveLogin cel=null;
 		if(loginId==null||password==null)
 		{
 			return new ResponseEntity<CompanyExecutiveLogin>(cel,HttpStatus.BAD_REQUEST);
 		}
+	       try
+	        {
+	            authenticationManager.authenticate(
+	                    new UsernamePasswordAuthenticationToken(
+	                           loginId,
+	                           password
+	                    ) );
+	        }
+	        catch (BadCredentialsException badCredentialsException)
+	        {
+	            throw new BadCredentialsException("Incorrect UserName And Password");
+	        }
 		try {
-			cel=cdi.loginCompanyExecutive(loginId, password);
+			cel=cdi.loginCompanyExecutive(loginId);
 			
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<CompanyExecutiveLogin>(cel,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println(e);
 			return new ResponseEntity<CompanyExecutiveLogin>(cel,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(cel==null)
 		{
 			return new ResponseEntity<CompanyExecutiveLogin>(cel,HttpStatus.NO_CONTENT);
 		}
-		cel.setAccessToken("getAccessToken()");
+        final UserDetails userDetails=ivUserDetailsService.loadUserByUsername( loginId );
+        final String token=jwtUtil.generateToken( userDetails );
+		cel.setAccessToken(token);
 		return new ResponseEntity<CompanyExecutiveLogin>(cel,HttpStatus.OK);
 	}
 

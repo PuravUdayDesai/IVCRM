@@ -2,6 +2,7 @@ package ivgroup.master.database.dto.companyBranch;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 
@@ -42,6 +43,7 @@ public class CompanyBranchInsert
 	@NotNull(message = "ExecutiveName cannot be NULL")
 	private String executiveName; 
 	@NotNull(message = "LoginID cannot be NULL")
+	@Email(message="Please Enter Valid EmailId")
 	private String loginID; 
 	@NotNull(message = "Password cannot be NULL")
 	private String password;

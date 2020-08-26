@@ -43,7 +43,6 @@ public class EnquiryInsert
 	private Long statusId;
 	@NotNull(message = "StartDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@FutureOrPresent
 	private Timestamp startDateAndTime;
 	@NotNull(message = "DeadlineDateAndTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
@@ -79,7 +78,7 @@ public class EnquiryInsert
 			@NotNull(message = "Latitude cannot be NULL") String latitude,
 			@NotNull(message = "Longitude cannot be NULL") String longitude,
 			@NotNull(message = "StatusId cannot be NULL") Long statusId,
-			@NotNull(message = "StartDateAndTime cannot be NULL") @FutureOrPresent Timestamp startDateAndTime,
+			@NotNull(message = "StartDateAndTime cannot be NULL") Timestamp startDateAndTime,
 			@NotNull(message = "DeadlineDateAndTime cannot be NULL") @FutureOrPresent Timestamp deadlineDateAndTime,
 			@NotNull(message = "Prioirty cannot be NULL") Integer prioirty,
 			@NotNull(message = "Product cannot be NULL") List<Long> productId,

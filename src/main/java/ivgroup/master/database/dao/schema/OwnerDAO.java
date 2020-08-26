@@ -12,7 +12,7 @@ public interface OwnerDAO {
 
 	public OwnerSelect 			selectOwnerById(Long ownerId)												throws SQLException,ClassNotFoundException;
 	public OwnerCredentials 	selectOwnerCredentials(Long ownerId)										throws SQLException,ClassNotFoundException;
-	public Long					loginOwner(String userName,String password,String secretKey)				throws SQLException,ClassNotFoundException;
+	public Long					loginOwner(String userName,String secretKey)								throws SQLException,ClassNotFoundException;
 	public Boolean	 			updateOwnerOwnerName(Connection c,Long ownerId,String ownerName)			throws SQLException,ClassNotFoundException;
 	public Boolean 				updateOwnerOwnerContact(Connection c,Long ownerId,String ownerContact)		throws SQLException,ClassNotFoundException;
 	public Boolean 				updateOwnerOwnerEmail(Connection c,Long ownerId,String ownerEmail)			throws SQLException,ClassNotFoundException;

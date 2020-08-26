@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
@@ -24,17 +25,20 @@ public class CompanyBranchBusinessLogic {
 	@Autowired
 	CompanyBranchDAOImpl cbdi;
 	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
 	public ResponseEntity<Void> addCompanyBranch(CompanyBranchInsert cb)  {
 		if(cb==null) {
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
 		HashMap<Long,Long> value=new HashMap<Long,Long>();
 		try {
+			cb.setPassword(bCryptPasswordEncoder.encode(cb.getPassword()));
 			value=cbdi.addCompanyBranch(cb);
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println("Here in CompanyBranch: "+e);
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(value.isEmpty()) {

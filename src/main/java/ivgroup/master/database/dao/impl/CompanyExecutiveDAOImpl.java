@@ -480,12 +480,11 @@ public class CompanyExecutiveDAOImpl implements CompanyExecutiveDAO{
 
 
 	@Override
-	public CompanyExecutiveLogin loginCompanyExecutive(String loginId, String password)throws SQLException, ClassNotFoundException 
+	public CompanyExecutiveLogin loginCompanyExecutive(String loginId)throws SQLException, ClassNotFoundException 
 	{
 		Connection c=ConnectionProvider.getConnection();
-		CallableStatement stmt=c.prepareCall("SELECT * FROM \"company\".\"fn_loginCompanyExecutive\"(?,?);");
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"company\".\"fn_loginCompanyExecutive\"(?);");
 		stmt.setString(1, loginId);
-		stmt.setString(2, password);
 		ResultSet rs=stmt.executeQuery();
 		CompanyExecutiveLogin cel=null;
 		while(rs.next())

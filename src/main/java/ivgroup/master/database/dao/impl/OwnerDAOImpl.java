@@ -69,14 +69,13 @@ public class OwnerDAOImpl implements OwnerDAO{
 	}
 
 	@Override
-	public Long loginOwner(String userName, String password, String secretKey)throws SQLException, ClassNotFoundException 
+	public Long loginOwner(String userName, String secretKey)throws SQLException, ClassNotFoundException 
 	{
 		Long ownerId=null;
 		Connection c=ConnectionProvider.getConnection();
-		CallableStatement stmt=c.prepareCall("SELECT * FROM \"owner\".\"fn_loginOwnerContact\"(?,?,?);");
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"owner\".\"fn_loginOwnerContact\"(?,?);");
 		stmt.setString(1, userName);
-		stmt.setString(2, password);
-		stmt.setString(3, secretKey);
+		stmt.setString(2, secretKey);
 		ResultSet rs=stmt.executeQuery();
 		if(rs.next()) {
 			ownerId=rs.getLong("OwnerId");

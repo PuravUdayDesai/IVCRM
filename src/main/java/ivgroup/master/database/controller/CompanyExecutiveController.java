@@ -23,6 +23,7 @@ import ivgroup.master.database.Constants;
 import ivgroup.master.database.bl.CompanyExecutiveBusinessLogic;
 import ivgroup.master.database.dto.companyExecutive.CompanyExecutiveInsert;
 import ivgroup.master.database.dto.companyExecutive.CompanyExecutiveLogin;
+import ivgroup.master.database.dto.companyExecutive.CompanyExecutiveLoginRequest;
 import ivgroup.master.database.dto.companyExecutive.CompanyExecutiveSelect;
 import ivgroup.master.database.dto.companyExecutive.CompanyExecutiveUpdate;
 
@@ -84,10 +85,10 @@ public class CompanyExecutiveController {
 		return cebl.updateCompanyExecutiveFields(companyExecutiveId, cu);
 	}
 	
-	@GetMapping(path="/login",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<CompanyExecutiveLogin> loginCompanyExecutive(@RequestParam("loginId") @NotNull String loginId,@RequestParam("password") @NotNull String password)
+	@PostMapping(path="/login",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<CompanyExecutiveLogin> loginCompanyExecutive(@RequestBody CompanyExecutiveLoginRequest companyExecutiveLoginRequest)
 	{
-		return cebl.loginCompanyExecutive(loginId, password);
+		return cebl.loginCompanyExecutive(companyExecutiveLoginRequest.getLoginId(), companyExecutiveLoginRequest.getPassword());
 	}
 
 }

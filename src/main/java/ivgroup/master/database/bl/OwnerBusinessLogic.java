@@ -10,6 +10,11 @@ import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.aspect.EmailAspect;
@@ -21,6 +26,8 @@ import ivgroup.master.database.dto.owner.OwnerLoginCredentials;
 import ivgroup.master.database.dto.owner.OwnerLoginResponseModel;
 import ivgroup.master.database.dto.owner.OwnerSelect;
 import ivgroup.master.database.dto.owner.OwnerUpdate;
+import ivgroup.master.database.service.IVUserDetailsService;
+import ivgroup.master.database.util.JwtUtil;
 
 @Service
 public class OwnerBusinessLogic{
@@ -28,6 +35,18 @@ public class OwnerBusinessLogic{
 	@Autowired
 	OwnerDAOImpl odi;
 	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@Autowired
+    private AuthenticationManager authenticationManager;
+    
+	@Autowired
+    private JwtUtil jwtUtil;
+	
+    @Autowired
+    private IVUserDetailsService ivUserDetailsService;
+    
 	public ResponseEntity<OwnerSelect> selectOwnerById(Long ownerId)
 	{
 		OwnerSelect rs=null;
@@ -59,8 +78,20 @@ public class OwnerBusinessLogic{
 		{
 			return new ResponseEntity<OwnerLoginResponseModel>(ownerResponseModel,HttpStatus.BAD_REQUEST);
 		}
+		try
+        {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                           olc.getUserName(),
+                           olc.getPassword()
+                    ) );
+        }
+        catch (BadCredentialsException badCredentialsException)
+        {
+            throw new BadCredentialsException("Incorrect UserName And Password");
+        }
 		try {
-			ownerId=odi.loginOwner(olc.getUserName(), olc.getPassword(), olc.getSecretKey());
+			ownerId=odi.loginOwner(olc.getUserName(), olc.getSecretKey());
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<OwnerLoginResponseModel>(ownerResponseModel,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
@@ -71,7 +102,10 @@ public class OwnerBusinessLogic{
 			return new ResponseEntity<OwnerLoginResponseModel>(ownerResponseModel,HttpStatus.BAD_REQUEST);
 		}
 		ownerResponseModel.setOwnerId(ownerId);
-		ownerResponseModel.setAccessToken("getAccessToken()");
+		final UserDetails userDetails=ivUserDetailsService.loadUserByUsername( olc.getUserName() );
+        final String token=jwtUtil.generateToken( userDetails );
+
+		ownerResponseModel.setAccessToken(token);
 		return new ResponseEntity<OwnerLoginResponseModel>(ownerResponseModel,HttpStatus.OK);
 	}
 	
@@ -83,6 +117,7 @@ public class OwnerBusinessLogic{
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
 		try {
+			oi.setOwnerPassword(bCryptPasswordEncoder.encode(oi.getOwnerPassword()));
 			secretKey=odi.addOwner(oi);
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
