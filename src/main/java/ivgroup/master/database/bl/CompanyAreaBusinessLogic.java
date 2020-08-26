@@ -31,6 +31,7 @@ public class CompanyAreaBusinessLogic {
 		try {
 			 rs=crdi.addCompanyArea(cri);
 		} catch (ClassNotFoundException e) {
+			;
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
