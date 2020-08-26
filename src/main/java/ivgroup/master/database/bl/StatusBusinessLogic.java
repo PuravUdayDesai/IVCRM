@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,8 @@ public class StatusBusinessLogic
 {
 	@Autowired
 	StatusDAOImpl sdi;
+	
+	Logger logger =LoggerFactory.getLogger(StatusBusinessLogic.class);
 
 	public ResponseEntity<List<StatusSelect>> selectStatusByCompanyId(Long companyId) 
 	{
@@ -32,9 +36,9 @@ public class StatusBusinessLogic
 		}
 		try {
 			lss=sdi.selectStatusByCompanyId(companyId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<StatusSelect>>(lss,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<StatusSelect>>(lss,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lss.isEmpty())
@@ -53,9 +57,9 @@ public class StatusBusinessLogic
 		}
 		try {
 			lss=sdi.selectStatusByOwnerId(ownerId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<StatusSelect>>(lss,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<StatusSelect>>(lss,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lss.isEmpty())
@@ -75,9 +79,9 @@ public class StatusBusinessLogic
 		Boolean rs=false;
 		try {
 			rs=sdi.addStatus(si);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs)
@@ -96,9 +100,9 @@ public class StatusBusinessLogic
 		Boolean rs=false;
 		try {
 			rs=sdi.deleteStatus(statusId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs)
@@ -117,9 +121,9 @@ public class StatusBusinessLogic
 		Boolean rs=false;
 		try {
 			rs=sdi.updateStatusStatusName(c, statusId, statusName);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs)
@@ -138,9 +142,9 @@ public class StatusBusinessLogic
 		Boolean rs=false;
 		try {
 			rs=sdi.updateStatusStatusColorCode(c, statusId, statusColorCode);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs)
@@ -159,9 +163,9 @@ public class StatusBusinessLogic
 		Boolean rs=false;
 		try {
 			rs=sdi.updateStatusWorkProgress(c, statusId, workProgress);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs)
@@ -180,9 +184,9 @@ public class StatusBusinessLogic
 		Boolean rs=false;
 		try {
 			rs=sdi.updateStatusCompanyId(c, statusId, companyId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs)
@@ -201,9 +205,9 @@ public class StatusBusinessLogic
 		Boolean rs=false;
 		try {
 			rs=sdi.updateStatusLastEditBy(c, statusId, lastEditBy);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs)
@@ -222,9 +226,9 @@ public class StatusBusinessLogic
 		Boolean rs=false;
 		try {
 			rs=sdi.updateStatusLastEditOn(c, statusId, lastEditOn);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs)
@@ -243,9 +247,9 @@ public class StatusBusinessLogic
 		Connection c=null;
 		try {
 			 c=ConnectionProvider.getConnection();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		ResponseEntity<Void> rs=null;
@@ -306,7 +310,7 @@ public class StatusBusinessLogic
 				rs=null;
 		try {
 			c.close();
-		}catch (SQLException e) {
+		}catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Void>(HttpStatus.OK); 

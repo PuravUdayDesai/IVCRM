@@ -8,6 +8,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
@@ -19,6 +21,8 @@ import ivgroup.master.database.dto.state.StateInsert;
 @Service
 public class StateDaoImpl implements StateDao {
 
+	Logger logger =LoggerFactory.getLogger(StateDaoImpl.class);
+	
 	@Override
 	public List<State> getAllState() {
 		List<State> state_list = new ArrayList<State>();
@@ -45,7 +49,7 @@ public class StateDaoImpl implements StateDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -80,7 +84,7 @@ public class StateDaoImpl implements StateDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -120,7 +124,7 @@ public class StateDaoImpl implements StateDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -157,7 +161,7 @@ public class StateDaoImpl implements StateDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -202,7 +206,7 @@ public class StateDaoImpl implements StateDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {

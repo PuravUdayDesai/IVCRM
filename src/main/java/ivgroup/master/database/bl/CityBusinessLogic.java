@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +21,11 @@ import ivgroup.master.database.dto.city.CityUpdate;
 
 @Component
 public class CityBusinessLogic {
+	
 	@Autowired
 	CityDao city_dao;
+	
+	Logger logger =LoggerFactory.getLogger(CityBusinessLogic.class);
 
 	public ResponseEntity<List<City>> getAllCity() {
 		List<City> res = city_dao.getAllCity();
@@ -70,9 +75,9 @@ public class CityBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = city_dao.updateCityName(c, cityId, cityName);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -85,9 +90,9 @@ public class CityBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = city_dao.updateCityCode(c, cityId, cityCode);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -101,9 +106,9 @@ public class CityBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = city_dao.updateCityDescription(c, cityId, cityDescription);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -116,9 +121,9 @@ public class CityBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = city_dao.updateCityLastEditOn(c, cityId, cityLastEditOn);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -131,9 +136,9 @@ public class CityBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = city_dao.updateCityIsActive(c, cityId, cityIsActive);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -146,9 +151,9 @@ public class CityBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = city_dao.updateCityLastEditBy(c, cityId, cityLastEditBy);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -161,9 +166,9 @@ public class CityBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = city_dao.updateCityDeviceType(c, cityId, cityDeviceType);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -177,9 +182,9 @@ public class CityBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = city_dao.updateCityLastEditDeviceType(c, cityId, cityLastEditDeviceType);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -192,9 +197,9 @@ public class CityBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = city_dao.updateCityCountryId(c, cityId, cityCountryId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -207,9 +212,9 @@ public class CityBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = city_dao.updateCityStateId(c, cityId, cityStateId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -227,9 +232,9 @@ public class CityBusinessLogic {
 		Connection c = null;
 		try {
 			c = ConnectionProvider.getConnection();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		ResponseEntity<Void> rs = null;
@@ -337,7 +342,7 @@ public class CityBusinessLogic {
 
 		try {
 			c.close();
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
@@ -348,9 +353,9 @@ public class CityBusinessLogic {
 		Boolean res;
 		try {
 			res = city_dao.deleteCity(city_id);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (res == false)
@@ -363,9 +368,9 @@ public class CityBusinessLogic {
 		Boolean res;
 		try {
 			res = city_dao.revokeCity(city_id);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (res == false)

@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
@@ -20,6 +22,8 @@ import ivgroup.master.database.dto.report.ProductReport;
 @Service
 public class ReportDaoImpl implements ReportDao {
 
+	Logger logger =LoggerFactory.getLogger(ReportDaoImpl.class);
+	
 	@Override
 	public List<ProductReport> generateProductReport() {
 		List<ProductReport> prod_report = new ArrayList<ProductReport>();
@@ -43,7 +47,7 @@ public class ReportDaoImpl implements ReportDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -81,7 +85,7 @@ public class ReportDaoImpl implements ReportDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -118,7 +122,7 @@ public class ReportDaoImpl implements ReportDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -161,7 +165,7 @@ public class ReportDaoImpl implements ReportDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -204,7 +208,7 @@ public class ReportDaoImpl implements ReportDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -240,7 +244,7 @@ public class ReportDaoImpl implements ReportDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -281,7 +285,7 @@ public class ReportDaoImpl implements ReportDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -322,7 +326,7 @@ public class ReportDaoImpl implements ReportDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -360,7 +364,7 @@ public class ReportDaoImpl implements ReportDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -404,7 +408,7 @@ public class ReportDaoImpl implements ReportDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -448,7 +452,7 @@ public class ReportDaoImpl implements ReportDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {

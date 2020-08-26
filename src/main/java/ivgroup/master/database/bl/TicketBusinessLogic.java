@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,6 +45,8 @@ public class TicketBusinessLogic
 	@Autowired
 	NotificationBusinessLogic nbl;
 
+	Logger logger =LoggerFactory.getLogger(TicketBusinessLogic.class);
+	
 	public ResponseEntity<Long> addTicket(TicketInsert ti)
 	{
 		Long ticketId=null;
@@ -86,9 +89,9 @@ public class TicketBusinessLogic
 				return new ResponseEntity<Long>(ticketId,HttpStatus.BAD_REQUEST);
 			}
 
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Long>(ticketId,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Long>(ticketId,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Long>(ticketId,HttpStatus.CREATED);
@@ -103,9 +106,9 @@ public class TicketBusinessLogic
 		Long count=null;
 		try {
 			count=tdi.checkTicketCompanyExecutiveAccess(ti.getTicketId(), ti.getCreatedBy());
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(count==0)
@@ -124,9 +127,9 @@ public class TicketBusinessLogic
 				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 			}
 			c.close();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -148,17 +151,17 @@ public class TicketBusinessLogic
 			{
 				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 			}
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		Long count=null;
 		try {
 			count=tdi.checkTicketCompanyExecutiveAccess(ti.getTicketId(), ti.getLastEditBy());
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(count==0)
@@ -177,9 +180,9 @@ public class TicketBusinessLogic
 				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 			}
 			c.close();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -198,9 +201,9 @@ public class TicketBusinessLogic
 		Long count=null;
 		try {
 			count=tdi.checkTicketCompanyExecutiveAccess(ti.getTicketId(), ti.getLastEditBy());
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(count==0)
@@ -225,9 +228,9 @@ public class TicketBusinessLogic
 				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 			}
 			c.close();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -243,9 +246,9 @@ public class TicketBusinessLogic
 		Long count=null;
 		try {
 			count=tdi.checkTicketCompanyExecutiveAccess(ticketId,companyExecutiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(count==0)
@@ -255,9 +258,9 @@ public class TicketBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=tdi.deleteMainTicket(ticketId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -271,9 +274,9 @@ public class TicketBusinessLogic
 		Long count=null;
 		try {
 			count=tdi.checkTicketCompanyExecutiveAccess(ticketId,companyExecutiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(count==0)
@@ -283,9 +286,9 @@ public class TicketBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=tdi.deleteTicketAccessList(ticketAccessListId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -299,9 +302,9 @@ public class TicketBusinessLogic
 		Long count=null;
 		try {
 			count=tdi.checkTicketCompanyExecutiveAccess(ticketId,companyExecutiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(count==0)
@@ -311,9 +314,9 @@ public class TicketBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=tdi.deleteTicketFollowupDate(ticketFollowupDateId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -327,9 +330,9 @@ public class TicketBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=tdi.updateTicketRemarks(c, ticketId, ticketRemarks);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -343,9 +346,9 @@ public class TicketBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=tdi.updateTicketStartDateAndTime(c, ticketId, startDateAndTime);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -359,9 +362,9 @@ public class TicketBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=tdi.updateTicketDeadlineDateAndTime(c, ticketId, deadlineDateAndTime);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -375,9 +378,9 @@ public class TicketBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=tdi.updateTicketPriority(c, ticketId, ticketPriority);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -391,9 +394,9 @@ public class TicketBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=tdi.updateTicketLastEditOn(c, ticketId, lastEditOn);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -407,9 +410,9 @@ public class TicketBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=tdi.updateTicketLastEditBy(c, ticketId, lastEditBy);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -423,9 +426,9 @@ public class TicketBusinessLogic
 		Long count=null;
 		try {
 			count=tdi.checkTicketCompanyExecutiveAccess(ticketId,companyExecutiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(count==0)
@@ -437,9 +440,9 @@ public class TicketBusinessLogic
 			Connection c=ConnectionProvider.getConnection();
 			 rs=tdi.updateEnquiryRemarks(c, ticketId, enquiryRemarks);
 			 c.close();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -453,9 +456,9 @@ public class TicketBusinessLogic
 		Long count=null;
 		try {
 			count=tdi.checkTicketCompanyExecutiveAccess(ticketId,companyExecutiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(count==0)
@@ -467,9 +470,9 @@ public class TicketBusinessLogic
 			Connection c=ConnectionProvider.getConnection();
 			 rs=tdi.updateTicketType(c, ticketId, ticketType);
 			 c.close();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -486,9 +489,9 @@ public class TicketBusinessLogic
 		Long count=null;
 		try {
 			count=tdi.checkTicketCompanyExecutiveAccess(ticketId,tu.getLastEditBy());
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(count==0)
@@ -498,9 +501,9 @@ public class TicketBusinessLogic
 		Connection c=null;
 		try {
 			 c=ConnectionProvider.getConnection();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		ResponseEntity<Void> rs=null;
@@ -528,9 +531,9 @@ public class TicketBusinessLogic
 					{
 						return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 					}
-				} catch (ClassNotFoundException e) {
+				} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 					return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-				} catch (SQLException e) {
+				} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 					return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 				}
 			}
@@ -544,9 +547,9 @@ public class TicketBusinessLogic
 						return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 					}
 				}
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			
@@ -574,9 +577,9 @@ public class TicketBusinessLogic
 					{
 						return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 					}
-				} catch (ClassNotFoundException e) {
+				} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 					return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-				} catch (SQLException e) {
+				} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 					return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 				}
 			}
@@ -590,9 +593,9 @@ public class TicketBusinessLogic
 						return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 					}
 				}
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			rs=updateTicketDeadlineDateAndTime(c, ticketId, tu.getDeadlineDateAndTime());
@@ -632,7 +635,7 @@ public class TicketBusinessLogic
 				rs=null;
 		try {
 				c.close();
-			}catch (SQLException e) {
+			}catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 	return new ResponseEntity<Void>(HttpStatus.OK); 			
@@ -659,9 +662,9 @@ public class TicketBusinessLogic
 			ltsModified.add(ticket);
 		}
 		lts.clear();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<TicketDetailsSelect>>(ltsModified,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<TicketDetailsSelect>>(ltsModified,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ltsModified.isEmpty())
@@ -681,9 +684,9 @@ public class TicketBusinessLogic
 		}
 		try {
 			ltd=tdi.selectTicketFollowupDates(ticketId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<TicketFollowupDateSelect>>(ltd,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<TicketFollowupDateSelect>>(ltd,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ltd.isEmpty())
@@ -875,9 +878,9 @@ public class TicketBusinessLogic
 		List<TicketDetailsSelect> ltds = new ArrayList<TicketDetailsSelect>();
 		try {
 			ltds=tdi.selectTicketByFilter(stb.toString());
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<TicketDetailsSelect>>(ltds,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<TicketDetailsSelect>>(ltds,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ltds.isEmpty())
@@ -896,9 +899,9 @@ public class TicketBusinessLogic
 		}
 		try {
 			lta=tdi.selectTicketAccessListByTicketId(ticketId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<TicketAccessListSelect>>(lta,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<TicketAccessListSelect>>(lta,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -918,9 +921,9 @@ public class TicketBusinessLogic
 		}
 		try {
 			lss=tdi.selectTicketStatusLogbyTicketId(ticketId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<TicketStatusLogSelect>>(lss,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<TicketStatusLogSelect>>(lss,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lss.isEmpty())
@@ -939,9 +942,9 @@ public class TicketBusinessLogic
 		}
 		try {
 			ll=tdi.selectNonAccessibleExecutivesOfTicket(ticketId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ll.isEmpty())
@@ -960,9 +963,9 @@ public class TicketBusinessLogic
 		}
 		try {
 			ll=tdi.selectNonAccessibleExecutiveOfTicketByCompanyExecutive(ticketId, companyExecutiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ll.isEmpty())

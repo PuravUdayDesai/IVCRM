@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,8 @@ public class CompanyBranchGeoMapPlottingBusinessLogic
 	@Autowired
 	CompanyBranchGeoMapPlottingDAOImpl cbdi; 
 	
+	Logger logger =LoggerFactory.getLogger(CompanyBranchGeoMapPlottingBusinessLogic.class);
+	
 	public ResponseEntity<List<CompanyBranchGeoMapPlotting>> getCompaynBranchByOwnerId(Long ownerId)
 	{
 		List<CompanyBranchGeoMapPlotting> ll=new ArrayList<CompanyBranchGeoMapPlotting>();
@@ -28,9 +32,9 @@ public class CompanyBranchGeoMapPlottingBusinessLogic
 		}
 		try {
 			ll=cbdi.getCompaynBranchByOwnerId(ownerId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyBranchGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyBranchGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ll.isEmpty())
@@ -49,9 +53,9 @@ public class CompanyBranchGeoMapPlottingBusinessLogic
 		}
 		try {
 			ll=cbdi.getCompanyBranchByCompanyId(companyId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyBranchGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyBranchGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ll.isEmpty())
@@ -70,9 +74,9 @@ public class CompanyBranchGeoMapPlottingBusinessLogic
 		}
 		try {
 			ll=cbdi.getCompanyBranchByCountryId(ownerId, countryId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyBranchGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyBranchGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ll.isEmpty())
@@ -91,9 +95,9 @@ public class CompanyBranchGeoMapPlottingBusinessLogic
 		}
 		try {
 			ll=cbdi.getCompanyBranchByStateId(ownerId, countryId, stateId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyBranchGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyBranchGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ll.isEmpty())
@@ -112,9 +116,9 @@ public class CompanyBranchGeoMapPlottingBusinessLogic
 		}
 		try {
 			ll=cbdi.getCompanyBranchByCityId(ownerId, countryId, stateId, cityId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyBranchGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyBranchGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ll.isEmpty())

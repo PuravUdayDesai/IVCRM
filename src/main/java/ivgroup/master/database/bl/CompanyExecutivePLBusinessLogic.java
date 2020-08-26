@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,8 @@ public class CompanyExecutivePLBusinessLogic
 {
 	@Autowired
 	CompanyExecutivePLDAOImpl cpldl;
+	
+	Logger logger =LoggerFactory.getLogger(CompanyExecutivePLBusinessLogic.class);
 
 	public ResponseEntity<Void> addCompanyExecutivePL(CompanyExecutivePLInsert cpli)
 	{
@@ -38,9 +42,9 @@ public class CompanyExecutivePLBusinessLogic
 			}
 			rs=cpldl.addCompanyExecutivePL(cpli);
 			
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs)
@@ -59,9 +63,9 @@ public class CompanyExecutivePLBusinessLogic
 		}
 		try {
 			lcpl=cpldl.selectCompanyExecutivePLByExecutiveId(companyExecutiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutivePLSelect>>(lcpl,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutivePLSelect>>(lcpl,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcpl.isEmpty())
@@ -80,9 +84,9 @@ public class CompanyExecutivePLBusinessLogic
 		}
 		try {
 			lcpl=cpldl.selectCompanyExecutivePLByExecutiveIdAndDate(companyExecutiveId, date);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutivePLSelect>>(lcpl,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutivePLSelect>>(lcpl,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcpl.isEmpty())
@@ -101,9 +105,9 @@ public class CompanyExecutivePLBusinessLogic
 		}
 		try {
 			lcpl=cpldl.selectCompanyExecutivePLByExecutiveIdBetweenDate(companyExecutiveId, dateStart, dateEnd);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutivePLSelect>>(lcpl,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutivePLSelect>>(lcpl,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcpl.isEmpty())
@@ -122,9 +126,9 @@ public class CompanyExecutivePLBusinessLogic
 		}
 		try {
 			lcpl=cpldl.selectCompanyExecutiveMonthReport(companyExecutive, monthNumber, yearNumber);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutivePLGeneralSelectForMonth>>(lcpl,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutivePLGeneralSelectForMonth>>(lcpl,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcpl.isEmpty())
@@ -143,9 +147,9 @@ public class CompanyExecutivePLBusinessLogic
 		}
 		try {
 			lcpl=cpldl.selectCompanyExecutiveYearReport(companyExecutive, yearNumber);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutivePLGeneralSelectForYear>>(lcpl,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutivePLGeneralSelectForYear>>(lcpl,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcpl.isEmpty())
@@ -164,9 +168,9 @@ public class CompanyExecutivePLBusinessLogic
 		}
 		try {
 			lcpl=cpldl.selectCompanyExecutiveAllYearsReport(companyExecutive);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutivePLGeneralSelectForAllYear>>(lcpl,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutivePLGeneralSelectForAllYear>>(lcpl,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcpl.isEmpty())

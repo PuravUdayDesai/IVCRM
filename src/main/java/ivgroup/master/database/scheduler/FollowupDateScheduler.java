@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -26,6 +28,8 @@ public class FollowupDateScheduler
 	
 	@Autowired
 	NotificationBusinessLogic nbl;
+	
+	Logger logger =LoggerFactory.getLogger(FollowupDateScheduler.class);
 	
 	Thread t=null;
 	
@@ -53,10 +57,8 @@ public class FollowupDateScheduler
 								new Timestamp(System.currentTimeMillis())));
 					}
 					
-				} catch (ClassNotFoundException e) {
-					;
-				} catch (SQLException e) {
-					;
+				} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
+				} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				}
 				
 			}

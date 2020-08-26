@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,8 @@ public class CountryBusinessLogic {
 
 	@Autowired
 	CountryDao country_dao;
+	
+	Logger logger =LoggerFactory.getLogger(CountryBusinessLogic.class);
 
 	public ResponseEntity<List<Country>> getAllCountry() {
 		List<Country> res = country_dao.getAllCountry();
@@ -63,9 +67,9 @@ public class CountryBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = country_dao.updateCountryName(c, countryId, countryName);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -78,9 +82,9 @@ public class CountryBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = country_dao.updateCountryCode(c, countryId, countryCode);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -94,9 +98,9 @@ public class CountryBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = country_dao.updateCountryDescription(c, countryId, countryDescription);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -109,9 +113,9 @@ public class CountryBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = country_dao.updateCountryLastEditOn(c, countryId, countryLastEditOn);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -124,9 +128,9 @@ public class CountryBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = country_dao.updateCountryIsActive(c, countryId, countryIsActive);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -139,9 +143,9 @@ public class CountryBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = country_dao.updateCountryLastEditBy(c, countryId, countryLastEditBy);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -154,9 +158,9 @@ public class CountryBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = country_dao.updateCountryDeviceType(c, countryId, countryDeviceType);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -170,9 +174,9 @@ public class CountryBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = country_dao.updateCountryLastEditDeviceType(c, countryId, countryLastEditDeviceType);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -190,9 +194,9 @@ public class CountryBusinessLogic {
 		Connection c = null;
 		try {
 			c = ConnectionProvider.getConnection();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		ResponseEntity<Void> rs = null;
@@ -280,7 +284,7 @@ public class CountryBusinessLogic {
 
 		try {
 			c.close();
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
@@ -291,9 +295,9 @@ public class CountryBusinessLogic {
 		Boolean res;
 		try {
 			res = country_dao.deleteCountry(country_id);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (res == false)
@@ -306,9 +310,9 @@ public class CountryBusinessLogic {
 		Boolean res;
 		try {
 			res = country_dao.revokeCountry(country_id);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (res == false)

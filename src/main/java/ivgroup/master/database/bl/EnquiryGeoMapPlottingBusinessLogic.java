@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,8 @@ public class EnquiryGeoMapPlottingBusinessLogic
 	@Autowired
 	EnquiryGeoMapPlottingDAOImpl egdi;
 	
+	Logger logger =LoggerFactory.getLogger(EnquiryGeoMapPlottingBusinessLogic.class);
+	
 	public ResponseEntity<List<EnquiryGeoMapPlotting>> getEnquiryGeoMapPlottingByOwnerId(Long ownerId)
 	{
 		
@@ -29,9 +33,9 @@ public class EnquiryGeoMapPlottingBusinessLogic
 		}
 		try {
 			ll=egdi.getEnquiryGeoMapPlottingByOwnerId(ownerId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ll.isEmpty())
@@ -51,9 +55,9 @@ public class EnquiryGeoMapPlottingBusinessLogic
 		}
 		try {
 			ll=egdi.getEnquryGeoMapPlottingByCompanyId(companyId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ll.isEmpty())
@@ -73,9 +77,9 @@ public class EnquiryGeoMapPlottingBusinessLogic
 		}
 		try {
 			ll=egdi.getEnquiryGeoMapPlottingByCountry(ownerId, countryId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ll.isEmpty())
@@ -95,9 +99,9 @@ public class EnquiryGeoMapPlottingBusinessLogic
 		}
 		try {
 			ll=egdi.getEnquiryGeoMapPlottingByState(ownerId, countryId, stateId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ll.isEmpty())
@@ -117,9 +121,9 @@ public class EnquiryGeoMapPlottingBusinessLogic
 		}
 		try {
 			ll=egdi.getEnquiryGeoMapPlottingByCity(ownerId, countryId, stateId, cityId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ll.isEmpty())
@@ -139,9 +143,9 @@ public class EnquiryGeoMapPlottingBusinessLogic
 		}
 		try {
 			ll=egdi.getEnquiryGeoMapPlottingByArea(ownerId, countryId, stateId, cityId, areaId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ll.isEmpty())
@@ -161,9 +165,9 @@ public class EnquiryGeoMapPlottingBusinessLogic
 		}
 		try {
 			ll=egdi.getEnquiryGeoMapPlottingByCompanyExecutive(companyExecutiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ll.isEmpty())

@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,8 @@ public class CompanyRegionBusinessLogic {
 	@Autowired
 	CompanyRegionDAOImpl crdi;
 	
+	Logger logger =LoggerFactory.getLogger(CompanyRegionBusinessLogic.class);
+	
 	public ResponseEntity<Void> addCompanyRegion(CompanyRegionInsert cri) {
 		if(cri==null) {
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
@@ -30,9 +34,9 @@ public class CompanyRegionBusinessLogic {
 		Boolean rs=false;
 		try {
 			rs=crdi.addCompanyRegion(cri);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -46,9 +50,9 @@ public class CompanyRegionBusinessLogic {
 		List<CompanyRegionSelect> lcs=new ArrayList<CompanyRegionSelect>();
 		try {
 			lcs=crdi.selectCompanyRegion();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyRegionSelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyRegionSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty()) {
@@ -64,9 +68,9 @@ public class CompanyRegionBusinessLogic {
 		}
 		try {
 			crs=crdi.selectCompanyRegionByCompanyRegionID(companyRegionId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<CompanyRegionSelect>(crs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<CompanyRegionSelect>(crs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(crs.getCompanyRegionID()==null||crs==null) {
@@ -82,9 +86,9 @@ public class CompanyRegionBusinessLogic {
 		}
 		try {
 			lcs=crdi.selectCompanyRegionByCompanyID(companyId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyRegionSelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyRegionSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty()) {
@@ -101,9 +105,9 @@ public class CompanyRegionBusinessLogic {
 		}
 		try {
 			lcs=crdi.selectCompanyRegionByOwnerID(ownerId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyRegionSelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyRegionSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty()) {
@@ -119,9 +123,9 @@ public class CompanyRegionBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyRegionCompanyRegionName(c, companyRegionId, companyRegionName);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -137,9 +141,9 @@ public class CompanyRegionBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyRegionCompanyRegionCode(c, companyRegionId, companyRegionCode);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -155,9 +159,9 @@ public class CompanyRegionBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyRegionCompanyRegionDescription(c, companyRegionId, companyRegionDescription);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -173,9 +177,9 @@ public class CompanyRegionBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyRegionCompanyID(c, companyRegionId, companyID);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -191,9 +195,9 @@ public class CompanyRegionBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyRegionIsActive(c, companyRegionId, isActive);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -209,9 +213,9 @@ public class CompanyRegionBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyRegionLastEditOn(c, companyRegionId, lastEditOn);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -227,9 +231,9 @@ public class CompanyRegionBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyRegionLastEditBy(c, companyRegionId, lastEditBy);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -245,9 +249,9 @@ public class CompanyRegionBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyRegionLastEditDeviceType(c, companyRegionId, lastEditDeviceType);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -263,9 +267,9 @@ public class CompanyRegionBusinessLogic {
 		Connection c=null;
 		try {
 			 c=ConnectionProvider.getConnection();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		ResponseEntity<Void> rs=null;
@@ -344,7 +348,7 @@ public class CompanyRegionBusinessLogic {
 				rs=null;
 		try {
 			c.close();
-		}catch (SQLException e) {
+		}catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Void>(HttpStatus.OK); 
@@ -358,18 +362,18 @@ public class CompanyRegionBusinessLogic {
 		Boolean rs=false;
 		try {
 			 check=crdi.checkCompanyRegionDeleteStatus(companyRegionId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(check==0)
 		{
 			try {
 			rs=crdi.deleteCompanyRegion(companyRegionId);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 		}
@@ -391,9 +395,9 @@ public class CompanyRegionBusinessLogic {
 	Boolean rs=false;
 	try {
 		rs=crdi.revokeCompanyRegion(companyRegionId);
-	} catch (ClassNotFoundException e) {
+	} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 		return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-	} catch (SQLException e) {
+	} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 		return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	if(!rs) {

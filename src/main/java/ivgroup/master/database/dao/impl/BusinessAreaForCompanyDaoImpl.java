@@ -8,6 +8,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
@@ -18,6 +20,8 @@ import ivgroup.master.database.dto.businessAreaForCompany.BusinessAreaForCompany
 
 @Service
 public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao {
+	
+	Logger logger =LoggerFactory.getLogger(BusinessAreaForCompanyDaoImpl.class);
 	/*
 	 * @Override public List<BusinessAreaForCompany> getAllBusinessAreaForCompany()
 	 * { List<BusinessAreaForCompany> businessAreaForCompany_list = new
@@ -37,7 +41,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 	 * rs.getInt("DeviceType"), rs.getTimestamp("LastEditOn"),
 	 * rs.getLong("LastEditBy"), rs.getInt("LastEditDeviceType"))); } while
 	 * (rs.next()); } return businessAreaForCompany_list; } catch (SQLException s) {
-	 * s.printStackTrace(); return null; } catch (ClassNotFoundException e) {
+	 * s.printStackTrace(); return null; } catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 	 * ; return null; } finally { try { c.close(); st.close();
 	 * rs.close(); } catch (Exception e) { } } }
 	 */
@@ -69,7 +73,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -110,7 +114,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -143,7 +147,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 	 * rs.getInt("DeviceType"), rs.getTimestamp("LastEditOn"),
 	 * rs.getLong("LastEditBy"), rs.getInt("LastEditDeviceType"))); } while
 	 * (rs.next()); } return businessAreaForCompany_list; } catch (SQLException s) {
-	 * s.printStackTrace(); return null; } catch (ClassNotFoundException e) {
+	 * s.printStackTrace(); return null; } catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 	 * ; return null; } finally { try { c.close(); st.close();
 	 * rs.close(); } catch (Exception e) { } } }
 	 */
@@ -172,7 +176,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -220,7 +224,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {

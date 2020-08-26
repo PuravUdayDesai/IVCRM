@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +40,8 @@ public class CompanyBusinessLogic {
 
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	Logger logger =LoggerFactory.getLogger(CompanyBusinessLogic.class);
 	
 	public ResponseEntity<Void> deleteCompany(Long companyId)
 	{
@@ -116,10 +120,10 @@ public class CompanyBusinessLogic {
 		try {
 			ci.setPassword(bCryptPasswordEncoder.encode(ci.getPassword()));
 			value=cdi.addCompany(ci);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -139,10 +143,10 @@ public class CompanyBusinessLogic {
 		rs=cbdi.updateCompanyBranchCompanyBranchPrimaryContactID(	ConnectionProvider.getConnection(), 
 																branchId, 
 																executiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -163,10 +167,10 @@ public class CompanyBusinessLogic {
 		try {
 			ci.setPassword(bCryptPasswordEncoder.encode(ci.getPassword()));
 			value=cdi.addCompanyWithCompanyBranchType(ci);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -185,9 +189,9 @@ public class CompanyBusinessLogic {
 		rs=cbdi.updateCompanyBranchCompanyBranchPrimaryContactID(	ConnectionProvider.getConnection(), 
 																branchId, 
 																executiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -206,10 +210,10 @@ public class CompanyBusinessLogic {
 		try {
 			ci.setPassword(bCryptPasswordEncoder.encode(ci.getPassword()));
 			value=cdi.addCompanyWithCompanyBranchTypeAndPosition(ci);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -228,10 +232,10 @@ public class CompanyBusinessLogic {
 		rs=cbdi.updateCompanyBranchCompanyBranchPrimaryContactID(	ConnectionProvider.getConnection(), 
 																	branchId, 
 																	executiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -251,10 +255,10 @@ public class CompanyBusinessLogic {
 		try {
 			ci.setPassword(bCryptPasswordEncoder.encode(ci.getPassword()));
 			value=cdi.addCompanyWithExecutivePosition(ci);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -273,10 +277,10 @@ public class CompanyBusinessLogic {
 		rs=cbdi.updateCompanyBranchCompanyBranchPrimaryContactID(	ConnectionProvider.getConnection(), 
 																	branchId, 
 																	executiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -292,10 +296,10 @@ public class CompanyBusinessLogic {
 		List<CompanySelect> lcs=new ArrayList<CompanySelect>();
 		try {
 			lcs=cdi.selectCompany();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<List<CompanySelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<List<CompanySelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -314,10 +318,10 @@ public class CompanyBusinessLogic {
 		}
 		try {
 			cs=cdi.selectCompanyByCompanyId(companyId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<CompanySelect>(cs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<CompanySelect>(cs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -337,9 +341,9 @@ public class CompanyBusinessLogic {
 		}
 		try {
 			lcs=cdi.selectCompanyByOwnerId(ownerId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanySelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanySelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -356,9 +360,9 @@ public class CompanyBusinessLogic {
 		}
 		try {
 			lcs=cdi.selectCompanyByCountryId(countryId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanySelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanySelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -376,9 +380,9 @@ public class CompanyBusinessLogic {
 		}
 		try {
 			lcs=cdi.selectCompanyByStateId(countryId,stateId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanySelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanySelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -395,9 +399,9 @@ public class CompanyBusinessLogic {
 		}
 		try {
 			lcs=cdi.selectCompanyByCityId(countryId,stateId,cityId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanySelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanySelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -412,9 +416,9 @@ public class CompanyBusinessLogic {
 			Boolean rs=false;
 			try {
 				 rs=cdi.updateCompanyCityId(c, companyId, cityId);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(!rs) {
@@ -428,9 +432,9 @@ public class CompanyBusinessLogic {
 			Boolean rs=false;
 			try {
 				 rs=cdi.updateCompanyCompanyAddress(c, companyId, companyAddress);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(!rs) {
@@ -444,9 +448,9 @@ public class CompanyBusinessLogic {
 			Boolean rs=false;
 			try {
 				 rs=cdi.updateCompanyCompanyCode(c, companyId, companyCode);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(!rs) {
@@ -460,9 +464,9 @@ public class CompanyBusinessLogic {
 			Boolean rs=false;
 			try {
 				 rs=cdi.updateCompanyCompanyName(c, companyId, companyName);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(!rs) {
@@ -476,9 +480,9 @@ public class CompanyBusinessLogic {
 			Boolean rs=false;
 			try {
 				 rs=cdi.updateCompanyIsActive(c, companyId, isActive);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(!rs) {
@@ -492,9 +496,9 @@ public class CompanyBusinessLogic {
 			Boolean rs=false;
 			try {
 				 rs=cdi.updateCompanyLastEditedDeviceType(c, companyId, lastEditedDeviceType);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(!rs) {
@@ -508,9 +512,9 @@ public class CompanyBusinessLogic {
 			Boolean rs=false;
 			try {
 				 rs=cdi.updateCompanyLastEditedBy(c, companyId, lastEditedBy);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(!rs) {
@@ -524,9 +528,9 @@ public class CompanyBusinessLogic {
 			Boolean rs=false;
 			try {
 				 rs=cdi.updateCompanyLastEditedOn(c, companyId, lastEditedOn);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(!rs) {	
@@ -540,9 +544,9 @@ public class CompanyBusinessLogic {
 			Boolean rs=false;
 			try {
 				 rs=cdi.updateCompanyOwnerContactId(c, companyId, ownerContactId);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(!rs) {
@@ -559,9 +563,9 @@ public class CompanyBusinessLogic {
 		Connection c=null;
 		try {
 			 c=ConnectionProvider.getConnection();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		ResponseEntity<Void> rs=null;
@@ -649,7 +653,7 @@ public class CompanyBusinessLogic {
 				rs=null;
 		try {
 			c.close();
-		}catch (SQLException e) {
+		}catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Void>(HttpStatus.OK); 

@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +20,11 @@ import ivgroup.master.database.dto.businessAreaForCompany.BusinessAreaForCompany
 
 @Service
 public class BusinessAreaForCompanyBusinessLogic {
+	
 	@Autowired
 	BusinessAreaForCompanyDao businessAreaForCompany_dao;
+	
+	Logger logger =LoggerFactory.getLogger(BusinessAreaForCompanyBusinessLogic.class);
 
 	/*
 	public ResponseEntity<List<BusinessAreaForCompany>> getAllBusinessAreaForCompany() {
@@ -81,9 +86,9 @@ public class BusinessAreaForCompanyBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = businessAreaForCompany_dao.updateAreaName(c, businessAreaForCompanyId, areaName);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -96,9 +101,9 @@ public class BusinessAreaForCompanyBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = businessAreaForCompany_dao.updateAreaCode(c, businessAreaForCompanyId, areaCode);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -112,9 +117,9 @@ public class BusinessAreaForCompanyBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = businessAreaForCompany_dao.updateAreaDescription(c, businessAreaForCompanyId ,areaDescription);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -128,9 +133,9 @@ public class BusinessAreaForCompanyBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = businessAreaForCompany_dao.updateAreaCityID(c, businessAreaForCompanyId ,cityID);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -144,9 +149,9 @@ public class BusinessAreaForCompanyBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = businessAreaForCompany_dao.updateAreaStateID(c, businessAreaForCompanyId ,stateID);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -160,9 +165,9 @@ public class BusinessAreaForCompanyBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = businessAreaForCompany_dao.updateAreaCountryID(c, businessAreaForCompanyId, countryID);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -175,9 +180,9 @@ public class BusinessAreaForCompanyBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = businessAreaForCompany_dao.updateBusinessAreaForCompanyCompanyId(c, businessAreaForCompanyId, companyId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -190,9 +195,9 @@ public class BusinessAreaForCompanyBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = businessAreaForCompany_dao.updateBusinessAreaForCompanyLastEditOn(c, businessAreaForCompanyId, businessAreaForCompanyLastEditOn);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -205,9 +210,9 @@ public class BusinessAreaForCompanyBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = businessAreaForCompany_dao.updateBusinessAreaForCompanyIsActive(c, businessAreaForCompanyId, businessAreaForCompanyIsActive);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -220,9 +225,9 @@ public class BusinessAreaForCompanyBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = businessAreaForCompany_dao.updateBusinessAreaForCompanyLastEditBy(c, businessAreaForCompanyId, businessAreaForCompanyLastEditBy);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -235,9 +240,9 @@ public class BusinessAreaForCompanyBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = businessAreaForCompany_dao.updateBusinessAreaForCompanyDeviceType(c, businessAreaForCompanyId, businessAreaForCompanyDeviceType);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -251,9 +256,9 @@ public class BusinessAreaForCompanyBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = businessAreaForCompany_dao.updateBusinessAreaForCompanyLastEditDeviceType(c, businessAreaForCompanyId, businessAreaForCompanyLastEditDeviceType);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -271,9 +276,9 @@ public class BusinessAreaForCompanyBusinessLogic {
 		Connection c = null;
 		try {
 			c = ConnectionProvider.getConnection();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		ResponseEntity<Void> rs = null;
@@ -403,7 +408,7 @@ public class BusinessAreaForCompanyBusinessLogic {
 
 		try {
 			c.close();
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
@@ -414,9 +419,9 @@ public class BusinessAreaForCompanyBusinessLogic {
 		Boolean res;
 		try {
 			res = businessAreaForCompany_dao.deleteBusinessAreaForCompany(businessAreaForCompany_id);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (res == false)
@@ -429,9 +434,9 @@ public class BusinessAreaForCompanyBusinessLogic {
 		Boolean res;
 		try {
 			res = businessAreaForCompany_dao.revokeBusinessAreaForCompany(businessAreaForCompany_id);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (res == false)

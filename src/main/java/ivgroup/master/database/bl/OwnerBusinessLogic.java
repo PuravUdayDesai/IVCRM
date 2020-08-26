@@ -7,6 +7,8 @@ import java.util.Random;
 
 import javax.mail.MessagingException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +49,8 @@ public class OwnerBusinessLogic{
     @Autowired
     private IVUserDetailsService ivUserDetailsService;
     
+    Logger logger =LoggerFactory.getLogger(OwnerBusinessLogic.class);
+    
 	public ResponseEntity<OwnerSelect> selectOwnerById(Long ownerId)
 	{
 		OwnerSelect rs=null;
@@ -57,9 +61,9 @@ public class OwnerBusinessLogic{
 		
 		 try {
 			rs=odi.selectOwnerById(ownerId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<OwnerSelect>(rs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<OwnerSelect>(rs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -92,9 +96,9 @@ public class OwnerBusinessLogic{
         }
 		try {
 			ownerId=odi.loginOwner(olc.getUserName(), olc.getSecretKey());
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<OwnerLoginResponseModel>(ownerResponseModel,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<OwnerLoginResponseModel>(ownerResponseModel,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ownerId==null)
@@ -119,9 +123,9 @@ public class OwnerBusinessLogic{
 		try {
 			oi.setOwnerPassword(bCryptPasswordEncoder.encode(oi.getOwnerPassword()));
 			secretKey=odi.addOwner(oi);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -173,9 +177,9 @@ public class OwnerBusinessLogic{
 			{
 				return new ResponseEntity<Void>(HttpStatus.FAILED_DEPENDENCY);
 			}
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -191,9 +195,9 @@ public class OwnerBusinessLogic{
 	
 		try {
 			rs=odi.updateOwnerOwnerName(c, ownerId, ownerName);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -209,9 +213,9 @@ public class OwnerBusinessLogic{
 		
 		try {
 			rs=odi.updateOwnerOwnerContact(c, ownerId, ownerContact);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -227,9 +231,9 @@ public class OwnerBusinessLogic{
 		
 		try {
 			rs=odi.updateOwnerOwnerEmail(c, ownerId, ownerEmail);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -245,9 +249,9 @@ public class OwnerBusinessLogic{
 		
 		try {
 			rs=odi.updateOwnerIsActive(c, ownerId, isActive);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -263,9 +267,9 @@ public class OwnerBusinessLogic{
 		
 		try {
 			rs=odi.updateOwnerLastEditOn(c, ownerId, lastEditOn);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -281,9 +285,9 @@ public class OwnerBusinessLogic{
 		
 		try {
 			rs=odi.updateOwnerOwnerUserName(c, ownerId, userName);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -299,9 +303,9 @@ public class OwnerBusinessLogic{
 		
 		try {
 			rs=odi.updateOwnerOwnerPassword(c, ownerId, password);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -320,9 +324,9 @@ public class OwnerBusinessLogic{
 		Connection c=null;
 		try {
 			 c=ConnectionProvider.getConnection();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		ResponseEntity<Void> rs=null;
@@ -392,7 +396,7 @@ public class OwnerBusinessLogic{
 				rs=null;
 		try {
 				c.close();
-			}catch (SQLException e) {
+			}catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 		return new ResponseEntity<Void>(HttpStatus.OK); 		
@@ -434,9 +438,9 @@ public class OwnerBusinessLogic{
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			rs=odi.updateOwnerOwnerSecretKey(ConnectionProvider.getConnection(), ownerId,secretKey );
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		

@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.ListIterator;
 
 import org.joda.time.DateTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +29,8 @@ public class NotificationBusinessLogic {
 	
 	@Autowired
 	NotificationDao notification_dao;
+	
+	Logger logger =LoggerFactory.getLogger(NotificationBusinessLogic.class);
 	
 	private final static String month[] = {
 									"January", 
@@ -77,9 +81,9 @@ public class NotificationBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = notification_dao.updateReadIndex(c, notificationID, readIndex);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -92,9 +96,9 @@ public class NotificationBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = notification_dao.updateJustArrived(c, notificationID, justArrived);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -111,9 +115,9 @@ public class NotificationBusinessLogic {
 		Connection c = null;
 		try {
 			c = ConnectionProvider.getConnection();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		ResponseEntity<Void> rs = null;
@@ -140,7 +144,7 @@ public class NotificationBusinessLogic {
 		rs = null;
 		try {
 			c.close();
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 

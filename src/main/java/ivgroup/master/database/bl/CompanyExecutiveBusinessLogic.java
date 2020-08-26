@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,6 +45,8 @@ public class CompanyExecutiveBusinessLogic {
     @Autowired
     private IVUserDetailsService ivUserDetailsService;
     
+    Logger logger =LoggerFactory.getLogger(CompanyExecutiveBusinessLogic.class);
+    
 	public ResponseEntity<Void> addCompanyExecutive(CompanyExecutiveInsert cei)
 	{
 		if(cei==null) {
@@ -52,9 +56,9 @@ public class CompanyExecutiveBusinessLogic {
 		try {
 			cei.setPassword(bCryptPasswordEncoder.encode(cei.getPassword()));
 		 rs=cdi.addCompanyExecutive(cei);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -69,9 +73,9 @@ public class CompanyExecutiveBusinessLogic {
 		Boolean rs=false;
 		try {
 		check=cdi.checkCompanyExecutiveDeleteStatus(companyId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(check>1)
@@ -79,9 +83,9 @@ public class CompanyExecutiveBusinessLogic {
 		Long checkDependency=(long)-1;
 		try {
 			checkDependency=cdi.checkCompanyExecutiveDeleteDependency(companyExecutiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		Boolean rsSub=false;
@@ -89,9 +93,9 @@ public class CompanyExecutiveBusinessLogic {
 		{
 			try {
 				rsSub=cdi.deleteCompanyExecutive(companyExecutiveId);
-				} catch (ClassNotFoundException e) {
+				} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 					return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-				} catch (SQLException e) {
+				} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 					return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 				}
 			if(!rsSub)
@@ -113,9 +117,9 @@ public class CompanyExecutiveBusinessLogic {
 		{
 			try {
 			rs=cdi.deleteCompanyExecutive(companyExecutiveId);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 		}
@@ -132,9 +136,9 @@ public class CompanyExecutiveBusinessLogic {
 		List<CompanyExecutiveSelect> lce=new ArrayList<CompanyExecutiveSelect>();
 		try {
 			lce=cdi.selectCompanyExecutive();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveSelect>>(lce,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveSelect>>(lce,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lce.isEmpty())
@@ -149,9 +153,9 @@ public class CompanyExecutiveBusinessLogic {
 		CompanyExecutiveSelect ces=new CompanyExecutiveSelect();
 		try {
 			ces=cdi.selectCompanyExecutiveByCompanyExecutiveId(companyExecutiveID);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<CompanyExecutiveSelect>(ces,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<CompanyExecutiveSelect>(ces,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ces.getExecutiveId()==null||ces==null)
@@ -170,9 +174,9 @@ public class CompanyExecutiveBusinessLogic {
 		}
 		try {
 			lce=cdi.selectCompanyExecutiveByCompanyId(companyId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveSelect>>(lce,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveSelect>>(lce,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lce.isEmpty())
@@ -192,9 +196,9 @@ public class CompanyExecutiveBusinessLogic {
 		}
 		try {
 			lce=cdi.selectCompanyExecutiveByOwnerId(ownerId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveSelect>>(lce,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveSelect>>(lce,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lce.isEmpty())
@@ -213,9 +217,9 @@ public class CompanyExecutiveBusinessLogic {
 		}
 		try {
 			lce=cdi.selectCompanyExecutiveByCompanyBranchId(companyBranchId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveSelect>>(lce,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveSelect>>(lce,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lce.isEmpty())
@@ -234,9 +238,9 @@ public class CompanyExecutiveBusinessLogic {
 		}
 		try {
 			lce=cdi.selectCompanyExecutiveOfSubPosition(companyExecutiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveSelect>>(lce,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveSelect>>(lce,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lce.isEmpty())
@@ -251,9 +255,9 @@ public class CompanyExecutiveBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=cdi.updateCompanyExecutiveExecutiveName(c, companyExecutiveId, executiveName);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -267,9 +271,9 @@ public class CompanyExecutiveBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=cdi.updateCompanyExecutiveLoginID(c, companyExecutiveId, loginID);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -283,9 +287,9 @@ public class CompanyExecutiveBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=cdi.updateCompanyExecutivePassword(c, companyExecutiveId, password);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -299,9 +303,9 @@ public class CompanyExecutiveBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=cdi.updateCompanyExecutiveCompanyBranchID(c, companyExecutiveId, companyBranchID);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -315,9 +319,9 @@ public class CompanyExecutiveBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=cdi.updateCompanyExecutiveBaseCityID(c, companyExecutiveId, baseCityID);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -331,9 +335,9 @@ public class CompanyExecutiveBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=cdi.updateCompanyExecutiveCompanyID(c, companyExecutiveId, companyID);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -347,9 +351,9 @@ public class CompanyExecutiveBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=cdi.updateCompanyExecutiveContactNumber(c, companyExecutiveId, contactNumber);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -363,9 +367,9 @@ public class CompanyExecutiveBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=cdi.updateCompanyExecutiveIsActive(c, companyExecutiveId, isActive);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -379,9 +383,9 @@ public class CompanyExecutiveBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=cdi.updateCompanyExecutiveLastEditOn(c, companyExecutiveId, lastEditOn);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -395,9 +399,9 @@ public class CompanyExecutiveBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=cdi.updateCompanyExecutiveLastEditBy(c, companyExecutiveId, lastEditBy);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -411,9 +415,9 @@ public class CompanyExecutiveBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=cdi.updateCompanyExecutiveLastEditDeviceType(c, companyExecutiveId, lastEditDeviceType);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -430,9 +434,9 @@ public class CompanyExecutiveBusinessLogic {
 		Connection c=null;
 		try {
 			 c=ConnectionProvider.getConnection();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	
@@ -540,7 +544,7 @@ if(cu.getLastEditDeviceType()!=null) {
 				rs=null;
 				try {
 					c.close();
-				}catch (SQLException e) {
+				}catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 					return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 				}
 				return new ResponseEntity<Void>(HttpStatus.OK); 
@@ -568,9 +572,9 @@ if(cu.getLastEditDeviceType()!=null) {
 		try {
 			cel=cdi.loginCompanyExecutive(loginId);
 			
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<CompanyExecutiveLogin>(cel,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<CompanyExecutiveLogin>(cel,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(cel==null)

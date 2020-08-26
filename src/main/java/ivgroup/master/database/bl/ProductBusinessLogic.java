@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,13 +25,15 @@ public class ProductBusinessLogic{
 	@Autowired
 	ProductDAOImpl pdi;
 	
+	Logger logger =LoggerFactory.getLogger(ProductBusinessLogic.class);
+	
 	public ResponseEntity<List<ProductSelect>> selectProducts()  {
 		List<ProductSelect> lps=new ArrayList<ProductSelect>();
 		try {
 			lps=pdi.selectProducts();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ProductSelect>>(lps,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ProductSelect>>(lps,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lps.isEmpty()) {
@@ -46,9 +50,9 @@ public class ProductBusinessLogic{
 		}
 		try {
 			lps=pdi.selectProductsByCompanyId(companyId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ProductSelect>>(lps,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ProductSelect>>(lps,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lps.isEmpty()) {
@@ -65,9 +69,9 @@ public class ProductBusinessLogic{
 		}
 		try {
 			lps=pdi.selectProductsByOwnerId(ownerId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ProductSelect>>(lps,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ProductSelect>>(lps,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lps.isEmpty()) {
@@ -85,9 +89,9 @@ public class ProductBusinessLogic{
 		}
 		try {
 			ps=pdi.selectProductsByProductId(productId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<ProductSelect>(ps,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<ProductSelect>(ps,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ps==null) {
@@ -104,9 +108,9 @@ public class ProductBusinessLogic{
 		Boolean rs=false;
 		try {
 			 rs=pdi.addProduct(pi);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -123,9 +127,9 @@ public class ProductBusinessLogic{
 		Boolean rs=false;
 		try {
 			 rs=pdi.deleteProduct(productId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -143,9 +147,9 @@ public class ProductBusinessLogic{
 		Boolean rs=false;
 		try {
 			 rs=pdi.updateProductProductName(c,productName, productId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -162,9 +166,9 @@ public class ProductBusinessLogic{
 		Boolean rs=false;
 		try {
 			 rs=pdi.updateProductProductDescription(c,productDescription, productId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -181,9 +185,9 @@ public class ProductBusinessLogic{
 		Boolean rs=false;
 		try {
 			 rs=pdi.updateProductCost(c,cost, productId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -200,9 +204,9 @@ public class ProductBusinessLogic{
 		Boolean rs=false;
 		try {
 			 rs=pdi.updateProductIsActive(c,isActive, productId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -219,9 +223,9 @@ public class ProductBusinessLogic{
 		Boolean rs=false;
 		try {
 			 rs=pdi.updateProductCompanyId(c,companyId, productId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -238,9 +242,9 @@ public class ProductBusinessLogic{
 		Boolean rs=false;
 		try {
 			 rs=pdi.updateProductLastEditOn(c,lastEditOn, productId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -257,9 +261,9 @@ public class ProductBusinessLogic{
 		Boolean rs=false;
 		try {
 			 rs=pdi.updateProductLastEditBy(c,lastEditBy, productId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -278,9 +282,9 @@ public class ProductBusinessLogic{
 		Connection c=null;
 		try {
 			 c=ConnectionProvider.getConnection();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -352,7 +356,7 @@ public class ProductBusinessLogic{
 						
 		try {
 				c.close();
-			}catch (SQLException e) {
+			}catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 					return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 	return new ResponseEntity<Void>(HttpStatus.OK); 						

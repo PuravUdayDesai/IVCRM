@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +26,8 @@ public class CompanyBranchTypeBusinessLogic
 	@Autowired
 	CompanyBranchTypeDAOImpl cbdi;
 	
+	Logger logger =LoggerFactory.getLogger(CompanyBranchTypeBusinessLogic.class);
+	
 	public ResponseEntity<List<CompanyBranchTypeSelect>> selectCompanyBranchTypeByCompanyId(Long companyId)
 	{
 		List<CompanyBranchTypeSelect> lcs=new ArrayList<CompanyBranchTypeSelect>();
@@ -33,9 +37,9 @@ public class CompanyBranchTypeBusinessLogic
 		}
 		try {
 			lcs=cbdi.selectCompanyBranchTypeByCompanyId(companyId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyBranchTypeSelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyBranchTypeSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty())
@@ -54,9 +58,9 @@ public class CompanyBranchTypeBusinessLogic
 		Boolean rsMain=false;
 		try {
 			rsMain=cbdi.addCompanyBranchType(cbi);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -71,9 +75,9 @@ public class CompanyBranchTypeBusinessLogic
 		Boolean rsMain=false;
 		try {
 			rsMain=cbdi.updateCompanyBranchTypeCompanyBranchTypeName(c, companyBranchTypeId, companyBranchTypeName);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -88,9 +92,9 @@ public class CompanyBranchTypeBusinessLogic
 		Boolean rsMain=false;
 		try {
 			rsMain=cbdi.updateCompanyBranchTypeCompanyId(c, companyBranchTypeId, companyId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -105,9 +109,9 @@ public class CompanyBranchTypeBusinessLogic
 		Boolean rsMain=false;
 		try {
 			rsMain=cbdi.updateCompanyBranchTypeCompanyBranchTypePosition(c, companyBranchTypeId, companyBranchTypePosition);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -122,9 +126,9 @@ public class CompanyBranchTypeBusinessLogic
 		Boolean rsMain=false;
 		try {
 			rsMain=cbdi.updateCompanyBranchTypeLastEditBy(c, companyBranchTypeId, companyBranchTypeLastEditBy);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -139,9 +143,9 @@ public class CompanyBranchTypeBusinessLogic
 		Boolean rsMain=false;
 		try {
 			rsMain=cbdi.updateCompanyBranchTypeLastEditOn(c, companyBranchTypeId, companyBranchTypeLastEditOn);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -159,9 +163,9 @@ public class CompanyBranchTypeBusinessLogic
 		Connection c=null;
 		try {
 			 c=ConnectionProvider.getConnection();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		ResponseEntity<Void> rs=null;
@@ -213,7 +217,7 @@ public class CompanyBranchTypeBusinessLogic
 				rs=null;				
 		try {
 			c.close();
-			}catch (SQLException e) {
+			}catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	return new ResponseEntity<Void>(HttpStatus.OK); 			
@@ -224,9 +228,9 @@ public class CompanyBranchTypeBusinessLogic
 		Boolean rsMain=false;
 		try {
 			rsMain=cbdi.deleteCompanyBranchType(companyBranchTypeId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)

@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
@@ -17,6 +19,8 @@ import ivgroup.master.database.dto.notification.NotificationSelect;
 @Service
 public class NotificationDaoImpl implements NotificationDao {
 
+	Logger logger =LoggerFactory.getLogger(NotificationDaoImpl.class);
+	
 	@Override
 	public List<NotificationSelect> selectNotifications(Long companyExecutiveID) {
 		List<NotificationSelect> notification_list = new ArrayList<NotificationSelect>();
@@ -49,7 +53,7 @@ public class NotificationDaoImpl implements NotificationDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -84,7 +88,7 @@ public class NotificationDaoImpl implements NotificationDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -136,10 +140,10 @@ public class NotificationDaoImpl implements NotificationDao {
 			st.setLong(1, notificationID);
 			rs = st.execute();
 			c.commit();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;			
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;			
 		}
@@ -160,10 +164,10 @@ public class NotificationDaoImpl implements NotificationDao {
 			st.setLong(1, notificationID);
 			rs = st.execute();
 			c.commit();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;			
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;			
 		}

@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,14 +23,16 @@ public class CompanyAddressDetailsBusinessLogic {
 	
 @Autowired
 CompanyAddressDetailsDAOImpl cabi;
+
+Logger logger =LoggerFactory.getLogger(CompanyAddressDetailsBusinessLogic.class);
 	
 public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDetails() {
 	List<CompanyAddressDetailsSelect> lcs=new ArrayList<CompanyAddressDetailsSelect>();
 	try {
 	lcs=cabi.selectCompanyAddressDetails();
-	} catch (ClassNotFoundException e) {
+	} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 		return new ResponseEntity<List<CompanyAddressDetailsSelect>>(lcs,HttpStatus.NOT_FOUND);
-	} catch (SQLException e) {
+	} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 		return new ResponseEntity<List<CompanyAddressDetailsSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	if(lcs.isEmpty()) {
@@ -44,10 +48,9 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 			Boolean rs;
 			try {
 				rs = cabi.deleteCompanyAddressDetails(companyAddressId);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
-				System.out.print(e);
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -64,10 +67,9 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyAddressDetailsAddressLine1(c,companyAddressId, addressLine1);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
-				System.out.print(e);
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -83,10 +85,9 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyAddressDetailsAddressLine2(c,companyAddressId, addressLine2);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
-				System.out.print(e);
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -102,10 +103,9 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyAddressDetailsAddressLine3(c,companyAddressId, addressLine3);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
-				System.out.print(e);
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -121,10 +121,9 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyAddressDetailsCityId(c,companyAddressId, cityId);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
-				System.out.print(e);
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -140,10 +139,9 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyAddressDetailsStateId(c,companyAddressId, stateId);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
-				System.out.print(e);
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -159,10 +157,9 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyAddressDetailsCountryId(c,companyAddressId, countryId);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
-				System.out.print(e);
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -178,10 +175,9 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyAddressDetailsLatitude(c,companyAddressId, latitude);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
-				System.out.print(e);
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -197,10 +193,9 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyAddressDetailsLongitude(c,companyAddressId, longitude);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
-				System.out.print(e);
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -216,10 +211,9 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyAddressDetailsGeoLocation(c,companyAddressId, geoLocation);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
-				System.out.print(e);
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -235,10 +229,9 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyAddressDetailsPincode(c,companyAddressId, pincode);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
-				System.out.print(e);
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -254,10 +247,9 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyAddressDetailsLastEditOn(c,companyAddressId, lastEditOn);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
-				System.out.print(e);
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -273,10 +265,9 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyAddressDetailsLastEditBy(c,companyAddressId, lastEditBy);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
-				System.out.print(e);
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -292,10 +283,9 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyAddressDetailsLastEditDeviceType(c,companyAddressId, lastEditDeviceType);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
-				System.out.print(e);
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -311,20 +301,18 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 		try {
 			latitude=cabi.getLatitude(companyAddressDetailId);
 			longitude=cabi.getLongitude(companyAddressDetailId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
-			System.out.print(e);
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		Connection c=null;
 			try {
 				 c=ConnectionProvider.getConnection();
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
-				System.out.print(e);
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			
@@ -458,7 +446,7 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 			}
 			try {
 				c.close();
-			}catch (SQLException e) {
+			}catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			return new ResponseEntity<Void>(HttpStatus.OK); 

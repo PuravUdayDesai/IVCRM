@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,7 @@ public class CompanyExecutiveGeoLocationBusinessLogic
 	@Autowired
 	CompanyExecutiveGeoLocationDAOImpl cdi;
 
+	Logger logger =LoggerFactory.getLogger(CompanyExecutiveGeoLocationBusinessLogic.class);
 	
 	public ResponseEntity<List<CompanyExecutiveGeoLocationSelect>>
 	selectCompanyExecutiveGeoLocationByCompanyExecutiveId(Long companyExecutiveId) 
@@ -34,9 +37,9 @@ public class CompanyExecutiveGeoLocationBusinessLogic
 		
 		try {
 			lcs=cdi.selectCompanyExecutiveGeoLocationByCompanyExecutiveId(companyExecutiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationSelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty())
@@ -60,9 +63,9 @@ public class CompanyExecutiveGeoLocationBusinessLogic
 		
 		try {
 			lcs=cdi.selectCompanyExecutiveGeoLocationByCompanyExecutiveIdAndDate(companyExecutiveId, dateOfSearch);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationSelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty())
@@ -89,9 +92,9 @@ public class CompanyExecutiveGeoLocationBusinessLogic
 			lcs=cdi.selectCompanyExecutiveGeoLocationByCompanyExecutiveIdAndBetweenDate(companyExecutiveId,
 																				startDate, 
 																				endDate);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationSelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty())
@@ -115,9 +118,9 @@ public class CompanyExecutiveGeoLocationBusinessLogic
 		
 		try {
 			lcs=cdi.selectCompanyExecutiveGeoLocationTextByCompanyExecutiveIdAndDate(companyExecutiveId, dateOfSearch);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationTextSelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationTextSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty())
@@ -144,9 +147,9 @@ public class CompanyExecutiveGeoLocationBusinessLogic
 			lcs=cdi.selectCompanyExecutiveGeoLocationTextByCompanyExecutiveIdAndBetweenDate(companyExecutiveId, 
 																					startDate, 
 																					endDate);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationTextSelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationTextSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty())
@@ -166,9 +169,9 @@ public class CompanyExecutiveGeoLocationBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=cdi.addCompanyExecutiveGeoLocation(cgi);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {

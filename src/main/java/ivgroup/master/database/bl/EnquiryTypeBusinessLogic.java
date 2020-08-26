@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +25,8 @@ public class EnquiryTypeBusinessLogic
 
 	@Autowired
 	EnquiryTypeDAOImpl ebi;
-	
+
+	Logger logger =LoggerFactory.getLogger(EnquiryTypeBusinessLogic.class);
 	
 	public ResponseEntity<List<EnquiryTypeSelect>> selectEnquiryTypeByCompanyId(Long companyId)
 	{
@@ -34,9 +37,9 @@ public class EnquiryTypeBusinessLogic
 		}
 		try {
 			lct=ebi.selectEnquiryTypeByCompanyId(companyId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryTypeSelect>>(lct,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryTypeSelect>>(lct,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lct.isEmpty())
@@ -55,9 +58,9 @@ public class EnquiryTypeBusinessLogic
 		}
 		try {
 			lct=ebi.selectEnquiryTypeByOwnerId(ownerId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryTypeSelect>>(lct,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryTypeSelect>>(lct,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lct.isEmpty())
@@ -76,9 +79,9 @@ public class EnquiryTypeBusinessLogic
 		Boolean rsMain=false;
 		try {
 			rsMain=ebi.addEnquiryType(eti);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -94,9 +97,9 @@ public class EnquiryTypeBusinessLogic
 		Boolean rsMain=false;
 		try {
 			rsMain=ebi.updateEnquiryTypeEnquiryTypeName(c, enquiryTypeId, enquiryTypeName);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -111,9 +114,9 @@ public class EnquiryTypeBusinessLogic
 		Boolean rsMain=false;
 		try {
 			rsMain=ebi.updateEnquiryTypeEnquiryTypeColorCode(c, enquiryTypeId, enquiryTypeColorCode);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -128,9 +131,9 @@ public class EnquiryTypeBusinessLogic
 		Boolean rsMain=false;
 		try {
 			rsMain=ebi.updateEnquiryTypeCompanyId(c, enquiryTypeId, companyId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -145,9 +148,9 @@ public class EnquiryTypeBusinessLogic
 		Boolean rsMain=false;
 		try {
 			rsMain=ebi.updateEnquiryTypeLastEditBy(c, enquiryTypeId, lastEditBy);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -162,9 +165,9 @@ public class EnquiryTypeBusinessLogic
 		Boolean rsMain=false;
 		try {
 			rsMain=ebi.updateEnquiryTypeLastEditOn(c, enquiryTypeId, lastEditOn);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -182,9 +185,9 @@ public class EnquiryTypeBusinessLogic
 		Connection c=null;
 		try {
 			 c=ConnectionProvider.getConnection();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		ResponseEntity<Void> rs=null;
@@ -237,7 +240,7 @@ public class EnquiryTypeBusinessLogic
 				rs=null;				
 		try {
 				c.close();
-			}catch (SQLException e) {
+			}catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 		return new ResponseEntity<Void>(HttpStatus.OK); 							
@@ -248,9 +251,9 @@ public class EnquiryTypeBusinessLogic
 		Boolean rsMain=false;
 		try {
 			rsMain=ebi.deleteEnquiryType(enquiryTypeId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)

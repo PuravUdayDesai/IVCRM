@@ -8,6 +8,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
@@ -18,6 +20,8 @@ import ivgroup.master.database.dto.businessCityForCompany.BusinessCityForCompany
 
 @Service
 public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao {
+	
+	Logger logger =LoggerFactory.getLogger(BusinessCityForCompanyDaoImpl.class);
 	/*
 	@Override
 	public List<BusinessCityForCompany> getAllBusinessCityForCompany() {
@@ -47,7 +51,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -85,7 +89,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -127,7 +131,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -170,7 +174,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -208,7 +212,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -256,7 +260,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {

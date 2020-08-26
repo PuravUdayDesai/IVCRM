@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,14 +24,16 @@ public class CompanyBranchAddressDetailsBusinessLogic {
 @Autowired
 CompanyBranchAddressDetailsDAOImpl cabi;
 
+Logger logger =LoggerFactory.getLogger(CompanyBranchAddressDetailsBusinessLogic.class);
+
 public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBranchAddressDetails() {
 	List<CompanyBranchAddressDetailsSelect> lcs=new ArrayList<CompanyBranchAddressDetailsSelect>();
 	try {
 	lcs=cabi.selectCompanyBranchAddressDetails();
-	} catch (ClassNotFoundException e) {
+	} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 		return new ResponseEntity<List<CompanyBranchAddressDetailsSelect>>(lcs,HttpStatus.NOT_FOUND);
-	} catch (SQLException e) {
-		System.out.print(e);
+	} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
+		
 		return new ResponseEntity<List<CompanyBranchAddressDetailsSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	if(lcs.isEmpty()) {
@@ -47,9 +51,9 @@ public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBran
 			Boolean rs;
 			try {
 				rs = cabi.deleteCompanyBranchAddressDetails(companyBranchAddressId);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -64,9 +68,9 @@ public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBran
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyBranchAddressDetailsAddressLine1(c,companyBranchAddressId, addressLine1);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -82,9 +86,9 @@ public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBran
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyBranchAddressDetailsAddressLine2(c,companyBranchAddressId, addressLine2);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -100,9 +104,9 @@ public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBran
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyBranchAddressDetailsAddressLine3(c,companyBranchAddressId, addressLine3);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -118,9 +122,9 @@ public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBran
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyBranchAddressDetailsCityId(c,companyBranchAddressId, cityId);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -136,9 +140,9 @@ public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBran
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyBranchAddressDetailsStateId(c,companyBranchAddressId, stateId);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -154,9 +158,9 @@ public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBran
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyBranchAddressDetailsCountryId(c,companyBranchAddressId, countryId);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -172,9 +176,9 @@ public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBran
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyBranchAddressDetailsLatitude(c,companyBranchAddressId, latitude);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -190,9 +194,9 @@ public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBran
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyBranchAddressDetailsLongitude(c,companyBranchAddressId, longitude);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -208,9 +212,9 @@ public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBran
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyBranchAddressDetailsGeoLocation(c,companyBranchAddressId, geoLocation);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -226,9 +230,9 @@ public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBran
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyBranchAddressDetailsPincode(c,companyBranchAddressId, pincode);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -244,9 +248,9 @@ public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBran
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyBranchAddressDetailsLastEditOn(c,companyBranchAddressId, lastEditOn);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -262,9 +266,9 @@ public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBran
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyBranchAddressDetailsLastEditBy(c,companyBranchAddressId, lastEditBy);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -280,9 +284,9 @@ public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBran
 			Boolean rs;
 			try {
 				rs = cabi.updateCompanyBranchAddressDetailsLastEditDeviceType(c,companyBranchAddressId, lastEditDeviceType);
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			if(rs) {
@@ -298,19 +302,19 @@ public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBran
 		try {
 			latitude=cabi.getLatitude(companyBranchAddressDetailId);
 			longitude=cabi.getLongitude(companyBranchAddressDetailId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
-			System.out.print(e);
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
+			
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		Connection c=null;
 			try {
 				 c=ConnectionProvider.getConnection();
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-			} catch (SQLException e) {
+			} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			
@@ -444,7 +448,7 @@ public ResponseEntity<List<CompanyBranchAddressDetailsSelect>> selectCompanyBran
 			}
 			try {
 				c.close();
-			}catch (SQLException e) {
+			}catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			return new ResponseEntity<Void>(HttpStatus.OK); 

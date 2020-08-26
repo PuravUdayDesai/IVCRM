@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,8 @@ public class ClientGeoMapPlottingBusinessLogic
 	@Autowired
 	ClientGeoMapPlottingDAOImpl cgdl;
 	
+	Logger logger =LoggerFactory.getLogger(ClientGeoMapPlottingBusinessLogic.class);
+	
 	public ResponseEntity<List<ClientGeoMapPlotting>> getClientGeoMapByOwnerId(Long ownerId)
 	{
 		List<ClientGeoMapPlotting> ll=new ArrayList<ClientGeoMapPlotting>();
@@ -29,9 +33,9 @@ public class ClientGeoMapPlottingBusinessLogic
 		
 		try {
 			ll=cgdl.getClientGeoMapByOwnerId(ownerId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ClientGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ClientGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -52,9 +56,9 @@ public class ClientGeoMapPlottingBusinessLogic
 		
 		try {
 			ll=cgdl.getClientGeoMapByCompanyId(companyId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ClientGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ClientGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -76,9 +80,9 @@ public class ClientGeoMapPlottingBusinessLogic
 		
 		try {
 			ll=cgdl.getClientGeoMapByCountryId(ownerId, countryId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ClientGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ClientGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -99,9 +103,9 @@ public class ClientGeoMapPlottingBusinessLogic
 		
 		try {
 			ll=cgdl.getClientGeoMapByStateId(ownerId, countryId, stateId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ClientGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ClientGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -123,9 +127,9 @@ public class ClientGeoMapPlottingBusinessLogic
 		
 		try {
 			ll=cgdl.getClientGeoMapByCityId(ownerId, countryId, stateId, cityId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ClientGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ClientGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -146,9 +150,9 @@ public class ClientGeoMapPlottingBusinessLogic
 		
 		try {
 			ll=cgdl.getClientGeoMapByAreaId(ownerId, countryId, stateId, cityId, areaId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ClientGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<ClientGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		

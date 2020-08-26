@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,8 @@ public class CompanyAreaBusinessLogic {
 	@Autowired
 	CompanyAreaDAOImpl crdi;
 	
+	Logger logger =LoggerFactory.getLogger(CompanyAreaBusinessLogic.class);
+	
 	public ResponseEntity<Void> addCompanyArea(CompanyAreaInsert cri) {
 		if(cri==null) {
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
@@ -30,10 +34,10 @@ public class CompanyAreaBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.addCompanyArea(cri);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -48,9 +52,9 @@ public class CompanyAreaBusinessLogic {
 		List<CompanyAreaSelect> lcs=new ArrayList<CompanyAreaSelect>();
 		try {
 			lcs=crdi.selectCompanyArea();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyAreaSelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyAreaSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty()) {
@@ -68,9 +72,9 @@ public class CompanyAreaBusinessLogic {
 		}
 		try {
 			crs=crdi.selectCompanyAreaByCompanyAreaID(companyAreaId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<CompanyAreaSelect>(crs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<CompanyAreaSelect>(crs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(crs.getCompanyAreaID()==null||crs==null) {
@@ -86,9 +90,9 @@ public class CompanyAreaBusinessLogic {
 		}
 		try {
 			lcs=crdi.selectCompanyAreaByCompanyID(companyId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyAreaSelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyAreaSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty()) {
@@ -105,9 +109,9 @@ public class CompanyAreaBusinessLogic {
 		}
 		try {
 			lcs=crdi.selectCompanyAreaByOwnerID(ownerId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyAreaSelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyAreaSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty()) {
@@ -124,9 +128,9 @@ public class CompanyAreaBusinessLogic {
 		}
 		try {
 			lcs=crdi.selectCompanyAreaByRegionID(regionId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyAreaSelect>>(lcs,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CompanyAreaSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty()) {
@@ -142,9 +146,9 @@ public class CompanyAreaBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyAreaCompanyAreaName(c, companyAreaId, companyAreaName);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -160,9 +164,9 @@ public class CompanyAreaBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyAreaCompanyAreaCode(c, companyAreaId, companyAreaCode);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -178,9 +182,9 @@ public class CompanyAreaBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyAreaCompanyAreaDescription(c, companyAreaId, companyAreaDescription);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -196,9 +200,9 @@ public class CompanyAreaBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyAreaCompanyID(c, companyAreaId, companyID);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -214,9 +218,9 @@ public class CompanyAreaBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyAreaCompanyRegionID(c, companyAreaId, companyRegionID);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -232,9 +236,9 @@ public class CompanyAreaBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyAreaIsActive(c, companyAreaId, isActive);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -250,9 +254,9 @@ public class CompanyAreaBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyAreaLastEditOn(c, companyAreaId, lastEditOn);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -268,9 +272,9 @@ public class CompanyAreaBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyAreaLastEditBy(c, companyAreaId, lastEditBy);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -286,9 +290,9 @@ public class CompanyAreaBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyAreaLastEditDeviceType(c, companyAreaId, lastEditDeviceType);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -304,9 +308,9 @@ public class CompanyAreaBusinessLogic {
 		Connection c=null;
 		try {
 			 c=ConnectionProvider.getConnection();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		ResponseEntity<Void> rs=null;
@@ -394,7 +398,7 @@ public class CompanyAreaBusinessLogic {
 				rs=null;
 		try {
 			c.close();
-		}catch (SQLException e) {
+		}catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Void>(HttpStatus.OK); 
@@ -407,9 +411,9 @@ public class CompanyAreaBusinessLogic {
 		Boolean rs=false;
 		try {
 			rs=crdi.deleteCompanyArea(companyAreaId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -425,9 +429,9 @@ public class CompanyAreaBusinessLogic {
 	Boolean rs=false;
 	try {
 		rs=crdi.revokeCompanyArea(companyAreaId);
-	} catch (ClassNotFoundException e) {
+	} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 		return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-	} catch (SQLException e) {
+	} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 		return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	if(!rs) {

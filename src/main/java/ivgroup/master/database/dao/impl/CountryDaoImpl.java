@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Timestamp;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import ivgroup.master.database.connection.ConnectionProvider;
 import ivgroup.master.database.dao.schema.CountryDao;
@@ -16,6 +18,8 @@ import ivgroup.master.database.dto.country.CountryInsert;
 
 @Service
 public class CountryDaoImpl implements CountryDao {
+	
+	Logger logger =LoggerFactory.getLogger(CountryDaoImpl.class);
 
 	@Override
 	public List<Country> getAllCountry() {
@@ -42,7 +46,7 @@ public class CountryDaoImpl implements CountryDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -76,7 +80,7 @@ public class CountryDaoImpl implements CountryDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -115,7 +119,7 @@ public class CountryDaoImpl implements CountryDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {
@@ -159,7 +163,7 @@ public class CountryDaoImpl implements CountryDao {
 		} catch (SQLException s) {
 			s.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			;
 			return null;
 		} finally {

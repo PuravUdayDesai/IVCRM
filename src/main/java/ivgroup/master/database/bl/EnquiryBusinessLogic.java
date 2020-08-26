@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +49,8 @@ public class EnquiryBusinessLogic
 	
 	@Autowired
 	CompanyExecutiveDAOImpl cedi;
+	
+	Logger logger =LoggerFactory.getLogger(EnquiryBusinessLogic.class);
 	
 	public ResponseEntity<Void> addEnquiry(EnquiryInsert ei)
 	{
@@ -157,9 +161,9 @@ public class EnquiryBusinessLogic
 				}	
 			}
 			
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -223,9 +227,9 @@ public class EnquiryBusinessLogic
 						epi.getCreatedBy()
 						));
 			ticketId=rsTicket.getBody();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Long>(ticketId,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Long>(ticketId,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain||ticketId==null)
@@ -262,9 +266,9 @@ public class EnquiryBusinessLogic
 				 return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 			 }
 			 rs=edi.deleteEnquiryProduct(productId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -294,9 +298,9 @@ public class EnquiryBusinessLogic
 					 return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 				 }
 			 }
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -311,9 +315,9 @@ public class EnquiryBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=edi.updateEnquiryClient(c, enquiryId, clientId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -329,9 +333,9 @@ public class EnquiryBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=edi.updateEnquiryCountry(c, enquiryId, countryId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -346,9 +350,9 @@ public class EnquiryBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=edi.updateEnquiryState(c, enquiryId, stateId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -363,9 +367,9 @@ public class EnquiryBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=edi.updateEnquiryCity(c, enquiryId, cityId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -380,9 +384,9 @@ public class EnquiryBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=edi.updateEnquiryArea(c, enquiryId, areaId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -397,9 +401,9 @@ public class EnquiryBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=edi.updateEnquiryAddressLine1(c, enquiryId, addressLine1);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -414,9 +418,9 @@ public class EnquiryBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=edi.updateEnquiryAddressLine2(c, enquiryId, addressLine2);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -431,9 +435,9 @@ public class EnquiryBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=edi.updateEnquiryAddressLine3(c, enquiryId, addressLine3);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -448,9 +452,9 @@ public class EnquiryBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=edi.updateEnquiryLatitude(c, enquiryId, latitude);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -465,9 +469,9 @@ public class EnquiryBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=edi.updateEnquiryLongitude(c, enquiryId, longitude);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -482,9 +486,9 @@ public class EnquiryBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=edi.updateEnquiryPincode(c, enquiryId, pincode);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -499,9 +503,9 @@ public class EnquiryBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=edi.updateEnquiryEnquiryRemarks(c, enquiryId, enquiryRemarks);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -516,9 +520,9 @@ public class EnquiryBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=edi.updateEnquiryEnquiryType(c, enquiryId, enquiryType);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -533,9 +537,9 @@ public class EnquiryBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=edi.updateEnquiryLastEditBy(c, enquiryId, lastEditBy);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -550,9 +554,9 @@ public class EnquiryBusinessLogic
 		Boolean rs=false;
 		try {
 			 rs=edi.updateEnquiryLastEditOn(c, enquiryId, lastEditOn);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
@@ -567,9 +571,9 @@ public class EnquiryBusinessLogic
 		 Long count;
 		try {
 			count = edi.checkCompanyExecutiveByEnquiryId(enquiryId,eu.getLastEditBy());
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 			if(count==0)
@@ -579,9 +583,9 @@ public class EnquiryBusinessLogic
 		Connection c=null;
 		try {
 			 c=ConnectionProvider.getConnection();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		ResponseEntity<Void> rs=null;
@@ -746,14 +750,14 @@ public class EnquiryBusinessLogic
 		}
 		
 		
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	try {
 			c.close();
-		}catch (SQLException e) {
+		}catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	return new ResponseEntity<Void>(HttpStatus.OK); 	
@@ -778,9 +782,9 @@ public class EnquiryBusinessLogic
 				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 			}
 			rsMain=edi.addEnquiryAccessList(eai);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -799,9 +803,9 @@ public class EnquiryBusinessLogic
 		}
 		try {
 			lea=edi.selectEnquiryAccessListByEnquiryId(enquiryId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryAccessListSelect>>(lea,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryAccessListSelect>>(lea,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lea.isEmpty())
@@ -825,9 +829,9 @@ public class EnquiryBusinessLogic
 				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 			}
 			rsMain=edi.deleteEnquiryAccessListExecutive(companyExecutiveAccessId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -846,9 +850,9 @@ public class EnquiryBusinessLogic
 		}
 		try {
 			lps= edi.selectEnquiryNonAddedProducts(enquiryId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryNonAddedProductSelect>>(lps,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryNonAddedProductSelect>>(lps,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lps.isEmpty())
@@ -863,9 +867,9 @@ public class EnquiryBusinessLogic
 		List<EnquiryProductSelect> lep=new ArrayList<EnquiryProductSelect>();
 		try {
 			lep=edi.selectEnquiryProduct(enquiryId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryProductSelect>>(lep,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquiryProductSelect>>(lep,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lep.isEmpty())
@@ -895,9 +899,9 @@ public class EnquiryBusinessLogic
 				lesModified.add(es);
 			}
 			les.clear();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lesModified.isEmpty())
@@ -927,9 +931,9 @@ public class EnquiryBusinessLogic
 				lesModified.add(es);
 			}
 			les.clear();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lesModified.isEmpty())
@@ -959,9 +963,9 @@ public class EnquiryBusinessLogic
 				lesModified.add(es);
 			}
 			les.clear();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquirySelect>>(lesModified,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lesModified.isEmpty())
@@ -991,9 +995,9 @@ public class EnquiryBusinessLogic
 				lesModified.add(es);
 			}
 			les.clear();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lesModified.isEmpty())
@@ -1023,9 +1027,9 @@ public class EnquiryBusinessLogic
 				lesModified.add(es);
 			}
 			les.clear();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lesModified.isEmpty())
@@ -1055,9 +1059,9 @@ public class EnquiryBusinessLogic
 				lesModified.add(es);
 			}
 			les.clear();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lesModified.isEmpty())
@@ -1087,9 +1091,9 @@ public class EnquiryBusinessLogic
 				lesModified.add(es);
 			}
 			les.clear();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lesModified.isEmpty())
@@ -1119,9 +1123,9 @@ public class EnquiryBusinessLogic
 				lesModified.add(es);
 			}
 			les.clear();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lesModified.isEmpty())
@@ -1140,9 +1144,9 @@ public class EnquiryBusinessLogic
 		}
 		try {
 			ll=edi.selectNonAccessibleExecutivesOfEnquiry(enquiryId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ll.isEmpty())
@@ -1161,9 +1165,9 @@ public class EnquiryBusinessLogic
 		}
 		try {
 			ll=edi.selectNonAccessibleExecutiveOfEnquiryByCompanyExecutiveId(enquiryId, companyExecutiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<NonAccessibleExecutiveListSelect>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ll.isEmpty())

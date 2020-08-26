@@ -16,6 +16,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -36,6 +38,8 @@ public class CallTransactionBusinessLogic {
 
 	@Autowired
 	CallTransactionDAOImpl ctdi;
+	
+	Logger logger =LoggerFactory.getLogger(CallTransactionBusinessLogic.class);
 	
 	private static final String EXTERNAL_FILE_PATH = "E:\\callTransaction\\";
 
@@ -85,9 +89,9 @@ public class CallTransactionBusinessLogic {
 		Boolean rs=false;
 		try {
 			rs=ctdi.addCallTransaction(cti, fileURL,filePath);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs)
@@ -140,9 +144,9 @@ public class CallTransactionBusinessLogic {
 		}
 		try {
 			lr=ctdi.selectCallTransactionsByCompanyExecutiveId(companyExecutiveId);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CallTransactionSelect>>(lr,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CallTransactionSelect>>(lr,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lr.isEmpty()||lr==null)
@@ -161,9 +165,9 @@ public class CallTransactionBusinessLogic {
 		}
 		try {
 			lr=ctdi.selectCallTransactionsByCompanyExecutiveIdAndCallDate(companyExecutiveId,callDate);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CallTransactionSelect>>(lr,HttpStatus.NOT_FOUND);
-		} catch (SQLException e) {
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<List<CallTransactionSelect>>(lr,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lr.isEmpty()||lr==null)
