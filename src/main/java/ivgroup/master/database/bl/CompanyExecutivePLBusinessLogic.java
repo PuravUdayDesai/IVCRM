@@ -83,7 +83,6 @@ public class CompanyExecutivePLBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<List<CompanyExecutivePLSelect>>(lcpl,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println(e);
 			return new ResponseEntity<List<CompanyExecutivePLSelect>>(lcpl,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcpl.isEmpty())
@@ -105,7 +104,6 @@ public class CompanyExecutivePLBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<List<CompanyExecutivePLSelect>>(lcpl,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println(e);
 			return new ResponseEntity<List<CompanyExecutivePLSelect>>(lcpl,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcpl.isEmpty())

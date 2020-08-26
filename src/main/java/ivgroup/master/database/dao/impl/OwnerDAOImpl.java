@@ -239,7 +239,6 @@ public class OwnerDAOImpl implements OwnerDAO{
 		stmt.setString(5, oi.getOwnerUserName());
 		stmt.setString(6, oi.getOwnerPassword());
 		stmt.setTimestamp(7, oi.getCreatedOn());
-		System.out.println(stmt);
 		ResultSet rs=stmt.executeQuery();
 		c.commit();
 		Boolean rsMain=false;

@@ -48,7 +48,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -86,7 +86,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -128,7 +128,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -171,7 +171,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -209,7 +209,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -257,7 +257,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {

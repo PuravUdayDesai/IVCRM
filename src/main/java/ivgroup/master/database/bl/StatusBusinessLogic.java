@@ -23,7 +23,6 @@ public class StatusBusinessLogic
 	@Autowired
 	StatusDAOImpl sdi;
 
-	
 	public ResponseEntity<List<StatusSelect>> selectStatusByCompanyId(Long companyId) 
 	{
 		List<StatusSelect> lss=new ArrayList<StatusSelect>();
@@ -125,7 +124,6 @@ public class StatusBusinessLogic
 		}
 		if(!rs)
 		{
-			System.out.println("StatusName");
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<Void>(HttpStatus.OK);
@@ -147,7 +145,6 @@ public class StatusBusinessLogic
 		}
 		if(!rs)
 		{
-			System.out.println("StatusColorCode");
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<Void>(HttpStatus.OK);
@@ -169,7 +166,6 @@ public class StatusBusinessLogic
 		}
 		if(!rs)
 		{
-			System.out.println("WorkProgress");
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<Void>(HttpStatus.OK);
@@ -191,7 +187,6 @@ public class StatusBusinessLogic
 		}
 		if(!rs)
 		{
-			System.out.println("Company");
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<Void>(HttpStatus.OK);
@@ -213,7 +208,6 @@ public class StatusBusinessLogic
 		}
 		if(!rs)
 		{
-			System.out.println("LastEditBy");
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<Void>(HttpStatus.OK);
@@ -235,7 +229,6 @@ public class StatusBusinessLogic
 		}
 		if(!rs)
 		{
-			System.out.println("LastEditOn");
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<Void>(HttpStatus.OK);
@@ -245,7 +238,6 @@ public class StatusBusinessLogic
 	{
 		if(statusId==null||su==null)
 		{
-			System.out.println("Here");
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
 		Connection c=null;

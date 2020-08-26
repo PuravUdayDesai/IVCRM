@@ -23,7 +23,6 @@ public class UserInformationBusinessLogic
 			UserInformation userInformation=userInformationDaoImpl.loadUserByEmailId(emailId);
 			if(userInformation!=null)
 			{
-				System.out.println("hello I came in");
 				user=new User(
 						userInformation.getCorrespondingEmailId(),
 						userInformation.getCorrespondingPassword(),

@@ -343,7 +343,6 @@ public class ClientDAOImpl implements ClientDAO
 		stmt.setTimestamp(16, ci.getCreatedOn());
 		stmt.setLong(17, ci.getCreatedBy());
 		ResultSet rs=stmt.executeQuery();
-		System.out.println(stmt);
 		c.commit();
 		Boolean rsMain=false;
 		if(rs.next())

@@ -38,7 +38,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 	 * rs.getLong("LastEditBy"), rs.getInt("LastEditDeviceType"))); } while
 	 * (rs.next()); } return businessAreaForCompany_list; } catch (SQLException s) {
 	 * s.printStackTrace(); return null; } catch (ClassNotFoundException e) {
-	 * e.printStackTrace(); return null; } finally { try { c.close(); st.close();
+	 * ; return null; } finally { try { c.close(); st.close();
 	 * rs.close(); } catch (Exception e) { } } }
 	 */
 /*
@@ -70,7 +70,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -92,7 +92,6 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 			c = ConnectionProvider.getConnection();
 			String sql = "SELECT * FROM location.\"fn_selectFromBusinessAreaForCompanyById\"("
 					+ businessAreaForCompany_id + ")";
-			System.out.println(sql);
 			st = c.prepareCall(sql);
 			rs = st.executeQuery();
 			if (rs.next() == true) {
@@ -112,7 +111,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -145,7 +144,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 	 * rs.getLong("LastEditBy"), rs.getInt("LastEditDeviceType"))); } while
 	 * (rs.next()); } return businessAreaForCompany_list; } catch (SQLException s) {
 	 * s.printStackTrace(); return null; } catch (ClassNotFoundException e) {
-	 * e.printStackTrace(); return null; } finally { try { c.close(); st.close();
+	 * ; return null; } finally { try { c.close(); st.close();
 	 * rs.close(); } catch (Exception e) { } } }
 	 */
 
@@ -174,7 +173,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -222,7 +221,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -358,7 +357,6 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 		st = c.prepareCall(sql);
 		st.setLong(1, areaId);
 		st.setLong(2, cityID);
-		System.out.println(st);
 		boolean res = st.execute();
 		c.commit();
 		return res;

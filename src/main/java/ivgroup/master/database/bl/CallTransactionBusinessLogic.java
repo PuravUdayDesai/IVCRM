@@ -69,7 +69,6 @@ public class CallTransactionBusinessLogic {
 	
 	public ResponseEntity<Void> addCallTransaction(MultipartFile file,CallTransactionInsert cti)
 	{
-		System.out.println(file.getContentType());
 		if(fileGenere(file.getContentType()).equalsIgnoreCase("audio")) {
 		String fileURL="NEGATIVE";
 		try {
@@ -83,7 +82,6 @@ public class CallTransactionBusinessLogic {
 		}
 		String filePath=fileURL;
 		fileURL=urlCreator("callTransaction/"+cti.getCompanyExecutiveId()+"/"+cti.getClientId()+"/"+CallTransactionBusinessLogic.replaceColonToPeriod(cti.getCallTime()),StringUtils.cleanPath(file.getOriginalFilename()));
-		System.out.println(fileURL);
 		Boolean rs=false;
 		try {
 			rs=ctdi.addCallTransaction(cti, fileURL,filePath);
@@ -179,7 +177,6 @@ public class CallTransactionBusinessLogic {
 			HttpServletResponse response,
 			String filePath, 
 			String fileName){
-		System.out.println("Here In View File");
 			File file = new File(EXTERNAL_FILE_PATH + filePath + "\\" + fileName);
 			
 			if (file.exists()) {
@@ -215,7 +212,6 @@ public class CallTransactionBusinessLogic {
 			String filePath, 
 			String fileName){
 		try {
-			System.out.println(EXTERNAL_FILE_PATH + filePath + "\\" + fileName);
 			File file = new File(EXTERNAL_FILE_PATH + filePath + "\\" + fileName);
 			if (file.exists()) {
 				String mimeType = URLConnection.guessContentTypeFromName(file.getName());

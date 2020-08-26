@@ -83,7 +83,7 @@ public class BusinessCityForCompanyBusinessLogic {
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -99,7 +99,7 @@ public class BusinessCityForCompanyBusinessLogic {
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -193,7 +193,7 @@ public class BusinessCityForCompanyBusinessLogic {
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -209,7 +209,7 @@ public class BusinessCityForCompanyBusinessLogic {
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -225,7 +225,7 @@ public class BusinessCityForCompanyBusinessLogic {
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -242,7 +242,7 @@ public class BusinessCityForCompanyBusinessLogic {
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {
@@ -263,7 +263,7 @@ public class BusinessCityForCompanyBusinessLogic {
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		ResponseEntity<Void> rs = null;

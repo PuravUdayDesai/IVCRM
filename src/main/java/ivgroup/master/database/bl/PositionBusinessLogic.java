@@ -40,7 +40,6 @@ public class PositionBusinessLogic
 			return new ResponseEntity<List<PositionSelect>>(lps, HttpStatus.NOT_FOUND);
 		} catch (SQLException e)
 		{
-			System.out.println("In Position: "+e);
 			return new ResponseEntity<List<PositionSelect>>(lps, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (lps.isEmpty())

@@ -165,7 +165,6 @@ public class ClientBusinessLogic
 		} catch (SQLException e) {
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		System.out.println(rsMain);
 		if(!rsMain)
 		{
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);

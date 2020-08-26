@@ -152,7 +152,6 @@ public class CompanyExecutiveBusinessLogic {
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<CompanyExecutiveSelect>(ces,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println(e);
 			return new ResponseEntity<CompanyExecutiveSelect>(ces,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(ces.getExecutiveId()==null||ces==null)

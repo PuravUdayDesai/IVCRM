@@ -21,7 +21,6 @@ public class UserInformationDAOImpl implements UserInformationDAO{
 		CallableStatement stmt=c.prepareCall("SELECT * FROM public.\"fn_loadUserByEmailId\"(?)");
 		stmt.setString(1, emailId);
 		ResultSet rs=stmt.executeQuery();
-		System.out.println(stmt);
 		if(rs.next())
 		{
 			userInformation=new UserInformation(

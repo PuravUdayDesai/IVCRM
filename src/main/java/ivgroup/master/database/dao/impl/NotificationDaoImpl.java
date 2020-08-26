@@ -50,7 +50,7 @@ public class NotificationDaoImpl implements NotificationDao {
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -85,7 +85,7 @@ public class NotificationDaoImpl implements NotificationDao {
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -137,10 +137,10 @@ public class NotificationDaoImpl implements NotificationDao {
 			rs = st.execute();
 			c.commit();
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			;
 			return null;			
 		}
 		return rs;
@@ -161,10 +161,10 @@ public class NotificationDaoImpl implements NotificationDao {
 			rs = st.execute();
 			c.commit();
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			;
 			return null;			
 		}
 		return rs;

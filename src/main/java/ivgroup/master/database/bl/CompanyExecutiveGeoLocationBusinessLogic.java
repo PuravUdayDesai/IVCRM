@@ -63,7 +63,6 @@ public class CompanyExecutiveGeoLocationBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationSelect>>(lcs,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println(e);
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty())
@@ -93,7 +92,6 @@ public class CompanyExecutiveGeoLocationBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationSelect>>(lcs,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println(e);
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty())
@@ -120,7 +118,6 @@ public class CompanyExecutiveGeoLocationBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationTextSelect>>(lcs,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println(e);
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationTextSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty())
@@ -150,7 +147,6 @@ public class CompanyExecutiveGeoLocationBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationTextSelect>>(lcs,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println(e);
 			return new ResponseEntity<List<CompanyExecutiveGeoLocationTextSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty())
@@ -173,7 +169,6 @@ public class CompanyExecutiveGeoLocationBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println(e);
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {

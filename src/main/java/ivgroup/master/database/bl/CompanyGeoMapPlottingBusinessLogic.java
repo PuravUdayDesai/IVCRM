@@ -32,7 +32,6 @@ public class CompanyGeoMapPlottingBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<List<CompanyGeoMapPlotting>>(ll,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println(e);
 			return new ResponseEntity<List<CompanyGeoMapPlotting>>(ll,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		

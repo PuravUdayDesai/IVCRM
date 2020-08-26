@@ -440,7 +440,6 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		stmt.setLong(2, eai.getCompanyExecutiveId());
 		stmt.setTimestamp(3, eai.getAccessApplicationTime());
 		ResultSet rs=stmt.executeQuery();
-		System.out.println(stmt);
 		Boolean rsMain=false;
 		c.commit();
 		if(rs.next())
@@ -584,7 +583,6 @@ public class EnquiryDAOImpl implements EnquiryDAO
 		ResultSet rs=stmt.executeQuery();
 		while(rs.next())
 		{
-			System.out.println("Country: "+rs.getLong("EnquiryId"));
 		les.add(new EnquirySelect(
 				rs.getLong("EnquiryAccessListId"),
 				rs.getLong("EnquiryId"),

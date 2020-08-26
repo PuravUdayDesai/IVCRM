@@ -44,7 +44,7 @@ public class ReportDaoImpl implements ReportDao {
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -82,7 +82,7 @@ public class ReportDaoImpl implements ReportDao {
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -119,7 +119,7 @@ public class ReportDaoImpl implements ReportDao {
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -162,7 +162,7 @@ public class ReportDaoImpl implements ReportDao {
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -205,7 +205,7 @@ public class ReportDaoImpl implements ReportDao {
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -241,7 +241,7 @@ public class ReportDaoImpl implements ReportDao {
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -282,7 +282,7 @@ public class ReportDaoImpl implements ReportDao {
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -323,7 +323,7 @@ public class ReportDaoImpl implements ReportDao {
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -361,7 +361,7 @@ public class ReportDaoImpl implements ReportDao {
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -405,7 +405,7 @@ public class ReportDaoImpl implements ReportDao {
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {
@@ -449,7 +449,7 @@ public class ReportDaoImpl implements ReportDao {
 			s.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			;
 			return null;
 		} finally {
 			try {

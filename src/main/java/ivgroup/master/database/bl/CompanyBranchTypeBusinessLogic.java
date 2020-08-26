@@ -36,7 +36,6 @@ public class CompanyBranchTypeBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<List<CompanyBranchTypeSelect>>(lcs,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println(e);
 			return new ResponseEntity<List<CompanyBranchTypeSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lcs.isEmpty())

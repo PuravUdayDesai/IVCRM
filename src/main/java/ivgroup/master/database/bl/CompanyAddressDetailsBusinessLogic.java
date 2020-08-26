@@ -29,7 +29,6 @@ public ResponseEntity<List<CompanyAddressDetailsSelect>> selectCompanyAddressDet
 	} catch (ClassNotFoundException e) {
 		return new ResponseEntity<List<CompanyAddressDetailsSelect>>(lcs,HttpStatus.NOT_FOUND);
 	} catch (SQLException e) {
-		System.out.print(e);
 		return new ResponseEntity<List<CompanyAddressDetailsSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	if(lcs.isEmpty()) {

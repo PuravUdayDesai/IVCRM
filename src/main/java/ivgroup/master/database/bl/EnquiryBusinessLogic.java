@@ -160,7 +160,7 @@ public class EnquiryBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
@@ -226,7 +226,6 @@ public class EnquiryBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Long>(ticketId,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println("Enquiry Product: "+e);
 			return new ResponseEntity<Long>(ticketId,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain||ticketId==null)
@@ -782,7 +781,6 @@ public class EnquiryBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println(e);
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rsMain)
@@ -804,7 +802,6 @@ public class EnquiryBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<List<EnquiryAccessListSelect>>(lea,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println(e);
 			return new ResponseEntity<List<EnquiryAccessListSelect>>(lea,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lea.isEmpty())
@@ -989,7 +986,6 @@ public class EnquiryBusinessLogic
 			{
 				EnquirySelect es=li.next();
 				Long enquiryId=es.getEnquiryId();
-				System.out.println("Area: "+enquiryId);
 				List<EnquiryProductSelect> lep=edi.selectEnquiryProduct(enquiryId);
 				es.setEnquiryProductList(lep);
 				lesModified.add(es);
@@ -1022,7 +1018,6 @@ public class EnquiryBusinessLogic
 			{
 				EnquirySelect es=li.next();
 				Long enquiryId=es.getEnquiryId();
-				System.out.println("Executive: "+enquiryId);
 				List<EnquiryProductSelect> lep=edi.selectEnquiryProduct(enquiryId);
 				es.setEnquiryProductList(lep);
 				lesModified.add(es);
@@ -1031,7 +1026,6 @@ public class EnquiryBusinessLogic
 		} catch (ClassNotFoundException e) {
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.NOT_FOUND);
 		} catch (SQLException e) {
-			System.out.println(e);
 			return new ResponseEntity<List<EnquirySelect>>(les,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(lesModified.isEmpty())
