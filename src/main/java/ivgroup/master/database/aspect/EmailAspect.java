@@ -10,6 +10,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import ivgroup.master.database.Constants;
+
 public class EmailAspect {
 
 	public static void sendEmailWithoutAttachment(	String toEmailid,
@@ -19,8 +21,8 @@ public class EmailAspect {
 													String bodyContentType) throws MessagingException 
 	{
 		String host="smtp.gmail.com";  
-	 	final String user="{this.email.server.emailId}"; 
- 		final String password="{this.email.server.password}";
+	 	final String user=Constants.EMAIL_ID; 
+ 		final String password=Constants.EMAIL_PASSWORD;
 	 	Properties props = new Properties();  
  		props.put("mail.smtp.host",host);  
  		props.put("mail.smtp.starttls.enable","true");

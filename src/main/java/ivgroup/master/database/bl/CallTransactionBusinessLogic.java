@@ -29,6 +29,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import ivgroup.master.database.Constants;
 import ivgroup.master.database.dao.impl.CallTransactionDAOImpl;
 import ivgroup.master.database.dto.callTransaction.CallTransactionInsert;
 import ivgroup.master.database.dto.callTransaction.CallTransactionSelect;
@@ -41,7 +42,7 @@ public class CallTransactionBusinessLogic {
 	
 	Logger logger =LoggerFactory.getLogger(CallTransactionBusinessLogic.class);
 	
-	private static final String EXTERNAL_FILE_PATH = "{this.server.storage.root}"+"\\callTransaction\\";
+	private static final String EXTERNAL_FILE_PATH = Constants.STORAGE_ROOT+"\\callTransaction\\";
 
 	public static String fileGenere(String fileType) {
 		String fileGenere="";
@@ -57,8 +58,8 @@ public class CallTransactionBusinessLogic {
 	private static String urlCreator(String filePath,String fileName) {
 		//http://localhost:8080/fileDownload/view?filePath=member/documents/1/9&fileName=JSP complete reference.pdf
 		String protocol="http://";
-		String host="{this.server.hostname}";
-		String portNumber="{this.server.portnumber}";
+		String host=Constants.HOSTNAME;
+		String portNumber=Constants.PORTNUMBER;
 		String basePath="/callTransaction/fileView";
 		String url=protocol+host+":"+portNumber+basePath+"?filePath="+filePath.replace("\\", "/")+"&fileName="+fileName;
 		return url;
