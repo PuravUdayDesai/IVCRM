@@ -41,7 +41,7 @@ public class CallTransactionBusinessLogic {
 	
 	Logger logger =LoggerFactory.getLogger(CallTransactionBusinessLogic.class);
 	
-	private static final String EXTERNAL_FILE_PATH = "E:\\callTransaction\\";
+	private static final String EXTERNAL_FILE_PATH = "{this.server.storage.root}"+"\\callTransaction\\";
 
 	public static String fileGenere(String fileType) {
 		String fileGenere="";
@@ -57,8 +57,8 @@ public class CallTransactionBusinessLogic {
 	private static String urlCreator(String filePath,String fileName) {
 		//http://localhost:8080/fileDownload/view?filePath=member/documents/1/9&fileName=JSP complete reference.pdf
 		String protocol="http://";
-		String host="6a6a6f4b845c.ngrok.io";
-		String portNumber="";
+		String host="{this.server.hostname}";
+		String portNumber="{this.server.portnumber}";
 		String basePath="/callTransaction/fileView";
 		String url=protocol+host+":"+portNumber+basePath+"?filePath="+filePath.replace("\\", "/")+"&fileName="+fileName;
 		return url;
