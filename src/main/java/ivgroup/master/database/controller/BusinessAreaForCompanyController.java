@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import ivgroup.master.database.Constants;
 import ivgroup.master.database.bl.BusinessAreaForCompanyBusinessLogic;
 import ivgroup.master.database.dto.businessAreaForCompany.BusinessAreaForCompany;
@@ -40,6 +42,9 @@ public class BusinessAreaForCompanyController {
 	}
 	*/
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path = "/{businessAreaForCompany_id}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<BusinessAreaForCompany>> getBusinessAreaForCompanyInfoUsingId(
@@ -66,6 +71,9 @@ public class BusinessAreaForCompanyController {
 	}
 	*/
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path = "/city/{city_id}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<BusinessAreaForCompanyByCityID>> selectBusinessAreaUsingCityId(@PathVariable Long city_id,
@@ -73,7 +81,9 @@ public class BusinessAreaForCompanyController {
 		return businessAreaForCompany_business_logic.selectBusinessAreaUsingCityId(city_id, owner_id);
 	}
 
-	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, produces = {
 			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> addBusinessAreaForCompanyName(
@@ -81,6 +91,9 @@ public class BusinessAreaForCompanyController {
 		return businessAreaForCompany_business_logic.addBusinessAreaForCompany(businessAreaForCompany_info);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PutMapping(path = "/{businessAreaForCompany_id}", consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })
@@ -90,11 +103,17 @@ public class BusinessAreaForCompanyController {
 				businessAreaForCompany_info);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@DeleteMapping(path = "/{businessAreaForCompany_id}")
 	public ResponseEntity<Void> delBusinessAreaForCompanyName(@PathVariable Long businessAreaForCompany_id) {
 		return businessAreaForCompany_business_logic.deleteBusinessAreaForCompany(businessAreaForCompany_id);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PatchMapping(path = "revoke/{businessAreaForCompany_id}", consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })

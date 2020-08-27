@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import ivgroup.master.database.Constants;
 import ivgroup.master.database.bl.CompanyExecutiveGeoLocationBusinessLogic;
 import ivgroup.master.database.dto.companyExecutiveGeoLocation.CompanyExecutiveGeoLocationInsert;
@@ -35,6 +37,9 @@ public class CompanyExecutiveGeoLocationController
 	@Autowired
 	CompanyExecutiveGeoLocationBusinessLogic cbl;
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid CompanyExecutiveGeoLocationSelect>>
 	selectCompanyExecutiveGeoLocationByCompanyExecutiveId(@PathVariable @NotNull Long companyExecutiveId) 
@@ -42,6 +47,9 @@ public class CompanyExecutiveGeoLocationController
 		return cbl.selectCompanyExecutiveGeoLocationByCompanyExecutiveId(companyExecutiveId);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="date/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid CompanyExecutiveGeoLocationSelect>>
 	selectCompanyExecutiveGeoLocationByCompanyExecutiveIdAndDate(
@@ -53,6 +61,9 @@ public class CompanyExecutiveGeoLocationController
 																				dateOfSearch);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="dateRange/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid CompanyExecutiveGeoLocationSelect>>
 	selectCompanyExecutiveGeoLocationByCompanyExecutiveIdAndBetweenDate(
@@ -66,6 +77,9 @@ public class CompanyExecutiveGeoLocationController
 																					endDate);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="date/text/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid CompanyExecutiveGeoLocationTextSelect>>
 	selectCompanyExecutiveGeoLocationTextByCompanyExecutiveIdAndDate(
@@ -77,6 +91,9 @@ public class CompanyExecutiveGeoLocationController
 																	dateOfSearch);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="dateRange/text/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid CompanyExecutiveGeoLocationTextSelect>>
 	selectCompanyExecutiveGeoLocationTextByCompanyExecutiveIdAndBetweenDate(
@@ -90,6 +107,9 @@ public class CompanyExecutiveGeoLocationController
 																			endDate);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PostMapping(	consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 					produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> addCompanyExecutiveGeoLocation(@Valid @RequestBody CompanyExecutiveGeoLocationInsert cgi)

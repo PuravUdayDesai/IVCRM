@@ -29,6 +29,8 @@ public class CompanyBranchSelect {
 	private	String CompanyName;
 	@NotNull(message = "companyCode cannot be NULL")
 	private	String CompanyCode;  
+	@NotNull(message = "CompanyBranchAddressDetailsId cannot be NULL")
+	private	Long companyBranchAddressDetailsId;  
 	@NotNull(message = "addressLine1 cannot be NULL")
 	private	String AddressLine1; 
 	@NotNull(message = "addressLine2 cannot be NULL")
@@ -62,8 +64,7 @@ public CompanyBranchSelect() {
 	
 }
 
-public CompanyBranchSelect(
-		@NotNull(message = "companyBranchID cannot be NULL") Long companyBranchID,
+public CompanyBranchSelect(@NotNull(message = "companyBranchID cannot be NULL") Long companyBranchID,
 		@NotNull(message = "companyBranchName cannot be NULL") String companyBranchName,
 		@NotNull(message = "companyBranchCode cannot be NULL") String companyBranchCode,
 		@NotNull(message = "companyRegionID cannot be NULL") Long companyRegionID,
@@ -76,6 +77,7 @@ public CompanyBranchSelect(
 		@NotNull(message = "companyId cannot be NULL") Long companyId,
 		@NotNull(message = "companyName cannot be NULL") String companyName,
 		@NotNull(message = "companyCode cannot be NULL") String companyCode,
+		@NotNull(message = "CompanyBranchAddressDetailsId cannot be NULL") Long companyBranchAddressDetailsId,
 		@NotNull(message = "addressLine1 cannot be NULL") String addressLine1,
 		@NotNull(message = "addressLine2 cannot be NULL") String addressLine2,
 		@NotNull(message = "addressLine3 cannot be NULL") String addressLine3,
@@ -104,6 +106,7 @@ public CompanyBranchSelect(
 	CompanyId = companyId;
 	CompanyName = companyName;
 	CompanyCode = companyCode;
+	this.companyBranchAddressDetailsId = companyBranchAddressDetailsId;
 	AddressLine1 = addressLine1;
 	AddressLine2 = addressLine2;
 	AddressLine3 = addressLine3;
@@ -119,6 +122,8 @@ public CompanyBranchSelect(
 	ContactNumber = contactNumber;
 	IsActive = isActive;
 }
+
+
 
 public Long getCompanyBranchID() {
 	return CompanyBranchID;
@@ -222,6 +227,14 @@ public String getCompanyCode() {
 
 public void setCompanyCode(String companyCode) {
 	CompanyCode = companyCode;
+}
+
+public Long getCompanyBranchAddressDetailsId() {
+	return companyBranchAddressDetailsId;
+}
+
+public void setCompanyBranchAddressDetailsId(Long companyBranchAddressDetailsId) {
+	this.companyBranchAddressDetailsId = companyBranchAddressDetailsId;
 }
 
 public String getAddressLine1() {

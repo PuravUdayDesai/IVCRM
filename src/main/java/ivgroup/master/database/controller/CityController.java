@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import ivgroup.master.database.Constants;
 import ivgroup.master.database.bl.CityBusinessLogic;
 import ivgroup.master.database.dto.city.City;
@@ -31,37 +33,54 @@ public class CityController {
 
 	@Autowired
 	CityBusinessLogic city_business_logic;
-
+	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid City>> getAllCityInfo() {
 		return city_business_logic.getAllCity();
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path = "/{city_id}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<@Valid City> getOneCityInfo(@PathVariable long city_id) {
 		return city_business_logic.getOneCityById(city_id);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path = "search/{search_content}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid City>> searchInCity(@PathVariable String search_content) {
 		return city_business_logic.searchInCity(search_content);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path = "/state/{state_id}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid CityInfoFromStateId>> selectCityUsingStateId(@PathVariable Long state_id) {
 		return city_business_logic.selectCityUsingStateId(state_id);
 	}
 
-
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, produces = {
 			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> addCity(@Valid @RequestBody CityInsert city_info) {
 		return city_business_logic.addCity(city_info);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PutMapping(path = "/{city_id}", consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })
@@ -70,11 +89,17 @@ public class CityController {
 		return city_business_logic.updateCity(city_id, city_info);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@DeleteMapping(path = "/{city_id}")
 	public ResponseEntity<Void> delCityName(@PathVariable Long city_id) {
 		return city_business_logic.deleteCity(city_id);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PatchMapping(path = "revoke/{city_id}", consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })

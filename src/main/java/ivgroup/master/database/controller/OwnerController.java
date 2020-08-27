@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import ivgroup.master.database.Constants;
 import ivgroup.master.database.bl.OwnerBusinessLogic;
 import ivgroup.master.database.dto.owner.OwnerInsert;
@@ -32,6 +34,9 @@ public class OwnerController {
 	@Autowired
 	OwnerBusinessLogic obl;
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="/{ownerId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<@Valid OwnerSelect> selectOwnerById(@PathVariable @NotNull Long ownerId)
 	{
@@ -52,12 +57,18 @@ public class OwnerController {
 		return obl.addOwner(oi);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@DeleteMapping(path="/{ownerId}")
 	public ResponseEntity<Void> deleteOwner(@PathVariable @NotNull Long ownerId)
 	{
 		return obl.deleteOwner(ownerId);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PutMapping(path = "/{ownerId}",	consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 										produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> updateOwnerFields(@PathVariable @NotNull Long ownerId,@RequestBody @Valid OwnerUpdate ou)
@@ -65,6 +76,9 @@ public class OwnerController {
 		return obl.updateOwnerFields(ownerId, ou);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PutMapping(path = "/secretkey/{ownerId}",	consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> updateOwnerOwnerSecretKey(@PathVariable @NotNull Long ownerId) 
@@ -72,6 +86,9 @@ public class OwnerController {
 		return obl.updateOwnerOwnerSecretKey(ownerId);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="/email/{emailId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Integer> sendOTPVerificationEmail(@PathVariable @NotNull String emailId)
 	{

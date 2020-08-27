@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import ivgroup.master.database.Constants;
 import ivgroup.master.database.bl.CountryBusinessLogic;
 import ivgroup.master.database.dto.country.Country;
@@ -31,29 +33,44 @@ public class CountryController {
 	@Autowired
 	CountryBusinessLogic country_business_logic;
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid Country>> getAllCountryInfo() {
 		return country_business_logic.getAllCountry();
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path = "/{country_id}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<@Valid Country> getOneCountryInfo(@PathVariable long country_id) {
 		return country_business_logic.getOneCountryById(country_id);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path = "search/{search_content}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid Country>> searchInCountry(@PathVariable String search_content) {
 		return country_business_logic.searchInCountry(search_content);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, produces = {
 			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> addCountryName(@Valid @RequestBody CountryInsert country_info) {
 		return country_business_logic.addCountry(country_info);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PutMapping(path = "/{country_id}", consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })
@@ -62,11 +79,17 @@ public class CountryController {
 		return country_business_logic.updateCountry(country_id, country_info);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@DeleteMapping(path = "/{country_id}")
 	public ResponseEntity<Void> delCountryName(@PathVariable Long country_id) {
 		return country_business_logic.deleteCountry(country_id);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PatchMapping(path = "revoke/{country_id}", consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 					MediaType.APPLICATION_XML_VALUE })

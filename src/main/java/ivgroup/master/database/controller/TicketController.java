@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import ivgroup.master.database.Constants;
 import ivgroup.master.database.bl.TicketBusinessLogic;
 import ivgroup.master.database.dto.ticket.NonAccessibleExecutiveListSelect;
@@ -43,6 +45,9 @@ public class TicketController
 	TicketBusinessLogic tbl;
 	
 	//REMOVE
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PostMapping(consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Long> addTicket(@Valid @RequestBody TicketInsert ti)
@@ -50,6 +55,9 @@ public class TicketController
 		return tbl.addTicket(ti);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PostMapping(path="/ticketStatus" , consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> addTicketStatus(@Valid @RequestBody TicketStatusInsert ti)
@@ -57,6 +65,9 @@ public class TicketController
 		return tbl.addTicketStatus(ti);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PostMapping(path="/ticketFollowupDate" , consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> addFollowupDateInsert(@Valid @RequestBody TicketFollowupDateInsert ti) 
@@ -64,6 +75,9 @@ public class TicketController
 		return tbl.addFollowupDateInsert(ti);
 	}
 		
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PostMapping(path="/ticketAccessList" , consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> addTicketAccessList(@Valid @RequestBody TicketAccessListInsert ti) 
@@ -72,18 +86,27 @@ public class TicketController
 	}
 
 	//REMOVE
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@DeleteMapping(path="/{ticketId}")
 	public ResponseEntity<Void> deleteMainTicket(@PathVariable @NotNull Long ticketId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
 	{
 		return tbl.deleteMainTicket(ticketId,companyExecutiveId);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@DeleteMapping(path="/ticketAccessList/{ticketAccessListId}")
 	public ResponseEntity<Void> deleteTicketAccessList(@PathVariable @NotNull Long ticketAccessListId,@RequestParam("ticketId") Long ticketId,@RequestParam("companyExecutiveId") Long companyExecutiveId) 
 	{
 		return tbl.deleteTicketAccessList(ticketAccessListId,ticketId,companyExecutiveId);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@DeleteMapping(path="/ticketFollowupDate/{ticketFollowupDateId}")
 	public ResponseEntity<Void> deleteTicketFollowupDate(@PathVariable @NotNull Long ticketFollowupDateId,@RequestParam("ticketId") Long ticketId,@RequestParam("companyExecutiveId") Long companyExecutiveId)
 	{
@@ -91,6 +114,9 @@ public class TicketController
 	}
 
 	//REMOVE
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PutMapping(path = "/enquiryRemarks/{ticketId}",	consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> updateEnquiryRemarks(@PathVariable @NotNull Long ticketId,@RequestParam("enquiryRemarks") String enquiryRemarks,@RequestParam("companyExecutiveId") Long companyExecutiveId)throws SQLException, ClassNotFoundException 
@@ -99,6 +125,9 @@ public class TicketController
 	}
 
 	//REMOVE
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PutMapping(path = "/ticketType/{ticketId}",	consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> updateTicketType(@PathVariable @NotNull Long ticketId,@RequestParam("ticketType") Long ticketType,@RequestParam("companyExecutiveId") Long companyExecutiveId)throws SQLException, ClassNotFoundException 
@@ -106,6 +135,9 @@ public class TicketController
 		return tbl.updateTicketType(ticketId, ticketType,companyExecutiveId);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PutMapping(path = "/{ticketId}",	consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> updateTicketFields(@PathVariable @NotNull Long ticketId,@Valid @RequestBody TicketUpdate tu)
@@ -113,42 +145,63 @@ public class TicketController
 		return tbl.updateTicketFields(ticketId, tu);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid TicketDetailsSelect>> selectTicketDetailsByCompanyExecutiveId(@PathVariable @NotNull Long companyExecutiveId)
 	{
 		return tbl.selectTicketDetailsByCompanyExecutiveId(companyExecutiveId);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="/ticketFollowupDate/{ticketId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid TicketFollowupDateSelect>> selectTicketFollowupDates(@PathVariable @NotNull Long ticketId)
 	{
 		return tbl.selectTicketFollowupDates(ticketId);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PostMapping(path="/master",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid TicketDetailsSelect>> selectTicketByFilter(@Valid @RequestBody TicketFilterSelect tfs)
 	{
 		return tbl.selectTicketByFilter(tfs);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="/ticketAccessList/{ticketId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid TicketAccessListSelect>> selectTicketAccessListByTicketId(@PathVariable @NotNull Long ticketId)
 	{
 		return tbl.selectTicketAccessListByTicketId(ticketId);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="/ticketStatus/{ticketId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid TicketStatusLogSelect>> selectTicketStatusLogbyTicketId(@PathVariable @NotNull Long ticketId)
 	{
 		return tbl.selectTicketStatusLogbyTicketId(ticketId);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="/ticketNonAccessibleExecutives/{ticketId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid NonAccessibleExecutiveListSelect>> selectNonAccessibleExecutivesOfTicket(@PathVariable @NotNull Long ticketId)
 	{
 		return tbl.selectNonAccessibleExecutivesOfTicket(ticketId);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="/ticketNonAccessibleExecutives/companyExecutive/{ticketId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid NonAccessibleExecutiveListSelect>> selectNonAccessibleExecutivesOfTicketByCompanyExecutive(@PathVariable @NotNull Long ticketId,@RequestParam("companyExecutiveId") @NotNull Long companyExecutiveId)
 	{

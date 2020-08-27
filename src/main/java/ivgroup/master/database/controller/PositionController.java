@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import ivgroup.master.database.Constants;
 import ivgroup.master.database.bl.PositionBusinessLogic;
 import ivgroup.master.database.dto.position.PositionInsert;
@@ -33,12 +35,18 @@ public class PositionController
 	@Autowired
 	PositionBusinessLogic pbl;
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="/{ownerId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid PositionSelect>> selectPosition(@PathVariable @NotNull Long ownerId)
 	{
 		return pbl.selectPosition(ownerId);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PostMapping(consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> addPosition(@RequestParam("companyExecutiveId") @NotNull Long companyExecutiveId,@Valid @RequestBody PositionInsert pi) 
@@ -46,6 +54,9 @@ public class PositionController
 		return pbl.addPosition(companyExecutiveId,pi);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PutMapping(path = "/{positionId}",	consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> updateFields(@RequestParam("companyExecutiveId") @NotNull Long companyExecutiveId,@PathVariable @NotNull Long positionId,@Valid @RequestBody PositionUpdate pu)
@@ -53,6 +64,9 @@ public class PositionController
 		return pbl.updateFields(companyExecutiveId,positionId, pu);
 	}
 
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@DeleteMapping(path="/{positionId}")
 	public ResponseEntity<Void> deletePosition(@PathVariable @NotNull Long positionId)
 	{

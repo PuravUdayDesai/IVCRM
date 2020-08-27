@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import ivgroup.master.database.Constants;
 import ivgroup.master.database.bl.CompanyBranchTypeBusinessLogic;
 import ivgroup.master.database.dto.companyBranchType.CompanyBranchTypeInsert;
@@ -32,12 +34,18 @@ public class CompanyBranchTypeController
 	@Autowired
 	CompanyBranchTypeBusinessLogic cbbl;
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="/{companyId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid CompanyBranchTypeSelect>> selectCompanyBranchTypeByCompanyId(@PathVariable @NotNull Long companyId)
 	{
 		return cbbl.selectCompanyBranchTypeByCompanyId(companyId);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PostMapping(consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> addCompanyBranchType(@Valid @RequestBody CompanyBranchTypeInsert cbi)
@@ -45,6 +53,9 @@ public class CompanyBranchTypeController
 		return cbbl.addCompanyBranchType(cbi);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PutMapping(path = "/{companyId}",	consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> updateCompanyBranchTypeFields(@PathVariable @NotNull Long companyId,@Valid @RequestBody CompanyBranchTypeUpdate cbu)
@@ -52,6 +63,9 @@ public class CompanyBranchTypeController
 		return cbbl.updateCompanyBranchTypeFields(companyId, cbu);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@DeleteMapping(path="/{companyBranchTypeId}")
 	public ResponseEntity<Void> deleteCompanyBranchType(@PathVariable @NotNull Long companyBranchTypeId) 
 	{

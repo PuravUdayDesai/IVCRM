@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import ivgroup.master.database.Constants;
 import ivgroup.master.database.bl.CompanyExecutiveBusinessLogic;
 import ivgroup.master.database.dto.companyExecutive.CompanyExecutiveInsert;
@@ -35,49 +37,82 @@ public class CompanyExecutiveController {
 	@Autowired
 	CompanyExecutiveBusinessLogic cebl;
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PostMapping(consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> addCompanyExecutive(@Valid @RequestBody CompanyExecutiveInsert ci)
 	{
 		return cebl.addCompanyExecutive(ci);
 	}
+	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid CompanyExecutiveSelect>> selectCompanyExecutive()
 	{
 		return cebl.selectCompanyExecutive();
 	}
+	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="/{companyExecutiveID}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<@Valid CompanyExecutiveSelect> selectCompanyByCompanyExecutiveId(@PathVariable @NotNull Long companyExecutiveID)
 	{
 		return cebl.selectCompanyByCompanyExecutiveId(companyExecutiveID);
 	}	
+	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="/company/{companyId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid CompanyExecutiveSelect>> selectCompanyExecutiveByCompanyId(@PathVariable @NotNull Long companyId)
 	{
 		return cebl.selectCompanyExecutiveByCompanyId(companyId);
 	}
+	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="/owner/{ownerId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid CompanyExecutiveSelect>> selectCompanyExecutiveByOwnerId(@PathVariable @NotNull Long ownerId)
 	{
 		return cebl.selectCompanyExecutiveByOwnerId(ownerId);
 	}
+	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="/branch/{companyBranchId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid CompanyExecutiveSelect>> selectCompanyExecutiveByCompanyBranchId(@PathVariable @NotNull Long companyBranchId)
 	{
 		return cebl.selectCompanyExecutiveByCompanyBranchId(companyBranchId);
 	}
+	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@GetMapping(path="/subPosition/{companyExecutiveId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<List<@Valid CompanyExecutiveSelect>> selectCompanyExecutiveOfSubPosition(@PathVariable @NotNull Long companyExecutiveId)
 	{
 		return cebl.selectCompanyExecutiveOfSubPosition(companyExecutiveId);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@DeleteMapping
 	public ResponseEntity<Void> deleteCompanyExecutive(@RequestParam(name = "companyExecutiveId") Long companyExecutiveId,@RequestParam(name = "companyId") Long companyId)
 	{
 		return cebl.deleteCompanyExecutive(companyExecutiveId, companyId);
 	}
 	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PutMapping(path = "/{companyExecutiveId}",	consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> updateFields(@PathVariable @NotNull Long companyExecutiveId,@Valid @RequestBody CompanyExecutiveUpdate cu) 
