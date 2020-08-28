@@ -19,8 +19,6 @@ public class OwnerSelect {
 	private String ownerEmail;
 	@NotNull(message = "UserName cannot be NULL")
 	private String userName;
-	@NotNull(message = "Password cannot be NULL")
-	private String password;
 	@NotNull(message = "IsActive cannot be NULL")
 	private Boolean isActive;
 	@NotNull(message = "CreatedOn cannot be NULL")
@@ -39,7 +37,6 @@ public class OwnerSelect {
 			@NotNull(message = "OwnerContact cannot be NULL") String ownerContact,
 			@NotNull(message = "OwnerEmail cannot be NULL") @Email(message= "EmailId provider is INCORRECT") String ownerEmail,
 			@NotNull(message = "UserName cannot be NULL") String userName,
-			@NotNull(message = "Password cannot be NULL") String password,
 			@NotNull(message = "IsActive cannot be NULL") Boolean isActive,
 			@NotNull(message = "CreatedOn cannot be NULL") Timestamp createdOn,
 			@NotNull(message = "CreatedOn cannot be NULL") Timestamp lastEditOn) {
@@ -49,7 +46,6 @@ public class OwnerSelect {
 		this.ownerContact = ownerContact;
 		this.ownerEmail = ownerEmail;
 		this.userName = userName;
-		this.password = password;
 		this.isActive = isActive;
 		this.createdOn = createdOn;
 		this.lastEditOn = lastEditOn;
@@ -93,14 +89,6 @@ public class OwnerSelect {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public Boolean getIsActive() {

@@ -11,7 +11,6 @@ public class CompanyExecutiveUpdate {
 
 	private String executiveName;
 	private String loginId;
-	private String password;
 	private Long companyBranchId;
 	private Long baseCityId;
 	private Long companyId;
@@ -30,15 +29,20 @@ public class CompanyExecutiveUpdate {
 		
 	}
 
-	public CompanyExecutiveUpdate(String executiveName, String loginId, String password, Long companyBranchId,
-			Long baseCityId, Long companyId, String contactNumber, Boolean isActive,
+	public CompanyExecutiveUpdate(
+			String executiveName, 
+			String loginId, 
+			Long companyBranchId,
+			Long baseCityId,
+			Long companyId, 
+			String contactNumber, 
+			Boolean isActive,
 			@NotNull(message = "CreatedOn cannot be NULL") @PastOrPresent Timestamp lastEditOn,
 			@NotNull(message = "CreatedBy cannot be NULL") Long lastEditBy,
 			@NotNull(message = "CreatedDeviceType cannot be NULL") Integer lastEditDeviceType) {
 		super();
 		this.executiveName = executiveName;
 		this.loginId = loginId;
-		this.password = password;
 		this.companyBranchId = companyBranchId;
 		this.baseCityId = baseCityId;
 		this.companyId = companyId;
@@ -65,14 +69,6 @@ public class CompanyExecutiveUpdate {
 
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public Long getCompanyBranchId() {

@@ -300,6 +300,7 @@ public class OwnerBusinessLogic {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
+	@SuppressWarnings("unused")
 	private ResponseEntity<Void> updateOwnerOwnerPassword(Connection c, Long ownerId, String password) {
 		Boolean rs = false;
 
@@ -371,15 +372,12 @@ public class OwnerBusinessLogic {
 			return rs;
 		}
 		rs = null;
-		if (ou.getOwnerPassword() != null) {
-			rs = updateOwnerOwnerPassword(c, ownerId, ou.getOwnerPassword());
-			wentIn = true;
-		}
-		if (rs != null && rs.getStatusCode() != HttpStatus.OK && wentIn) {
-			wentIn = false;
-			return rs;
-		}
-		rs = null;
+		/*
+		 * if (ou.getOwnerPassword() != null) { rs = updateOwnerOwnerPassword(c,
+		 * ownerId, ou.getOwnerPassword()); wentIn = true; } if (rs != null &&
+		 * rs.getStatusCode() != HttpStatus.OK && wentIn) { wentIn = false; return rs; }
+		 * rs = null;
+		 */
 		if (ou.getIsActive() != null) {
 			rs = updateOwnerIsActive(c, ownerId, ou.getIsActive());
 			wentIn = true;

@@ -282,6 +282,9 @@ public class CompanyExecutiveBusinessLogic {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	
 	}
+	
+	//NOT USED
+	@SuppressWarnings("unused")
 	private  ResponseEntity<Void>  updateCompanyExecutivePassword(Connection c, Long companyExecutiveId, String password)
 	{
 		Boolean rs=false;
@@ -298,6 +301,8 @@ public class CompanyExecutiveBusinessLogic {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	
 	}
+	
+	
 	private  ResponseEntity<Void>  updateCompanyExecutiveCompanyBranchID(Connection c, Long companyExecutiveId, Long companyBranchID)
 	{
 		Boolean rs=false;
@@ -461,15 +466,12 @@ if(cu.getLoginId()!=null) {
 				return rs;
 				}
 				rs=null;
-if(cu.getPassword()!=null) {
-			rs=updateCompanyExecutivePassword(c, companyExecutiveId, cu.getPassword());
-			wentIn=true;
-		}
-				if(rs!=null&&rs.getStatusCode()!=HttpStatus.OK&&wentIn) {
-				wentIn=false;
-				return rs;
-				}
-				rs=null;
+		/*
+		 * if(cu.getPassword()!=null) { rs=updateCompanyExecutivePassword(c,
+		 * companyExecutiveId, cu.getPassword()); wentIn=true; }
+		 * if(rs!=null&&rs.getStatusCode()!=HttpStatus.OK&&wentIn) { wentIn=false;
+		 * return rs; } rs=null;
+		 */
 if(cu.getCompanyBranchId()!=null) {
 			rs=updateCompanyExecutiveCompanyBranchID(c, companyExecutiveId, cu.getCompanyBranchId());
 			wentIn=true;

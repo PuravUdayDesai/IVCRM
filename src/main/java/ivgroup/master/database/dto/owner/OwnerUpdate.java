@@ -16,7 +16,6 @@ public class OwnerUpdate {
 	private String ownerEmail;
 	private Boolean isActive;
 	private String ownerUserName;
-	private String ownerPassword;
 	@NotNull(message = "LastEditOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
@@ -32,7 +31,6 @@ public class OwnerUpdate {
 			@Email(message= "EmailId provider is INCORRECT") String ownerEmail, 
 			Boolean isActive, 
 			String ownerUserName,
-			String ownerPassword, 
 			@NotNull(message = "LastEditOn cannot be NULL") @PastOrPresent Timestamp lastEditOn) {
 		super();
 		this.ownerName = ownerName;
@@ -40,7 +38,6 @@ public class OwnerUpdate {
 		this.ownerEmail = ownerEmail;
 		this.isActive = isActive;
 		this.ownerUserName = ownerUserName;
-		this.ownerPassword = ownerPassword;
 		this.lastEditOn = lastEditOn;
 	}
 
@@ -82,14 +79,6 @@ public class OwnerUpdate {
 
 	public void setOwnerUserName(String ownerUserName) {
 		this.ownerUserName = ownerUserName;
-	}
-
-	public String getOwnerPassword() {
-		return ownerPassword;
-	}
-
-	public void setOwnerPassword(String ownerPassword) {
-		this.ownerPassword = ownerPassword;
 	}
 
 	public Timestamp getLastEditOn() {

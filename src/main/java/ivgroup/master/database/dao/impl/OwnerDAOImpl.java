@@ -34,7 +34,7 @@ public class OwnerDAOImpl implements OwnerDAO{
 					rs.getString("ownerContact"),
 					rs.getString("ownerEmail"),
 					rs.getString("UserName"),
-					rs.getString("Password"),
+					//rs.getString("Password"),
 					rs.getBoolean("isActive"),
 					rs.getTimestamp("CreatedOn"),
 					rs.getTimestamp("LastEditOn")

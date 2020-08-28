@@ -10,8 +10,6 @@ public class CompanyExecutiveSelect {
 	private String executiveName;
 	@NotNull(message = "LoginID cannot be NULL")
 	private String loginID;
-	@NotNull(message = "Password cannot be NULL")
-	private String password;
 	@NotNull(message = "CompanyBranchID cannot be NULL")
 	private Long companyBranchID;
 	@NotNull(message = "CompanyBranchName cannot be NULL")
@@ -42,7 +40,6 @@ public class CompanyExecutiveSelect {
 			@NotNull(message = "ExecutiveId cannot be NULL") String executiveId,
 			@NotNull(message = "ExecutiveName cannot be NULL") String executiveName,
 			@NotNull(message = "LoginID cannot be NULL") String loginID,
-			@NotNull(message = "Password cannot be NULL") String password,
 			@NotNull(message = "CompanyBranchID cannot be NULL") Long companyBranchID,
 			@NotNull(message = "CompanyBranchName cannot be NULL") String companyBranchName,
 			@NotNull(message = "CompanyBranchCode cannot be NULL") String companyBranchCode,
@@ -57,7 +54,6 @@ public class CompanyExecutiveSelect {
 		this.executiveId = executiveId;
 		this.executiveName = executiveName;
 		this.loginID = loginID;
-		this.password = password;
 		this.companyBranchID = companyBranchID;
 		this.companyBranchName = companyBranchName;
 		this.companyBranchCode = companyBranchCode;
@@ -92,14 +88,6 @@ public class CompanyExecutiveSelect {
 
 	public void setLoginID(String loginID) {
 		this.loginID = loginID;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public Long getCompanyBranchID() {
