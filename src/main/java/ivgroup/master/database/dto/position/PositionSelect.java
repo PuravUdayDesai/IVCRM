@@ -59,7 +59,8 @@ public class PositionSelect
 		
 	}
 
-	public PositionSelect(@NotNull(message = "PositionId cannot be NULL") Long positionId,
+	public PositionSelect(
+			@NotNull(message = "PositionId cannot be NULL") Long positionId,
 			@NotNull(message = "PositionName cannot be NULL") String positionName,
 			@NotNull(message = "PositionPriority cannot be NULL") @Min(value=1) @Max(value=15) Integer positionPriority,
 			@NotNull(message = "CompanyId cannot be NULL") Long companyId,

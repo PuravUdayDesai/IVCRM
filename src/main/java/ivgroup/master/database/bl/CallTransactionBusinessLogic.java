@@ -126,7 +126,6 @@ public class CallTransactionBusinessLogic {
 	        } catch (IOException ex) {
 	        	return new ResponseEntity<Resource>(file,HttpStatus.INTERNAL_SERVER_ERROR);
 	        }
-
 	        if(contentType == null) {
 	            contentType = "application/octet-stream";
 	        }
@@ -189,6 +188,7 @@ public class CallTransactionBusinessLogic {
 			if (file.exists()) {
 				try {
 				String mimeType = URLConnection.guessContentTypeFromName(file.getName());
+				System.out.println("MimeType: "+mimeType);
 				if (mimeType == null) {
 					mimeType = "application/octet-stream";
 				}
@@ -197,8 +197,6 @@ public class CallTransactionBusinessLogic {
 				//long frames = audioInputStream.getFrameLength();
 				//durationInSeconds = (frames+0.0) / format.getFrameRate();  
 				//System.out.println("Duration: "+durationInSeconds);
-				
-				response.setContentType(mimeType);
 
 				response.setHeader("Content-Disposition", String.format("inline; filename=\"" + file.getName() + "\""));
 

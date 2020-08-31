@@ -2,8 +2,12 @@ package ivgroup.master.database.dto.company;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -62,24 +66,44 @@ public class CompanyInsertWithExecutivePosition {
 	@NotNull(message = "PositionName cannot be NULL")
 	private String positionName;
 	@NotNull(message = "PositionPriority cannot be NULL")
+	@Min(value=1)
+	@Max(value=25)
 	private Integer positionPriority;
 	@NotNull(message = "CompanyGrant cannot be NULL")
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
 	private String companyGrant;
 	@NotNull(message = "CompanyBranchGrant cannot be NULL")
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
 	private String companyBranchGrant;
 	@NotNull(message = "CompanyExecutiveGrant cannot be NULL")
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
 	private String companyExecutiveGrant;
 	@NotNull(message = "ClientGrant cannot be NULL")
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
 	private String clientGrant;
 	@NotNull(message = "ProductGrant cannot be NULL")
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
 	private String productGrant;
 	@NotNull(message = "LocationGrant cannot be NULL")
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
 	private String locationGrant;
 	@NotNull(message = "EnquiryGrant cannot be NULL")
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
 	private String enquiryGrant;
 	@NotNull(message = "TicketGrant cannot be NULL")
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
 	private String ticketGrant;
 	@NotNull(message = "PositionGrant cannot be NULL")
+	@Size(min = 1, max=4)
+	@Pattern(regexp="c?C?r?R?u?U?d?D?[cCrRuUdD]+")
 	private String positionGrant;
 	@NotNull(message = "CreatedOn cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
@@ -94,6 +118,8 @@ public class CompanyInsertWithExecutivePosition {
 	{
 		
 	}
+	
+
 	
 	public CompanyInsertWithExecutivePosition(
 			@NotNull(message = "AddressLine1 cannot be NULL") String addressLine1,
@@ -122,16 +148,16 @@ public class CompanyInsertWithExecutivePosition {
 			@NotNull(message = "Password cannot be NULL") String password,
 			@NotNull(message = "ContactNumber cannot be NULL") String contactNumber,
 			@NotNull(message = "PositionName cannot be NULL") String positionName,
-			@NotNull(message = "PositionPriority cannot be NULL") Integer positionPriority,
-			@NotNull(message = "CompanyGrant cannot be NULL") String companyGrant,
-			@NotNull(message = "CompanyBranchGrant cannot be NULL") String companyBranchGrant,
-			@NotNull(message = "CompanyExecutiveGrant cannot be NULL") String companyExecutiveGrant,
-			@NotNull(message = "ClientGrant cannot be NULL") String clientGrant,
-			@NotNull(message = "ProductGrant cannot be NULL") String productGrant,
-			@NotNull(message = "LocationGrant cannot be NULL") String locationGrant,
-			@NotNull(message = "EnquiryGrant cannot be NULL") String enquiryGrant,
-			@NotNull(message = "TicketGrant cannot be NULL") String ticketGrant,
-			@NotNull(message = "PositionGrant cannot be NULL") String positionGrant,
+			@NotNull(message = "PositionPriority cannot be NULL") @Min(1) @Max(25) Integer positionPriority,
+			@NotNull(message = "CompanyGrant cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String companyGrant,
+			@NotNull(message = "CompanyBranchGrant cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String companyBranchGrant,
+			@NotNull(message = "CompanyExecutiveGrant cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String companyExecutiveGrant,
+			@NotNull(message = "ClientGrant cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String clientGrant,
+			@NotNull(message = "ProductGrant cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String productGrant,
+			@NotNull(message = "LocationGrant cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String locationGrant,
+			@NotNull(message = "EnquiryGrant cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String enquiryGrant,
+			@NotNull(message = "TicketGrant cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String ticketGrant,
+			@NotNull(message = "PositionGrant cannot be NULL") @Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String positionGrant,
 			@NotNull(message = "CreatedOn cannot be NULL") @PastOrPresent Timestamp createdOn,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
 			@NotNull(message = "DeviceType cannot be NULL") Integer deviceType) {
@@ -176,6 +202,9 @@ public class CompanyInsertWithExecutivePosition {
 		this.createdBy = createdBy;
 		this.deviceType = deviceType;
 	}
+
+
+
 	public String getAddressLine1() {
 		return addressLine1;
 	}

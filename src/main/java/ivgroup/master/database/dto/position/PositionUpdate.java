@@ -59,19 +59,18 @@ public class PositionUpdate
 	}
 
 	public PositionUpdate(
-			String positionName, 
-			@Min(value=1) @Max(value=15) Integer positionPriority, 
-			Long companyId, 
-			String company,
-			String companyBranch, 
-			String companyExecutive,
-			String client, 
-			String product, 
-			String location,
-			String enquiry, 
-			String ticket, 
-			String position,
-			Boolean isActive,
+			String positionName,
+			@Min(1) @Max(15) Integer positionPriority,
+			Long companyId,
+			@Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String company,
+			@Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String companyBranch,
+			@Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String companyExecutive,
+			@Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String client,
+			@Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String product,
+			@Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String location,
+			@Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String enquiry,
+			@Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String ticket,
+			@Size(min = 1, max = 4) @Pattern(regexp = "c?C?r?R?u?U?d?D?[cCrRuUdD]+") String position, Boolean isActive,
 			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
 			@NotNull(message = "LastEditOn cannot be NULL") @PastOrPresent Timestamp lastEditOn) {
 		super();
