@@ -46,6 +46,34 @@ public class CompanyBranchTypeDAOImpl implements CompanyBranchTypeDAO
 		c.close();
 		return lcs;
 	}
+	
+	@Override
+	public List<CompanyBranchTypeSelect> selectCompanyBranchTypeByOwnerId(Long ownerId)throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"company\".\"fn_selectCompanyBranchTypeByOwnerId\"(?);");
+		stmt.setLong(1, ownerId);
+		ResultSet rs=stmt.executeQuery();
+		List<CompanyBranchTypeSelect> lcs=new ArrayList<CompanyBranchTypeSelect>();
+		while(rs.next())
+		{
+			lcs.add(new CompanyBranchTypeSelect(
+					rs.getLong("CompanyBranchTypeId"),
+					rs.getString("CompanyBranchTypeName"),
+					rs.getLong("CompanyId"),
+					rs.getString("CompanyName"),
+					rs.getInt("CompanyBranchPosition"),
+					rs.getLong("CreatedBy"),
+					rs.getTimestamp("CreatedOn"),
+					rs.getTimestamp("LastEditOn"),
+					rs.getLong("LastEditBy")
+					));
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return lcs;
+	}
 
 	@Override
 	public Boolean addCompanyBranchType(CompanyBranchTypeInsert cbi) throws SQLException, ClassNotFoundException 

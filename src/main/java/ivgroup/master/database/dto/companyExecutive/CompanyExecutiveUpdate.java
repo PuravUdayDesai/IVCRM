@@ -22,7 +22,6 @@ public class CompanyExecutiveUpdate {
 	private Timestamp lastEditOn;
 	@NotNull(message = "LastEditBy cannot be NULL")
 	private Long lastEditBy;
-	@NotNull(message = "LastEditDeviceType cannot be NULL")
 	private Integer lastEditDeviceType;
 	
 	public CompanyExecutiveUpdate() {
@@ -39,7 +38,7 @@ public class CompanyExecutiveUpdate {
 			Boolean isActive,
 			@NotNull(message = "CreatedOn cannot be NULL") @PastOrPresent Timestamp lastEditOn,
 			@NotNull(message = "CreatedBy cannot be NULL") Long lastEditBy,
-			@NotNull(message = "CreatedDeviceType cannot be NULL") Integer lastEditDeviceType) {
+			Integer lastEditDeviceType) {
 		super();
 		this.executiveName = executiveName;
 		this.loginId = loginId;

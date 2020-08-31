@@ -35,6 +35,7 @@ public class CompanyExecutiveDAOImpl implements CompanyExecutiveDAO{
 		stmt.setLong(9, cei.getCreatedBy());
 		stmt.setInt(10, cei.getCreatedDeviceType());
 		ResultSet rs=stmt.executeQuery();
+		System.out.println(stmt);
 		Boolean rsMain=false;
 		if(rs.next()) {
 			rsMain=rs.getBoolean("fn_insertCompanyExecutive");
@@ -69,7 +70,8 @@ public class CompanyExecutiveDAOImpl implements CompanyExecutiveDAO{
 					rs.getString("CompanyName"),
 					rs.getString("CompanyCode"),
 					rs.getString("ContactNumber"),
-					rs.getBoolean("IsActive")
+					rs.getBoolean("IsActive"),
+					rs.getInt("Position")
 					));
 			
 		}
@@ -102,7 +104,8 @@ public class CompanyExecutiveDAOImpl implements CompanyExecutiveDAO{
 					rs.getString("CompanyName"),
 					rs.getString("CompanyCode"),
 					rs.getString("ContactNumber"),
-					rs.getBoolean("IsActive")
+					rs.getBoolean("IsActive"),
+					rs.getInt("Position")
 					);
 			
 		}
@@ -135,7 +138,8 @@ public class CompanyExecutiveDAOImpl implements CompanyExecutiveDAO{
 					rs.getString("CompanyName"),
 					rs.getString("CompanyCode"),
 					rs.getString("ContactNumber"),
-					rs.getBoolean("IsActive")
+					rs.getBoolean("IsActive"),
+					rs.getInt("Position")
 					));
 			
 		}
@@ -169,7 +173,8 @@ public class CompanyExecutiveDAOImpl implements CompanyExecutiveDAO{
 					rs.getString("CompanyName"),
 					rs.getString("CompanyCode"),
 					rs.getString("ContactNumber"),
-					rs.getBoolean("IsActive")
+					rs.getBoolean("IsActive"),
+					rs.getInt("Position")
 					));
 			
 		}
@@ -203,7 +208,8 @@ public class CompanyExecutiveDAOImpl implements CompanyExecutiveDAO{
 					rs.getString("CompanyName"),
 					rs.getString("CompanyCode"),
 					rs.getString("ContactNumber"),
-					rs.getBoolean("IsActive")
+					rs.getBoolean("IsActive"),
+					rs.getInt("Position")
 					));
 			
 		}
@@ -237,7 +243,8 @@ public class CompanyExecutiveDAOImpl implements CompanyExecutiveDAO{
 					rs.getString("CompanyName"),
 					rs.getString("CompanyCode"),
 					rs.getString("ContactNumber"),
-					rs.getBoolean("IsActive")
+					rs.getBoolean("IsActive"),
+					rs.getInt("Position")
 					));
 			
 		}
@@ -261,7 +268,6 @@ public class CompanyExecutiveDAOImpl implements CompanyExecutiveDAO{
 	c.commit();
 	rs.close();
 	stmt.close();
-	c.close();
 	return rsMain;
 	}
 

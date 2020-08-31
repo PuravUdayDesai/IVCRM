@@ -49,6 +49,27 @@ public class CompanyBranchTypeBusinessLogic
 		return new ResponseEntity<List<CompanyBranchTypeSelect>>(lcs,HttpStatus.OK);
 	}
 	
+	public ResponseEntity<List<CompanyBranchTypeSelect>> selectCompanyBranchTypeByOwnerId(Long ownerId)
+	{
+		List<CompanyBranchTypeSelect> lcs=new ArrayList<CompanyBranchTypeSelect>();
+		if(ownerId==null)
+		{
+			return new ResponseEntity<List<CompanyBranchTypeSelect>>(lcs,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			lcs=cbdi.selectCompanyBranchTypeByOwnerId(ownerId);
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
+			return new ResponseEntity<List<CompanyBranchTypeSelect>>(lcs,HttpStatus.NOT_FOUND);
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
+			return new ResponseEntity<List<CompanyBranchTypeSelect>>(lcs,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(lcs.isEmpty())
+		{
+			return new ResponseEntity<List<CompanyBranchTypeSelect>>(lcs,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<CompanyBranchTypeSelect>>(lcs,HttpStatus.OK);
+	}
+	
 	public ResponseEntity<Void> addCompanyBranchType(CompanyBranchTypeInsert cbi)
 	{
 		if(cbi==null)

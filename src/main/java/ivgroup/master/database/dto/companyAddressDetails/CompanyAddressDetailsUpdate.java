@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class CompanyAddressDetailsUpdate {
 
 	private String addressLine1;
@@ -17,6 +19,7 @@ public class CompanyAddressDetailsUpdate {
 	private String latitude;
 	private String longitude;
 	@NotNull(message = "LastEditOn cannot be NULL")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PastOrPresent
 	private Timestamp lastEditOn;
 	@NotNull(message = "LastEditBy cannot be NULL")

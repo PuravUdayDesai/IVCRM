@@ -11,6 +11,7 @@ import ivgroup.master.database.dto.companyBranchType.CompanyBranchTypeSelect;
 public interface CompanyBranchTypeDAO 
 {
 	public List<CompanyBranchTypeSelect> 	selectCompanyBranchTypeByCompanyId(Long companyId)																			throws SQLException,ClassNotFoundException;
+	public List<CompanyBranchTypeSelect> 	selectCompanyBranchTypeByOwnerId(Long ownerId)																			throws SQLException,ClassNotFoundException;
 	public Boolean 							addCompanyBranchType(CompanyBranchTypeInsert cbi)																			throws SQLException,ClassNotFoundException;
 	public Boolean 							updateCompanyBranchTypeCompanyBranchTypeName(Connection c,Long companyBranchTypeId,String companyBranchTypeName)			throws SQLException,ClassNotFoundException;
 	public Boolean 							updateCompanyBranchTypeCompanyId(Connection c,Long companyBranchTypeId,Long companyId)										throws SQLException,ClassNotFoundException;

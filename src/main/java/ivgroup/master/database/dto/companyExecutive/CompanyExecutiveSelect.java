@@ -30,6 +30,8 @@ public class CompanyExecutiveSelect {
 	private String contactNumber;
 	@NotNull(message = "IsActive cannot be NULL")
 	private Boolean isActive;
+	@NotNull(message="Position cannot be NULL")
+	private Integer position;
 	
 	public CompanyExecutiveSelect()
 	{
@@ -49,7 +51,8 @@ public class CompanyExecutiveSelect {
 			@NotNull(message = "CompanyName cannot be NULL") String companyName,
 			@NotNull(message = "CompanyCode cannot be NULL") String companyCode,
 			@NotNull(message = "ContactNumber cannot be NULL") String contactNumber,
-			@NotNull(message = "IsActive cannot be NULL") Boolean isActive) {
+			@NotNull(message = "IsActive cannot be NULL") Boolean isActive,
+			@NotNull(message = "Position cannot be NULL") Integer position) {
 		super();
 		this.executiveId = executiveId;
 		this.executiveName = executiveName;
@@ -64,7 +67,10 @@ public class CompanyExecutiveSelect {
 		this.companyCode = companyCode;
 		this.contactNumber = contactNumber;
 		this.isActive = isActive;
+		this.position = position;
 	}
+
+
 
 	public String getExecutiveId() {
 		return executiveId;
@@ -170,4 +176,12 @@ public class CompanyExecutiveSelect {
 		this.isActive = isActive;
 	}
 
+	public Integer getPosition() {
+		return position;
+	}
+
+	public void setPosition(Integer position) {
+		this.position = position;
+	}
+	
 }

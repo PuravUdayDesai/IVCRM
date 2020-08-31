@@ -42,7 +42,7 @@ public class CallTransactionBusinessLogic {
 	
 	Logger logger =LoggerFactory.getLogger(CallTransactionBusinessLogic.class);
 	
-	private static final String EXTERNAL_FILE_PATH = Constants.STORAGE_ROOT+"\\callTransaction\\";
+	private static final String EXTERNAL_FILE_PATH = Constants.STORAGE_ROOT+"\\";
 
 	public static String fileGenere(String fileType) {
 		String fileGenere="";
@@ -61,7 +61,7 @@ public class CallTransactionBusinessLogic {
 		String host=Constants.HOSTNAME;
 		String portNumber=Constants.PORTNUMBER;
 		String basePath="/callTransaction/fileView";
-		String url=protocol+host+":"+portNumber+basePath+"?filePath="+filePath.replace("\\", "/")+"&fileName="+fileName;
+		String url=protocol+host+portNumber+basePath+"?filePath="+filePath.replace("\\", "/")+"&fileName="+fileName;
 		return url;
 	}
 
@@ -178,10 +178,12 @@ public class CallTransactionBusinessLogic {
 		return new ResponseEntity<List<CallTransactionSelect>>(lr,HttpStatus.OK);
 	}
 	
-	public void viewFile(HttpServletRequest request, 
-			HttpServletResponse response,
-			String filePath, 
-			String fileName){
+	public void viewFile(
+						HttpServletRequest request, 
+						HttpServletResponse response,
+						String filePath, 
+						String fileName)
+	{
 			File file = new File(EXTERNAL_FILE_PATH + filePath + "\\" + fileName);
 			
 			if (file.exists()) {

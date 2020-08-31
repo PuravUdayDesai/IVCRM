@@ -24,7 +24,8 @@ public class CompanyExecutivePLInsert {
 	public CompanyExecutivePLInsert(
 			@NotNull(message = "ExecutiveId cannot be NULL") Long executiveId,
 			@NotNull(message = "PL RATE cannot be NULL") Integer pLrate,
-			@NotNull(message = "TimeOfEntry cannot be NULL") Timestamp timeOfEntry) {
+			@NotNull(message = "TimeOfEntry cannot be NULL") Timestamp timeOfEntry) 
+	{
 		super();
 		this.executiveId = executiveId;
 		PLrate = pLrate;

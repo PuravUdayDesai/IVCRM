@@ -25,7 +25,7 @@ public class CompanyExecutivePLDAOImpl implements CompanyExecutivePLDAO
 	public Boolean addCompanyExecutivePL(CompanyExecutivePLInsert cpli) throws SQLException, ClassNotFoundException 
 	{
 		Connection c=ConnectionProvider.getConnection();
-		CallableStatement stmt=c.prepareCall("SELECT company.\"fn_insertCompanyExecutivePL\"(?, ?, ?);");
+		CallableStatement stmt=c.prepareCall("SELECT * FROM company.\"fn_insertCompanyExecutivePL\"(?, ?, ?);");
 		stmt.setLong(1, cpli.getExecutiveId());
 		stmt.setInt(2, cpli.getPLrate());
 		stmt.setTimestamp(3, cpli.getTimeOfEntry());

@@ -46,12 +46,22 @@ public class CompanyBranchTypeController
 	@ApiImplicitParams({
 		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
 	})
+	@GetMapping(path="/owner/{ownerId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<@Valid CompanyBranchTypeSelect>> selectCompanyBranchTypeByOwnerId(@PathVariable @NotNull Long ownerId)
+	{
+		return cbbl.selectCompanyBranchTypeByOwnerId(ownerId);
+	}
+	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
 	@PostMapping(consumes = { 	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
 			produces = {	MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> addCompanyBranchType(@Valid @RequestBody CompanyBranchTypeInsert cbi)
 	{
 		return cbbl.addCompanyBranchType(cbi);
 	}
+	
 	
 	@ApiImplicitParams({
 		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")

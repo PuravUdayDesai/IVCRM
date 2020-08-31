@@ -60,7 +60,7 @@ public class CompanyAddressDetailsInsert {
 			@NotNull(message = "CreatedOn cannot be NULL") @PastOrPresent Timestamp createdOn,
 			@NotNull(message = "CreatedBy cannot be NULL") Long createdBy,
 			@NotNull(message = "CreatedDeviceType cannot be NULL") Integer createdDeviceType,
-			@NotNull(message = "LastEditOn cannot be NULL") @PastOrPresent Timestamp lastEditOn,
+			@NotNull(message = "LastEditOn cannot be NULL") @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST") @PastOrPresent Timestamp lastEditOn,
 			@NotNull(message = "LastEditBy cannot be NULL") Long lastEditBy,
 			@NotNull(message = "LastEditDeviceType cannot be NULL") Integer lastEditDeviceType) {
 		super();
