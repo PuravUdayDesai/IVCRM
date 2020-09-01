@@ -42,6 +42,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter
 		.disable()
 		.authorizeRequests()
 		.antMatchers("/companyExecutive/login","/owner/login","/owner").permitAll()
+		.antMatchers("/callTransaction/fileView/**","/callTransaction/fileDownload/**").permitAll()
 		.antMatchers("/v2/api-docs/","/configuration/**","/swagger*/**","/webjars/**").permitAll()
 		.anyRequest().authenticated()
         .and()

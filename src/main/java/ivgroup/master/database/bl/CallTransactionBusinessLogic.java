@@ -188,7 +188,6 @@ public class CallTransactionBusinessLogic {
 			if (file.exists()) {
 				try {
 				String mimeType = URLConnection.guessContentTypeFromName(file.getName());
-				System.out.println("MimeType: "+mimeType);
 				if (mimeType == null) {
 					mimeType = "application/octet-stream";
 				}

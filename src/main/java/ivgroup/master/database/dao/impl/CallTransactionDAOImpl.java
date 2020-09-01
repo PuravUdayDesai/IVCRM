@@ -108,10 +108,11 @@ public class CallTransactionDAOImpl implements CallTransactionDAO{
 												rs.getString("ClientNameOnExecutiveContactList"),
 												rs.getString("ClientContactNumber"),
 												rs.getInt("CallType"),
-												rs.getLong("TalkDuration"),
+												rs.getDouble("TalkDuration"),
 												rs.getTimestamp("CallTime"),
 												rs.getString("FileURL"),
-												rs.getString("FilePath").replace("\\","/")
+												"PRIVATE FILE PATH"
+												//rs.getString("FilePath").replace("\\","/")
 											)
 				);
 
@@ -141,10 +142,11 @@ public class CallTransactionDAOImpl implements CallTransactionDAO{
 												rs.getString("ClientNameOnExecutiveContactList"),
 												rs.getString("ClientContactNumber"),
 												rs.getInt("CallType"),
-												rs.getLong("TalkDuration"),
+												rs.getDouble("TalkDuration"),
 												rs.getTimestamp("CallTime"),
 												rs.getString("FileURL"),
-												rs.getString("FilePath").replace("\\","/")
+												"PRIVATE FILE PATH"
+												//rs.getString("FilePath").replace("\\","/")
 											)
 				);
 

@@ -21,7 +21,7 @@ public class CallTransactionSelect {
 	@NotNull(message="CallType cannot be NULL")
 	private Integer callType;
 	@NotNull(message="TalkDuration cannot be NULL")
-	private Long talkDuration;
+	private Double talkDuration;
 	@NotNull(message="CallTime cannot be NULL")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	private Timestamp callTime;
@@ -41,7 +41,7 @@ public class CallTransactionSelect {
 			@NotNull(message = "ClientNameOnCompanyExecutiveList cannot be NULL") String clientNameOnCompanyExecutiveList,
 			@NotNull(message = "ClientContactNumber cannot be NULL") String clientContactNumber,
 			@NotNull(message = "CallType cannot be NULL") Integer callType,
-			@NotNull(message = "TalkDuration cannot be NULL") Long talkDuration,
+			@NotNull(message = "TalkDuration cannot be NULL") Double talkDuration,
 			@NotNull(message = "CallTime cannot be NULL") Timestamp callTime,
 			@NotNull(message = "FileURL cannot be NULL") String fileURL,
 			@NotNull(message = "FilePath cannot be NULL") String filePath) {
@@ -106,11 +106,11 @@ public class CallTransactionSelect {
 		this.callType = callType;
 	}
 
-	public Long getTalkDuration() {
+	public Double getTalkDuration() {
 		return talkDuration;
 	}
 
-	public void setTalkDuration(Long talkDuration) {
+	public void setTalkDuration(Double talkDuration) {
 		this.talkDuration = talkDuration;
 	}
 
