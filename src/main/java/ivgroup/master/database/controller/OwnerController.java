@@ -20,6 +20,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import ivgroup.master.database.Constants;
 import ivgroup.master.database.bl.OwnerBusinessLogic;
+import ivgroup.master.database.dto.owner.OwnerDashboard;
 import ivgroup.master.database.dto.owner.OwnerInsert;
 import ivgroup.master.database.dto.owner.OwnerLoginCredentials;
 import ivgroup.master.database.dto.owner.OwnerLoginResponseModel;
@@ -93,6 +94,15 @@ public class OwnerController {
 	public ResponseEntity<Integer> sendOTPVerificationEmail(@PathVariable @NotNull String emailId)
 	{
 		return obl.sendOTPVerificationEmail(emailId);
+	}
+	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
+	@GetMapping(path="/dashboard/{ownerId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<OwnerDashboard> getOwnerDashboardDetails(@PathVariable @NotNull Long ownerId)
+	{
+		return obl.getOwnerDashboardDetails(ownerId);
 	}
 	
 }

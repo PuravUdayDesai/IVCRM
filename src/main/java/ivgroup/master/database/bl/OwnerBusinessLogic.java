@@ -23,6 +23,7 @@ import ivgroup.master.database.aspect.EmailAspect;
 import ivgroup.master.database.connection.ConnectionProvider;
 import ivgroup.master.database.dao.impl.OwnerDAOImpl;
 import ivgroup.master.database.dto.owner.OwnerCredentials;
+import ivgroup.master.database.dto.owner.OwnerDashboard;
 import ivgroup.master.database.dto.owner.OwnerInsert;
 import ivgroup.master.database.dto.owner.OwnerLoginCredentials;
 import ivgroup.master.database.dto.owner.OwnerLoginResponseModel;
@@ -497,6 +498,22 @@ public class OwnerBusinessLogic {
 			return new ResponseEntity<Integer>(otp, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Integer>(otp, HttpStatus.OK);
+	}
+	
+	public ResponseEntity<OwnerDashboard> getOwnerDashboardDetails(Long ownerId) 
+	{
+		OwnerDashboard ownerDashboardDetails=new OwnerDashboard();
+		try {
+			ownerDashboardDetails=odi.getOwnerDashboardDetails(ownerId);
+			ownerDashboardDetails.setTopExecutives(odi.getTopExecutives(ownerId));
+		} catch (ClassNotFoundException e) {
+			logger.error("Exception: " + e.getMessage());
+			return new ResponseEntity<OwnerDashboard>(ownerDashboardDetails,HttpStatus.NOT_FOUND);
+		} catch (SQLException e) {
+			logger.error("Exception: " + e.getMessage());
+			return new ResponseEntity<OwnerDashboard>(ownerDashboardDetails,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<OwnerDashboard>(ownerDashboardDetails,HttpStatus.OK); 
 	}
 
 }

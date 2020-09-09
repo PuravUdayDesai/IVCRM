@@ -167,7 +167,7 @@ public class EnquiryGeoMapPlottingDAOImpl implements EnquiryGeoMapPlottingDAO
 	public List<EnquiryGeoMapPlotting> getEnquiryGeoMapPlottingByCompanyExecutive(Long companyExecutiveId)throws SQLException, ClassNotFoundException
 	{
 		Connection c=ConnectionProvider.getConnection();
-		CallableStatement stmt=c.prepareCall("SELECT * FROM \"geoMapPlotting\".\"fn_selectEnquiryByCompanyExecutive \"(?);");
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"geoMapPlotting\".\"fn_selectEnquiryByCompanyExecutive\"(?);");
 		stmt.setLong(1, companyExecutiveId);
 		ResultSet rs=stmt.executeQuery();
 		List<EnquiryGeoMapPlotting> ll=new ArrayList<EnquiryGeoMapPlotting>();

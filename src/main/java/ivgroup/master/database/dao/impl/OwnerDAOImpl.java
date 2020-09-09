@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -12,8 +14,10 @@ import ivgroup.master.database.bl.OwnerBusinessLogic;
 import ivgroup.master.database.connection.ConnectionProvider;
 import ivgroup.master.database.dao.schema.OwnerDAO;
 import ivgroup.master.database.dto.owner.OwnerCredentials;
+import ivgroup.master.database.dto.owner.OwnerDashboard;
 import ivgroup.master.database.dto.owner.OwnerInsert;
 import ivgroup.master.database.dto.owner.OwnerSelect;
+import ivgroup.master.database.dto.owner.TopExecutivesList;
 
 @Service
 public class OwnerDAOImpl implements OwnerDAO{
@@ -286,5 +290,54 @@ public class OwnerDAOImpl implements OwnerDAO{
 		return count;
 	}
 
+	@Override
+	public List<TopExecutivesList> getTopExecutives(Long ownerId) throws SQLException, ClassNotFoundException 
+	{
+		List<TopExecutivesList> topExecutives=new ArrayList<TopExecutivesList>();
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM owner.\"fn_selectTopExecutives\"(?);");
+		stmt.setLong(1, ownerId);
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next())
+		{
+			TopExecutivesList executiveDetail=new TopExecutivesList();
+			executiveDetail.setExecutiveName(rs.getString("ExecutiveName"));
+			executiveDetail.setPlRate(rs.getLong("ExecutivePLRate"));
+			topExecutives.add(
+					executiveDetail
+					);
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return topExecutives;
+	}
+
+	
+	@Override
+	public OwnerDashboard getOwnerDashboardDetails(Long ownerId) throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM owner.\"fn_selectOwnerAssestsCount\"(?);");
+		stmt.setLong(1, ownerId);
+		ResultSet rs=stmt.executeQuery();
+		OwnerDashboard ownerDashboard=new OwnerDashboard();
+		if(rs.next())
+		{
+			ownerDashboard=new OwnerDashboard(
+					new ArrayList<TopExecutivesList>(),
+					rs.getLong("NumberOfClients"),
+					rs.getLong("NumberOfCompanies"),
+					rs.getLong("NumberOfBranches"),
+					rs.getLong("NumberOfProducts"),
+					rs.getLong("NumberOfExecutives"),
+					rs.getLong("NumberOfTickets")
+					);
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return ownerDashboard;
+	}
 
 }
