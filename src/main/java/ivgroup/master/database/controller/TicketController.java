@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import ivgroup.master.database.Constants;
 import ivgroup.master.database.bl.TicketBusinessLogic;
+import ivgroup.master.database.dto.status.StatusSelect;
 import ivgroup.master.database.dto.ticket.NonAccessibleExecutiveListSelect;
 import ivgroup.master.database.dto.ticket.TicketAccessListInsert;
 import ivgroup.master.database.dto.ticket.TicketAccessListSelect;
@@ -206,6 +207,15 @@ public class TicketController
 	public ResponseEntity<List<@Valid NonAccessibleExecutiveListSelect>> selectNonAccessibleExecutivesOfTicketByCompanyExecutive(@PathVariable @NotNull Long ticketId,@RequestParam("companyExecutiveId") @NotNull Long companyExecutiveId)
 	{
 		return tbl.selectNonAccessibleExecutivesOfTicketByCompanyExecutive(ticketId, companyExecutiveId);
+	}
+	
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="Authorization",value="${ivclient.request.authorization.description}",paramType="header")
+	})
+	@GetMapping(path="/ticketValidStatus/{ticketId}",produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<StatusSelect>> selectTicketValidStatus(@PathVariable @NotNull Long ticketId,@RequestParam @NotNull Long companyId)
+	{
+		return tbl.selectTicketValidStatus(ticketId,companyId);
 	}
 
 }

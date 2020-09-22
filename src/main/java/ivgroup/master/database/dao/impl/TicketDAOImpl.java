@@ -16,6 +16,7 @@ import ivgroup.master.database.connection.ConnectionProvider;
 import ivgroup.master.database.dao.schema.TicketDAO;
 import ivgroup.master.database.dto.scheduler.ScheduerCompanyExecutivePLUpdateInsert;
 import ivgroup.master.database.dto.scheduler.SchedulerNotificationInsert;
+import ivgroup.master.database.dto.status.StatusSelect;
 import ivgroup.master.database.dto.ticket.NonAccessibleExecutiveListSelect;
 import ivgroup.master.database.dto.ticket.TicketAccessListInsert;
 import ivgroup.master.database.dto.ticket.TicketAccessListSelect;
@@ -736,6 +737,36 @@ public class TicketDAOImpl implements TicketDAO
 		stmt.close();
 		c.close();
 		return ll;
+	}
+
+	@Override
+	public List<StatusSelect> selectTicketValidStatus(Long ticketId,Long companyId) throws SQLException, ClassNotFoundException
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"ticket\".\"fn_selectTicketValidStatus\"(?,?)");
+		stmt.setLong(1, ticketId);
+		stmt.setLong(2, companyId);
+		ResultSet rs=stmt.executeQuery();
+		List<StatusSelect> lss=new ArrayList<StatusSelect>();
+		while(rs.next())
+		{
+			lss.add(new StatusSelect(
+					rs.getLong("StatusId"),
+					rs.getString("StatusName"),
+					rs.getString("StatusColorCode"),
+					rs.getInt("WorkProgress"),
+					rs.getLong("CompanyId"),
+					rs.getString("CompanyName"),
+					rs.getLong("CreatedBy"),
+					rs.getTimestamp("CreatedOn"),
+					rs.getLong("LastEditBy"),
+					rs.getTimestamp("LastEditOn")
+					));
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return lss;
 	}
 
 }

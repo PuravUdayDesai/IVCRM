@@ -8,6 +8,7 @@ import java.util.List;
 
 import ivgroup.master.database.dto.scheduler.ScheduerCompanyExecutivePLUpdateInsert;
 import ivgroup.master.database.dto.scheduler.SchedulerNotificationInsert;
+import ivgroup.master.database.dto.status.StatusSelect;
 import ivgroup.master.database.dto.ticket.NonAccessibleExecutiveListSelect;
 import ivgroup.master.database.dto.ticket.TicketAccessListInsert;
 import ivgroup.master.database.dto.ticket.TicketAccessListSelect;
@@ -33,6 +34,7 @@ public interface TicketDAO
 	public List<ScheduerCompanyExecutivePLUpdateInsert> 	selectCompanyExecutivePLUpdates(Date currentDate)												throws SQLException,ClassNotFoundException;
 	public List<NonAccessibleExecutiveListSelect>			selectNonAccessibleExecutivesOfTicket(Long ticketId)											throws SQLException,ClassNotFoundException;
 	public List<NonAccessibleExecutiveListSelect>			selectNonAccessibleExecutiveOfTicketByCompanyExecutive(Long ticketId,Long companyExecutiveId)	throws SQLException,ClassNotFoundException;
+	public List<StatusSelect>								selectTicketValidStatus(Long ticketId,Long companyId)											throws SQLException,ClassNotFoundException;
 	public Long 											checkCompanyExecutiveTicketAccessDependency(Long ticketId,Long companyExecutiveId)				throws SQLException,ClassNotFoundException;
 	public Long 											addTicket(TicketInsert ti)																		throws SQLException,ClassNotFoundException;
 	public Boolean 											addTicketStatus(TicketStatusInsert ti)															throws SQLException,ClassNotFoundException;
@@ -51,5 +53,5 @@ public interface TicketDAO
 	public Boolean 											deleteTicketAccessList(Long ticketAccessListId)													throws SQLException,ClassNotFoundException;
 	public Boolean 											deleteTicketFollowupDate(Long ticketFollowupDateId)												throws SQLException,ClassNotFoundException;
 	public Timestamp 										getStartDateAndTimeOfTicket(Long ticketId)														throws SQLException,ClassNotFoundException;
-	public Timestamp 										getDeadlineDateAndTimeOfTicket(Long ticketId)													throws SQLException,ClassNotFoundException;
+	public Timestamp 										getDeadlineDateAndTimeOfTicket(Long ticketId)													throws SQLException,ClassNotFoundException;	
 }

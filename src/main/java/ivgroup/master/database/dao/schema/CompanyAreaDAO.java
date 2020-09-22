@@ -23,6 +23,7 @@ public interface CompanyAreaDAO {
 	public Boolean 					updateCompanyAreaLastEditOn(Connection c,Long CompanyAreaId,Timestamp lastEditOn) 						throws SQLException,ClassNotFoundException;
 	public Boolean 					updateCompanyAreaLastEditBy(Connection c,Long CompanyAreaId,Long lastEditBy) 							throws SQLException,ClassNotFoundException;
 	public Boolean 					updateCompanyAreaLastEditDeviceType(Connection c,Long CompanyAreaId,Integer lastEditDeviceType) 		throws SQLException,ClassNotFoundException;
+	public Integer					checkCompanyAreaDeleteStatus(Long companyAreaID)														throws SQLException,ClassNotFoundException;
 	public Boolean 					addCompanyArea(CompanyAreaInsert cri) 																	throws SQLException,ClassNotFoundException;
 	public Boolean 					deleteCompanyArea(Long CompanyAreaId) 																	throws SQLException,ClassNotFoundException;
 	public Boolean 					revokeCompanyArea(Long CompanyAreaId) 																	throws SQLException,ClassNotFoundException;

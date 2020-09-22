@@ -7,7 +7,7 @@ public class Constants {
 	public final static String URL_PUBLIC_REQUEST="*";
 	
 	//Server Details
-	public final static String HOSTNAME="e640ee907ab4.ngrok.io";
+	public final static String HOSTNAME="311f53e396b1.ngrok.io";
 	public final static String PORTNUMBER="";//:8080
 	
 	//Storage Details

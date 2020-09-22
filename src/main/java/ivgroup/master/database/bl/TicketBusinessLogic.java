@@ -18,6 +18,7 @@ import ivgroup.master.database.connection.ConnectionProvider;
 import ivgroup.master.database.dao.impl.CRMAccessListDAOImpl;
 import ivgroup.master.database.dao.impl.CompanyExecutiveDAOImpl;
 import ivgroup.master.database.dao.impl.TicketDAOImpl;
+import ivgroup.master.database.dto.status.StatusSelect;
 import ivgroup.master.database.dto.ticket.NonAccessibleExecutiveListSelect;
 import ivgroup.master.database.dto.ticket.TicketAccessListInsert;
 import ivgroup.master.database.dto.ticket.TicketAccessListSelect;
@@ -694,6 +695,27 @@ public class TicketBusinessLogic
 			return new ResponseEntity<List<TicketFollowupDateSelect>>(ltd,HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<List<TicketFollowupDateSelect>>(ltd,HttpStatus.OK);
+	}
+	
+	public ResponseEntity<List<StatusSelect>> selectTicketValidStatus(Long ticketId,Long companyId)
+	{
+		List<StatusSelect> ltd=new ArrayList<StatusSelect>();
+		if(ticketId==null)
+		{
+			return new ResponseEntity<List<StatusSelect>>(ltd,HttpStatus.BAD_REQUEST);
+		}
+		try {
+			ltd=tdi.selectTicketValidStatus(ticketId,companyId);
+		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
+			return new ResponseEntity<List<StatusSelect>>(ltd,HttpStatus.NOT_FOUND);
+		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
+			return new ResponseEntity<List<StatusSelect>>(ltd,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(ltd.isEmpty())
+		{
+			return new ResponseEntity<List<StatusSelect>>(ltd,HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<StatusSelect>>(ltd,HttpStatus.OK);
 	}
 	
 	public ResponseEntity<List<TicketDetailsSelect>> selectTicketByFilter(TicketFilterSelect tfs)

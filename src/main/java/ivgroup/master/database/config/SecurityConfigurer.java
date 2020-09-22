@@ -2,6 +2,7 @@ package ivgroup.master.database.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -43,6 +44,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter
 		.authorizeRequests()
 		.antMatchers("/companyExecutive/login","/owner/login","/owner").permitAll()
 		.antMatchers("/callTransaction/fileView/**","/callTransaction/fileDownload/**").permitAll()
+		.antMatchers(HttpMethod.POST,"/callTransaction").permitAll()
 		.antMatchers("/v2/api-docs/","/configuration/**","/swagger*/**","/webjars/**").permitAll()
 		.anyRequest().authenticated()
         .and()

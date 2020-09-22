@@ -410,6 +410,11 @@ public class CompanyAreaBusinessLogic {
 		}
 		Boolean rs=false;
 		try {
+			 Integer result=crdi.checkCompanyAreaDeleteStatus(companyAreaId);
+			 if(result!=0)
+			 {
+				 return new ResponseEntity<Void>(HttpStatus.FAILED_DEPENDENCY);
+			 }
 			rs=crdi.deleteCompanyArea(companyAreaId);
 		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);

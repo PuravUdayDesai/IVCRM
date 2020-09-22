@@ -362,4 +362,22 @@ public class CompanyAreaDAOImpl implements CompanyAreaDAO{
 		return rsMain;
 	}
 
+	@Override
+	public Integer checkCompanyAreaDeleteStatus(Long companyAreaID) throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM company.\"fn_checkCompanyAreaDeleteStatus\"(?)");
+		stmt.setLong(1, companyAreaID);
+		ResultSet rs=stmt.executeQuery();
+		Integer result=0;
+		if(rs.next())
+		{
+			result=rs.getInt("check");
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return result;
+	}
+
 }

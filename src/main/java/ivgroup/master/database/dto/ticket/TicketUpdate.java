@@ -12,7 +12,7 @@ public class TicketUpdate
 {
 	private String ticketRemarks;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
-	@FutureOrPresent 
+	@PastOrPresent 
 	private Timestamp startDateAndTime;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@FutureOrPresent 
@@ -29,7 +29,7 @@ public class TicketUpdate
 	{
 		
 	}
-
+	
 	public TicketUpdate(
 			String ticketRemarks, 
 			@PastOrPresent Timestamp startDateAndTime, 
