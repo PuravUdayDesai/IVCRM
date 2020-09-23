@@ -128,11 +128,11 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 				} while (rs.next());
 			}
 			return businessCityForCompany_list;
-		} catch (SQLException s) {
-			s.printStackTrace();
+		} catch (SQLException e) {
+			logger.error("Exception: "+e.getMessage());
 			return null;
-		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
-			;
+		} catch (ClassNotFoundException e) { 
+			logger.error("Exception: "+e.getMessage());
 			return null;
 		} finally {
 			try {
@@ -209,11 +209,11 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 				} while (rs.next());
 			}
 			return city_list;
-		} catch (SQLException s) {
-			s.printStackTrace();
+		} catch (SQLException e) {
+			logger.error("Exception: "+e.getMessage());
 			return null;
-		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
-			;
+		} catch (ClassNotFoundException e) { 
+			logger.error("Exception: "+e.getMessage());
 			return null;
 		} finally {
 			try {
@@ -231,7 +231,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 		if (businessCityForCompany_info == null)
 			return null;
 
-		String sql = "SELECT * location.\"fn_insertIntoBusinessCityForCompany\"(?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "SELECT * FROM location.\"fn_insertIntoBusinessCityForCompany\"(?,?,?,?,?,?,?,?,?,?,?,?)";
 		Connection c = null;
 		CallableStatement st = null;
 		try {
@@ -249,7 +249,6 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 			st.setTimestamp(10, businessCityForCompany_info.getCreatedOn());
 			st.setLong(11, businessCityForCompany_info.getCreatedBy());
 			st.setInt(12, businessCityForCompany_info.getDeviceType());
-
 			boolean rs = st.execute();
 			c.commit();
 			if (rs) {
@@ -257,11 +256,11 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 			} else {
 				return rs;
 			}
-		} catch (SQLException s) {
-			s.printStackTrace();
+		} catch (SQLException e) {
+			logger.error("Exception: "+e.getMessage());
 			return null;
-		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
-			;
+		} catch (ClassNotFoundException e) { 
+			logger.error("Exception: "+e.getMessage());
 			return null;
 		} finally {
 			try {
@@ -275,7 +274,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 	@Override
 	public Boolean updateBusinessCityForCompanyCompanyId(Connection c, Long businessCityForCompanyId, Long companyId)
 			throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateBusinessCityForCompanyCompanyID\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateBusinessCityForCompanyCompanyID\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, businessCityForCompanyId);
@@ -289,7 +288,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 	@Override
 	public Boolean updateBusinessCityForCompanyCityID(Connection c, Long businessCityForCompanyId, Long cityId)
 			throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateBusinessCityForCompanyCityID\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateBusinessCityForCompanyCityID\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, businessCityForCompanyId);
@@ -303,7 +302,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 	@Override
 	public Boolean updateBusinessCityForCompanyLastEditOn(Connection c, Long businessCityForCompanyId,
 			Timestamp businessCityForCompanyLastEditOn) throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateBusinessCityForCompanyLastEditOn\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateBusinessCityForCompanyLastEditOn\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, businessCityForCompanyId);
@@ -317,7 +316,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 	@Override
 	public Boolean updateBusinessCityForCompanyIsActive(Connection c, Long businessCityForCompanyId,
 			Boolean businessCityForCompanyIsActive) throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateBusinessCityForCompanyIsActive\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateBusinessCityForCompanyIsActive\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, businessCityForCompanyId);
@@ -331,7 +330,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 	@Override
 	public Boolean updateBusinessCityForCompanyLastEditBy(Connection c, Long businessCityForCompanyId,
 			long businessCityForCompanyLastEditBy) throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateBusinessCityForCompanyLastEditBy\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateBusinessCityForCompanyLastEditBy\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, businessCityForCompanyId);
@@ -345,7 +344,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 	@Override
 	public Boolean updateBusinessCityForCompanyDeviceType(Connection c, Long businessCityForCompanyId, int deviceType)
 			throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateBusinessCityForCompanyDeviceType\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateBusinessCityForCompanyDeviceType\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, businessCityForCompanyId);
@@ -359,7 +358,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 	@Override
 	public Boolean updateBusinessCityForCompanyLastEditDeviceType(Connection c, Long businessCityForCompanyId,
 			int lastEditDeviceType) throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateBusinessCityForCompanyLastEditDeviceType\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateBusinessCityForCompanyLastEditDeviceType\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, businessCityForCompanyId);
@@ -373,7 +372,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 	@Override
 	public Boolean updateCityName(Connection c, Long cityId, String cityName)
 			throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateCityCityName\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateCityCityName\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, cityId);
@@ -387,7 +386,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 	@Override
 	public Boolean updateCityDescription(Connection c, Long cityId, String cityDescription)
 			throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateCityCityDescription\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateCityCityDescription\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, cityId);
@@ -401,7 +400,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 	@Override
 	public Boolean updateCityCode(Connection c, Long cityId, String cityCode)
 			throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateCityCityCode\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateCityCityCode\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, cityId);
@@ -415,7 +414,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 	@Override
 	public Boolean updateCityStateID(Connection c, Long cityID, Long stateID)
 			throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateCityStateID\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateCityStateID\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, cityID);
@@ -429,7 +428,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 	@Override
 	public Boolean updateCityCountryID(Connection c, Long cityID, Long countryID)
 			throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateCityCountryID\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateCityCountryID\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, cityID);
@@ -445,7 +444,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 			throws ClassNotFoundException, SQLException {
 		if (businessCityForCompany_id == null)
 			return false;
-		String sql = "SELECT * location.\"fn_deleteBusinessCityFromCompany\"(?)";
+		String sql = "SELECT * FROM location.\"fn_deleteBusinessCityFromCompany\"(?)";
 		Connection c = null;
 		CallableStatement st = null;
 		c = ConnectionProvider.getConnection();
@@ -467,7 +466,7 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 			throws ClassNotFoundException, SQLException {
 		if (businessCityForCompany_id == null)
 			return false;
-		String sql = "SELECT * location.\"fn_revokeBusinessCityFromCompany\"(?)";
+		String sql = "SELECT * FROM location.\"fn_revokeBusinessCityFromCompany\"(?)";
 		Connection c = null;
 		CallableStatement st = null;
 		c = ConnectionProvider.getConnection();

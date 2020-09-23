@@ -111,11 +111,11 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 				} while (rs.next());
 			}
 			return businessAreaForCompany_list;
-		} catch (SQLException s) {
-			s.printStackTrace();
+		} catch (SQLException e) {
+			logger.error("Exception: "+e.getMessage());
 			return null;
-		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
-			;
+		} catch (ClassNotFoundException e) { 
+			logger.error("Exception: "+e.getMessage());
 			return null;
 		} finally {
 			try {
@@ -173,11 +173,11 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 				} while (rs.next());
 			}
 			return area_list;
-		} catch (SQLException s) {
-			s.printStackTrace();
+		} catch (SQLException e) {
+			logger.error("Exception: "+e.getMessage());
 			return null;
-		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
-			;
+		} catch (ClassNotFoundException e) { 
+			logger.error("Exception: "+e.getMessage());
 			return null;
 		} finally {
 			try {
@@ -194,7 +194,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 		if (businessAreaForCompany_info == null)
 			return null;
 
-		String sql = "SELECT * location.\"fn_insertIntoBusinessAreaForCompany\"(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "SELECT * FROM location.\"fn_insertIntoBusinessAreaForCompany\"(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		Connection c = null;
 		CallableStatement st = null;
 		try {
@@ -221,11 +221,11 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 			} else {
 				return rs;
 			}
-		} catch (SQLException s) {
-			s.printStackTrace();
+		} catch (SQLException e) {
+			logger.error("Exception: "+e.getMessage());
 			return null;
-		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
-			;
+		} catch (ClassNotFoundException e) { 
+			logger.error("Exception: "+e.getMessage());
 			return null;
 		} finally {
 			try {
@@ -239,7 +239,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 	@Override
 	public Boolean updateBusinessAreaForCompanyCompanyId(Connection c, Long businessAreaForCompanyId, Long companyId)
 			throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateBusinessAreaForCompanyCompanyID\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateBusinessAreaForCompanyCompanyID\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, businessAreaForCompanyId);
@@ -253,7 +253,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 	@Override
 	public Boolean updateBusinessAreaForCompanyLastEditOn(Connection c, Long businessAreaForCompanyId,
 			Timestamp businessAreaForCompanyLastEditOn) throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateBusinessAreaForCompanyLastEditOn\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateBusinessAreaForCompanyLastEditOn\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, businessAreaForCompanyId);
@@ -267,7 +267,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 	@Override
 	public Boolean updateBusinessAreaForCompanyIsActive(Connection c, Long businessAreaForCompanyId,
 			Boolean businessAreaForCompanyIsActive) throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateBusinessAreaForCompanyIsActive\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateBusinessAreaForCompanyIsActive\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, businessAreaForCompanyId);
@@ -281,7 +281,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 	@Override
 	public Boolean updateBusinessAreaForCompanyLastEditBy(Connection c, Long businessAreaForCompanyId,
 			long businessAreaForCompanyLastEditBy) throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateBusinessAreaForCompanyLastEditBy\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateBusinessAreaForCompanyLastEditBy\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, businessAreaForCompanyId);
@@ -295,7 +295,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 	@Override
 	public Boolean updateBusinessAreaForCompanyDeviceType(Connection c, Long businessAreaForCompanyId, int deviceType)
 			throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateBusinessAreaForCompanyDeviceType\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateBusinessAreaForCompanyDeviceType\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, businessAreaForCompanyId);
@@ -309,7 +309,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 	@Override
 	public Boolean updateBusinessAreaForCompanyLastEditDeviceType(Connection c, Long businessAreaForCompanyId,
 			int lastEditDeviceType) throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateBusinessAreaForCompanyLastEditDeviceType\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateBusinessAreaForCompanyLastEditDeviceType\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, businessAreaForCompanyId);
@@ -323,7 +323,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 	@Override
 	public Boolean updateAreaName(Connection c, Long areaId, String areaName)
 			throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateAreaAreaName\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateAreaAreaName\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, areaId);
@@ -337,7 +337,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 	@Override
 	public Boolean updateAreaDescription(Connection c, Long areaId, String areaDescription)
 			throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateAreaAreaDescription\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateAreaAreaDescription\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, areaId);
@@ -351,7 +351,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 	@Override
 	public Boolean updateAreaCode(Connection c, Long areaId, String areaCode)
 			throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateAreaAreaCode\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateAreaAreaCode\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, areaId);
@@ -365,7 +365,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 	@Override
 	public Boolean updateAreaCityID(Connection c, Long areaId, Long cityID)
 			throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateAreaCityID\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateAreaCityID\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, areaId);
@@ -379,7 +379,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 	@Override
 	public Boolean updateAreaStateID(Connection c, Long areaId, Long stateID)
 			throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateAreaStateID\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateAreaStateID\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, areaId);
@@ -393,7 +393,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 	@Override
 	public Boolean updateAreaCountryID(Connection c, Long areaId, Long countryID)
 			throws SQLException, ClassNotFoundException {
-		String sql = "SELECT * location.\"fn_updateAreaCountryID\"(?,?)";
+		String sql = "SELECT * FROM location.\"fn_updateAreaCountryID\"(?,?)";
 		CallableStatement st = null;
 		st = c.prepareCall(sql);
 		st.setLong(1, areaId);
@@ -409,7 +409,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 			throws ClassNotFoundException, SQLException {
 		if (businessAreaForCompany_id == null)
 			return false;
-		String sql = "SELECT * location.\"fn_deleteBusinessAreaFromCompany\"(?)";
+		String sql = "SELECT * FROM location.\"fn_deleteBusinessAreaFromCompany\"(?)";
 		Connection c = null;
 		CallableStatement st = null;
 		c = ConnectionProvider.getConnection();
@@ -431,7 +431,7 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 			throws ClassNotFoundException, SQLException {
 		if (businessAreaForCompany_id == null)
 			return false;
-		String sql = "SELECT * location.\"fn_revokeBusinessAreaFromCompany\"(?)";
+		String sql = "SELECT * FROM location.\"fn_revokeBusinessAreaFromCompany\"(?)";
 		Connection c = null;
 		CallableStatement st = null;
 		c = ConnectionProvider.getConnection();

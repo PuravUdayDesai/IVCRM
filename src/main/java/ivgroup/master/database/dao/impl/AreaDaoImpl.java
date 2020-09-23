@@ -48,11 +48,11 @@ public class AreaDaoImpl implements AreaDao {
 				} while (rs.next());
 			}
 			return area_list;
-		} catch (SQLException s) {
-			s.printStackTrace();
+		} catch (SQLException e) {
+			logger.error("Exception: "+e.getMessage());
 			return null;
-		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
-			;
+		} catch (ClassNotFoundException e) { 
+			logger.error("Exception: "+e.getMessage());
 			return null;
 		} finally {
 			try {
@@ -85,11 +85,11 @@ public class AreaDaoImpl implements AreaDao {
 						rs.getInt("LastEditDeviceType"));
 			}
 			return area_data;
-		} catch (SQLException s) {
-			s.printStackTrace();
+		} catch (SQLException e) {
+			logger.error("Exception: "+e.getMessage());
 			return null;
-		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
-			;
+		} catch (ClassNotFoundException e) { 
+			logger.error("Exception: "+e.getMessage());
 			return null;
 		} finally {
 			try {
@@ -127,11 +127,11 @@ public class AreaDaoImpl implements AreaDao {
 				} while (rs.next());
 			}
 			return area_list;
-		} catch (SQLException s) {
-			s.printStackTrace();
+		} catch (SQLException e) {
+			logger.error("Exception: "+e.getMessage());
 			return null;
-		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
-			;
+		} catch (ClassNotFoundException e) { 
+			logger.error("Exception: "+e.getMessage());
 			return null;
 		} finally {
 			try {
@@ -164,11 +164,11 @@ public class AreaDaoImpl implements AreaDao {
 				} while (rs.next());
 			}
 			return area_list;
-		} catch (SQLException s) {
-			s.printStackTrace();
+		} catch (SQLException e) {
+			logger.error("Exception: "+e.getMessage());
 			return null;
-		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
-			;
+		} catch (ClassNotFoundException e) { 
+			logger.error("Exception: "+e.getMessage());
 			return null;
 		} finally {
 			try {
@@ -211,11 +211,11 @@ public class AreaDaoImpl implements AreaDao {
 			} else {
 				return rs;
 			}
-		} catch (SQLException s) {
-			s.printStackTrace();
+		} catch (SQLException e) {
+			logger.error("Exception: "+e.getMessage());
 			return null;
-		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
-			;
+		} catch (ClassNotFoundException e) { 
+			logger.error("Exception: "+e.getMessage());
 			return null;
 		} finally {
 			try {
