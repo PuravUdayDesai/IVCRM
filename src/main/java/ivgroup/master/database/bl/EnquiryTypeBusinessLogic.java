@@ -250,7 +250,15 @@ public class EnquiryTypeBusinessLogic
 	{
 		Boolean rsMain=false;
 		try {
-			rsMain=ebi.deleteEnquiryType(enquiryTypeId);
+			Long check=ebi.checkEnquiryTypeDeleteStatus(enquiryTypeId);
+			if(check==0)
+			{
+				rsMain=ebi.deleteEnquiryType(enquiryTypeId);	
+			}
+			else
+			{
+				return new ResponseEntity<Void>(HttpStatus.FAILED_DEPENDENCY);
+			}
 		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());

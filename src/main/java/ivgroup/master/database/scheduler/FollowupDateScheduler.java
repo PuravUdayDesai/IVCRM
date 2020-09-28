@@ -39,7 +39,6 @@ public class FollowupDateScheduler
 		t=new Thread()
 		{
 			
-			
 			public void run()
 			{
 				List<SchedulerNotificationInsert> companyExecutiveList=new ArrayList<SchedulerNotificationInsert>();

@@ -13,9 +13,11 @@ public interface CompanyBranchDAO {
 	public List<CompanyBranchSelect>	selectCompanyBranch() 																										throws SQLException,ClassNotFoundException;
 	public CompanyBranchSelect 			selectCompanyBranchByCompanyBranchID(Long companyBranchId)																	throws SQLException,ClassNotFoundException;
 	public List<CompanyBranchSelect> 	selectCompanyBranchByCompanyID(Long companyId)																				throws SQLException,ClassNotFoundException;
-	public List<CompanyBranchSelect> 	selectCompanyBranchByOwnerID(Long ownerId)																				throws SQLException,ClassNotFoundException;
+	public List<CompanyBranchSelect> 	selectCompanyBranchByOwnerID(Long ownerId)																					throws SQLException,ClassNotFoundException;
 	public List<CompanyBranchSelect> 	selectCompanyBranchByCompanyRegionID(Long companyRegionID)																	throws SQLException,ClassNotFoundException;
 	public List<CompanyBranchSelect> 	selectCompanyBranchByCompanyAreaID(Long companyAreaID)																		throws SQLException,ClassNotFoundException;
+	public List<Long>					selectCompanyExecutiveIdByCompanyBranchId(Long companyBranchId)																throws SQLException,ClassNotFoundException;
+	public List<Long>					selectCompanyBranchIdByCompanyAreaId(Long companyAreaId)																	throws SQLException,ClassNotFoundException;
 	public Boolean 						updateCompanyBranchCompanyBranchName(Connection c,Long companyBranchId,String companyBranchName)							throws SQLException,ClassNotFoundException;
 	public Boolean 						updateCompanyBranchCompanyBranchCode(Connection c,Long companyBranchId,String companyBranchCode)							throws SQLException,ClassNotFoundException;
 	public Boolean 						updateCompanyBranchCompanyRegionID(Connection c,Long companyBranchId,Long companyRegionID)									throws SQLException,ClassNotFoundException;

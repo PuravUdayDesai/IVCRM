@@ -100,14 +100,28 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 			rs = st.executeQuery();
 			if (rs.next() == true) {
 				do {
-					businessAreaForCompany_list.add(new BusinessAreaForCompany(rs.getLong("BusinessAreaForCompanyID"),
-							rs.getLong("CompanyID"), rs.getString("CompanyName"), rs.getLong("CountryID"),
-							rs.getString("CountryName"), rs.getLong("StateID"), rs.getString("StateName"),
-							rs.getLong("AreaID"), rs.getString("AreaName"), rs.getString("AreaCode"),
-							rs.getString("AreaDescription"), rs.getLong("CityID"), rs.getString("CityName"),
-							rs.getBoolean("IsActive"), rs.getTimestamp("CreatedOn"), rs.getLong("CreatedBy"),
-							rs.getInt("DeviceType"), rs.getTimestamp("LastEditOn"), rs.getLong("LastEditBy"),
-							rs.getInt("LastEditDeviceType")));
+					businessAreaForCompany_list.add(
+							new BusinessAreaForCompany(
+									rs.getLong("BusinessAreaForCompanyID"),
+									rs.getLong("CompanyID"), 
+									rs.getString("CompanyName"),
+									rs.getLong("CountryID"),
+									rs.getString("CountryName"),
+									rs.getLong("StateID"),
+									rs.getString("StateName"),
+									rs.getLong("AreaID"),
+									rs.getString("AreaName"),
+									rs.getString("AreaCode"),
+									rs.getString("AreaDescription"),
+									rs.getLong("CityID"), 
+									rs.getString("CityName"),
+									rs.getBoolean("IsActive"), 
+									rs.getTimestamp("CreatedOn"), 
+									rs.getLong("CreatedBy"),
+									rs.getInt("DeviceType"),
+									rs.getTimestamp("LastEditOn"),
+									rs.getLong("LastEditBy"),
+									rs.getInt("LastEditDeviceType")));
 				} while (rs.next());
 			}
 			return businessAreaForCompany_list;
@@ -373,7 +387,15 @@ public class BusinessAreaForCompanyDaoImpl implements BusinessAreaForCompanyDao 
 		boolean res = st.execute();
 		c.commit();
 		st.close();
-		return res;
+		String sqlTwo = "SELECT * FROM location.\"fn_updateBusinessAreaForCompanyCityID\"(?,?)";
+		CallableStatement stTwo = null;
+		stTwo = c.prepareCall(sqlTwo);
+		stTwo.setLong(1, areaId);
+		stTwo.setLong(2, cityID);
+		boolean resTwo = stTwo.execute();
+		c.commit();
+		stTwo.close();
+		return res&&resTwo;
 	}
 
 	@Override

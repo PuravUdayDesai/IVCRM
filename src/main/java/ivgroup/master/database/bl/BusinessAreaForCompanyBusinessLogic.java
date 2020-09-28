@@ -133,9 +133,11 @@ public class BusinessAreaForCompanyBusinessLogic {
 		Boolean rs = false;
 		try {
 			rs = businessAreaForCompany_dao.updateAreaCityID(c, businessAreaForCompanyId ,cityID);
-		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
+		} catch (ClassNotFoundException e) { 
+			logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
+		} catch (SQLException  e) { 
+			logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (!rs) {

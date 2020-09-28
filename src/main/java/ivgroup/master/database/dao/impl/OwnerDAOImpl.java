@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import ivgroup.master.database.bl.OwnerBusinessLogic;
 import ivgroup.master.database.connection.ConnectionProvider;
 import ivgroup.master.database.dao.schema.OwnerDAO;
+import ivgroup.master.database.dto.google.people.api.GooglePeopleAPICredentials;
 import ivgroup.master.database.dto.owner.OwnerCredentials;
 import ivgroup.master.database.dto.owner.OwnerDashboard;
 import ivgroup.master.database.dto.owner.OwnerInsert;
@@ -228,21 +229,22 @@ public class OwnerDAOImpl implements OwnerDAO{
 	}
 
 	@Override
-	public String addOwner(OwnerInsert oi) throws SQLException, ClassNotFoundException 
+	public String addOwner(OwnerInsert oi,GooglePeopleAPICredentials googlePeopleCredential) throws SQLException, ClassNotFoundException 
 	{
 		String secretKey=OwnerBusinessLogic.generateSecretCode(oi.getOwnerContact());
 		if(secretKey==null) {
 			return secretKey;
 		}
 		Connection c=ConnectionProvider.getConnection();
-		CallableStatement stmt=c.prepareCall("SELECT \"owner\".\"fn_insertOwnerContact\"(?, ?, ?, ?, ?, ?, ?);");
+		CallableStatement stmt=c.prepareCall("SELECT \"owner\".\"fn_insertOwnerContact\"(?, ?, ?, ?, ?, ?, ?, ?);");
 		stmt.setString(1, oi.getOwnerName());
 		stmt.setString(2, oi.getOwnerContact());
 		stmt.setString(3, oi.getOwnerEmail());
 		stmt.setString(4, secretKey);
 		stmt.setString(5, oi.getOwnerUserName());
 		stmt.setString(6, oi.getOwnerPassword());
-		stmt.setTimestamp(7, oi.getCreatedOn());
+		stmt.setString(7, googlePeopleCredential.getResourceName());
+		stmt.setTimestamp(9, oi.getCreatedOn());
 		ResultSet rs=stmt.executeQuery();
 		c.commit();
 		Boolean rsMain=false;
@@ -338,6 +340,25 @@ public class OwnerDAOImpl implements OwnerDAO{
 		stmt.close();
 		c.close();
 		return ownerDashboard;
+	}
+
+	@Override
+	public GooglePeopleAPICredentials selectOwnerGooglePeopleAPICredentialsByOwnerId(Long ownerId)throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM owner.\"fn_selectOwnerGooglePeopleCredentialByOwnerId\"(?);");
+		stmt.setLong(1, ownerId);
+		ResultSet rs=stmt.executeQuery();
+		GooglePeopleAPICredentials googlePeopleApiCredentials=new GooglePeopleAPICredentials();
+		if(rs.next())
+		{
+			googlePeopleApiCredentials.setResourceName(rs.getString("GooglePeopleAPIResourceName"));
+			googlePeopleApiCredentials.seteTag(rs.getString("GooglePeopleAPIETag"));
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return googlePeopleApiCredentials;
 	}
 
 }

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
 import ivgroup.master.database.dao.impl.CompanyBranchDAOImpl;
+import ivgroup.master.database.dao.impl.CompanyExecutiveDAOImpl;
 import ivgroup.master.database.dto.companyBranch.CompanyBranchInsert;
 import ivgroup.master.database.dto.companyBranch.CompanyBranchSelect;
 import ivgroup.master.database.dto.companyBranch.CompanyBranchUpdate;
@@ -29,6 +31,9 @@ public class CompanyBranchBusinessLogic {
 	
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@Autowired
+	CompanyExecutiveDAOImpl cdi;
 
 	Logger logger =LoggerFactory.getLogger(CompanyBranchBusinessLogic.class);
 
@@ -265,6 +270,13 @@ public class CompanyBranchBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=cbdi.updateCompanyBranchCompanyID(c, companyBranchId, companyID);
+			 List<Long> companyExecutiveIdList=cbdi.selectCompanyExecutiveIdByCompanyBranchId(companyBranchId);
+			 Iterator<Long> iteratorCompanyExecutive=companyExecutiveIdList.iterator();
+			 while(iteratorCompanyExecutive.hasNext())
+			 {
+				 Long companyExecutiveId=iteratorCompanyExecutive.next();
+				 cdi.updateCompanyExecutiveCompanyID(c, companyExecutiveId, companyID);
+			 }
 		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
@@ -549,19 +561,31 @@ public class CompanyBranchBusinessLogic {
 	if(companyBranchId==null) {
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 	}
-	Long check=(long)-1;
+	//Long check=(long)-1;
 	Boolean rs=false;
-	try {
-	check=cbdi.checkCompanyBranchDeleteStatus(companyBranchId);
-	} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
-		return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-	} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
-		return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-	}
-	if(check==0)
-	{
+		/*
+		 * try { check=cbdi.checkCompanyBranchDeleteStatus(companyBranchId); } catch
+		 * (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
+		 * return new ResponseEntity<Void>(HttpStatus.NOT_FOUND); } catch (SQLException
+		 * e) { logger.error("Exception: "+e.getMessage()); return new
+		 * ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR); } if(check==0) {
+		 */
 		try {
+			
 		rs=cbdi.deleteCompanyBranch(companyBranchId);
+		//Delete all Executives
+		List<Long> companyExecutiveList=cbdi.selectCompanyExecutiveIdByCompanyBranchId(companyBranchId);
+		Iterator<Long> iterator=companyExecutiveList.iterator();
+		Boolean finalResult=true;
+		while(iterator.hasNext())
+		{
+			Boolean result=cdi.deleteCompanyExecutive(iterator.next());
+			if(!result)
+			{
+				finalResult=result;
+			}
+		}
+		rs=rs&&finalResult;
 		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
@@ -571,11 +595,11 @@ public class CompanyBranchBusinessLogic {
 		{
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
-	}
+	/*}
 	else
 	{
 		return new ResponseEntity<Void>(HttpStatus.FAILED_DEPENDENCY);
-	}
+	}*/
 	return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 

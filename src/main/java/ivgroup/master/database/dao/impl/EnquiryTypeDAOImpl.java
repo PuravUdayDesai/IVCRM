@@ -79,7 +79,7 @@ public class EnquiryTypeDAOImpl implements EnquiryTypeDAO
 	public Boolean addEnquiryType(EnquiryTypeInsert eti) throws SQLException, ClassNotFoundException
 	{
 		Connection c=ConnectionProvider.getConnection();
-		CallableStatement stmt=c.prepareCall("SELECT enquiry.\"fn_insertEnquiryType\"(?, ?, ?, ?, ?);");
+		CallableStatement stmt=c.prepareCall("SELECT * FROM enquiry.\"fn_insertEnquiryType\"(?, ?, ?, ?, ?);");
 		stmt.setString(1, eti.getEnquiryTypeName());
 		stmt.setString(2, eti.getEnquiryTypeColorCode());
 		stmt.setLong(3, eti.getCompanyId());
@@ -101,7 +101,7 @@ public class EnquiryTypeDAOImpl implements EnquiryTypeDAO
 	@Override
 	public Boolean updateEnquiryTypeEnquiryTypeName(Connection c, Long enquiryTypeId, String enquiryTypeName)throws SQLException, ClassNotFoundException 
 	{
-		CallableStatement stmt=c.prepareCall("SELECT \"enquiry\".\"fn_updateEnquiryTypeEnquiryTypeName\"(?,?)");
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"enquiry\".\"fn_updateEnquiryTypeEnquiryTypeName\"(?,?)");
 		stmt.setLong(1, enquiryTypeId);
 		stmt.setString(2, enquiryTypeName);
 		ResultSet rs=stmt.executeQuery();
@@ -119,7 +119,7 @@ public class EnquiryTypeDAOImpl implements EnquiryTypeDAO
 	@Override
 	public Boolean updateEnquiryTypeEnquiryTypeColorCode(Connection c, Long enquiryTypeId, String enquiryTypeColorCode)throws SQLException, ClassNotFoundException
 	{
-		CallableStatement stmt=c.prepareCall("SELECT \"enquiry\".\"fn_updateEnquiryTypeEnquiryTypeColorCode\"(?,?)");
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"enquiry\".\"fn_updateEnquiryTypeEnquiryTypeColorCode\"(?,?)");
 		stmt.setLong(1, enquiryTypeId);
 		stmt.setString(2, enquiryTypeColorCode);
 		ResultSet rs=stmt.executeQuery();
@@ -137,7 +137,7 @@ public class EnquiryTypeDAOImpl implements EnquiryTypeDAO
 	@Override
 	public Boolean updateEnquiryTypeCompanyId(Connection c, Long enquiryTypeId, Long companyId)throws SQLException, ClassNotFoundException
 	{
-		CallableStatement stmt=c.prepareCall("SELECT \"enquiry\".\"fn_updateEnquiryTypeCompanyId\"(?,?)");
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"enquiry\".\"fn_updateEnquiryTypeCompanyId\"(?,?)");
 		stmt.setLong(1, enquiryTypeId);
 		stmt.setLong(2, companyId);
 		ResultSet rs=stmt.executeQuery();
@@ -155,7 +155,7 @@ public class EnquiryTypeDAOImpl implements EnquiryTypeDAO
 	@Override
 	public Boolean updateEnquiryTypeLastEditBy(Connection c, Long enquiryTypeId, Long lastEditBy)throws SQLException, ClassNotFoundException 
 	{
-		CallableStatement stmt=c.prepareCall("SELECT \"enquiry\".\"fn_updateEnquiryTypeLastEditBy\"(?,?)");
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"enquiry\".\"fn_updateEnquiryTypeLastEditBy\"(?,?)");
 		stmt.setLong(1, enquiryTypeId);
 		stmt.setLong(2, lastEditBy);
 		ResultSet rs=stmt.executeQuery();
@@ -173,7 +173,7 @@ public class EnquiryTypeDAOImpl implements EnquiryTypeDAO
 	@Override
 	public Boolean updateEnquiryTypeLastEditOn(Connection c, Long enquiryTypeId, Timestamp lastEditOn)throws SQLException, ClassNotFoundException
 	{
-		CallableStatement stmt=c.prepareCall("SELECT \"enquiry\".\"fn_updateEnquiryTypeLastEditOn\"(?,?)");
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"enquiry\".\"fn_updateEnquiryTypeLastEditOn\"(?,?)");
 		stmt.setLong(1, enquiryTypeId);
 		stmt.setTimestamp(2, lastEditOn);
 		ResultSet rs=stmt.executeQuery();
@@ -192,7 +192,7 @@ public class EnquiryTypeDAOImpl implements EnquiryTypeDAO
 	public Boolean deleteEnquiryType(Long enquiryTypeId) throws SQLException, ClassNotFoundException 
 	{
 		Connection c=ConnectionProvider.getConnection();
-		CallableStatement stmt=c.prepareCall("SELECT \"enquiry\".\"fn_deleteEnquiryType\"(?)");
+		CallableStatement stmt=c.prepareCall("SELECT * FROM \"enquiry\".\"fn_deleteEnquiryType\"(?)");
 		stmt.setLong(1, enquiryTypeId);
 		ResultSet rs=stmt.executeQuery();
 		c.commit();
@@ -205,6 +205,25 @@ public class EnquiryTypeDAOImpl implements EnquiryTypeDAO
 		stmt.close();
 		c.close();
 		return rsMain;
+	}
+
+	@Override
+	public Long checkEnquiryTypeDeleteStatus(Long enquiryTypeId) throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM enquiry.\"fn_checkEnquiryTypeDeleteStatus\"(?);");
+		stmt.setLong(1, enquiryTypeId);
+		ResultSet rs=stmt.executeQuery();
+		Long check=(long)-1;
+		if(rs.next())
+		{
+			check=rs.getLong("Check");
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		
+		return check;
 	}
 
 }

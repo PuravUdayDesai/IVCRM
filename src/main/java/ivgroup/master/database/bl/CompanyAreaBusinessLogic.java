@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
 import ivgroup.master.database.dao.impl.CompanyAreaDAOImpl;
+import ivgroup.master.database.dao.impl.CompanyBranchDAOImpl;
+import ivgroup.master.database.dao.impl.CompanyExecutiveDAOImpl;
 import ivgroup.master.database.dto.companyArea.CompanyAreaInsert;
 import ivgroup.master.database.dto.companyArea.CompanyAreaSelect;
 import ivgroup.master.database.dto.companyArea.CompanyAreaUpdate;
@@ -24,6 +27,12 @@ public class CompanyAreaBusinessLogic {
 	
 	@Autowired
 	CompanyAreaDAOImpl crdi;
+	
+	@Autowired
+	CompanyBranchDAOImpl cbdi;
+	
+	@Autowired
+	CompanyExecutiveDAOImpl cedi;
 	
 	Logger logger =LoggerFactory.getLogger(CompanyAreaBusinessLogic.class);
 	
@@ -200,6 +209,20 @@ public class CompanyAreaBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyAreaCompanyID(c, companyAreaId, companyID);
+			 List<Long> companyBranchIdList=cbdi.selectCompanyBranchIdByCompanyAreaId(companyAreaId);
+			 Iterator<Long> iteratorCompanyBranch=companyBranchIdList.iterator();
+			 while(iteratorCompanyBranch.hasNext())
+			 {
+				 Long companyBranchId=iteratorCompanyBranch.next();
+				 List<Long> companyExecutiveIdList=cbdi.selectCompanyExecutiveIdByCompanyBranchId(companyBranchId);
+				 Iterator<Long> iteratorCompanyExecutive=companyExecutiveIdList.iterator();
+				 while(iteratorCompanyExecutive.hasNext())
+				 {
+					 Long companyExecutiveId=iteratorCompanyExecutive.next();
+					 cedi.updateCompanyExecutiveCompanyID(c, companyExecutiveId, companyID);
+				 }
+				 cbdi.updateCompanyBranchCompanyID(c, companyBranchId, companyID);
+			 }
 		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());

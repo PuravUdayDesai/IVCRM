@@ -483,4 +483,23 @@ public class BusinessCityForCompanyDaoImpl implements BusinessCityForCompanyDao 
 		}
 	}
 
+	@Override
+	public List<Long> selectBusinessAreaIdByBusinessCityId(Long businessCityForCompanyId)
+			throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM location.\"fn_selectBusinessAreaIdByBusinessCityId\"(?);");
+		stmt.setLong(1, businessCityForCompanyId);
+		ResultSet rs=stmt.executeQuery();
+		List<Long> businessAreaForCompanyIdList=new ArrayList<Long>();
+		while(rs.next())
+		{
+			businessAreaForCompanyIdList.add(rs.getLong("BusinessAreaForCompanyId"));
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return businessAreaForCompanyIdList;
+	}
+
 }

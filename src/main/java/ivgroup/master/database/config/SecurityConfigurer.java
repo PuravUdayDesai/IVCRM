@@ -46,6 +46,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter
 		.antMatchers("/callTransaction/fileView/**","/callTransaction/fileDownload/**").permitAll()
 		.antMatchers(HttpMethod.POST,"/callTransaction").permitAll()
 		.antMatchers("/v2/api-docs/","/configuration/**","/swagger*/**","/webjars/**").permitAll()
+		.antMatchers("/oauth2/callback").permitAll()
 		.anyRequest().authenticated()
         .and()
         .sessionManagement()

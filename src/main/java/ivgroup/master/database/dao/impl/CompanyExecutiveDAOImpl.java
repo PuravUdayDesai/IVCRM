@@ -35,7 +35,6 @@ public class CompanyExecutiveDAOImpl implements CompanyExecutiveDAO{
 		stmt.setLong(9, cei.getCreatedBy());
 		stmt.setInt(10, cei.getCreatedDeviceType());
 		ResultSet rs=stmt.executeQuery();
-		System.out.println(stmt);
 		Boolean rsMain=false;
 		if(rs.next()) {
 			rsMain=rs.getBoolean("fn_insertCompanyExecutive");

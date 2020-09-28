@@ -164,7 +164,6 @@ public class EnquiryBusinessLogic
 		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
-			;
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Void>(HttpStatus.CREATED);

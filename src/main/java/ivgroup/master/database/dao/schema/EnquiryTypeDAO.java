@@ -12,6 +12,7 @@ public interface EnquiryTypeDAO
 {
 	public List<EnquiryTypeSelect> 	selectEnquiryTypeByCompanyId(Long companyId)														throws SQLException,ClassNotFoundException;
 	public List<EnquiryTypeSelect>	selectEnquiryTypeByOwnerId(Long ownerId)															throws SQLException,ClassNotFoundException;
+	public Long						checkEnquiryTypeDeleteStatus(Long enquiryTypeId)													throws SQLException,ClassNotFoundException;
 	public Boolean 					addEnquiryType(EnquiryTypeInsert eti)																throws SQLException,ClassNotFoundException;
 	public Boolean 					updateEnquiryTypeEnquiryTypeName(Connection c,Long enquiryTypeId,String enquiryTypeName)			throws SQLException,ClassNotFoundException;
 	public Boolean 					updateEnquiryTypeEnquiryTypeColorCode(Connection c,Long enquiryTypeId,String enquiryTypeColorCode)	throws SQLException,ClassNotFoundException;

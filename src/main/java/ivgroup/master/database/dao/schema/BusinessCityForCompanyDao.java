@@ -63,5 +63,8 @@ public interface BusinessCityForCompanyDao {
 
 	public Boolean revokeBusinessCityForCompany(Long businessCityForCompany_id)
 			throws SQLException, ClassNotFoundException;
+	
+	public List<Long> selectBusinessAreaIdByBusinessCityId(Long businessCityForCompanyId)throws SQLException, ClassNotFoundException;
+	
 
 }

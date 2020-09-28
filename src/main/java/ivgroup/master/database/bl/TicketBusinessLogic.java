@@ -721,7 +721,7 @@ public class TicketBusinessLogic
 	public ResponseEntity<List<TicketDetailsSelect>> selectTicketByFilter(TicketFilterSelect tfs)
 	{
 		StringBuffer stb=new StringBuffer(
-				"SELECT\r\n" + 
+				"SELECT DISTINCT\r\n" + 
 				"		\"ticket\".\"MainTicket\".\"TicketId\",\r\n" + 
 				"		\"ticket\".\"MainTicket\".\"EnquiryId\",\r\n" + 
 				"		\"ticket\".\"TicketAccessList\".\"TicketAccessListId\",\r\n" + 
@@ -879,7 +879,7 @@ public class TicketBusinessLogic
 		if(!tfs.getTicketType().isEmpty())
 		{
 			stb.append("AND \"ticket\".\"TicketMetaData\".\"TicketType\" IN(");
-			ListIterator<Long> li=tfs.getProductId().listIterator();
+			ListIterator<Long> li=tfs.getTicketType().listIterator();
 			while(li.hasNext())
 			{
 				li.next();

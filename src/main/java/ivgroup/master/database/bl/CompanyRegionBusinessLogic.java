@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -14,6 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import ivgroup.master.database.connection.ConnectionProvider;
+import ivgroup.master.database.dao.impl.CompanyAreaDAOImpl;
+import ivgroup.master.database.dao.impl.CompanyBranchDAOImpl;
+import ivgroup.master.database.dao.impl.CompanyExecutiveDAOImpl;
 import ivgroup.master.database.dao.impl.CompanyRegionDAOImpl;
 import ivgroup.master.database.dto.companyRegion.CompanyRegionInsert;
 import ivgroup.master.database.dto.companyRegion.CompanyRegionSelect;
@@ -24,6 +28,17 @@ public class CompanyRegionBusinessLogic {
 	
 	@Autowired
 	CompanyRegionDAOImpl crdi;
+	
+	@Autowired
+	CompanyAreaDAOImpl cadi;
+	
+	@Autowired
+	CompanyBranchDAOImpl cbdi;
+	
+	@Autowired
+	CompanyExecutiveDAOImpl cedi;
+	
+	
 	
 	Logger logger =LoggerFactory.getLogger(CompanyRegionBusinessLogic.class);
 	
@@ -177,6 +192,27 @@ public class CompanyRegionBusinessLogic {
 		Boolean rs=false;
 		try {
 			 rs=crdi.updateCompanyRegionCompanyID(c, companyRegionId, companyID);
+			 List<Long> companyAreaIdList=cadi.selectCompanyAreaIdByCompanyRegionId(companyRegionId);
+			 Iterator<Long> iterator=companyAreaIdList.iterator();
+			 while(iterator.hasNext())
+			 {
+				 Long companyAreaId=iterator.next();
+				 List<Long> companyBranchIdList=cbdi.selectCompanyBranchIdByCompanyAreaId(companyAreaId);
+				 Iterator<Long> iteratorCompanyBranch=companyBranchIdList.iterator();
+				 while(iteratorCompanyBranch.hasNext())
+				 {
+					 Long companyBranchId=iteratorCompanyBranch.next();
+					 List<Long> companyExecutiveIdList=cbdi.selectCompanyExecutiveIdByCompanyBranchId(companyBranchId);
+					 Iterator<Long> iteratorCompanyExecutive=companyExecutiveIdList.iterator();
+					 while(iteratorCompanyExecutive.hasNext())
+					 {
+						 Long companyExecutiveId=iteratorCompanyExecutive.next();
+						 cedi.updateCompanyExecutiveCompanyID(c, companyExecutiveId, companyID);
+					 }
+					 cbdi.updateCompanyBranchCompanyID(c, companyBranchId, companyID);
+				 }
+				 cadi.updateCompanyAreaCompanyID(c, companyAreaId, companyID);
+			 }
 		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());

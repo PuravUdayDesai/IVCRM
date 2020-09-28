@@ -572,4 +572,40 @@ public class CompanyBranchDAOImpl implements CompanyBranchDAO
 		return rs;
 	}
 
+	@Override
+	public List<Long> selectCompanyExecutiveIdByCompanyBranchId(Long companyBranchId)throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM company.\"fn_selectCompanyExecutiveIdByCompanyBranchId\"(?);");
+		stmt.setLong(1, companyBranchId);
+		ResultSet rs=stmt.executeQuery();
+		List<Long> companyExecutiveList=new ArrayList<Long>();
+		while(rs.next())
+		{
+			companyExecutiveList.add(rs.getLong("CompanyExecutiveID"));
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return companyExecutiveList;
+	}
+
+	@Override
+	public List<Long> selectCompanyBranchIdByCompanyAreaId(Long companyAreaId)throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM company.\"fn_selectCompanyBranchIdByCompanyAreaId\"(?)");
+		stmt.setLong(1, companyAreaId);
+		ResultSet rs=stmt.executeQuery();
+		List<Long> companyBranchIdList =new ArrayList<Long>();
+		while(rs.next())
+		{
+			companyBranchIdList.add(rs.getLong("CompanyBranchId"));
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return companyBranchIdList;
+	}
+
 }

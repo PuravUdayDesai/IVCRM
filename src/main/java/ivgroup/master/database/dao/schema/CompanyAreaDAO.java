@@ -14,6 +14,7 @@ public interface CompanyAreaDAO {
 	public List<CompanyAreaSelect> 	selectCompanyAreaByCompanyID(Long companyId)															throws SQLException,ClassNotFoundException;
 	public List<CompanyAreaSelect> 	selectCompanyAreaByOwnerID(Long ownerId)																throws SQLException,ClassNotFoundException;
 	public List<CompanyAreaSelect> 	selectCompanyAreaByRegionID(Long regionId)																throws SQLException,ClassNotFoundException;
+	public List<Long>				selectCompanyAreaIdByCompanyRegionId(Long companyRegionId)												throws SQLException,ClassNotFoundException;
 	public Boolean 					updateCompanyAreaCompanyAreaName(Connection c,Long CompanyAreaId,String CompanyAreaName) 				throws SQLException,ClassNotFoundException;
 	public Boolean 					updateCompanyAreaCompanyAreaCode(Connection c,Long CompanyAreaId,String CompanyAreaCode) 				throws SQLException,ClassNotFoundException;
 	public Boolean 					updateCompanyAreaCompanyAreaDescription(Connection c,Long CompanyAreaId,String CompanyAreaDescription) 	throws SQLException,ClassNotFoundException;

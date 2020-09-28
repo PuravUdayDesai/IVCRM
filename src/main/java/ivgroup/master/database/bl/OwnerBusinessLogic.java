@@ -1,5 +1,7 @@
 package ivgroup.master.database.bl;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -22,6 +24,7 @@ import org.springframework.stereotype.Service;
 import ivgroup.master.database.aspect.EmailAspect;
 import ivgroup.master.database.connection.ConnectionProvider;
 import ivgroup.master.database.dao.impl.OwnerDAOImpl;
+import ivgroup.master.database.dto.google.people.api.GooglePeopleAPICredentials;
 import ivgroup.master.database.dto.owner.OwnerCredentials;
 import ivgroup.master.database.dto.owner.OwnerDashboard;
 import ivgroup.master.database.dto.owner.OwnerInsert;
@@ -29,6 +32,7 @@ import ivgroup.master.database.dto.owner.OwnerLoginCredentials;
 import ivgroup.master.database.dto.owner.OwnerLoginResponseModel;
 import ivgroup.master.database.dto.owner.OwnerSelect;
 import ivgroup.master.database.dto.owner.OwnerUpdate;
+import ivgroup.master.database.service.GooglePeoplesAPIService;
 import ivgroup.master.database.service.IVUserDetailsService;
 import ivgroup.master.database.util.JwtUtil;
 
@@ -49,6 +53,10 @@ public class OwnerBusinessLogic {
 
 	@Autowired
 	private IVUserDetailsService ivUserDetailsService;
+	
+	@Autowired
+	GooglePeoplesAPIService googlePeoplesApiService;
+	
 
 	Logger logger = LoggerFactory.getLogger(OwnerBusinessLogic.class);
 
@@ -115,7 +123,31 @@ public class OwnerBusinessLogic {
 		}
 		try {
 			oi.setOwnerPassword(bCryptPasswordEncoder.encode(oi.getOwnerPassword()));
-			secretKey = odi.addOwner(oi);
+			GooglePeopleAPICredentials googlePeopleResponse=new GooglePeopleAPICredentials();;
+			
+			try {
+				googlePeopleResponse=googlePeoplesApiService.addGooglePeople(oi);
+			} catch (IOException e) {
+				logger.error("Exception: " + e.getMessage());
+				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+			} catch (GeneralSecurityException e) {
+				logger.error("Exception: " + e.getMessage());
+				return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+			
+			GooglePeopleAPICredentials googlePeopleCredential=new GooglePeopleAPICredentials();
+			if(googlePeopleResponse.getResourceName()==null&&googlePeopleResponse.geteTag()==null)
+			{
+			googlePeopleCredential.setResourceName("NA");
+			googlePeopleCredential.seteTag("NA");
+			}
+			else
+			{
+				googlePeopleCredential.setResourceName(googlePeopleResponse.getResourceName());
+				googlePeopleCredential.seteTag(googlePeopleResponse.geteTag());
+			}
+			
+			secretKey = odi.addOwner(oi, googlePeopleCredential);
 		} catch (ClassNotFoundException e) {
 			logger.error("Exception: " + e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
@@ -130,11 +162,11 @@ public class OwnerBusinessLogic {
 		try {
 			EmailAspect.sendEmailWithoutAttachment(oi.getOwnerEmail(), "TO",
 					"CRM: Acknoledgement for Account Creation in CRM",
-					"    <div id=\"BodyContents\" style=\"width: 100%;height: 30%;background-color: rgb(231, 231, 231);\">\r\n"
+					"    <div id=\"BodyContents\" style=\"width: 100%;height: 30%;\">\r\n"
 							+ "        <div id=\"Placeholder\" style=\"width: 100%;height: 2%;\"></div>\r\n"
-							+ "        <div id=\"MainDiv\" style=\" margin-left: 25%;width: 50%;height: 96%;align-self: center;background-color: white;\">\r\n"
+							+ "        <div id=\"MainDiv\" style=\" width: 100%;height: 100%;align-self: center; background-image: linear-gradient(to right, rgba(253, 179, 117, 0.3), rgba(255, 204, 163, 0.3), rgba(255, 224, 199, 0.3), rgba(232, 248, 252, 0.3), rgba(192, 216, 252, 0.5), rgba(142, 223, 255, 0.5));\">\r\n"
 							+ "            <div id=\"Text\" style=\"font-size: large;color: rgb(71, 70, 70);font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: center;\">\r\n"
-							+ "                Thank you " + oi.getOwnerUserName() + " For Creating Account At CRM\r\n"
+							+ "                Thank you " + oi.getOwnerUserName() + " For Creating Account At IVCRM\r\n"
 							+ "                <BR />\r\n" + "                <BR />\r\n"
 							+ "                <BR /> Your Secret Key is:\r\n" + "                <BR />\r\n"
 							+ "            </div>\r\n"
@@ -170,6 +202,23 @@ public class OwnerBusinessLogic {
 			Long count = odi.checkOwnerDeleteStatus(ownerId);
 			if (count == 0) {
 				rs = odi.deleteOwner(ownerId);
+				GooglePeopleAPICredentials googlePeopleApiCredentials=new GooglePeopleAPICredentials();
+				googlePeopleApiCredentials=odi.selectOwnerGooglePeopleAPICredentialsByOwnerId(ownerId);
+				try {
+					googlePeopleApiCredentials.seteTag(googlePeoplesApiService.getETag(googlePeopleApiCredentials.getResourceName()));
+				} catch (IOException e) {
+					logger.error("Exception: " + e.getMessage());
+					return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+				} catch (GeneralSecurityException e) {
+					logger.error("Exception: " + e.getMessage());
+					return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+				}
+				try {
+					googlePeoplesApiService.deleteGooglePeople(googlePeopleApiCredentials);
+				} catch (IOException | GeneralSecurityException e) {
+					logger.error("Exception: " + e.getMessage());
+					return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+				}
 			} else {
 				return new ResponseEntity<Void>(HttpStatus.FAILED_DEPENDENCY);
 			}
@@ -187,11 +236,21 @@ public class OwnerBusinessLogic {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
-	private ResponseEntity<Void> updateOwnerOwnerName(Connection c, Long ownerId, String ownerName) {
+	private ResponseEntity<Void> updateOwnerOwnerName(Connection c, Long ownerId, String ownerName,GooglePeopleAPICredentials googlePeopleApiCredentials ) {
 		Boolean rs = false;
 
 		try {
 			rs = odi.updateOwnerOwnerName(c, ownerId, ownerName);
+			try {
+				googlePeopleApiCredentials.seteTag(googlePeoplesApiService.getETag(googlePeopleApiCredentials.getResourceName()));
+				googlePeoplesApiService.updateGooglePeopleOwnerName(googlePeopleApiCredentials, ownerName);
+			} catch (IOException e) {
+				logger.error("Exception: " + e.getMessage());
+				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+			} catch (GeneralSecurityException e) {
+				logger.error("Exception: " + e.getMessage());
+				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+			}
 		} catch (ClassNotFoundException e) {
 			logger.error("Exception: " + e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
@@ -206,11 +265,21 @@ public class OwnerBusinessLogic {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
-	private ResponseEntity<Void> updateOwnerOwnerContact(Connection c, Long ownerId, String ownerContact) {
+	private ResponseEntity<Void> updateOwnerOwnerContact(Connection c, Long ownerId, String ownerContact,GooglePeopleAPICredentials googlePeopleApiCredentials) {
 		Boolean rs = false;
 
 		try {
 			rs = odi.updateOwnerOwnerContact(c, ownerId, ownerContact);
+			try {
+				googlePeopleApiCredentials.seteTag(googlePeoplesApiService.getETag(googlePeopleApiCredentials.getResourceName()));
+				googlePeoplesApiService.updateGooglePeopleOwnerContactNumber(googlePeopleApiCredentials, ownerContact);
+			} catch (IOException e) {
+				logger.error("Exception: " + e.getMessage());
+				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+			} catch (GeneralSecurityException e) {
+				logger.error("Exception: " + e.getMessage());
+				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+			}
 		} catch (ClassNotFoundException e) {
 			logger.error("Exception: " + e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
@@ -225,11 +294,21 @@ public class OwnerBusinessLogic {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
-	private ResponseEntity<Void> updateOwnerOwnerEmail(Connection c, Long ownerId, String ownerEmail) {
+	private ResponseEntity<Void> updateOwnerOwnerEmail(Connection c, Long ownerId, String ownerEmail,GooglePeopleAPICredentials googlePeopleApiCredentials) {
 		Boolean rs = false;
 
 		try {
 			rs = odi.updateOwnerOwnerEmail(c, ownerId, ownerEmail);
+			try {
+				googlePeopleApiCredentials.seteTag(googlePeoplesApiService.getETag(googlePeopleApiCredentials.getResourceName()));
+				googlePeoplesApiService.updateGooglePeopleOwnerEmailAddress(googlePeopleApiCredentials, ownerEmail);
+			} catch (IOException e) {
+				logger.error("Exception: " + e.getMessage());
+				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+			} catch (GeneralSecurityException e) {
+				logger.error("Exception: " + e.getMessage());
+				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+			}
 		} catch (ClassNotFoundException e) {
 			logger.error("Exception: " + e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
@@ -282,11 +361,21 @@ public class OwnerBusinessLogic {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
-	private ResponseEntity<Void> updateOwnerOwnerUserName(Connection c, Long ownerId, String userName) {
+	private ResponseEntity<Void> updateOwnerOwnerUserName(Connection c, Long ownerId, String userName,GooglePeopleAPICredentials googlePeopleApiCredentials) {
 		Boolean rs = false;
 
 		try {
 			rs = odi.updateOwnerOwnerUserName(c, ownerId, userName);
+			try {
+				googlePeopleApiCredentials.seteTag(googlePeoplesApiService.getETag(googlePeopleApiCredentials.getResourceName()));
+				googlePeoplesApiService.updateGooglePeopleOwnerUserName(googlePeopleApiCredentials, userName);
+			} catch (IOException e) {
+				logger.error("Exception: " + e.getMessage());
+				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+			} catch (GeneralSecurityException e) {
+				logger.error("Exception: " + e.getMessage());
+				return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+			}
 		} catch (ClassNotFoundException e) {
 			logger.error("Exception: " + e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
@@ -326,8 +415,10 @@ public class OwnerBusinessLogic {
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 		}
 		Connection c = null;
+		GooglePeopleAPICredentials googlePeopleApiCredentials=new GooglePeopleAPICredentials();
 		try {
 			c = ConnectionProvider.getConnection();
+			googlePeopleApiCredentials=odi.selectOwnerGooglePeopleAPICredentialsByOwnerId(ownerId);
 		} catch (ClassNotFoundException e) {
 			logger.error("Exception: " + e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
@@ -338,7 +429,7 @@ public class OwnerBusinessLogic {
 		ResponseEntity<Void> rs = null;
 		Boolean wentIn = false;
 		if (ou.getOwnerName() != null) {
-			rs = updateOwnerOwnerName(c, ownerId, ou.getOwnerName());
+			rs = updateOwnerOwnerName(c, ownerId, ou.getOwnerName(),googlePeopleApiCredentials);
 			wentIn = true;
 		}
 		if (rs != null && rs.getStatusCode() != HttpStatus.OK && wentIn) {
@@ -347,7 +438,7 @@ public class OwnerBusinessLogic {
 		}
 		rs = null;
 		if (ou.getOwnerContact() != null) {
-			rs = updateOwnerOwnerContact(c, ownerId, ou.getOwnerContact());
+			rs = updateOwnerOwnerContact(c, ownerId, ou.getOwnerContact(),googlePeopleApiCredentials);
 			wentIn = true;
 		}
 		if (rs != null && rs.getStatusCode() != HttpStatus.OK && wentIn) {
@@ -356,7 +447,7 @@ public class OwnerBusinessLogic {
 		}
 		rs = null;
 		if (ou.getOwnerEmail() != null) {
-			rs = updateOwnerOwnerEmail(c, ownerId, ou.getOwnerEmail());
+			rs = updateOwnerOwnerEmail(c, ownerId, ou.getOwnerEmail(),googlePeopleApiCredentials);
 			wentIn = true;
 		}
 		if (rs != null && rs.getStatusCode() != HttpStatus.OK && wentIn) {
@@ -365,7 +456,7 @@ public class OwnerBusinessLogic {
 		}
 		rs = null;
 		if (ou.getOwnerUserName() != null) {
-			rs = updateOwnerOwnerUserName(c, ownerId, ou.getOwnerUserName());
+			rs = updateOwnerOwnerUserName(c, ownerId, ou.getOwnerUserName(),googlePeopleApiCredentials);
 			wentIn = true;
 		}
 		if (rs != null && rs.getStatusCode() != HttpStatus.OK && wentIn) {
@@ -447,9 +538,9 @@ public class OwnerBusinessLogic {
 		}
 		try {
 			EmailAspect.sendEmailWithoutAttachment(oc.getOwnerEmail(), "TO", "CRM: Update SecretKey Request",
-					"    <div id=\"BodyContents\" style=\"width: 100%;height: 30%;background-color: rgb(231, 231, 231);\">\r\n"
+					"    <div id=\"BodyContents\" style=\"width: 100%;height: 30%;\">\r\n"
 							+ "        <div id=\"Placeholder\" style=\"width: 100%;height: 2%;\"></div>\r\n"
-							+ "        <div id=\"MainDiv\" style=\" margin-left: 25%;width: 50%;height: 96%;align-self: center;background-color: white;\">\r\n"
+							+ "        <div id=\"MainDiv\" style=\" width: 100%;height: 100%;align-self: center;  background-image: linear-gradient(to right, rgba(253, 179, 117, 0.3), rgba(255, 204, 163, 0.3), rgba(255, 224, 199, 0.3), rgba(232, 248, 252, 0.3), rgba(192, 216, 252, 0.5), rgba(142, 223, 255, 0.5));\">\r\n"
 							+ "            <div id=\"Text\" style=\"font-size: large;color: rgb(71, 70, 70);font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: center;\">\r\n"
 							+ "                Hey " + oc.getUserName()
 							+ " A new SecretKey Generation Request has Arrivied from your acount\r\n"
@@ -480,9 +571,9 @@ public class OwnerBusinessLogic {
 			Random r = new Random();
 			otp = r.nextInt(10000);
 			EmailAspect.sendEmailWithoutAttachment(emailId, "TO", "CRM: OTP Verification",
-					"    <div id=\"BodyContents\" style=\"width: 100%;height: 30%;background-color: rgb(231, 231, 231);\">\r\n"
+					"    <div id=\"BodyContents\" style=\"width: 100%;height: 30%; \">\r\n"
 							+ "        <div id=\"Placeholder\" style=\"width: 100%;height: 2%;\"></div>\r\n"
-							+ "        <div id=\"MainDiv\" style=\" margin-left: 25%;width: 50%;height: 96%;align-self: center;background-color: white;\">\r\n"
+							+ "        <div id=\"MainDiv\" style=\" width: 100%;height: 100%;align-self: center;  background-image: linear-gradient(to right, rgba(253, 179, 117, 0.3), rgba(255, 204, 163, 0.3), rgba(255, 224, 199, 0.3), rgba(232, 248, 252, 0.3), rgba(192, 216, 252, 0.5), rgba(142, 223, 255, 0.5));\">\r\n"
 							+ "            <div id=\"Text\" style=\"font-size: large;color:rgb(102, 102, 102); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: center;\">\r\n"
 							+ "                <font color=\"rgb(6, 15, 139);\">This is an Email for OTP Verification</font>\r\n"
 							+ "                <BR /> We had just received an Update request for your SecretKey Now!!!\r\n"

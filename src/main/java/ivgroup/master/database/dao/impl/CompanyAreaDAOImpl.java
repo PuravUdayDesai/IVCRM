@@ -380,4 +380,22 @@ public class CompanyAreaDAOImpl implements CompanyAreaDAO{
 		return result;
 	}
 
+	@Override
+	public List<Long> selectCompanyAreaIdByCompanyRegionId(Long companyRegionId)throws SQLException, ClassNotFoundException 
+	{
+		Connection c=ConnectionProvider.getConnection();
+		CallableStatement stmt=c.prepareCall("SELECT * FROM company.\"fn_selectCompanyAreaIdByCompanyRegionId\"(?)");
+		stmt.setLong(1, companyRegionId);
+		ResultSet rs=stmt.executeQuery();
+		List<Long> companyAreaIdList =new ArrayList<Long>();
+		while(rs.next())
+		{
+			companyAreaIdList.add(rs.getLong("CompanyAreaId"));
+		}
+		rs.close();
+		stmt.close();
+		c.close();
+		return companyAreaIdList;
+	}
+
 }
