@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,31 +122,58 @@ public class ProductBusinessLogic{
 			 while(iterator.hasNext())
 			 {
 				 ClientSelect client=iterator.next();
-				/*
-				 * EmailAspect.sendEmailWithoutAttachment(client.getEmailId(), "TO",
-				 * "IVCRM: New Product Added",
-				 * "    <div id=\"BodyContents\" style=\"width: 100%;height: 30%;\">\r\n" +
-				 * "        <div id=\"Placeholder\" style=\"width: 100%;height: 2%;\"></div>\r\n"
-				 * +
-				 * "        <div id=\"MainDiv\" style=\" width: 100%;height: 100%;align-self: center; background-image: linear-gradient(to right, rgba(253, 179, 117, 0.3), rgba(255, 204, 163, 0.3), rgba(255, 224, 199, 0.3), rgba(232, 248, 252, 0.3), rgba(192, 216, 252, 0.5), rgba(142, 223, 255, 0.5));\">\r\n"
-				 * +
-				 * "            <div id=\"Text\" style=\"font-size: large;color: 	;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: center;\">\r\n"
-				 * + "                Hello "+client.getContactName()+",\r\n" +
-				 * "                <BR />\r\n" + "                <BR />\r\n" +
-				 * "                <BR /> \r\n" + "                <BR />\r\n" +
-				 * "            </div>\r\n" +
-				 * "            <div id=\"SecretKeyText\" style=\"font-size: x-large;color: rgb(58, 57, 57); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: center;\">\r\n"
-				 * + "                " + secretKey + "\r\n" + "            </div>\r\n" +
-				 * "            <div id=\"Note\" style=\" margin-top: 5%; font-size: small; color: rgb(102, 102, 102); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: center\">\r\n"
-				 * +
-				 * "                *Please keep this SecretKey private with you only do not share with anyone else\r\n"
-				 * + "            </div>\r\n" + "        </div>\r\n" + "    </div>",
-				 * "text/html");
-				 */
+				
+				  try {
+					EmailAspect.sendEmailWithoutAttachment(client.getEmailId(), "TO",
+					  "IVCRM: New Product Added",
+					  "    <div id=\"BodyContents\" style=\"width: 100%;height: 55%;\">\r\n" + 
+					  "        <div id=\"Placeholder\" style=\"width: 100%;height: 2%;\"></div>\r\n" + 
+					  "        <div id=\"MainDiv\" style=\" width: 100%;height: 100%;align-self: center; background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.3),rgba(255, 255, 255, 0.3), rgba(241, 118, 36, 0.3))\">\r\n" + 
+					  "            <div id=\"Text \" style=\"font-size: large;color:rgb(71, 70, 70);font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; \">\r\n" + 
+					  "                Hello "+client.getContactPerson()+",\r\n" + 
+					  "                <BR />A New Product has been added by "+client.getCompanyName()+"\r\n" + 
+					  "                <BR />A Person from "+client.getCompanyName()+" will contact you soon.\r\n" + 
+					  "                <BR />\r\n" + 
+					  "                <BR />\r\n" + 
+					  "                <strong>Details Of Product:</strong>\r\n" + 
+					  "                <BR />\r\n" + 
+					  "                <table style=\"border: 1px solid black;border-collapse: collapse;\">\r\n" + 
+					  "                    <tr style=\"border: 1px solid black;\">\r\n" + 
+					  "                        <td style=\"border: 1px solid black;padding:15px;padding-left: 20px;padding-right: 20px;\">Product Name: </td>\r\n" + 
+					  "                        <td style=\"border: 1px solid black;padding:15px;padding-left: 20px;padding-right: 20px;\">"+pi.getProductName()+"</td>\r\n" + 
+					  "                    </tr>\r\n" + 
+					  "                    <tr style=\"border: 1px solid black;\">\r\n" + 
+					  "                        <td style=\"border: 1px solid black;padding:15px;padding-left: 20px;padding-right: 20px;\">Product Description: </td>\r\n" + 
+					  "                        <td style=\"border: 1px solid black;padding:15px;padding-left: 20px;padding-right: 20px;\">"+pi.getProductDescription()+"</td>\r\n" + 
+					  "                    </tr>\r\n" + 
+					  "                    <tr style=\"border: 1px solid black;\">\r\n" + 
+					  "                        <td style=\"border: 1px solid black;padding:15px;padding-left: 20px;padding-right: 20px;\">Product Cost: </td>\r\n" + 
+					  "                        <td style=\"border: 1px solid black;padding:15px;padding-left: 20px;padding-right: 20px;\">"+pi.getCost()+"\r\n" + 
+					  "                            <font color=\"#FFD700\"><strong>&#8377;</strong></font>\r\n" + 
+					  "                        </td>\r\n" + 
+					  "                    </tr>\r\n" + 
+					  "                </table>\r\n" + 
+					  "                <BR />\r\n" + 
+					  "                <font size=\"3px\">You can lookup for more details in IVCRM App</font>\r\n" + 
+					  "                <BR />\r\n" + 
+					  "                <BR />Thank you for beeing with us,\r\n" + 
+					  "                <BR /><strong>IVCRM</strong>\r\n" + 
+					  "            </div>\r\n" + 
+					  "\r\n" + 
+					  "        </div>\r\n" + 
+					  "    </div>",
+					  "text/html");
+				} catch (MessagingException e) {
+					logger.error("Exception: "+e.getMessage());
+					return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+				}
+				 
 			 }
-		} catch (ClassNotFoundException e) { logger.error("Exception: "+e.getMessage());
+		} catch (ClassNotFoundException e) { 
+			logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		} catch (SQLException  e) { logger.error("Exception: "+e.getMessage());
+		} catch (SQLException  e) { 
+			logger.error("Exception: "+e.getMessage());
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if(!rs) {
