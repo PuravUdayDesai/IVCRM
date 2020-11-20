@@ -116,9 +116,6 @@ public class GooglePeoplesAPIService
     	googlePeopleCredentials.setResourceName(resourceName);
     	googlePeopleCredentials.seteTag(eTag);
     	
-    	//updateGooglePeopleOwnerUserName(googlePeopleCredentials,"Purav");
-    	//updateGooglePeopleOwnerEmailAddress(googlePeopleCredentials,"experiments.2ndit@gmail.com");
-    	
     	return googlePeopleCredentials;
     }
 
