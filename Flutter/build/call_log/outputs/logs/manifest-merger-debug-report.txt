@@ -1,0 +1,23 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\Setup\flutter_windows_v1.12.13+hotfix.5-stable\flutter\.pub-cache\hosted\pub.dartlang.org\call_log-2.1.0\android\src\main\AndroidManifest.xml:1:1-4:12
+INJECTED from D:\Setup\flutter_windows_v1.12.13+hotfix.5-stable\flutter\.pub-cache\hosted\pub.dartlang.org\call_log-2.1.0\android\src\main\AndroidManifest.xml:1:1-4:12
+INJECTED from D:\Setup\flutter_windows_v1.12.13+hotfix.5-stable\flutter\.pub-cache\hosted\pub.dartlang.org\call_log-2.1.0\android\src\main\AndroidManifest.xml:1:1-4:12
+	package
+		ADDED from D:\Setup\flutter_windows_v1.12.13+hotfix.5-stable\flutter\.pub-cache\hosted\pub.dartlang.org\call_log-2.1.0\android\src\main\AndroidManifest.xml:2:3-29
+		INJECTED from D:\Setup\flutter_windows_v1.12.13+hotfix.5-stable\flutter\.pub-cache\hosted\pub.dartlang.org\call_log-2.1.0\android\src\main\AndroidManifest.xml
+		INJECTED from D:\Setup\flutter_windows_v1.12.13+hotfix.5-stable\flutter\.pub-cache\hosted\pub.dartlang.org\call_log-2.1.0\android\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\Setup\flutter_windows_v1.12.13+hotfix.5-stable\flutter\.pub-cache\hosted\pub.dartlang.org\call_log-2.1.0\android\src\main\AndroidManifest.xml:1:11-69
+uses-permission#android.permission.READ_CALL_LOG
+ADDED from D:\Setup\flutter_windows_v1.12.13+hotfix.5-stable\flutter\.pub-cache\hosted\pub.dartlang.org\call_log-2.1.0\android\src\main\AndroidManifest.xml:3:5-71
+	android:name
+		ADDED from D:\Setup\flutter_windows_v1.12.13+hotfix.5-stable\flutter\.pub-cache\hosted\pub.dartlang.org\call_log-2.1.0\android\src\main\AndroidManifest.xml:3:22-69
+uses-sdk
+INJECTED from D:\Setup\flutter_windows_v1.12.13+hotfix.5-stable\flutter\.pub-cache\hosted\pub.dartlang.org\call_log-2.1.0\android\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Setup\flutter_windows_v1.12.13+hotfix.5-stable\flutter\.pub-cache\hosted\pub.dartlang.org\call_log-2.1.0\android\src\main\AndroidManifest.xml
+INJECTED from D:\Setup\flutter_windows_v1.12.13+hotfix.5-stable\flutter\.pub-cache\hosted\pub.dartlang.org\call_log-2.1.0\android\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\Setup\flutter_windows_v1.12.13+hotfix.5-stable\flutter\.pub-cache\hosted\pub.dartlang.org\call_log-2.1.0\android\src\main\AndroidManifest.xml
+		ADDED from D:\Setup\flutter_windows_v1.12.13+hotfix.5-stable\flutter\.pub-cache\hosted\pub.dartlang.org\call_log-2.1.0\android\src\main\AndroidManifest.xml
+		INJECTED from D:\Setup\flutter_windows_v1.12.13+hotfix.5-stable\flutter\.pub-cache\hosted\pub.dartlang.org\call_log-2.1.0\android\src\main\AndroidManifest.xml

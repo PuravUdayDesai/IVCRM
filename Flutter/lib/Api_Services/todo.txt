@@ -1,0 +1,10 @@
+3.synchronize all tabs in update ticketin terms of performance ex . 2 nd tab > only ignore pointer and 3 > column + ignorepointer
+4.update date in ticket
+5.compny branch primary contact update
+6.update ticket in employee app tab 1 update start date and end date
+9.image in pdf
+
+
+
+
+

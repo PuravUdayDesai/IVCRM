@@ -1,0 +1,24 @@
+
+
+////14.add enquiry product of different company -- UNDISCOVERED
+/// right overflow when add new position in add new company
+
+
+
+//flutter
+1.in chart x axis value should change depending on filters
+
+
+
+
+1.When i called and both had earphones ---> Only my sound
+2.When i called and purav had earphones ---> Only my sound
+3.When i called and i had earphones ---> Only my sound
+4.When i called and no-one had earphones ---> Only my sound
+
+1.When purav(client) called and both had earphones ---> Only my sound
+2.When purav(client) called and purav had earphones ---> Only my sound
+3.When purav(client) called and i had earphones ---> Only my sound
+4.When purav(client) called and no-one had earphones ---> Only my sound
+
+
