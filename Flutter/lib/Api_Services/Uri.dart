@@ -1,6 +1,6 @@
 class Uri
 {
-  static String endPoint= 'f8a637b44c24';
+  static String endPoint= 'IP_ADDRESS';
 	static String GET_AREA = "http://$endPoint.ngrok.io/area";
   static String GET_CITY = "http://$endPoint.ngrok.io/city";
   static String GET_STATE = "http://$endPoint.ngrok.io/state";
